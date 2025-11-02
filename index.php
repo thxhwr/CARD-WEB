@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>모바일 퍼스트 쇼핑몰 스타터</title>
+  <title>THXDEAL</title>
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -28,8 +28,6 @@
 
   <main>
     <section class="hero container">
-      <h1>모바일 퍼스트 베이스</h1>
-      <p>이 스타터는 모바일 화면을 기준으로 만들었고, 상단 고정 헤더/사이드 드로어/하단 탭바를 포함해요.</p>
       <div style="margin-top:16px">
         <a class="btn btn--primary" href="products.html">상품 보러가기</a>
       </div>
