@@ -29,7 +29,6 @@
   <main>
     <section class="hero container">
       <div style="margin-top:16px">
-        <a class="btn btn--primary" href="products.html">상품 보러가기</a>
       </div>
     </section>
   </main>
