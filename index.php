@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <?php include __DIR__ . "/partials/head.php"; ?>
+  <?php include __DIR__ . "/head.php"; ?>
 </head>
 <body>
   <header class="header">
@@ -21,6 +21,6 @@
     </section>
   </main>
 
-  <?php include __DIR__ . "/partials/footer.php"; ?>
+  <?php include __DIR__ . "/footer.php"; ?>
 </body>
 </html>
