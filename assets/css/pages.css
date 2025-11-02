@@ -1,0 +1,13 @@
+/* Home */
+.hero{padding:var(--s-6) 0;background:#fff}
+.hero h1{font-size:var(--fs-24);margin:0 0 var(--s-3) 0}
+
+/* Product list */
+.p-list__header{display:flex;justify-content:space-between;align-items:center;margin:var(--s-4) 0}
+.p-list__filters{display:flex;gap:8px;flex-wrap:wrap}
+.p-list__grid{display:grid;gap:var(--s-4);grid-template-columns:1fr 1fr;}
+@media (min-width:768px){.p-list__grid{grid-template-columns:repeat(3,1fr);}}
+@media (min-width:1024px){.p-list__grid{grid-template-columns:repeat(4,1fr);}}
+.pagination{display:flex;gap:8px;justify-content:center;margin:var(--s-8) 0}
+.pagination a,.pagination span{padding:8px 12px;border:1px solid var(--border);border-radius:10px}
+.pagination .is-current{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}

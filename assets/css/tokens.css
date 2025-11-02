@@ -1,0 +1,30 @@
+:root{
+  /* colors */
+  --color-primary:#2D5BFF;
+  --color-accent:#00B894;
+  --color-text:#111;
+  --color-muted:#666;
+  --color-bg:#fff;
+  --color-surface:#f8f9fb;
+  --border:#eaeaea;
+
+  /* spacing scale */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px; --s-10:40px;
+
+  /* radius & shadow */
+  --r-sm:10px; --r-md:14px; --r-lg:24px;
+  --shadow-1:0 2px 8px rgba(0,0,0,.06);
+
+  /* type (fluid, mobile-first) */
+  --fs-12:clamp(12px, 3.2vw, 12px);
+  --fs-14:clamp(14px, 3.6vw, 14px);
+  --fs-16:clamp(16px, 4vw, 16px);
+  --fs-18:clamp(18px, 4.4vw, 18px);
+  --fs-20:clamp(20px, 5vw, 22px);
+  --fs-24:clamp(22px, 6vw, 28px);
+
+  /* breakpoints */
+  --bp-sm:480px;
+  --bp-md:768px;
+  --bp-lg:1024px;
+}

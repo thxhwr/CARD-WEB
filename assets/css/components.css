@@ -1,0 +1,12 @@
+/* Cards & buttons */
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+.card__media{aspect-ratio:1/1;background:#f2f3f5}
+.card__body{padding:var(--s-4);display:grid;gap:6px}
+.card__title{font-size:var(--fs-16);margin:0}
+.card__price{font-size:var(--fs-18);font-weight:700;margin:0}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer}
+.btn--primary{background:var(--color-primary);border-color:var(--color-primary);color:#fff}
+
+.form-row{display:grid;gap:6px;margin-bottom:var(--s-4)}
+.input, select{padding:12px;border:1px solid var(--border);border-radius:12px;width:100%}

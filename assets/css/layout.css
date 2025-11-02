@@ -1,0 +1,20 @@
+/* Mobile header */
+.header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--border);}
+.header__bar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-4);}
+.brand{font-weight:800;font-size:18px;letter-spacing:.2px;}
+.icon-btn{width:36px;height:36px;border-radius:12px;border:1px solid var(--border);display:grid;place-items:center;background:#fff}
+
+.nav-drawer{position:fixed;inset:0 30% 0 0;background:#fff;transform:translateX(-100%);transition:transform .25s ease;border-right:1px solid var(--border);padding:var(--s-6);}
+.nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);backdrop-filter:blur(1px);opacity:0;pointer-events:none;transition:opacity .2s;}
+.nav-open .nav-drawer{transform:translateX(0)}
+.nav-open .nav-backdrop{opacity:1;pointer-events:auto}
+
+.nav-list{display:grid;gap:12px;margin-top:12px}
+.nav-list a{padding:12px;border-radius:12px;background:var(--color-surface)}
+
+.footer{margin-top:var(--s-10);border-top:1px solid var(--border);padding:var(--s-6) 0;color:var(--color-muted);font-size:12px;background:#fafafa}
+
+/* Bottom tab bar (mobile) */
+.tabbar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--border);display:flex;}
+.tabbar a{flex:1;display:grid;place-items:center;padding:10px 0;font-size:12px}
+.tabbar a[aria-current="page"]{color:var(--color-primary)}
