@@ -4,9 +4,9 @@ $mysqli = mysqli_init();
 
 mysqli_ssl_set(
     $mysqli,
-    "/etc/mysql/certs/client-key.pem",
-    "/etc/mysql/certs/client-cert.pem",
-    "/etc/mysql/certs/ca.pem",
+    '/home/thxdeal/mysql_certs/client-key.pem',
+    '/home/thxdeal/mysql_certs/client-cert.pem',
+    '/home/thxdeal/mysql_certs/ca.pem',
     NULL, NULL
 );
 
@@ -21,8 +21,9 @@ mysqli_real_connect(
     MYSQLI_CLIENT_SSL
 );
 
-if ($mysqli->connect_error) {
-    die("DB 연결 실패: " . $mysqli->connect_error);
+if (!mysqli_real_connect($mysqli, '1.1.1.1', 'jiheon1992', '비밀번호', 'DB이름', 1234, NULL, MYSQLI_CLIENT_SSL)) {
+    die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
 }
-echo "✅ SSL DB 연결 성공!";
+
+echo "SSL connection success!";
 ?>
