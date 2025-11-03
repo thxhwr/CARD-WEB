@@ -250,7 +250,9 @@ body {
   width: 70px;
   height: 70px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #ff8a50, var(--active));
+  background: transparent
+    linear-gradient(180deg, #ff7634 0%, var(--unnamed-color-f0580f) 100%) 0% 0%
+    no-repeat padding-box;
   display: grid;
   place-items: center;
   place-items: center;
@@ -278,26 +280,27 @@ body {
   font-weight: 600;
 }
 
-/* 리스트 전체를 가운데 배치 */
+/* 리스트 묶음 블록을 중앙으로 */
 .benefits {
-  width: 100%;
-  max-width: 360px; /* ← 카드 폭과 맞추고 싶다면 조절 (320~420px 권장) */
-  margin: 20px auto 0; /* ✅ 좌우 auto → 리스트 블록 자체가 중앙 정렬 */
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  width: 100%;
+  max-width: 260px; /* ✅ 리스트 가로폭을 적당히 좁게 → 그러면 블록이 딱 중앙으로 보임 */
+  margin: 20px auto 0; /* ✅ 좌우 auto → 리스트 자체가 중앙 정렬됨 */
 }
 
-/* 각 항목은 좌측 정렬 + 수직 중앙 */
+/* 리스트 항목은 왼쪽 정렬 유지 */
 .benefit {
   display: flex;
-  align-items: center; /* ✅ 이미지 + 텍스트 수직 가운데 정렬 */
-  gap: 12px;
+  align-items: center; /* ✅ 아이콘 + 텍스트 수직 가운데 */
+  gap: 10px;
+  text-align: left; /* ✅ 항목 내부는 왼쪽 정렬 */
   font-size: 14px;
   color: #1f1f1f;
 }
 
-/* 아이콘 */
 .benefit img {
   width: 24px;
   height: 24px;
@@ -306,7 +309,6 @@ body {
   display: block;
 }
 
-/* 강조 텍스트 */
 .benefit b {
   color: #ff7634;
   font-weight: 700;
