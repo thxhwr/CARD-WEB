@@ -278,24 +278,3 @@ body {
   color: var(--active);
   font-weight: 600;
 }
-
-.benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-.benefit {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-}
-.benefit img {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-.benefit b {
-  color: #ff7634;
-}
