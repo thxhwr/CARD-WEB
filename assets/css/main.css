@@ -13,6 +13,9 @@ body {
   font-family: sans-serif;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  height: auto;
+  min-height: 100vh;
 }
 img {
   display: block;
@@ -288,6 +291,9 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
 }
 @media (max-width: 420px) {
   body {

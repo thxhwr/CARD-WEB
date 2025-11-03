@@ -49,3 +49,37 @@ function initDrawer() {
 document.addEventListener('DOMContentLoaded', () => {
   initDrawer();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.tabbar .tab');
+
+  tabs.forEach((tab) => {
+    const img = tab.querySelector('img');
+    if (!img) return;
+
+    const src = img.getAttribute('src');
+
+    // 일반 버전 & 선택 버전 경로 만들기
+    const selectedSrc = src.replace('.svg', '-sel.svg');
+
+    // 활성 상태면 → 선택 아이콘 적용
+    if (tab.classList.contains('is-active')) {
+      img.setAttribute('src', selectedSrc);
+    }
+
+    // 클릭 시 탭 전환
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => {
+        t.classList.remove('is-active');
+        const i = t.querySelector('img');
+        if (i) {
+          const normal = i.getAttribute('src').replace('-sel.svg', '.svg');
+          i.setAttribute('src', normal);
+        }
+      });
+
+      tab.classList.add('is-active');
+      img.setAttribute('src', selectedSrc);
+    });
+  });
+});
