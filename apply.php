@@ -20,37 +20,37 @@
             <section class="container--narrow">
 
                 <form id="cardApplyForm" class="form">
-                    <div class="f-group">
+                    <div class="f-group is-disabled">
                         <label class="f-label required" for="userid">아이디</label>
                         <input id="userid" name="userid" class="f-input" type="text" placeholder="땡스페이 아이디를 입력해주세요" required>
                     </div>
 
                     <!-- 비밀번호 -->
-                    <div class="f-group">
+                    <div class="f-group is-disabled">
                         <label class="f-label required" for="pin">비밀번호</label>
                         <input id="pin" name="pin" class="f-input" type="password" inputmode="numeric" placeholder="땡스페이 비밀번호를 입력해주세요" required>
                     </div>
 
                     <!-- 이름 -->
-                    <div class="f-group">
+                    <div class="f-group is-disabled">
                         <label class="f-label required" for="name">이름</label>
                         <input id="name" name="name" class="f-input" type="text" placeholder="이름을 입력해주세요" required>
                     </div>
 
                     <!-- 영문 이름 -->
-                    <div class="f-group">
+                    <div class="f-group is-disabled">
                         <label class="f-label" for="ename">영문 이름</label>
                         <input id="ename" name="ename" class="f-input" type="text" placeholder="영문 이름을 입력해주세요">
                     </div>
 
                     <!-- 배송지 -->
-                    <div class="f-group">
+                    <div class="f-group is-disabled">
                         <label class="f-label" for="address">배송지</label>
                         <input id="address" name="address" class="f-input" type="text" placeholder="카드 배송을 받을 주소를 입력해주세요">
                     </div>
 
                     <!-- 연락처 -->
-                    <div class="f-group">
+                    <div class="f-group is-disabled">
                         <label class="f-label" for="phone">연락처</label>
                         <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}">
                     </div>
