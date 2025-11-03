@@ -87,7 +87,7 @@ body {
 
 /* 화면 컨텐츠 */
 .screen {
-  padding: 20px 18px 90px;
+  padding: 20px 18px 0px;
 } /* 아래 탭바 높이만큼 여유 */
 .title {
   margin: 42px 0 40px 30px;
@@ -141,7 +141,7 @@ body {
 .cta {
   display: block;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 0px 0px 20px 20px;
   padding: 14px 14px;
   text-align: center;
   background: var(--primary);
