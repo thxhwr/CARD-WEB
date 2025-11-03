@@ -82,6 +82,7 @@
             const inp = g.querySelector('.f-input');
             if(!inp) return;
             if (inp.value.trim()) g.classList.add('is-filled');
+                g.classList.remove('is-disabled'));
             else g.classList.remove('is-filled');
             });
         }

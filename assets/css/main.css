@@ -291,6 +291,7 @@ body {
 
 .apply-form {
   width: 80%;
+  margin: 0 auto;
 }
 .apply-form .f-inout {
   margin: 0 auto;
@@ -374,9 +375,7 @@ body {
 }
 
 .appbar__inner {
-  justify-content: flex-start;
   display: flex;
-  align-items: center;
   gap: 10px;
   justify-content: space-between;
   width: 100%;
