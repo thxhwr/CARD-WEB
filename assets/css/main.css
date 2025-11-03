@@ -139,7 +139,10 @@ body {
 }
 
 .cta {
-  display: block;
+  display: flex;
+  align-items: center; /* 세로 정렬 깔끔하게 */
+  justify-content: center; /* 텍스트 + 아이콘 중앙 정렬 */
+  gap: 8px;
   width: 100%;
   border-radius: 0px 0px 20px 20px;
   padding: 14px 14px;
@@ -150,6 +153,14 @@ body {
   border: 0;
   cursor: pointer;
 }
+
+.cta-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block; /* baseline 문제 해결 */
+}
+
 .cta:active {
   filter: brightness(0.95);
 }
