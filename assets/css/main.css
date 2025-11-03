@@ -1,6 +1,5 @@
-/* ============ 1) 디자인 토큰 ============ */
+/* ========= 토큰 ========= */
 :root {
-  /* 색상 */
   --bg: #ffffff;
   --surface: #fff;
   --text: #111;
@@ -8,7 +7,6 @@
   --border: #e6e8ee;
   --primary: #ff6a00;
 
-  /* 간격 scale */
   --s-1: 4px;
   --s-2: 8px;
   --s-3: 12px;
@@ -16,23 +14,15 @@
   --s-6: 24px;
   --s-8: 32px;
 
-  /* 곡률/그림자 */
   --r-sm: 10px;
   --r-md: 14px;
   --r-lg: 22px;
   --shadow-1: 0 6px 16px rgba(0, 0, 0, 0.08);
 
-  /* 브레이크포인트(모바일 기준) */
-  --bp-sm: 480px; /* 작은 폰 ↔ 일반 폰 경계 */
-  --bp-md: 768px; /* 태블릿 세로 */
-  --bp-lg: 1024px; /* 태블릿 가로 / 작은 데스크탑 */
-  --bp-xl: 1280px; /* 넓은 데스크탑 */
-
-  /* 탭바 높이 */
   --tabbar-h: 64px;
 }
 
-/* ============ 2) 베이스 & 레이아웃 ============ */
+/* ========= 베이스 ========= */
 * {
   box-sizing: border-box;
 }
@@ -51,111 +41,17 @@ body {
   flex-direction: column;
 }
 
-/* 공통 컨테이너 (모바일: 좌우 여백만, 큰 화면에서 점차 넓어짐) */
-.container {
+/* 앱 전체 – 반응형(폭 100%). 탭바와 겹치지 않도록 하단 패딩 확보 */
+.app {
   width: 100%;
-  margin-inline: auto;
-  padding-inline: var(--s-4);
-  max-width: 100%; /* 기본(모바일): 꽉 채움 */
-}
-@media (min-width: 900px) {
-  .container {
-    max-width: 900px;
-  } /* 태블릿 가로~작은 데스크탑 */
-}
-@media (min-width: var(--bp-xl)) {
-  .container {
-    max-width: 1120px;
-  } /* 큰 데스크탑 */
-}
-
-/* "모바일 디자인 느낌 유지"가 필요한 섹션(본문/카드 열) */
-.container--narrow {
-  width: 100%;
-  margin-inline: auto;
-  padding-inline: var(--s-4);
-  max-width: 600px; /* 태블릿/PC에서도 너무 넓어지지 않게 */
-}
-
-/* ============ 3) 타이포(모바일 기준 → 자동 확장) ============ */
-h1 {
-  font-size: clamp(22px, 5vw, 28px);
-  margin: 0 0 var(--s-4) 0;
-}
-h2 {
-  font-size: clamp(18px, 4.2vw, 22px);
-  margin: 0 0 var(--s-3) 0;
-}
-p,
-.text {
-  font-size: clamp(14px, 3.6vw, 16px);
-  margin: 0 0 var(--s-3) 0;
-}
-
-/* ============ 4) 공통 컴포넌트(모바일 기본) ============ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 14px;
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
+  min-height: 100dvh;
   background: #fff;
-  cursor: pointer;
-}
-.btn--primary {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-}
-.input,
-select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
+  padding-bottom: calc(
+    var(--tabbar-h) + env(safe-area-inset-bottom, 0) + var(--s-4)
+  );
 }
 
-/* 카드 */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-1);
-  overflow: hidden;
-}
-.card__media {
-  aspect-ratio: 1/1;
-  background: #f2f3f5;
-}
-.card__body {
-  padding: var(--s-4);
-}
-
-/* ============ 5) 제품 그리드 (모바일 1 → 태블릿 2 → 3 → 4열) ============ */
-.p-grid {
-  display: grid;
-  gap: var(--s-4);
-  grid-template-columns: 1fr;
-}
-@media (min-width: var(--bp-md)) {
-  .p-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-} /* 태블릿 */
-@media (min-width: var(--bp-lg)) {
-  .p-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-} /* 큰 태블릿/작은 PC */
-@media (min-width: var(--bp-xl)) {
-  .p-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-} /* 넓은 PC */
-
-/* ============ 6) 상단/하단 ============ */
+/* 상단 앱바 */
 .appbar {
   position: sticky;
   top: 0;
@@ -167,8 +63,123 @@ select {
   background: #fff;
   border-bottom: 1px solid var(--border);
 }
+.brand img {
+  height: 22px;
+  width: auto;
+  display: block;
+}
 
-/* 탭바: 항상 하단 고정 + 컨텐츠 가림 방지용 패딩 */
+/* 제목 영역 (모바일 기준 → 큰 화면에서 자연 확대) */
+.title {
+  padding: var(--s-6) var(--s-4) var(--s-4);
+}
+.title strong {
+  display: block;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.title {
+  font-size: clamp(18px, 5vw, 22px);
+}
+.title .accent {
+  color: var(--primary);
+}
+
+/* 본문 컨테이너: 큰 화면에서 너무 넓지 않게 */
+.phone {
+  width: 100%;
+  max-width: 600px; /* 태블릿/PC에서도 가독성 유지 */
+  margin: 0 auto;
+}
+.screen {
+  padding: 0 var(--s-4) var(--s-6);
+}
+
+/* 프로모션 카드 */
+.promo {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  padding: var(--s-4);
+}
+.cc-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.cc-img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+/* 혜택 리스트: 아이콘+텍스트 나란히 */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #1f2937;
+  font-size: 14px;
+}
+.list li img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  object-fit: contain;
+}
+.list li span b {
+  color: var(--primary);
+}
+
+/* 설명 */
+.desc {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+.desc b {
+  color: var(--primary);
+}
+
+/* CTA 버튼: 텍스트+아이콘 정렬 */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 2 * var(--s-4));
+  margin: var(--s-6) var(--s-4) 0;
+  padding: 14px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.cta:active {
+  filter: brightness(0.95);
+}
+.cta-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========= 탭바 (footer.php에서 .tabbar/.tab 사용 가정) ========= */
 .tabbar {
   position: fixed;
   left: 0;
@@ -180,20 +191,22 @@ select {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom, 0);
   z-index: 999;
 }
 .tab {
   flex: 1;
   text-align: center;
   text-decoration: none;
-  font-size: 11px;
   color: #9da3ad;
+  font-size: 11px;
 }
 .tab.is-active {
   color: var(--primary);
   font-weight: 600;
 }
+
+/* PNG/SVG 아이콘 크기 통일 */
 .tab .ico img {
   width: 24px;
   height: 24px;
@@ -202,17 +215,9 @@ select {
   margin: 0 auto;
 }
 
-/* 탭바 뒤 가림 방지: 컨텐츠 섹션에 하단 패딩 */
-.page {
-  padding-bottom: calc(
-    var(--tabbar-h) + env(safe-area-inset-bottom) + var(--s-4)
-  );
-}
-
-/* ============ 7) 유틸 ============ */
-.mt-4 {
-  margin-top: var(--s-4);
-}
-.mb-4 {
-  margin-bottom: var(--s-4);
+/* (선택) 큰 화면에서 본문 폭만 살짝 확장하고 싶다면 */
+@media (min-width: 1024px) {
+  .phone {
+    max-width: 720px;
+  }
 }

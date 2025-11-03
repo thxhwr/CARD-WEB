@@ -5,7 +5,7 @@
   <?php include __DIR__ . "/head.php"; ?>
 </head>
 <body>
-  <div class="page">    
+  <div class="app">    
     <header class="appbar">
       <div class="brand"><img src="assets/icons/logo.svg"></div>
     </header>
