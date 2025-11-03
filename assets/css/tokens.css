@@ -67,3 +67,21 @@
   --border: #e5e7eb;
   --primary: #2d5bff;
 }
+
+/* 실제 적용 */
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* (선택) 카드/버튼 같은 요소는 변수만 쓰면 테마 자동 반영됨 */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
+}
