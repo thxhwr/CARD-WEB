@@ -387,3 +387,87 @@ body {
 .form-actions {
   margin-top: 20px;
 }
+
+.complete-msg {
+  margin: 32px 0 24px;
+  text-align: left;
+}
+.complete-msg h2 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.complete-msg h2 b {
+  color: var(--accent);
+}
+.complete-msg p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.complete-card-box {
+  margin: 24px auto;
+  width: 100%;
+  max-width: 360px;
+  padding: 24px;
+  border: 1px solid #ffdccd;
+  border-radius: 16px;
+  text-align: center;
+  background: #fffdfb;
+}
+
+.card-img-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.card-img {
+  width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+}
+
+.card-info {
+  margin-top: 8px;
+}
+.card-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.info-list {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  font-size: 14px;
+}
+.info-list div {
+  display: flex;
+  justify-content: space-between;
+}
+.info-list b {
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+/* 하단 버튼 */
+.btn-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
+  height: 48px;
+  margin: 40px auto 0;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 16px rgba(255, 118, 52, 0.28);
+}
