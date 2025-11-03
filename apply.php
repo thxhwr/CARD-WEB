@@ -72,58 +72,57 @@
     </div>
 
     <script>
-    (function(){
-        const form = document.getElementById('cardApplyForm');
-        const required = form.querySelectorAll('[required]');
-        const submitBtn = form.querySelector('.btn-submit');
+        (function(){
+            const form = document.getElementById('cardApplyForm');
+            const submitBtn = form.querySelector('.btn-submit');
 
-        function syncFilledState(){
-            form.querySelectorAll('.f-group').forEach(g=>{
+            function toggleDisabledState(){
+                form.querySelectorAll('.f-group').forEach(g=>{
                 const inp = g.querySelector('.f-input');
                 if(!inp) return;
 
-                // 값 있을 때는 filled (주황 라인 ON)
-                if (inp.value.trim()) {
-                g.classList.add('is-filled');
-
-                // ✅ 입력된 순간 비활성 제거
-                g.classList.remove('is-disabled');
-                inp.disabled = false;
-
+                if (inp.value.trim() !== "") {
+                    // 값 있음 → 활성화
+                    g.classList.remove('is-disabled');
+                    inp.disabled = false;
                 } else {
-                g.classList.remove('is-filled');
-
-                // ✅ 값 없으면 다시 비활성 상태로 되돌리기
-                if(g.classList.contains('was-disabled')){
+                    // 값 없음 → 원래 비활성 필드였다면 다시 비활성
+                    if(g.classList.contains('was-disabled')){
                     g.classList.add('is-disabled');
                     inp.disabled = true;
+                    }
                 }
-                }
+                });
+            }
+
+            function toggleSubmit(){
+                const required = form.querySelectorAll('[required]');
+                const ok = Array.from(required).every(i => i.value.trim().length > 0);
+                submitBtn.disabled = !ok;
+            }
+
+            // 포커스 효과 (is-focus)
+            form.querySelectorAll('.f-input').forEach(inp=>{
+                const group = inp.parentElement;
+                inp.addEventListener('focus', ()=> group.classList.add('is-focus'));
+                inp.addEventListener('blur',  ()=> group.classList.remove('is-focus'));
             });
-        }
 
+            // 입력 감지
+            form.addEventListener('input', ()=>{ toggleDisabledState(); toggleSubmit(); });
+            form.addEventListener('change', ()=>{ toggleDisabledState(); toggleSubmit(); });
 
-        function toggleSubmit(){
-            const ok = Array.from(required).every(i => i.value.trim().length > 0);
-            submitBtn.disabled = !ok;
-        }
+            // 초기 실행
+            toggleDisabledState(); toggleSubmit();
 
-        form.addEventListener('input', ()=>{ syncFilledState(); toggleSubmit(); });
-        form.addEventListener('change', ()=>{ syncFilledState(); toggleSubmit(); });
+            // 데모 제출
+            form.addEventListener('submit', (e)=>{
+                e.preventDefault();
+                alert("제출되었습니다 (데모).");
+            });
+            })();
 
-        form.querySelectorAll('.f-input').forEach(inp=>{
-            inp.addEventListener('focus', ()=> inp.parentElement.classList.add('is-focus'));
-            inp.addEventListener('blur',  ()=> inp.parentElement.classList.remove('is-focus'));
-        });
-
-        syncFilledState(); toggleSubmit();
-
-        form.addEventListener('submit', (e)=>{
-            e.preventDefault();
-            alert('제출되었습니다 (데모).');
-        }); 
-    })();
-</script>
+    </script>
 
 </body>
 </html>

@@ -326,9 +326,6 @@ body {
 .f-group:focus-within {
   border-bottom-color: var(--accent);
 }
-.f-group.is-filled {
-  border-bottom-color: var(--accent);
-}
 
 /* 비활성(배송지, 연락처) */
 .f-group.is-disabled {
