@@ -87,6 +87,9 @@ body {
   max-width: 600px;
   margin: 0 auto;
   margin-inline: auto;
+  inline-size: clamp(320px, 92vw, 600px);
+  margin-inline: auto;
+  padding-inline: 16px;
 }
 .screen {
   padding: 0 40px var(--s-6);
