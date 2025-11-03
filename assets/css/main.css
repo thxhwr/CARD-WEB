@@ -176,19 +176,26 @@ body {
 
 /* 하단 고정 탭바 */
 .tabbar {
-  width: 390px;
   position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* ← 화면 정중앙 배치 */
+  width: 390px; /* → PC에서 고정된 앱 폭 */
   height: 64px;
-  padding-bottom: env(safe-area-inset-bottom);
-  background: var(--tabbar-bg);
-  border-top: 1px solid var(--tabbar-border);
+  background: #fff;
+  border-top: 1px solid #e6e8ee;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-around; /* ← 5등분 자동 정렬 */
   align-items: center;
-  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 99;
 }
-
+@media (max-width: 420px) {
+  .tabbar {
+    width: 100%;
+    border-radius: 0;
+  }
+}
 /* 탭 아이템 */
 .tab {
   display: grid;
