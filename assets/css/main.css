@@ -120,18 +120,17 @@ body {
 /* 혜택 리스트: 아이콘+텍스트 나란히 */
 .list {
   list-style: none;
-  margin: var(--s-4) 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  padding: 0;
+  margin: 16px auto 0; /* ✅ 좌우 auto → 가운데 고정 */
   width: 100%;
+  max-width: 360px; /* 카드 폭에 맞게 적당히 제한 (값은 취향대로) */
+  display: grid;
+  gap: 12px;
 }
 .list li {
   display: flex;
-  align-items: center;
+  align-items: center; /* 세로 중앙 */
   gap: 12px;
-  color: #1f2937;
-  font-size: 16px;
 }
 .list li img {
   width: 24px;
