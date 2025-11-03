@@ -6,7 +6,7 @@
 </nav>
 
 <footer class="footer">
-  <div class="container">© 2025 Shop · <a href="#">이용약관</a> · <a href="#">개인정보</a></div>
+  <div class="container">© 2025 THXDEAL · <a href="#">이용약관</a> · <a href="#">개인정보</a></div>
 </footer>
 
 <script src="/assets/js/main.js" defer></script>

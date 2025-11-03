@@ -9,7 +9,7 @@
   <header class="header">
     <div class="header__bar">
       <button class="icon-btn" aria-label="메뉴" data-burger>☰</button>
-      <div class="brand">SHOP</div>
+      <div class="brand">THXDEAL</div>
       <a class="icon-btn" href="products.html" aria-label="상품">🛍</a>
     </div>
   </header>
