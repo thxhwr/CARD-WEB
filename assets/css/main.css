@@ -363,3 +363,23 @@ body {
   box-shadow: 0 8px 16px rgba(255, 118, 52, 0.28);
   cursor: pointer;
 }
+
+.appbar-apply {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.appbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.appbar__inner .home-btn {
+  margin-left: auto; /* ← 이것만 주면 오른쪽 끝으로 이동 */
+}
