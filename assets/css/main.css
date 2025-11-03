@@ -301,7 +301,6 @@ body {
 .app {
   width: 100%; /* 🎯 모바일 기준 너비 */
   min-height: 100vh; /* 화면 높이 채움 */
-  background: #f3f3f6;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
