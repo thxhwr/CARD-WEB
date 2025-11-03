@@ -290,7 +290,9 @@ body {
 
 .apply-form {
   width: 80%;
-  text-align: center;
+}
+.apply-form .f-inout {
+  margin: 0 auto;
 }
 .f-group {
   display: flex;
