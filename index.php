@@ -29,11 +29,11 @@
           </ul>
           <p class="desc">지금 발급하면 <b>3~5일</b> 이내에 <br>안전하게 배송해드려요</p>
         </article>
-        <button class="cta" type="button">
+      </section>
+      <button class="cta" type="button">
           오프라인 카드 발급 신청
           <img src="/assets/icons/btn-next-arrow-right-w@2x.png" alt="" class="cta-icon">
         </button>
-      </section>
     </main>
     <?php include __DIR__ . "/footer.php"; ?>
   </div>
