@@ -182,8 +182,10 @@ body {
   position: fixed;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%); /* ← 화면 정중앙 배치 */
-  width: 390px; /* → PC에서 고정된 앱 폭 */
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: none;
   height: 64px;
   background: #fff;
   border-top: 1px solid #e6e8ee;
@@ -193,12 +195,25 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 99;
 }
-@media (max-width: 420px) {
+
+@media (min-width: 1025px) {
+  body {
+    background: #f3f4f7;
+  }
+  .app {
+    width: 390px;
+    min-height: 100vh;
+    margin: 0 auto;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  }
   .tabbar {
-    width: 100%;
-    border-radius: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 390px;
   }
 }
+
 /* 탭 아이템 */
 .tab {
   display: grid;
@@ -284,7 +299,7 @@ body {
 }
 
 .app {
-  width: 390px; /* 🎯 모바일 기준 너비 */
+  width: 100%; /* 🎯 모바일 기준 너비 */
   min-height: 100vh; /* 화면 높이 채움 */
   background: #f3f3f6;
   display: flex;
@@ -294,15 +309,4 @@ body {
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
-}
-@media (max-width: 420px) {
-  body {
-    background: #f3f3f6;
-  }
-  .app {
-    width: 100%; /* 모바일에서는 전체 화면 */
-    min-height: 100dvh; /* iOS Safari 대응 */
-    border-radius: 0;
-    box-shadow: none;
-  }
 }
