@@ -190,6 +190,7 @@ body {
   align-items: center;
   padding-bottom: env(safe-area-inset-bottom, 0);
   z-index: 999;
+  overflow: visible;
 }
 :root {
   --active: #ff7634;
@@ -210,6 +211,17 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 999;
 }
+
+.tabbar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.04);
+}
+
 .tab {
   flex: 1;
   text-align: center;
@@ -227,22 +239,25 @@ body {
 
 /* 가운데 카드 탭: 항상 오렌지 배지 */
 .tab--card .ico.badge {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
-  background: var(--active);
+  background: linear-gradient(180deg, #ff8a50, var(--active));
   display: grid;
+  place-items: center;
   place-items: center;
   box-shadow: 0 6px 16px rgba(255, 118, 52, 0.35);
 }
 .tab--card .ico.badge img {
-  width: 22px;
-  height: 22px;
-  filter: none;
+  width: 28px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
 }
 .tab--card .label {
   color: var(--active);
   font-weight: 600;
+  margin-top: 2px;
 }
 
 /* 나머지 4개: 선택됐을 때만 색 변경 */
