@@ -18,15 +18,11 @@
         </header>
 
         <main class="page">
-            <section class="container--narrow">
+            <section class="phone container--narrow">
 
                 <div class="title">
-                    <strong>오프라인 카드 받고</strong>
-                    <strong><span class="accent">특별한 혜택</span>을 누리세요</strong>
-                </div>
-                
-                <div class="complete-msg">
-                    <h2><b>오프라인 카드가</b><br>정상 발급되었습니다</h2>
+                    <strong>오프라인 카드가</strong>
+                    <strong><span class="accent">정상 발급</span>되었습니다.</strong>
                     <p>입력하신 주소로 영업일 기준 <b>3~7일</b> 이내에<br>카드를 발송해 드리겠습니다.</p>
                 </div>
 
