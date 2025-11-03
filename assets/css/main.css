@@ -1,311 +1,218 @@
-@import url('./base.css');
-@import url('./layout.css');
-@import url('./components.css');
-@import url('./pages.css');
+/* ============ 1) 디자인 토큰 ============ */
+:root {
+  /* 색상 */
+  --bg: #ffffff;
+  --surface: #fff;
+  --text: #111;
+  --muted: #6b7280;
+  --border: #e6e8ee;
+  --primary: #ff6a00;
 
+  /* 간격 scale */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-6: 24px;
+  --s-8: 32px;
+
+  /* 곡률/그림자 */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --shadow-1: 0 6px 16px rgba(0, 0, 0, 0.08);
+
+  /* 브레이크포인트(모바일 기준) */
+  --bp-sm: 480px; /* 작은 폰 ↔ 일반 폰 경계 */
+  --bp-md: 768px; /* 태블릿 세로 */
+  --bp-lg: 1024px; /* 태블릿 가로 / 작은 데스크탑 */
+  --bp-xl: 1280px; /* 넓은 데스크탑 */
+
+  /* 탭바 높이 */
+  --tabbar-h: 64px;
+}
+
+/* ============ 2) 베이스 & 레이아웃 ============ */
 * {
   box-sizing: border-box;
 }
 html,
 body {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: auto;
-  min-height: 100vh;
 }
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-:root {
-  --bg: #f5f6f9;
-  --fg: #111;
-  --muted: #6b7280;
-  --card: #fff;
-  --border: #e6e8ee;
-  --primary: #ff6a00; /* 포인트 오렌지 */
-  --radius-lg: 18px;
-  --radius-xl: 22px;
-  --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* 전체 배경에 가운데 390px 화면을 띄우는 프레임 */
 body {
-  margin: 0;
   background: var(--bg);
+  color: var(--text);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
     sans-serif;
-  color: var(--fg);
-}
-.phone {
-  width: 300px;
-  /* min-height: 740px; */
-  margin: 20px auto 74px;
-  background: #fff;
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
+  line-height: 1.5;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 상단 앱바 */
+/* 공통 컨테이너 (모바일: 좌우 여백만, 큰 화면에서 점차 넓어짐) */
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--s-4);
+  max-width: 100%; /* 기본(모바일): 꽉 채움 */
+}
+@media (min-width: 900px) {
+  .container {
+    max-width: 900px;
+  } /* 태블릿 가로~작은 데스크탑 */
+}
+@media (min-width: var(--bp-xl)) {
+  .container {
+    max-width: 1120px;
+  } /* 큰 데스크탑 */
+}
+
+/* "모바일 디자인 느낌 유지"가 필요한 섹션(본문/카드 열) */
+.container--narrow {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--s-4);
+  max-width: 600px; /* 태블릿/PC에서도 너무 넓어지지 않게 */
+}
+
+/* ============ 3) 타이포(모바일 기준 → 자동 확장) ============ */
+h1 {
+  font-size: clamp(22px, 5vw, 28px);
+  margin: 0 0 var(--s-4) 0;
+}
+h2 {
+  font-size: clamp(18px, 4.2vw, 22px);
+  margin: 0 0 var(--s-3) 0;
+}
+p,
+.text {
+  font-size: clamp(14px, 3.6vw, 16px);
+  margin: 0 0 var(--s-3) 0;
+}
+
+/* ============ 4) 공통 컴포넌트(모바일 기본) ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+.btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+
+/* 카드 */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+.card__media {
+  aspect-ratio: 1/1;
+  background: #f2f3f5;
+}
+.card__body {
+  padding: var(--s-4);
+}
+
+/* ============ 5) 제품 그리드 (모바일 1 → 태블릿 2 → 3 → 4열) ============ */
+.p-grid {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: var(--bp-md)) {
+  .p-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} /* 태블릿 */
+@media (min-width: var(--bp-lg)) {
+  .p-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+} /* 큰 태블릿/작은 PC */
+@media (min-width: var(--bp-xl)) {
+  .p-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+} /* 넓은 PC */
+
+/* ============ 6) 상단/하단 ============ */
 .appbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-}
-.brand-badge {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--primary);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
 }
 
-/* 화면 컨텐츠 */
-.screen {
-  padding: 20px 18px 0px;
-} /* 아래 탭바 높이만큼 여유 */
-.title {
-  margin: 42px 0 40px 30px;
-  line-height: 1.35;
-}
-.title strong {
-  display: block;
-  font-size: 22px;
-  font-weight: 800;
-}
-.title .accent {
-  color: var(--primary);
-}
-
-.list {
-  margin: 0;
-  list-style: none;
-  display: table;
-  gap: 8px;
-  line-height: 40px;
-}
-.list li {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  color: #1f2937;
-  font-size: 14px;
-}
-.ico {
-  width: 18px;
-  height: 18px;
-  border-radius: 5px;
-  color: #3b82f6;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  flex: 0 0 18px;
-}
-
-.desc {
-  margin: 12px 0 14px 28px;
-  font-size: 15px;
-  color: var(--muted);
-  text-align: center;
-}
-.desc b {
-  color: var(--primary);
-}
-
-.cta {
-  display: flex;
-  align-items: center; /* 세로 정렬 깔끔하게 */
-  justify-content: center; /* 텍스트 + 아이콘 중앙 정렬 */
-  gap: 8px;
-  width: 100%;
-  border-radius: 0px 0px 20px 20px;
-  padding: 14px 14px;
-  text-align: center;
-  background: var(--primary);
-  color: #fff;
-  font-weight: 700;
-  border: 0;
-  cursor: pointer;
-}
-
-.cta-icon {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  display: block; /* baseline 문제 해결 */
-}
-
-.cta:active {
-  filter: brightness(0.95);
-}
-
-/* 하단 탭바 */
-
-:root {
-  --tabbar-bg: #fff;
-  --tabbar-border: #e6e8ee;
-  --icon-dim: #b9bec7; /* 비활성 */
-  --text-dim: #acb1b8; /* 비활성 라벨 */
-  --active: #ff6a00; /* 중앙 오렌지 */
-}
-
-/* 하단 고정 탭바 */
+/* 탭바: 항상 하단 고정 + 컨텐츠 가림 방지용 패딩 */
 .tabbar {
   position: fixed;
-  bottom: 0;
-  left: 50%;
   left: 0;
   right: 0;
-  width: 100%;
-  transform: none;
-  height: 64px;
+  bottom: 0;
+  height: var(--tabbar-h);
   background: #fff;
-  border-top: 1px solid #e6e8ee;
+  border-top: 1px solid var(--border);
   display: flex;
-  justify-content: space-around; /* ← 5등분 자동 정렬 */
+  justify-content: space-around;
   align-items: center;
   padding-bottom: env(safe-area-inset-bottom);
-  z-index: 99;
+  z-index: 999;
 }
-
-@media (min-width: 1025px) {
-  body {
-    background: #f3f4f7;
-  }
-  .app {
-    width: 390px;
-    min-height: 100vh;
-    margin: 0 auto;
-    box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
-  }
-  .tabbar {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: 390px;
-  }
-}
-
-/* 탭 아이템 */
 .tab {
-  display: grid;
-  place-items: center;
-  gap: 4px;
-  min-width: 64px;
+  flex: 1;
+  text-align: center;
   text-decoration: none;
-  color: var(--text-dim);
   font-size: 11px;
+  color: #9da3ad;
 }
-
-/* 아이콘 공통 (SVG를 currentColor로 칠함) */
-.tab .ico {
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  color: var(--icon-dim);
-}
-.tab .ico svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* 활성 탭 */
 .tab.is-active {
-  color: var(--active);
+  color: var(--primary);
+  font-weight: 600;
 }
-.tab.is-active .ico {
-  color: #fff;
-}
-.tab.is-active .ico.badge {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  background: var(--active);
-  box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
-}
-.tab.is-active .ico.badge svg {
-  width: 22px;
-  height: 22px;
+.tab .ico img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
-.cc-preview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.cc-img {
-  width: 100%;
-  max-width: 190px;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
-}
-
-.cc-img {
-  position: relative;
-  overflow: hidden;
-}
-.cc-img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.25),
-    transparent
+/* 탭바 뒤 가림 방지: 컨텐츠 섹션에 하단 패딩 */
+.page {
+  padding-bottom: calc(
+    var(--tabbar-h) + env(safe-area-inset-bottom) + var(--s-4)
   );
-  transform: translateX(-120%);
-  animation: shine 2.2s infinite;
-}
-@keyframes shine {
-  0% {
-    transform: translateX(-120%);
-  }
-  100% {
-    transform: translateX(120%);
-  }
 }
 
-.app {
-  width: 100%; /* 🎯 모바일 기준 너비 */
-  min-height: 100vh; /* 화면 높이 채움 */
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-  -webkit-overflow-scrolling: touch;
+/* ============ 7) 유틸 ============ */
+.mt-4 {
+  margin-top: var(--s-4);
+}
+.mb-4 {
+  margin-bottom: var(--s-4);
 }
