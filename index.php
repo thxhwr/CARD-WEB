@@ -16,7 +16,7 @@
       <article class="card mb-4">
         <div class="card__media">
           <!-- 카드 이미지 (반응형) -->
-          <img src="assets/img/card.png" alt="카드" style="width:100%;height:auto;display:block;border-radius:var(--r-md)">
+          <img src="assets/img/img-card-blank@2x.png" alt="카드" style="width:100%;height:auto;display:block;border-radius:var(--r-md)">
         </div>
         <div class="card__body">
           <h2>땡스페이 비자 카드</h2>
@@ -27,16 +27,6 @@
           </button>
         </div>
       </article>
-    </section>
-
-    <!-- 상품 그리드(화면 커지면 자동으로 2→3→4열로 늘어남) -->
-    <section class="container">
-      <div class="p-grid">
-        <article class="card"><div class="card__media"></div><div class="card__body"><h3>상품 A</h3></div></article>
-        <article class="card"><div class="card__media"></div><div class="card__body"><h3>상품 B</h3></div></article>
-        <article class="card"><div class="card__media"></div><div class="card__body"><h3>상품 C</h3></div></article>
-        <article class="card"><div class="card__media"></div><div class="card__body"><h3>상품 D</h3></div></article>
-      </div>
     </section>
   </main>
 
