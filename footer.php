@@ -14,11 +14,10 @@
   </a>
 
   <!-- 활성 탭 -->
-  <a class="tab is-active" href="#" role="tab" aria-current="page">
+  <a class="tab is-card" href="#" role="tab" aria-current="page">
     <span class="ico badge">
       <img src="/assets/icons/ico-gnb-card-home.svg" alt="" class="ico">
     </span>
-    <span class="label">카드</span>
   </a>
 
   <a class="tab" href="#" role="tab">

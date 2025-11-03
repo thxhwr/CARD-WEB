@@ -1,6 +1,6 @@
 /* ========= 토큰 ========= */
 :root {
-  --bg: #ffffff;
+  --bg: #f3f3f6;
   --surface: #fff;
   --text: #111;
   --muted: #6b7280;
@@ -153,7 +153,6 @@ body {
   color: var(--primary);
 }
 
-/* CTA 버튼: 텍스트+아이콘 정렬 */
 .cta {
   display: flex;
   align-items: center;
@@ -201,7 +200,7 @@ body {
   color: #9da3ad;
   font-size: 11px;
 }
-.tab.is-active {
+.tab.is-card {
   color: var(--primary);
   font-weight: 600;
 }
@@ -213,6 +212,23 @@ body {
   object-fit: contain;
   display: block;
   margin: 0 auto;
+}
+.tab.is-active {
+  color: var(--active);
+}
+.tab.is-active .ico {
+  color: #fff;
+}
+.tab.is-active .ico.badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--active);
+  box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
+}
+.tab.is-active .ico.badge img {
+  width: 22px;
+  height: 22px;
 }
 
 /* (선택) 큰 화면에서 본문 폭만 살짝 확장하고 싶다면 */
