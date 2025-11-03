@@ -40,19 +40,19 @@
                     <!-- 영문 이름 -->
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="ename">영문 이름</label>
-                        <input id="ename" name="ename" class="f-input" type="text" placeholder="영문 이름을 입력해주세요">
+                        <input id="ename" name="ename" class="f-input" type="text" placeholder="영문 이름을 입력해주세요" required>
                     </div>
 
                     <!-- 배송지 -->
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="address">배송지</label>
-                        <input id="address" name="address" class="f-input" type="text" placeholder="카드 배송을 받을 주소를 입력해주세요">
+                        <input id="address" name="address" class="f-input" type="text" placeholder="카드 배송을 받을 주소를 입력해주세요" required>
                     </div>
 
                     <!-- 연락처 -->
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="phone">연락처</label>
-                        <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}">
+                        <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
                     </div>
 
                     <!-- 하단 고정 버튼 -->
