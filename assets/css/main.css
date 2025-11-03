@@ -248,6 +248,7 @@ body {
   position: relative;
   transform: translateY(-18px);
   box-shadow: 0 0 0 4px #fff;
+  margin: 0 auto;
 }
 .tab--card .ico.badge img {
   width: 45px;
