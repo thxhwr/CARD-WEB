@@ -195,8 +195,8 @@ body {
   bottom: 0;
   height: var(--tabbar-h);
   background: #fff;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
   padding-bottom: env(safe-area-inset-bottom, 0);
   z-index: 999;
@@ -230,11 +230,11 @@ body {
   object-fit: contain;
   margin: 0 auto;
 }
-
-.tab--card {
-  position: absolute; /* 다른 탭과 독립 */
-  left: 50%; /* 화면 중심에 놓고 */
-  transform: translateX(-50%);
+.tabbar .tab--card {
+  grid-column: 3; /* 1 2 [3] 4 5 → 중앙 칸 고정 */
+  position: relative;
+  left: auto;
+  transform: none; /* 중앙 고정은 그리드가 해결 */
 }
 
 .tab--card .ico.badge {
@@ -246,7 +246,7 @@ body {
   place-items: center;
   place-items: center;
   position: relative;
-  transform: translate(10px, -18px);
+  transform: translateY(-18px);
   box-shadow: 0 0 0 4px #fff;
 }
 .tab--card .ico.badge img {
