@@ -5,7 +5,7 @@
   <?php include __DIR__ . "/head.php"; ?>
 </head>
 <style>
-  body {backgroun:#F3F3F6}
+  body {background:#F3F3F6}
 </style>
 <body>
   <div class="app">    
