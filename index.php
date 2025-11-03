@@ -21,7 +21,7 @@
             <img src="assets/img/img-card-blank.png" alt="땡스페이 카드 이미지" class="cc-img">
           </div>
           <div style="text-align:center">
-            <h2>땡스페이 비자 카드</h2>
+            <span style="font-size:22px;font-weight:bold">땡스페이 비자 카드</span>
           </div>
           <ul class="list" aria-label="혜택 목록">
             <li><img src="/assets/icons/icon-main-card-benefit01@2x.png" width="24px" height="24px"><span>THX 가맹점 <b>10% 할인</b></span></li>

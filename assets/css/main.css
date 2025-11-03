@@ -52,7 +52,7 @@ body {
 }
 .phone {
   width: 300px;
-  min-height: 740px;
+  /* min-height: 740px; */
   margin: 20px auto;
   background: #fff;
   border-radius: 28px;
