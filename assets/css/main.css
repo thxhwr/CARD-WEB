@@ -355,6 +355,7 @@ body {
   color: #fff;
   box-shadow: none;
   cursor: default;
+  font-size: 18px;
 }
 .btn-submit:not(:disabled) {
   background: var(--accent);
