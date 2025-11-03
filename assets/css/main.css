@@ -83,13 +83,13 @@ body {
   color: var(--primary);
 }
 
+/* 본문 컨테이너: 큰 화면에서 너무 넓지 않게 */
 .phone {
   width: 100%;
-  max-width: 600px;
+  max-width: 600px; /* 태블릿/PC에서도 가독성 유지 */
   margin: 0 auto;
   inline-size: clamp(320px, 92vw, 600px);
-  margin: 0 auto;
-  padding-inline: 16px;
+  margin-inline: auto;
 }
 .screen {
   padding: 0 40px var(--s-6);
@@ -167,8 +167,6 @@ body {
   justify-content: center;
   gap: 8px;
   width: 100%;
-  max-width: none;
-  margin: 24px 0 0;
   padding: 20px;
   background: var(--primary);
   color: #fff;
