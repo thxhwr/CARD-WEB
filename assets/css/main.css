@@ -374,10 +374,14 @@ body {
 }
 
 .appbar__inner {
+  justify-content: flex-start;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 16px;
 }
 
 .appbar__inner .home-btn {

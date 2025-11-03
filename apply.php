@@ -8,7 +8,7 @@
     <div class="app">
     
         <header class="appbar-apply">
-            <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션" style="display:flex;align-items:center;gap:10px;justify-content:space-between;width:100%;max-width:600px;padding:0 16px;">
+            <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
                 <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">
                     <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
                 </a>
