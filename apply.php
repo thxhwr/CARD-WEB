@@ -12,7 +12,7 @@
                 <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">
                     <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
                 </a>
-                <h1 class="appbar__title" style="font-size:16px;font-weight:700;margin:0;">카드 신청</h1>
+                <h1 class="appbar__title" style="font-size:16px;font-weight:500;margin:0;">카드 신청</h1>
                 <a href="/index.php" class="nav-btn home-btn" aria-label="홈"><img src="/assets/icons/icon-home.svg"></a>
             </nav>
         </header>
