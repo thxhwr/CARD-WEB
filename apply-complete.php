@@ -22,7 +22,7 @@
 
                 <div class="title">
                     <strong>오프라인 카드 받고</strong>
-                    <strong><p class="accent">특별한 혜택</p>을 누리세요</strong>
+                    <strong><span class="accent">특별한 혜택</span>을 누리세요</strong>
                 </div>
                 
                 <div class="complete-msg">
