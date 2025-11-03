@@ -5,18 +5,15 @@
   <?php include __DIR__ . "/head.php"; ?>
 </head>
 <body style="background: #F3F3F6 0% 0% no-repeat padding-box;opacity: 1;">
+  <header class="appbar">
+    <div class="brand"><img src="assets/icons/logo.svg"></div>
+  </header>
+   <div class="title">
+    <strong>오프라인 카드 받고</strong>
+    <strong class="accent">특별한 혜택을 누리세요</strong>
+  </div>
   <main class="phone" role="main" aria-label="THX Deal 앱 화면">
-    <!-- 상단 -->
-    <header class="appbar">
-      <div class="brand"><img src="assets/icons/logo.svg"></div>
-    </header>
-
-    <!-- 본문 -->
     <section class="screen">
-      <div class="title">
-        <strong>오프라인 카드 받고</strong>
-        <strong class="accent">특별한 혜택을 누리세요</strong>
-      </div>
 
       <article class="promo" aria-label="땡스페이 비자 카드">
         <div class="cc-preview">
