@@ -16,6 +16,7 @@
 
   <main class="container">
     <section class="mt-4">
+      <button id="themeToggle" class="btn" type="button">🌓</button>
       <h1 style="margin:0 0 8px 0;font-size:var(--fs-24)">홈</h1>
       <p class="text-muted"></p>
       <a class="btn btn--primary mt-4" href="products.html">상품 보러가기</a>

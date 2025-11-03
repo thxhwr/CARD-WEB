@@ -32,3 +32,38 @@
   --bp-md: 768px;
   --bp-lg: 1024px;
 }
+/* 1) 기본(라이트) 토큰 */
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: #666;
+  --border: #e5e7eb;
+  --primary: #2d5bff;
+}
+
+/* 2) 시스템 다크 선호 시 기본값 덮어쓰기 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0e;
+    --fg: #f5f7fb;
+    --muted: #a5adbc;
+    --border: #2a2f3a;
+    --primary: #6e8cff;
+  }
+}
+
+/* 3) 사용자 수동 선택이 시스템보다 우선: [data-theme="dark"] 강제 */
+:root[data-theme='dark'] {
+  --bg: #0b0b0e;
+  --fg: #f5f7fb;
+  --muted: #a5adbc;
+  --border: #2a2f3a;
+  --primary: #6e8cff;
+}
+:root[data-theme='light'] {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: #666;
+  --border: #e5e7eb;
+  --primary: #2d5bff;
+}
