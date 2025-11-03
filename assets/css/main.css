@@ -104,10 +104,10 @@ body {
 
 .list {
   margin: 0;
-  padding: 0;
   list-style: none;
   display: table;
   gap: 8px;
+  line-height: 40px;
 }
 .list li {
   display: flex;
