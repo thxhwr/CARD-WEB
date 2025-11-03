@@ -14,7 +14,7 @@
     </header>
     <div class="title">
       <strong>오프라인 카드 받고</strong>
-      <strong class="accent">특별한 혜택을 누리세요</strong>
+      <strong><p class="accent">특별한 혜택</p>을 누리세요</strong>
     </div>
     <main class="phone" role="main" aria-label="THX Deal 앱 화면">
       <section class="screen">
