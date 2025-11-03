@@ -61,7 +61,6 @@
                     <div class="form-actions">
                         <button class="btn-submit" type="submit" disabled>
                         카드 신청
-                        <img src="/assets/icons/btn-next-arrow-right-w@2x.png" alt="" width="16" height="16" style="display:block;object-fit:contain;">
                         </button>
                     </div>
                 </form>

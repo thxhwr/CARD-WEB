@@ -6,7 +6,7 @@
   --text: #111;
   --muted: #6b7280;
   --border: #e6e8ee;
-  --primary: #ff6a00;
+  --primary: ##f0580f;
 
   --s-1: 4px;
   --s-2: 8px;
@@ -349,7 +349,7 @@ body {
   max-width: 360px;
   height: 48px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 45px;
   font-weight: 700;
   background: #ffd9c7;
   color: #fff;
@@ -358,7 +358,6 @@ body {
 }
 .btn-submit:not(:disabled) {
   background: var(--accent);
-  box-shadow: 0 8px 16px rgba(255, 118, 52, 0.28);
   cursor: pointer;
 }
 
@@ -382,4 +381,8 @@ body {
 
 .appbar__inner .home-btn {
   margin-left: auto; /* ← 이것만 주면 오른쪽 끝으로 이동 */
+}
+
+.form-actions {
+  margin-top: 20px;
 }
