@@ -22,11 +22,18 @@
           <div style="text-align:center;margin:30px">
             <span style="font-size:22px;font-weight:bold">땡스페이 비자 카드</span>
           </div>
-          <ul class="list" aria-label="혜택 목록">
+          <!-- <ul class="list" aria-label="혜택 목록">
             <li><img src="/assets/icons/icon-main-card-benefit01@2x.png" width="24px" height="24px" ><span>THX 가맹점 <b>10% 할인</b></span></li>
             <li><img src="/assets/icons/icon-main-card-benefit02@2x.png" width="24px" height="24px"><span>멤버스 포인트 <b>2~5% 적립</b></span></li>
             <li><img src="/assets/icons/icon-main-card-benefit03@2x.png" width="24px" height="24px"><span>THX MALL <b>보너스 포인트</b></span></li>
-          </ul>
+          </ul> -->
+         <div class="benefits">
+          <div class="benefit"><img src="/assets/icons/icon-main-card-benefit01@2x.png"><span>THX 가맹점 <b>10% 할인</b></span></div>
+          <div class="benefit"><img src="/assets/icons/icon-main-card-benefit02@2x.png"><span>멤버스 포인트 <b>2~5% 적립</b></span></div>
+          <div class="benefit"><img src="/assets/icons/icon-main-card-benefit03@2x.png"><span>THX MALL <b>보너스 포인트</b></span></div>
+        </div>
+
+
           <p class="desc">지금 발급하면 <b>3~5일</b> 이내에 <br>안전하게 배송해드려요</p>
         </article>
         <button class="cta" type="button">
