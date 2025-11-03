@@ -79,13 +79,29 @@
 
         function syncFilledState(){
             form.querySelectorAll('.f-group').forEach(g=>{
-            const inp = g.querySelector('.f-input');
-            if(!inp) return;
-            if (inp.value.trim()) g.classList.add('is-filled');
+                const inp = g.querySelector('.f-input');
+                if(!inp) return;
+
+                // 값 있을 때는 filled (주황 라인 ON)
+                if (inp.value.trim()) {
+                g.classList.add('is-filled');
+
+                // ✅ 입력된 순간 비활성 제거
                 g.classList.remove('is-disabled');
-            else g.classList.remove('is-filled');
+                inp.disabled = false;
+
+                } else {
+                g.classList.remove('is-filled');
+
+                // ✅ 값 없으면 다시 비활성 상태로 되돌리기
+                if(g.classList.contains('was-disabled')){
+                    g.classList.add('is-disabled');
+                    inp.disabled = true;
+                }
+                }
             });
         }
+
 
         function toggleSubmit(){
             const ok = Array.from(required).every(i => i.value.trim().length > 0);
