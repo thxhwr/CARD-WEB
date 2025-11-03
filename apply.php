@@ -9,7 +9,7 @@
     
         <header class="appbar">
             <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션" style="display:flex;align-items:center;gap:10px;justify-content:space-between;width:100%;max-width:600px;padding:0 16px;">
-                <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기"><img src="/assets/icons/btn-next-arrow-left-dg.svg"></a>
+                <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기"><img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px"></a>
                 <h1 class="appbar__title" style="font-size:16px;font-weight:700;margin:0;">카드 신청</h1>
                 <a href="/index.php" class="nav-btn" aria-label="홈"><img src="/assets/icons/icon-home.svg"></a>
             </nav>
@@ -39,19 +39,19 @@
 
                     <!-- 영문 이름 -->
                     <div class="f-group is-disabled">
-                        <label class="f-label" for="ename">영문 이름</label>
+                        <label class="f-label required" for="ename">영문 이름</label>
                         <input id="ename" name="ename" class="f-input" type="text" placeholder="영문 이름을 입력해주세요">
                     </div>
 
                     <!-- 배송지 -->
                     <div class="f-group is-disabled">
-                        <label class="f-label" for="address">배송지</label>
+                        <label class="f-label required" for="address">배송지</label>
                         <input id="address" name="address" class="f-input" type="text" placeholder="카드 배송을 받을 주소를 입력해주세요">
                     </div>
 
                     <!-- 연락처 -->
                     <div class="f-group is-disabled">
-                        <label class="f-label" for="phone">연락처</label>
+                        <label class="f-label required" for="phone">연락처</label>
                         <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}">
                     </div>
 
@@ -75,7 +75,6 @@
         const required = form.querySelectorAll('[required]');
         const submitBtn = form.querySelector('.btn-submit');
 
-        // 값이 있으면 is-filled 클래스 부여 → 포커스 없어도 주황 라인 유지
         function syncFilledState(){
             form.querySelectorAll('.f-group').forEach(g=>{
             const inp = g.querySelector('.f-input');
@@ -93,16 +92,13 @@
         form.addEventListener('input', ()=>{ syncFilledState(); toggleSubmit(); });
         form.addEventListener('change', ()=>{ syncFilledState(); toggleSubmit(); });
 
-        // 포커스 라인 효과(이미 :focus-within으로 충분하지만 깔끔하게)
         form.querySelectorAll('.f-input').forEach(inp=>{
             inp.addEventListener('focus', ()=> inp.parentElement.classList.add('is-focus'));
             inp.addEventListener('blur',  ()=> inp.parentElement.classList.remove('is-focus'));
         });
 
-        // 초기 상태 반영
         syncFilledState(); toggleSubmit();
 
-        // 데모 제출
         form.addEventListener('submit', (e)=>{
             e.preventDefault();
             alert('제출되었습니다 (데모).');
