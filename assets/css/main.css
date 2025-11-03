@@ -177,8 +177,6 @@ body {
 /* 하단 고정 탭바 */
 .tabbar {
   position: fixed;
-  left: 0;
-  right: 0;
   bottom: 0;
   height: 64px;
   padding-bottom: env(safe-area-inset-bottom);
