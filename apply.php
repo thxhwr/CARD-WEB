@@ -100,24 +100,20 @@
                 submitBtn.disabled = !ok;
             }
 
-            // 포커스 효과 (is-focus)
+            
             form.querySelectorAll('.f-input').forEach(inp=>{
                 const group = inp.parentElement;
                 inp.addEventListener('focus', ()=> group.classList.add('is-focus'));
                 inp.addEventListener('blur',  ()=> group.classList.remove('is-focus'));
             });
 
-            // 입력 감지
             form.addEventListener('input', ()=>{ toggleDisabledState(); toggleSubmit(); });
             form.addEventListener('change', ()=>{ toggleDisabledState(); toggleSubmit(); });
 
-            // 초기 실행
             toggleDisabledState(); toggleSubmit();
 
-            // 데모 제출
             form.addEventListener('submit', (e)=>{
                 e.preventDefault();
-                alert("제출되었습니다 (데모).");
             });
             })();
 
