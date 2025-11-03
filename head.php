@@ -10,6 +10,4 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-css-reset/1.4.0/reset.min.css">
 <link rel="preload" href="/assets/css/main.css" as="style">
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="/assets/css/skeleton.css">
-<link rel="stylesheet" href="/assets/css/base.css">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
