@@ -4,10 +4,7 @@
 <head>
   <?php include __DIR__ . "/head.php"; ?>
 </head>
-<style>
-body {background: #F3F3F6 0% 0% no-repeat padding-box;opacity: 1;}
-</style>
-<body>
+<body style="background: #F3F3F6 0% 0% no-repeat padding-box;opacity: 1;">
   <main class="phone" role="main" aria-label="THX Deal 앱 화면">
     <!-- 상단 -->
     <header class="appbar">
