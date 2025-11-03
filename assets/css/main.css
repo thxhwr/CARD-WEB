@@ -187,26 +187,6 @@ body {
   display: block;
 }
 
-/* ========= 탭바 (footer.php에서 .tabbar/.tab 사용 가정) ========= */
-.tabbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: var(--tabbar-h);
-  background: #fff;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: env(safe-area-inset-bottom, 0);
-  z-index: 999;
-  overflow: visible;
-}
-:root {
-  --active: #ff7634;
-}
-
 /* 공통 */
 .tabbar {
   position: fixed;
@@ -215,7 +195,6 @@ body {
   bottom: 0;
   height: 64px;
   background: #fff;
-  border-top: 1px solid #e6e8ee;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -264,7 +243,8 @@ body {
   place-items: center;
   place-items: center;
   position: relative;
-  box-shadow: 0 8px 18px rgba(255, 118, 52, 0.35), 0 0 0 4px #fff;
+  transform: translate(10px, -18px);
+  box-shadow: 0 0 0 4px #fff;
 }
 .tab--card .ico.badge img {
   width: 45px;
