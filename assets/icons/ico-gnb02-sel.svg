@@ -1,0 +1,13 @@
+<svg id="ico-gnb02-sel" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <rect id="area" width="26" height="26" fill="none"/>
+  <g id="icon" transform="translate(-104 -10)">
+    <g id="사각형_7805" data-name="사각형 7805" transform="translate(107.999 12.5)" fill="none" stroke="#f0580f" stroke-width="2">
+      <rect width="18" height="21" rx="4" stroke="none"/>
+      <rect x="1" y="1" width="16" height="19" rx="3" fill="none"/>
+    </g>
+    <g id="그룹_17840" data-name="그룹 17840" transform="translate(108.323 12.733)">
+      <line id="선_18" data-name="선 18" x2="3.656" transform="translate(5.177 11)" fill="none" stroke="#f0580f" stroke-linecap="round" stroke-width="2"/>
+      <line id="선_19" data-name="선 19" x2="6.425" transform="translate(5.177 6.867)" fill="none" stroke="#f0580f" stroke-linecap="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

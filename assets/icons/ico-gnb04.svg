@@ -1,0 +1,10 @@
+<svg id="ico-gnb04" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <rect id="area" width="26" height="26" fill="none"/>
+  <g id="icon" transform="translate(-0.248 -0.059)">
+    <g id="타원_1742" data-name="타원 1742" transform="translate(7.608 2.9)" fill="none" stroke="#999" stroke-width="2">
+      <circle cx="5.64" cy="5.64" r="5.64" stroke="none"/>
+      <circle cx="5.64" cy="5.64" r="4.64" fill="none"/>
+    </g>
+    <path id="패스_7115" data-name="패스 7115" d="M20.421,10.461a9.961,9.961,0,1,0-19.921,0" transform="translate(2.787 12.758)" fill="none" stroke="#999" stroke-linecap="round" stroke-width="2"/>
+  </g>
+</svg>
