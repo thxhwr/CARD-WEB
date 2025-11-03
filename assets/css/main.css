@@ -122,7 +122,6 @@ body {
 .list {
   list-style: none;
   margin: var(--s-4) 0 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
