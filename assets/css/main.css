@@ -166,43 +166,72 @@ body {
 }
 
 /* 하단 탭바 */
+
+:root {
+  --tabbar-bg: #fff;
+  --tabbar-border: #e6e8ee;
+  --icon-dim: #b9bec7; /* 비활성 */
+  --text-dim: #acb1b8; /* 비활성 라벨 */
+  --active: #ff6a00; /* 중앙 오렌지 */
+}
+
+/* 하단 고정 탭바 */
 .tabbar {
-  position: sticky;
-  bottom: 0;
+  position: fixed;
   left: 0;
   right: 0;
+  bottom: 0;
   height: 64px;
-  background: #fff;
-  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--tabbar-bg);
+  border-top: 1px solid var(--tabbar-border);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  z-index: 50;
 }
+
+/* 탭 아이템 */
 .tab {
   display: grid;
   place-items: center;
   gap: 4px;
-  font-size: 11px;
-  color: #9ca3af;
+  min-width: 64px;
   text-decoration: none;
+  color: var(--text-dim);
+  font-size: 11px;
 }
-.tab .t-ico {
-  width: 26px;
-  height: 26px;
-  border-radius: 9px;
-  border: 1px solid var(--border);
+
+/* 아이콘 공통 (SVG를 currentColor로 칠함) */
+.tab .ico {
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
-  font-size: 13px;
-  background: #fff;
+  color: var(--icon-dim);
 }
+.tab .ico svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* 활성 탭 */
 .tab.is-active {
-  color: var(--primary);
+  color: var(--active);
 }
-.tab.is-active .t-ico {
-  border-color: var(--primary);
+.tab.is-active .ico {
   color: #fff;
-  background: var(--primary);
+}
+.tab.is-active .ico.badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--active);
+  box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
+}
+.tab.is-active .ico.badge svg {
+  width: 22px;
+  height: 22px;
 }
 
 .cc-preview {
