@@ -19,7 +19,7 @@
           <div class="cc-preview">
             <img src="assets/img/img-card-blank.png" alt="땡스페이 카드 이미지" class="cc-img">
           </div>
-          <div style="text-align:center">
+          <div style="text-align:center;margin:30px">
             <span style="font-size:22px;font-weight:bold">땡스페이 비자 카드</span>
           </div>
           <ul class="list" aria-label="혜택 목록">
