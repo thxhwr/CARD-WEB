@@ -23,8 +23,8 @@
                 <div class="title">
                     <strong>오프라인 카드가</strong>
                     <strong><span class="accent">정상 발급</span>되었습니다.</strong>
-                    <p>입력하신 주소로 영업일 기준 <b>3~7일</b> 이내에<br>카드를 발송해 드리겠습니다.</p>
                 </div>
+                <p>입력하신 주소로 영업일 기준 <b>3~7일</b> 이내에<br>카드를 발송해 드리겠습니다.</p>
 
                 <div class="complete-card-box">
                     <div class="card-img-wrap">
