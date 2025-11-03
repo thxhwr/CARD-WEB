@@ -228,12 +228,6 @@ body {
   margin: 0 auto;
 }
 
-.tab--card {
-  position: absolute; /* 다른 탭과 독립 */
-  left: 50%; /* 화면 중심에 놓고 */
-  transform: translateX(-50%);
-}
-
 .tab--card .ico.badge {
   width: 70px;
   height: 70px;
@@ -242,7 +236,9 @@ body {
   display: grid;
   place-items: center;
   place-items: center;
-  position: relative;
+  position: absolute;
+  top: -20px;
+  left: 50%;
   transform: translate(10px, -18px);
   box-shadow: 0 0 0 4px #fff;
 }
