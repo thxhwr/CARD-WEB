@@ -117,34 +117,40 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
-/* 혜택 리스트: 아이콘+텍스트 나란히 */
+/* 리스트 블록 자체를 정중앙 고정 */
 .list {
   list-style: none;
   padding: 0;
-  margin: 16px auto 0; /* ✅ 좌우 auto → 가운데 고정 */
+  margin: 20px auto 0; /* ✅ 좌우 auto → 가운데 정렬 */
   width: 100%;
-  max-width: 360px; /* 카드 폭에 맞게 적당히 제한 (값은 취향대로) */
-  display: grid;
+  max-width: 260px; /* ✅ 리스트 폭을 좁게 → 보기 좋게 중앙 집중 */
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
+
+/* 리스트 항목은 좌측 정렬 유지 */
 .list li {
   display: flex;
-  align-items: center; /* 세로 중앙 */
+  align-items: center; /* ✅ 아이콘 + 텍스트 수직정렬 */
   gap: 12px;
+  text-align: left; /* ✅ 텍스트 왼쪽정렬 */
+  font-size: 14px;
+  color: #1f1f1f;
 }
+
+/* 아이콘 */
 .list li img {
   width: 24px;
   height: 24px;
-  display: block;
-  object-fit: contain;
   flex-shrink: 0;
+  object-fit: contain;
+  display: block;
 }
-.list li span {
-  display: inline-block;
-  line-height: 1.4;
-}
-.list li span b {
-  color: var(--primary);
+
+/* 강조 텍스트 */
+.list li b {
+  font-weight: 700;
 }
 
 /* 설명 */
@@ -289,27 +295,4 @@ body {
   width: 100%;
   max-width: 260px; /* ✅ 리스트 가로폭을 적당히 좁게 → 그러면 블록이 딱 중앙으로 보임 */
   margin: 20px auto 0; /* ✅ 좌우 auto → 리스트 자체가 중앙 정렬됨 */
-}
-
-/* 리스트 항목은 왼쪽 정렬 유지 */
-.benefit {
-  display: flex;
-  align-items: center; /* ✅ 아이콘 + 텍스트 수직 가운데 */
-  gap: 10px;
-  text-align: left; /* ✅ 항목 내부는 왼쪽 정렬 */
-  font-size: 14px;
-  color: #1f1f1f;
-}
-
-.benefit img {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  object-fit: contain;
-  display: block;
-}
-
-.benefit b {
-  color: #ff7634;
-  font-weight: 700;
 }
