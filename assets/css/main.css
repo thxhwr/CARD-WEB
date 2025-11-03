@@ -204,7 +204,7 @@ body {
   overflow: visible;
 }
 :root {
-  --active: #ff7634;
+  --active: #f0580f;
 }
 
 .tabbar::before {
@@ -283,7 +283,7 @@ body {
 }
 
 :root {
-  --accent: #ff7634;
+  --accent: #f0580f;
   --field-border: #eceff3;
   --placeholder: #c7ced7;
   --text: #111;
