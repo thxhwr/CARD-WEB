@@ -9,9 +9,9 @@
     
         <header class="appbar">
             <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션" style="display:flex;align-items:center;gap:10px;justify-content:space-between;width:100%;max-width:600px;padding:0 16px;">
-                <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">‹</a>
+                <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기"><img src="/assets/icons/btn-next-arrow-left-dg.svg"></a>
                 <h1 class="appbar__title" style="font-size:16px;font-weight:700;margin:0;">카드 신청</h1>
-                <a href="/index.php" class="nav-btn" aria-label="홈"><img src="/assets/icons/ico-gnb-card-home.svg"></a>
+                <a href="/index.php" class="nav-btn" aria-label="홈"><img src="/assets/icons/icon-home.svg"></a>
             </nav>
         </header>
 
