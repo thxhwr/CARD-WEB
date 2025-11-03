@@ -90,14 +90,14 @@ body {
   margin: 0 auto;
 }
 .screen {
-  padding: 0 var(--s-10) var(--s-6);
+  padding: 0 40px var(--s-6);
 }
 
 /* 프로모션 카드 */
 .promo {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--r-lg);
+  border-radius: 24px 24px 0 0;
   box-shadow: var(--shadow-1);
   padding: var(--s-4);
 }
@@ -156,7 +156,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: calc(100% - 2 * var(--s-4));
+  width: 100%;
   margin: var(--s-6) var(--s-4) 0;
   padding: 14px;
   background: var(--primary);
