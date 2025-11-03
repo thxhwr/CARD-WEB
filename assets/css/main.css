@@ -176,6 +176,7 @@ body {
 
 /* 하단 고정 탭바 */
 .tabbar {
+  width: 390px;
   position: fixed;
   bottom: 0;
   height: 64px;
