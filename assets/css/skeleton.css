@@ -1,0 +1,136 @@
+/* Header (모바일 퍼스트) */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.header__bar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--s-4);
+}
+.brand {
+  font-weight: 800;
+  font-size: 18px;
+}
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+/* Drawer */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.drawer {
+  position: fixed;
+  inset: 0 30% 0 0;
+  background: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.25s;
+  border-right: 1px solid var(--border);
+  padding: var(--s-6);
+}
+.drawer.is-open {
+  transform: translateX(0);
+}
+.nav-list {
+  display: grid;
+  gap: 12px;
+}
+.nav-list a {
+  padding: 12px;
+  border-radius: 12px;
+  background: #f7f8fa;
+}
+
+/* Tabbar */
+.tabbar {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  display: flex;
+}
+.tabbar a {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 10px 0;
+  font-size: 12px;
+}
+
+/* Cards (제품 그레이박스) */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+.card__media {
+  aspect-ratio: 1/1;
+  background: #f2f3f5;
+}
+.card__body {
+  padding: var(--s-4);
+  display: grid;
+  gap: 6px;
+}
+.card__title {
+  margin: 0;
+}
+.card__price {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Product grid */
+.p-grid {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: var(--bp-md)) {
+  .p-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: var(--bp-lg)) {
+  .p-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Skeleton shimmer (옵션) */
+.skel {
+  background: linear-gradient(90deg, #eee 25%, #f6f6f6 37%, #eee 63%);
+  background-size: 400% 100%;
+  animation: skel 1.3s ease infinite;
+}
+@keyframes skel {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
