@@ -17,7 +17,7 @@
 
         <!-- 본문 -->
         <main class="page">
-            <section class="container--narrow">
+            <section class="apply-form">
 
                 <form id="cardApplyForm" class="form">
                     <div class="f-group is-disabled">

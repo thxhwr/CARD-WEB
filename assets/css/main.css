@@ -288,7 +288,10 @@ body {
   --text: #111;
 }
 
-/* 그룹 공통 */
+.apply-form {
+  width: 80%;
+  text-align: center;
+}
 .f-group {
   display: flex;
   flex-direction: column;
@@ -296,9 +299,8 @@ body {
   border-bottom: 1px solid var(--field-border);
 }
 
-/* 라벨: 기본은 주황 (스샷처럼 섹션 라벨이 주황) */
 .f-label {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--accent);
   margin-bottom: 6px;
 }
@@ -328,9 +330,7 @@ body {
 .f-group.is-disabled {
   opacity: 0.7;
 }
-.f-group.is-disabled .f-label {
-  color: var(--placeholder);
-}
+
 .f-group.is-disabled .f-input {
   color: var(--placeholder);
 }
