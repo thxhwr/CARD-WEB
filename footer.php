@@ -14,7 +14,7 @@
   </a>
 
   <!-- 활성 탭 -->
-  <a class="tab is-card" href="#" role="tab" aria-current="page">
+  <a class="tab tab--card" href="#" role="tab" aria-current="page">
     <span class="ico badge">
       <img src="/assets/icons/ico-gnb-card-home.svg" alt="" class="ico">
     </span>

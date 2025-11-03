@@ -51,35 +51,44 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.tabbar .tab');
+  const tabs = [...document.querySelectorAll('.tabbar .tab')];
+  const isCard = (t) => t.classList.contains('tab--card');
 
-  tabs.forEach((tab) => {
-    const img = tab.querySelector('img');
+  // 초기: 카드 탭 제외하고 기본 src/선택 src 준비
+  tabs.forEach((t) => {
+    if (isCard(t)) return;
+    const img = t.querySelector('img');
     if (!img) return;
-
     const src = img.getAttribute('src');
+    t.dataset.normal = src;
+    t.dataset.selected = src.replace('.svg', '-sel.svg'); // 파일 규칙: xxx.svg ↔ xxx-sel.svg
+  });
 
-    // 일반 버전 & 선택 버전 경로 만들기
-    const selectedSrc = src.replace('.svg', '-sel.svg');
+  // 클릭 처리
+  tabs.forEach((t) => {
+    t.addEventListener('click', (e) => {
+      // 카드 탭은 항상 고정 상태이므로 클릭해도 스타일 변경 없음(필요하면 내비게이션만)
+      if (isCard(t)) return;
 
-    // 활성 상태면 → 선택 아이콘 적용
-    if (tab.classList.contains('is-active')) {
-      img.setAttribute('src', selectedSrc);
-    }
-
-    // 클릭 시 탭 전환
-    tab.addEventListener('click', () => {
-      tabs.forEach((t) => {
-        t.classList.remove('is-active');
-        const i = t.querySelector('img');
-        if (i) {
-          const normal = i.getAttribute('src').replace('-sel.svg', '.svg');
-          i.setAttribute('src', normal);
-        }
+      // 나머지 4개만 상태 토글
+      tabs.forEach((other) => {
+        if (isCard(other)) return; // 카드 탭 건드리지 않음
+        other.classList.remove('is-current');
+        const i = other.querySelector('img');
+        if (i && other.dataset.normal) i.src = other.dataset.normal;
       });
 
-      tab.classList.add('is-active');
-      img.setAttribute('src', selectedSrc);
+      t.classList.add('is-current');
+      const img = t.querySelector('img');
+      if (img && t.dataset.selected) img.src = t.dataset.selected;
     });
   });
+
+  // 필요시: 초기 선택값 지정(예: '검색')
+  const first = tabs.find((t) => !isCard(t));
+  if (first) {
+    first.classList.add('is-current');
+    const img = first.querySelector('img');
+    if (img) img.src = first.dataset.selected;
+  }
 });

@@ -46,7 +46,6 @@ body {
 .app {
   width: 100%;
   min-height: 100dvh;
-  background: #fff;
   padding-bottom: calc(
     var(--tabbar-h) + env(safe-area-inset-bottom, 0) + var(--s-4)
   );
@@ -61,7 +60,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
 }
 .brand img {
   height: 22px;
@@ -193,6 +191,25 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0);
   z-index: 999;
 }
+:root {
+  --active: #ff7634;
+}
+
+/* 공통 */
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  background: #fff;
+  border-top: 1px solid #e6e8ee;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 999;
+}
 .tab {
   flex: 1;
   text-align: center;
@@ -200,35 +217,38 @@ body {
   color: #9da3ad;
   font-size: 11px;
 }
-.tab.is-card {
-  color: var(--primary);
-  font-weight: 600;
-}
-
-/* PNG/SVG 아이콘 크기 통일 */
 .tab .ico img {
   width: 24px;
   height: 24px;
-  object-fit: contain;
   display: block;
+  object-fit: contain;
   margin: 0 auto;
 }
-.tab.is-active {
-  color: var(--active);
-}
-.tab.is-active .ico {
-  color: #fff;
-}
-.tab.is-active .ico.badge {
+
+/* 가운데 카드 탭: 항상 오렌지 배지 */
+.tab--card .ico.badge {
   width: 40px;
   height: 40px;
   border-radius: 999px;
   background: var(--active);
-  box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(255, 118, 52, 0.35);
 }
-.tab.is-active .ico.badge img {
+.tab--card .ico.badge img {
   width: 22px;
   height: 22px;
+  filter: none;
+}
+.tab--card .label {
+  color: var(--active);
+  font-weight: 600;
+}
+
+/* 나머지 4개: 선택됐을 때만 색 변경 */
+.tab.is-current {
+  color: var(--active);
+  font-weight: 600;
 }
 
 /* (선택) 큰 화면에서 본문 폭만 살짝 확장하고 싶다면 */
