@@ -714,14 +714,16 @@ body {
   background-image: url('/assets/icons/check_on.svg');
 }
 
-/* 배너 */
 .shop-banner img {
   width: 100%;
   border-radius: 12px;
   margin: 0 0 24px;
   display: block;
 }
-
+.shop-best {
+  width: 90%;
+  margin: 0 auto;
+}
 .shop-categories {
   display: flex;
   gap: 10px;

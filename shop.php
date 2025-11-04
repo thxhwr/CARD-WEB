@@ -23,6 +23,7 @@
                 </div>
 
                 <div class="shop-best">
+                    
                     <div class="shop-categories">
                         <button class="cat is-active">
                             <img src="/assets/icons/icon-all.svg" class="ico">
