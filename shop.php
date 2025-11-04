@@ -304,18 +304,15 @@
 
                         <style>
                             /* 섹션 레이아웃 */
-                            .weekly-section{max-width:1280px;margin:0 auto;padding:32px 16px;background:#fff;}
+                            .weekly-section{margin:0 auto;padding:32px 16px;background:#fff;}
                             .weekly-label{color:#FF7634;font-weight:700;font-size:14px;margin-bottom:6px;}
                             .weekly-title{font-size:24px;font-weight:800;margin-bottom:18px;}
 
                             /* ✅ 3열 그리드 (모바일 2열) */
                             .weekly-grid{
-                            display:grid;
-                            grid-template-columns:repeat(3,1fr);
-                            gap:20px;
-                            }
-                            @media (max-width:680px){
-                            .weekly-grid{ grid-template-columns:repeat(2,1fr); }
+                                display:grid;
+                                grid-template-columns:repeat(3,1fr);
+                                gap:20px;
                             }
 
                             /* 카드 */
