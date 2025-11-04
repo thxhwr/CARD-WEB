@@ -1,0 +1,9 @@
+<svg id="icon-cart" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <rect id="area" width="26" height="26" fill="none"/>
+  <g id="icon" transform="translate(0.619 2.268)">
+    <path id="패스_10943" data-name="패스 10943" d="M20.728,15.767H8.773a2.415,2.415,0,0,1-2.359-1.9L3.886,2.27A1.608,1.608,0,0,0,2.314,1H1" transform="translate(-0.093 -0.093)" fill="none" stroke="#191f28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <path id="패스_10944" data-name="패스 10944" d="M6.233,10.816H20.347a2.415,2.415,0,0,0,2.359-1.9L24.432,1" transform="translate(-0.579 -0.093)" fill="none" stroke="#191f28" stroke-linecap="round" stroke-width="1.6"/>
+    <path id="패스_10945" data-name="패스 10945" d="M12.843,21.75a1.588,1.588,0,1,1-1.588-1.588,1.587,1.587,0,0,1,1.588,1.588" transform="translate(-0.897 -1.872)" fill="#060606"/>
+    <path id="패스_10946" data-name="패스 10946" d="M21.011,21.75a1.588,1.588,0,1,1-1.588-1.588,1.588,1.588,0,0,1,1.588,1.588" transform="translate(-1.656 -1.872)" fill="#060606"/>
+  </g>
+</svg>
