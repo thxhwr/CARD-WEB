@@ -278,7 +278,6 @@
                                 $total = count($products);
                                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
                                 $start = ($page - 1) * $perPage;
-                                $i =+ 1;
                                 $currentList = array_slice($products, $start, $perPage);
                                 foreach($currentList as $p):
                             ?>
