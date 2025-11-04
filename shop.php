@@ -306,30 +306,30 @@
                             <h2 class="weekly-title">이번주 특가 상품</h2>
 
                             <div class="weekly-grid">
-                                <?php foreach($view as $p): ?>
-                                <div class="item">
-                                    <img src="/assets/img/img-shop-sample05.png" alt="<?= h($p['name']) ?>">
-                                    <p class="name"><?= h($p['name']) ?></p>
-                                    <p class="origin"><?= w($p['origin']) ?>원</p>
-                                    <p class="price"><span class="discount"><?= h($p['discount']) ?>%</span> <?= w($p['price']) ?>원</p>
-                                </div>
-                                <?php endforeach; ?>
+                            <?php foreach($view as $p): ?>
+                            <div class="item">
+                            <img src="/assets/img/img-shop-sample05.png" alt="<?= h($p['name']) ?>">
+                            <p class="name"><?= h($p['name']) ?></p>
+                            <p class="origin"><?= w($p['origin']) ?>원</p>
+                            <p class="price"><span class="discount"><?= h($p['discount']) ?>%</span> <?= w($p['price']) ?>원</p>
+                            </div>
+                            <?php endforeach; ?>
                             </div>
 
                             <?php if ($total > $perPage): ?>
                             <nav class="week-pagination" aria-label="상품 페이지 이동">
                             <?php if ($total > $perPage): ?>
                                 <nav class="week-pagination" aria-label="상품 페이지 이동">
-                                    <!-- 이전 버튼 -->
-                                    <a class="page-arrow <?= $page <= 1 ? 'is-disabled' : 'is-active' ?>"
-                                        href="<?= $page > 1 ? page_url($page - 1) : 'javascript:void(0)' ?>">
-                                        <img src="<?= $page > 1 ? '/assets/icons/btn-next-arrow-left-dg.svg' : '/assets/img/btn-next-arrow-left-dg.png' ?>" alt="이전">
-                                    </a>
-                                    <!-- 다음 버튼 -->
-                                    <a class="page-arrow <?= $page >= $totalPages ? 'is-disabled' : 'is-active' ?>"
-                                        href="<?= $page < $totalPages ? page_url($page + 1) : 'javascript:void(0)' ?>">
-                                        <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/img/btn-next-arrow-right-dg2.png' ?>" alt="다음">
-                                    </a>
+                                <!-- 이전 버튼 -->
+                                <a class="page-arrow <?= $page <= 1 ? 'is-disabled' : 'is-active' ?>"
+                                    href="<?= $page > 1 ? page_url($page - 1) : 'javascript:void(0)' ?>">
+                                    <img src="<?= $page > 1 ? '/assets/icons/btn-next-arrow-left-dg.svg' : '/assets/img/btn-next-arrow-left-dg.png' ?>" alt="이전">
+                                </a>
+                                <!-- 다음 버튼 -->
+                                <a class="page-arrow <?= $page >= $totalPages ? 'is-disabled' : 'is-active' ?>"
+                                    href="<?= $page < $totalPages ? page_url($page + 1) : 'javascript:void(0)' ?>">
+                                    <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/img/btn-next-arrow-right-dg2.png' ?>" alt="다음">
+                                </a>
                                 </nav>
                                 <?php endif; ?>
                             </nav>
