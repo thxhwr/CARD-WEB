@@ -846,6 +846,9 @@ body {
   justify-content: center;
 }
 
+.product:nth-child(n + 4) .badge {
+  background: var(--rank-normal);
+}
 /* 상품명 */
 .product .name {
   font-size: 16px;
