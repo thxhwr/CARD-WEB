@@ -20,7 +20,7 @@
     </span>
   </a>
 
-  <a class="tab" href="#" role="tab">
+  <a class="tab" href="shop.php" role="tab">
     <span class="ico">
       <img src="/assets/icons/ico-gnb03.svg" alt="" class="ico">
     </span>
