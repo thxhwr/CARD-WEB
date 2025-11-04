@@ -344,7 +344,7 @@
                             <div class="weekly-grid">
                             <?php foreach($view as $p): ?>
                             <div class="item">
-                            <img src="<?= h($p['img']) ?>" alt="<?= h($p['name']) ?>">
+                            <img src="/assets/img/img-shop-sample05.png" alt="<?= h($p['name']) ?>">
                             <p class="name"><?= h($p['name']) ?></p>
                             <p class="origin"><?= w($p['origin']) ?>원</p>
                             <p class="price"><span class="discount"><?= h($p['discount']) ?>%</span> <?= w($p['price']) ?>원</p>
