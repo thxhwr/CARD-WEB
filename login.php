@@ -27,7 +27,7 @@
 
             <form id="loginForm" class="login-form" autocomplete="off">
                 <div class="f-group login-id">
-                    <input type="text" class=" f-input"  style="margin-bottom:10px" placeholder="아이디 입력" required>
+                    <input type="text" class=" f-input" placeholder="아이디 입력" required>
                 </div>
 
                 <div class="f-group login-pw">
