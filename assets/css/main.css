@@ -489,7 +489,6 @@ body {
 
 .owned-card-box {
   width: 100%;
-  margin: 24px auto;
   padding: 24px;
   background: transparent linear-gradient(180deg, #ff7634 0%, #f0580f 100%) 0%
     0% no-repeat padding-box;
