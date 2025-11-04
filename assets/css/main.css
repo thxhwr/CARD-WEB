@@ -503,13 +503,16 @@ body {
   color: #e24f09;
   border-radius: 50px;
   font-size: 13px;
+  width: 23%;
+  margin: 0 auto;
 }
 
 /* 타이틀 */
 .owned-title {
-  margin: 8px 0 6px;
+  margin: 15px 0 6px;
   font-size: 16px;
   font-weight: 800;
+  color: #fff;
 }
 
 .owned-circle {
@@ -517,6 +520,14 @@ body {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  filter: blur(2px);
+  background: #fff5ed;
+}
+
+.owend-info-list {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 18px;
 }

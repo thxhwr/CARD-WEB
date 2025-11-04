@@ -28,7 +28,7 @@
 
                 <div class="card-info">
 
-                    <div class="info-list">
+                    <div class="owend-info-list">
                         <div><span>카드번호</span><b>5395 9188 8888 8888</b></div>
                         <div><span>유효기간</span><b>01/23</b></div>
                         <div><span>소유자</span><b>김땡스</b></div>
