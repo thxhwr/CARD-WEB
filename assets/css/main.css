@@ -905,3 +905,8 @@ body {
   height: 42px;
   width: 100%;
 }
+.btn-more img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
