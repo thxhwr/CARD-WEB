@@ -1409,6 +1409,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 0 12px 12px;
+  justify-content: space-between;
 }
 .r-stars {
   color: #ffb400;
@@ -1456,4 +1457,63 @@ body {
 .r-buyer {
   font-size: 12px;
   color: #7a8088;
+}
+
+/* ============ 구분선 ============ */
+.r-divider {
+  border: 0;
+  height: 1px;
+  margin: 14px 12px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06));
+}
+
+/* ============ 연결 상품 ============ */
+.r-prod {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px 14px;
+  text-decoration: none;
+}
+.r-prod__thumb {
+  flex: 0 0 64px;
+  height: 64px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f5f6f8;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+.r-prod__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.r-prod__title {
+  flex: 1 1 auto;
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 한 줄 말줄임 */
+}
+
+/* 카드 안 여백 톤 맞추기(선택) */
+.r-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 다크모드 대비(옵션) */
+@media (prefers-color-scheme: dark) {
+  .r-divider {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .r-nick {
+    color: #a3a9b3;
+  }
+  .r-prod__title {
+    color: #a3a9b3;
+  }
 }

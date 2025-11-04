@@ -382,6 +382,14 @@
                                     <div class="rating" data-value="5"></div> <!-- 5점 -->
                                     <span class="r-buyer">홍*동</span>
                                 </div>
+                                <hr class="r-divider" role="presentation">
+
+                                <a href="#" class="r-prod" aria-label="카우프만 데이지코모 IH주… 상품 보기">
+                                    <span class="r-prod__thumb">
+                                        <img src="/assets/img/img-shop-sample05.png" alt="">
+                                    </span>
+                                    <span class="r-prod__title">카우프만 데이지코모 IH주…</span>
+                                </a>
                             </article>
 
                             <!-- 카드 2 -->
@@ -395,7 +403,14 @@
                                     <div class="rating" data-value="3.5"></div> <!-- 3.5점 -->
                                     <span class="r-buyer">민*진</span>
                                 </div>
+                                <hr class="r-divider" role="presentation">
 
+                                <a href="#" class="r-prod" aria-label="카우프만 데이지코모 IH주… 상품 보기">
+                                    <span class="r-prod__thumb">
+                                        <img src="/assets/img/img-shop-sample05.png" alt="">
+                                    </span>
+                                    <span class="r-prod__title">카우프만 데이지코모 IH주…</span>
+                                </a>
                             </article>
 
                             <article class="r-card">
@@ -408,6 +423,14 @@
                                     <div class="rating" data-value="4"></div> <!-- 3.5점 -->
                                     <span class="r-buyer">민*진</span>
                                 </div>
+                                <hr class="r-divider" role="presentation">
+
+                                <a href="#" class="r-prod" aria-label="카우프만 데이지코모 IH주… 상품 보기">
+                                    <span class="r-prod__thumb">
+                                        <img src="/assets/img/img-shop-sample05.png" alt="">
+                                    </span>
+                                    <span class="r-prod__title">카우프만 데이지코모 IH주…</span>
+                                </a>
                             </article>
 
                             <article class="r-card">
@@ -420,6 +443,14 @@
                                     <div class="rating" data-value="1"></div> <!-- 3.5점 -->
                                     <span class="r-buyer">민*진</span>
                                 </div>
+                                <hr class="r-divider" role="presentation">
+
+                                <a href="#" class="r-prod" aria-label="카우프만 데이지코모 IH주… 상품 보기">
+                                    <span class="r-prod__thumb">
+                                        <img src="/assets/img/img-shop-sample05.png" alt="">
+                                    </span>
+                                    <span class="r-prod__title">카우프만 데이지코모 IH주…</span>
+                                </a>
                             </article>
                         </div>
                     </section>
