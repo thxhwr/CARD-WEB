@@ -989,6 +989,10 @@ body {
   border-radius: 16px;
   padding: 12px;
   scroll-snap-align: start;
+  position: relative;
+  background: #fff;
+  gap: 6px;
+  cursor: pointer;
 }
 
 .point-item img {
