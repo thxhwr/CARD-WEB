@@ -17,59 +17,70 @@
         <main class="page">
             <section class="container--narrow">
 
-            <!-- 1) 배너 -->
-            <div class="shop-banner">
-                <img src="/assets/img/img-main-event-sample01.png" alt="혜택 배너">
-            </div>
-
-            <div class="shop-best">
-                <div class="shop-categories">
-                    <button class="cat is-active">
-                        <img src="/assets/icons/icon-all.svg" class="ico">
-                        <span>전체</span>
-                    </button>
-
-                    <button class="cat">
-                        <img src="/assets/icons/icon-health.svg" class="ico">
-                        <span>건강</span>
-                    </button>
-
-                    <button class="cat">
-                        <img src="/assets/icons/icon-life.svg" class="ico">
-                        <span>생활</span>
-                    </button>
-
-                    <button class="cat">
-                        <img src="/assets/icons/icon-beauty.svg" class="ico">
-                        <span>뷰티</span>
-                    </button>
-
-                    <button class="cat">
-                        <img src="/assets/icons/icon-food.svg" class="ico">
-                        <span>식품</span>
-                    </button>
-
-                    <button class="cat">
-                        <img src="/assets/icons/icon-car.svg" class="ico">
-                        <span>자동차</span>
-                    </button>
+                <!-- 1) 배너 -->
+                <div class="shop-banner">
+                    <img src="/assets/img/img-main-event-sample01.png" alt="혜택 배너">
                 </div>
 
-                <div class="shop-grid">
-                    <div class="product">
-                        <img src="/assets/img/prod1.png" alt="">
-                        <p class="name">피넛츠 프렌즈컵 여행용 기프트 텀블러</p>
-                        <div class="price"><span class="discount">45%</span> 12,400원</div>
+                <div class="shop-best">
+                    <div class="shop-categories">
+                        <button class="cat is-active">
+                            <img src="/assets/icons/icon-all.svg" class="ico">
+                            <span>전체</span>
+                        </button>
+
+                        <button class="cat">
+                            <img src="/assets/icons/icon-health.svg" class="ico">
+                            <span>건강</span>
+                        </button>
+
+                        <button class="cat">
+                            <img src="/assets/icons/icon-life.svg" class="ico">
+                            <span>생활</span>
+                        </button>
+
+                        <button class="cat">
+                            <img src="/assets/icons/icon-beauty.svg" class="ico">
+                            <span>뷰티</span>
+                        </button>
+
+                        <button class="cat">
+                            <img src="/assets/icons/icon-food.svg" class="ico">
+                            <span>식품</span>
+                        </button>
+
+                        <button class="cat">
+                            <img src="/assets/icons/icon-car.svg" class="ico">
+                            <span>자동차</span>
+                        </button>
                     </div>
-                    <div class="product">
-                        <img src="/assets/img/prod2.png" alt="">
-                        <p class="name">아모레퍼시픽 럭키 에디션 세트</p>
-                        <div class="price"><span class="discount">20%</span> 9,200원</div>
+
+                    <div class="shop-grid">
+                        <div class="product">
+                            <span class="badge">1</span>
+                            <img src="/assets/img/prod1.png" alt="">
+                            <p class="name">파벡스 분리형포트 여행용전 기포트 프리볼EFX-256H</p>
+                            <div class="price">
+                            <span class="discount">45%</span>
+                            <span class="sale">12,400원</span>
+                            <span class="origin">36,000원</span>
+                            </div>
+                            <p class="sold">2,600개 주문했어요</p>
+                        </div>
+
+                        <div class="product">
+                            <span class="badge">2</span>
+                            <img src="/assets/img/prod2.png" alt="">
+                            <p class="name">아모레퍼시픽 역대 최대 혜택 15% 적립 + 20% 추가 할인</p>
+                            <div class="price">
+                            <span class="discount">20%</span>
+                            <span class="sale">9,200원</span>
+                            <span class="origin">12,000원</span>
+                            </div>
+                            <p class="sold">2,410개 주문했어요</p>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-
             </section>
         </main>
 
