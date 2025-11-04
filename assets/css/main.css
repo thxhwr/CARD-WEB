@@ -834,7 +834,7 @@ body {
   position: absolute;
   top: 6px;
   left: 6px;
-  background: #ff7634;
+  background: var(--rank-top3);
   color: #fff;
   font-weight: 700;
   font-size: 13px;
