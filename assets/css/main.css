@@ -800,16 +800,15 @@ body {
   background: #fff;
   overflow: hidden;
   padding-bottom: 10px;
-  border: 1px solid #eeeeee;
-  border-radius: 10px;
-  opacity: 1;
 }
 
 .product img {
   width: 100%;
-  border-radius: 12px;
   display: block;
   margin-bottom: 8px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  opacity: 1;
 }
 
 /* 순번 뱃지 */
@@ -821,7 +820,7 @@ body {
   color: #fff;
   font-weight: 700;
   font-size: 13px;
-  border-radius: 50%;
+  border-radius: 5px;
   width: 22px;
   height: 22px;
   display: flex;
