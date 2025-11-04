@@ -419,5 +419,23 @@
     render();
 })();
 </script>
+
+<script>
+  // 뒤로가기 시 스크롤 유지
+    window.history.scrollRestoration = "manual";
+
+    // 페이지 떠날 때 스크롤 위치 저장
+    window.addEventListener("beforeunload", () => {
+    sessionStorage.setItem("scrollY", window.scrollY);
+    });
+
+    // 다시 들어왔을 때 복구
+    window.addEventListener("load", () => {
+    const y = sessionStorage.getItem("scrollY");
+    if (y !== null) window.scrollTo(0, parseInt(y));
+    });
+</script>
+
+
 </body>
 </html>
