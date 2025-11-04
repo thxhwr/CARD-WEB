@@ -970,7 +970,11 @@ body {
   padding-inline: 16px;
   scroll-padding-inline-start: 16px;
 }
-.point-list > * {
+.point-list > .point-item {
+  flex: 0 0 240px;
+}
+
+.point-list > .point-item {
   scroll-snap-align: start;
 }
 
@@ -978,6 +982,7 @@ body {
   display: none;
 }
 
+.point-list::before,
 .point-list::after {
   content: '';
   flex: 0 0 16px;
@@ -986,13 +991,14 @@ body {
 .point-item {
   flex: 0 0 160px;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 12px;
   scroll-snap-align: start;
   position: relative;
   background: #fff;
   gap: 6px;
   cursor: pointer;
+  box-shadow: 0px 0px 10px #0000001a;
 }
 
 .point-item img {
@@ -1040,7 +1046,7 @@ body {
   background: #ff7634;
   color: #fff;
   font-size: 11px;
-  padding: 4px 7px;
+  padding: 4px 12px;
   border-radius: 6px;
   font-weight: 600;
 }
