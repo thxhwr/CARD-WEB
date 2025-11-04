@@ -336,8 +336,8 @@
                                 <img src="<?= h($p['img']) ?>" alt="<?= h($p['name']) ?>">
                                 <h3 class="name"><?= h($p['name']) ?></h3>
                                 <p class="origin"><?= number_format($p['origin']) ?>원</p>
-                                <p class="discount"><?= (int)$p['discount'] ?>%</p>
-                                <p class="price"> 
+                                <p class="price">
+                                    <span class="discount"><?= (int)$p['discount'] ?>%</span> 
                                     <?= number_format($p['price']) ?>원
                                 </p>
                             </article>
