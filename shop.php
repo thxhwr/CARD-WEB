@@ -267,75 +267,40 @@
                     </section>
                 </div>
                 <div class="weekly-grid" id="weeklyGrid">
-                        <?php
-                            $products = [
-                            ["name"=>"(남여공용) 티클릿 오버핏 후드 맨투맨", "price"=>12400, "origin"=>36900, "discount"=>45, "img"=>"/assets/img/prod1.jpg"],
-                            ["name"=>"파벡스 분리형포트 EFX-256H", "price"=>12400, "origin"=>36900, "discount"=>45, "img"=>"/assets/img/prod2.jpg"],
-                            ["name"=>"아모레 최대혜택 세트", "price"=>9200, "origin"=>12000, "discount"=>20, "img"=>"/assets/img/prod3.jpg"],
-                            ["name"=>"프리미엄 텀블러 기프트 세트", "price"=>15800, "origin"=>22800, "discount"=>31, "img"=>"/assets/img/prod4.jpg"],
-                            ["name"=>"글라스 에어프라이어 4L+1.5L", "price"=>219000, "origin"=>289000, "discount"=>24, "img"=>"/assets/img/prod5.jpg"],
-                            ["name"=>"바디케어 스페셜 패키지", "price"=>17900, "origin"=>25800, "discount"=>31, "img"=>"/assets/img/prod6.jpg"],
-                            ["name"=>"홈카페 라떼머신 세트", "price"=>89000, "origin"=>129000, "discount"=>31, "img"=>"/assets/img/prod7.jpg"],
-                            ["name"=>"유니버설 키친툴 5종", "price"=>27900, "origin"=>39900, "discount"=>30, "img"=>"/assets/img/prod8.jpg"],
-                            ["name"=>"코지 담요 2P", "price"=>13900, "origin"=>19900, "discount"=>30, "img"=>"/assets/img/prod9.jpg"],
-                            ["name"=>"여행용 파우치 세트 6P", "price"=>11900, "origin"=>17900, "discount"=>34, "img"=>"/assets/img/prod10.jpg"],
-                            ["name"=>"무선 미니 선풍기", "price"=>15900, "origin"=>22900, "discount"=>31, "img"=>"/assets/img/prod11.jpg"],
-                            ["name"=>"컴팩트 가습기", "price"=>12900, "origin"=>18900, "discount"=>31, "img"=>"/assets/img/prod12.jpg"],
-                            ];
+                    <section class="weekly-section">
+                        <p class="weekly-label">고객님들이 Pick한</p>
+                        <h2 class="weekly-title"><span>이번주 특가 상품</span></h2>
 
-                            $perPage = 9;                                     // ✅ 9개씩
-                            $total = count($products);
-                            $totalPages = max(1, (int)ceil($total / $perPage));
-                            $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-                            $page = min($page, $totalPages);
-                            $start = ($page - 1) * $perPage;
-                            $view = array_slice($products, $start, $perPage);
-
-                            /* 유틸: 숫자 포맷 & XSS 방지 */
-                            function h($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
-                            function w($n){ return number_format((int)$n); }
-
-                            /* 현재 URL에 page만 바꿔 붙이기 */
-                            function page_url($n){
-                            $params = $_GET; $params['page'] = $n;
-                            return basename($_SERVER['PHP_SELF']).'?'.http_build_query($params);
-                            }
-                        ?>
-                        <section class="weekly-section">
-                            <p class="weekly-label">고객님들이 Pick한</p>
-                            <h2 class="weekly-title">이번주 특가 상품</h2>
-
-                            <div class="weekly-grid">
-                            <?php foreach($view as $p): ?>
-                            <div class="item">
-                                <img src="/assets/img/img-shop-sample05.png" alt="<?= h($p['name']) ?>">
-                                <p class="name"><?= h($p['name']) ?></p>
-                                <p class="origin"><?= w($p['origin']) ?>원</p>
-                                <p class="price"><span class="discount"><?= h($p['discount']) ?>%</span> <?= w($p['price']) ?>원</p>
-                            </div>
+                        <!-- 3열 그리드 -->
+                        <div class="product-grid">
+                            <!-- 카드 반복 (PHP/템플릿 루프 자리) -->
+                            <?php foreach ($view ?? [] as $p): ?>
+                            <article class="product-card">
+                                <img src="<?= h($p['img']) ?>" alt="<?= h($p['name']) ?>">
+                                <h3 class="name"><?= h($p['name']) ?></h3>
+                                <p class="origin"><?= number_format($p['origin']) ?>원</p>
+                                <p class="price">
+                                <span class="discount"><?= (int)$p['discount'] ?>%</span>
+                                <?= number_format($p['price']) ?>원
+                                </p>
+                            </article>
                             <?php endforeach; ?>
-                            </div>
 
-                            <?php if ($total > $perPage): ?>
-                            <nav class="week-pagination" aria-label="상품 페이지 이동">
-                            <?php if ($total > $perPage): ?>
-                                <nav class="week-pagination" aria-label="상품 페이지 이동">
-                                <!-- 이전 버튼 -->
-                                <a class="page-arrow <?= $page <= 1 ? 'is-disabled' : 'is-active' ?>"
-                                    href="<?= $page > 1 ? page_url($page - 1) : 'javascript:void(0)' ?>">
-                                    <img src="<?= $page > 1 ? '/assets/icons/btn-next-arrow-left-dg.svg' : '/assets/img/btn-next-arrow-left-dg.png' ?>" alt="이전">
-                                </a>
-                                <!-- 다음 버튼 -->
-                                <a class="page-arrow <?= $page >= $totalPages ? 'is-disabled' : 'is-active' ?>"
-                                    href="<?= $page < $totalPages ? page_url($page + 1) : 'javascript:void(0)' ?>">
-                                    <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/img/btn-next-arrow-right-dg2.png' ?>" alt="다음">
-                                </a>
-                                </nav>
-                                <?php endif; ?>
-                            </nav>
-                            <?php endif; ?>
-                        </section>              
-                    </div>
+                            <!-- PHP가 없다면 샘플 카드 몇 개 넣어도 됨 -->
+                        </div>
+
+                        <!-- 좌/우 화살표만 있는 페이지네이션 (번호 없음) -->
+                        <?php if (($total ?? 0) > ($perPage ?? 9)): ?>
+                        <nav class="pager" aria-label="상품 페이지 이동">
+                            <a class="pager__arrow prev <?= ($page??1) > 1 ? 'is-active' : 'is-disabled' ?>"
+                            href="<?= ($page??1) > 1 ? page_url(($page??1)-1) : 'javascript:void(0)' ?>" aria-label="이전"></a>
+
+                            <a class="pager__arrow next <?= ($page??1) < ($totalPages??1) ? 'is-active' : 'is-disabled' ?>"
+                            href="<?= ($page??1) < ($totalPages??1) ? page_url(($page??1)+1) : 'javascript:void(0)' ?>" aria-label="다음"></a>
+                        </nav>
+                        <?php endif; ?>
+                    </section>
+                </div>
             </section>
         </main>
 
