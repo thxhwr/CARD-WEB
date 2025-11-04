@@ -27,7 +27,7 @@
                         <strong style="font-size:18px">실시간 베스트 상품</strong>
                         <DIV class="more-link">
                             <a href="#" class="find-link">전체보기</a>
-                            <img src="/assets/icons/btn-next-arrow-right-g.png">
+                            <img src="/assets/img/btn-next-arrow-right-dg.png">
                         </DIV>    
                     </DIV>
                     <p style="margin:10px 0 20px">땡스딜의 베스트 상품을 만나보세요.</p>
@@ -114,7 +114,7 @@
                     </div>
 
                     <div>
-                        <button class="btn-more" >상품 더보기<img src="/assets/icons/btn-next-arrow-right-g@2x.png"></button>
+                        <button class="btn-more" >상품 더보기<img src="/assets/img/btn-next-arrow-right-dg.png"></button>
                     </div>
                 </div>
             </section>
