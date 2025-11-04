@@ -1423,13 +1423,6 @@ body {
   mask-image: var(--mask);
 }
 
-/* 화면 좁아지면 카드 폭만 축소 */
-@media (max-width: 380px) {
-  .r-card {
-    flex-basis: 220px;
-  }
-}
-
 /* 별 평점 표시 */
 .rating {
   width: 80px; /* 별 5개 총 너비(별 크기 × 5) */
