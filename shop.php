@@ -359,12 +359,15 @@
                     </section>
                 </div>
                 <div class="review">
-                    <section class="reviews">
+                    <section class="reviews" >
                         <div class="reviews__head">
                             <h3 class="reviews__title">상품 이용후기</h3>
-                            <a class="reviews__more" href="/reviews">전체보기</a>
+                            <DIV class="more-link">
+                                <a href="#" class="find-link">전체보기</a>
+                                <img src="/assets/img/btn-next-arrow-right-dg.png">
+                            </DIV>   
                         </div>
-                        <p class="reviews__sub">고객님들의 생생한 후기를 확인하세요</p>
+                        <p class="reviews__sub">고객님들의 생생한 후기를 확인하세요 👍</p>
 
                         <!-- 가로 스크롤 레일 -->
                         <div class="reel" id="reviewReel" aria-label="이용후기 목록">

@@ -1318,7 +1318,7 @@ body {
   text-decoration: none;
 }
 .reviews__sub {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   padding: 4px 16px 10px;
   margin: 0;
@@ -1360,7 +1360,7 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   scroll-snap-align: start;
   overflow: hidden; */
-  flex: 0 0 160px;
+  flex: 0 0 200px;
   background: #fff;
   border-radius: 10px;
   padding: 12px;
@@ -1429,6 +1429,7 @@ body {
     #000 calc(100% - 16px),
     rgba(0, 0, 0, 0) 100%
   );
+  background: #f5f7f8;
   -webkit-mask-image: var(--mask);
   mask-image: var(--mask);
 }
