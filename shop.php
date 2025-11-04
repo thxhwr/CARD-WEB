@@ -87,6 +87,30 @@
                             </div>
                             <p class="sold">2,410개 주문했어요</p>
                         </div>
+
+                        <div class="product">
+                            <span class="badge">1</span>
+                            <img src="/assets/img/img-shop-sample05.png" alt="">
+                            <p class="name">파벡스 분리형포트 여행용전 기포트 프리볼EFX-256H</p>
+                            <div class="price">
+                            <span class="discount">45%</span>
+                            <span class="sale">12,400원</span>
+                            <span class="origin">36,000원</span>
+                            </div>
+                            <p class="sold">2,600개 주문했어요</p>
+                        </div>
+
+                        <div class="product">
+                            <span class="badge">2</span>
+                            <img src="/assets/img/img-shop-sample05.png" alt="">
+                            <p class="name">아모레퍼시픽 역대 최대 혜택 15% 적립 + 20% 추가 할인</p>
+                            <div class="price">
+                            <span class="discount">20%</span>
+                            <span class="sale">9,200원</span>
+                            <span class="origin">12,000원</span>
+                            </div>
+                            <p class="sold">2,410개 주문했어요</p>
+                        </div>
                     </div>
                 </div>
             </section>

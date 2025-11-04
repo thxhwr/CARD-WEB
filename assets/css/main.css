@@ -735,8 +735,14 @@ body {
   overflow-x: auto;
   padding: 12px 0 4px;
   scroll-snap-type: x mandatory;
+  height: 100px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
-
+.shop-categories::-webkit-scrollbar {
+  display: none;
+}
 .cat {
   position: relative;
   flex: 0 0 auto;
@@ -792,9 +798,11 @@ body {
 .product {
   position: relative;
   background: #fff;
-  border-radius: 14px;
   overflow: hidden;
   padding-bottom: 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  opacity: 1;
 }
 
 .product img {
@@ -823,30 +831,28 @@ body {
 
 /* 상품명 */
 .product .name {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
-  padding: 0 6px;
   margin-bottom: 4px;
   color: #111;
   font-weight: 500;
 }
 
-/* 가격 영역 */
 .price {
   display: flex;
   align-items: baseline;
   gap: 4px;
-  padding: 0 6px;
   margin-bottom: 2px;
+  font-size: 16px;
 }
 .price .discount {
   color: #ff7634;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
 }
 .price .sale {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
 }
 .price .origin {
   color: #aaa;
@@ -858,7 +864,6 @@ body {
 .sold {
   font-size: 12px;
   color: #888;
-  padding: 0 6px;
 }
 
 /* 반응형 조정 */
