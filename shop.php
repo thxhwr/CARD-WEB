@@ -354,11 +354,20 @@
 
                             <?php if ($total > $perPage): ?>
                             <nav class="week-pagination" aria-label="상품 페이지 이동">
-                            <a class="btn prev" href="<?= page_url(max(1,$page-1)) ?>" <?= $page<=1?'disabled':'' ?>>‹</a>
-                            <?php for($i=1;$i<=$totalPages;$i++): ?>
-                            <a class="btn num <?= $i===$page?'is-active':'' ?>" href="<?= page_url($i) ?>"><?= $i ?></a>
-                            <?php endfor; ?>
-                            <a class="btn next" href="<?= page_url(min($totalPages,$page+1)) ?>" <?= $page>=$totalPages?'disabled':'' ?>>›</a>
+                            <?php if ($total > $perPage): ?>
+                                <nav class="week-pagination" aria-label="상품 페이지 이동">
+                                <!-- 이전 버튼 -->
+                                <a class="page-arrow <?= $page <= 1 ? 'is-disabled' : 'is-active' ?>"
+                                    href="<?= $page > 1 ? page_url($page - 1) : 'javascript:void(0)' ?>">
+                                    <img src="<?= $page > 1 ? '/assets/icons/btn-next-arrow-left-dg.svg' : '/assets/img/btn-next-arrow-left-dg.png' ?>" alt="이전">
+                                </a>
+                                <!-- 다음 버튼 -->
+                                <a class="page-arrow <?= $page >= $totalPages ? 'is-disabled' : 'is-active' ?>"
+                                    href="<?= $page < $totalPages ? page_url($page + 1) : 'javascript:void(0)' ?>">
+                                    <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/icons/btn-next-arrow-right-g.svg' ?>" alt="다음">
+                                </a>
+                                </nav>
+                                <?php endif; ?>
                             </nav>
                             <?php endif; ?>
                         </section>              
