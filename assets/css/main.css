@@ -382,7 +382,6 @@ body {
   gap: 10px;
   justify-content: space-between;
   width: 100%;
-  max-width: 600px;
   padding: 0 16px;
 }
 
@@ -682,4 +681,35 @@ body {
 .login-form .btn-submit:disabled {
   background: #ffd9c7;
   cursor: default;
+}
+
+.login-keep {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* 라벨 왼쪽에 아이콘 표시 */
+.keep-label {
+  position: relative;
+  padding-left: 28px; /* 아이콘 자리 확보 */
+  cursor: pointer;
+}
+
+/* OFF 상태 아이콘 */
+.keep-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  background: url('/assets/icons/check_off.svg') no-repeat center/contain;
+}
+
+/* ✅ ON 상태 아이콘 */
+#keepLogin:checked + .keep-label::before {
+  background-image: url('/assets/icons/check_on.svg');
 }

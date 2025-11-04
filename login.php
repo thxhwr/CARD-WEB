@@ -37,10 +37,11 @@
                 <button class="btn-submit" type="submit">로그인</button>
 
                 <div class="login-options">
-                    <label class="keep-login">
-                        <input type="checkbox"> 로그인 상태 유지
-                    </label>
-                    <a href="#" class="find-link">아이디/비밀번호 찾기 ></a>
+                    <div class="login-keep">
+                        <input type="checkbox" id="keepLogin" hidden>
+                        <label for="keepLogin" class="keep-label">로그인 상태 유지</label>
+                    </div>
+                    <a href="#" class="find-link">아이디/비밀번호 찾기 <img src="/assets/icons/btn-next-arrow-right-w@2x.png"></a>
                 </div>
             </form>
 
