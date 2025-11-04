@@ -1171,96 +1171,127 @@ body {
   display: block;
 }
 
+/* -------------- */
+
+:root {
+  --accent: #ff7634; /* 포인트 주황 */
+  --text: #111;
+  --muted: #9aa0a6;
+  --gap: 16px;
+  --radius: 12px;
+}
+
+/* 섹션 */
 .weekly-section {
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 24px 16px 28px;
   background: #fff;
 }
+
+/* 라벨/타이틀 */
 .weekly-label {
-  color: #ff7634;
+  color: var(--accent);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 6px;
 }
 .weekly-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
-  margin-bottom: 18px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+.weekly-title span {
+  box-shadow: inset 0 -10px 0 rgba(255, 118, 52, 0.15); /* 스샷처럼 밑줄 하이라이트 */
 }
 
-.weekly-grid {
+/* ✅ 항상 3열 (화면 넓이에 따라 카드 폭만 유동) */
+.product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 0 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
 }
 
 /* 카드 */
-.item {
+.product-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius);
+  overflow: hidden;
 }
-.item img {
+.product-card img {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 8px;
+  aspect-ratio: 1 / 1; /* 정사각형 썸네일 */
+  object-fit: cover; /* 중앙 크롭 */
   display: block;
-  object-fit: cover;
-  aspect-ratio: 1/1;
+  border-radius: var(--radius);
+  margin-bottom: 8px;
 }
-.item .name {
+
+/* 텍스트 */
+.product-card .name {
   font-size: 14px;
-  color: #111;
+  color: var(--text);
   line-height: 1.35;
-  margin-bottom: 4px;
+  margin: 0 4px 6px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2; /* 2줄 말줄임 */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.item .origin {
+.product-card .origin {
+  margin: 0 4px 2px;
   font-size: 13px;
-  color: #999;
+  color: var(--muted);
   text-decoration: line-through;
-  margin-bottom: 2px;
 }
-.item .price {
+.product-card .price {
+  margin: 0 4px 10px;
   font-size: 15px;
-  font-weight: 700;
-  color: #111;
+  font-weight: 800;
+  color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
 }
-.item .price .discount {
-  color: #ff7634;
-  margin-right: 4px;
+.product-card .discount {
+  color: var(--accent);
+  font-weight: 800;
 }
 
-/* ✅ 페이지네이션 (9개 초과시에만 표시) */
-.week-pagination {
+/* 페이지네이션: 좌/우 화살표만 */
+.pager {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
 }
-.week-pagination .btn {
-  min-width: 36px;
-  height: 36px;
-  padding: 0 10px;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 18px;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 34px;
+.pager__arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff center/16px no-repeat;
+  border: 1px solid #e5e7eb;
 }
-.week-pagination .btn[disabled] {
-  opacity: 0.45;
-  cursor: default;
+.pager__arrow.prev {
+  background-image: url('/assets/icons/btn-next-arrow-left-dg.svg.svg');
 }
-.week-pagination .num {
-  border: 1px solid #eee;
+.pager__arrow.next {
+  background-image: url('/assets/img/btn-next-arrow-right-dg.png');
 }
-.week-pagination .num.is-active {
-  background: #111;
-  color: #fff;
-  border-color: #111;
+.pager__arrow.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.pager__arrow.is-disabled.prev {
+  background-image: url('/assets/img/btn-next-arrow-left-dg.png');
+}
+.pager__arrow.is-disabled.next {
+  background-image: url('/assets/img/btn-next-arrow-right-dg2.png');
+}
+
+/* 안전장치 */
+html,
+body {
+  overflow-x: hidden;
 }
