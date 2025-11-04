@@ -753,7 +753,7 @@ body {
   scroll-snap-align: start;
   flex: 0 0 auto;
 }
-.shop-categories::before,
+
 .shop-categories::after {
   content: '';
   flex: 0 0 16px;
@@ -960,15 +960,18 @@ body {
   display: flex;
   gap: 14px;
   overflow-x: auto;
-  padding-bottom: 10px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 12px 0 4px;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  scrollbar-width: none;
+  height: 100px;
   -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 5%;
+  margin-inline: -16px;
+  padding-inline: 16px;
+  scroll-padding-inline-start: 16px;
 }
+
 .point-list::-webkit-scrollbar {
   display: none;
 }
@@ -993,7 +996,7 @@ body {
 }
 
 .point-item .name {
-  font-size: 13px;
+  font-size: 16px;
   color: #111;
   line-height: 1.4;
   margin-bottom: 6px;
