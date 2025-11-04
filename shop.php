@@ -301,71 +301,35 @@
                             return basename($_SERVER['PHP_SELF']).'?'.http_build_query($params);
                             }
                         ?>
-
-                        <style>
-                            /* 섹션 레이아웃 */
-                            .weekly-section{margin:0 auto;padding:32px 16px;background:#fff;}
-                            .weekly-label{color:#FF7634;font-weight:700;font-size:14px;margin-bottom:6px;}
-                            .weekly-title{font-size:24px;font-weight:800;margin-bottom:18px;}
-
-                            /* ✅ 3열 그리드 (모바일 2열) */
-                            .weekly-grid{
-                                display:grid;
-                                grid-template-columns:repeat(3,1fr);
-                                gap:20px;
-                            }
-
-                            /* 카드 */
-                            .item{background:#fff;border-radius:12px;}
-                            .item img{width:100%;border-radius:12px;margin-bottom:8px;display:block;object-fit:cover;aspect-ratio:1/1;}
-                            .item .name{
-                            font-size:14px;color:#111;line-height:1.35;margin-bottom:4px;
-                            display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-                            }
-                            .item .origin{font-size:13px;color:#999;text-decoration:line-through;margin-bottom:2px;}
-                            .item .price{font-size:15px;font-weight:700;color:#111;}
-                            .item .price .discount{color:#FF7634;margin-right:4px}
-
-                            /* ✅ 페이지네이션 (9개 초과시에만 표시) */
-                            .week-pagination{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
-                            .week-pagination .btn{
-                            min-width:36px;height:36px;padding:0 10px;border:1px solid #ddd;background:#fff;
-                            border-radius:18px;cursor:pointer;font-size:14px;line-height:34px;
-                            }
-                            .week-pagination .btn[disabled]{opacity:.45;cursor:default}
-                            .week-pagination .num{border:1px solid #eee}
-                            .week-pagination .num.is-active{background:#111;color:#fff;border-color:#111}
-                        </style>
-
                         <section class="weekly-section">
                             <p class="weekly-label">고객님들이 Pick한</p>
                             <h2 class="weekly-title">이번주 특가 상품</h2>
 
                             <div class="weekly-grid">
-                            <?php foreach($view as $p): ?>
-                            <div class="item">
-                            <img src="/assets/img/img-shop-sample05.png" alt="<?= h($p['name']) ?>">
-                            <p class="name"><?= h($p['name']) ?></p>
-                            <p class="origin"><?= w($p['origin']) ?>원</p>
-                            <p class="price"><span class="discount"><?= h($p['discount']) ?>%</span> <?= w($p['price']) ?>원</p>
-                            </div>
-                            <?php endforeach; ?>
+                                <?php foreach($view as $p): ?>
+                                <div class="item">
+                                    <img src="/assets/img/img-shop-sample05.png" alt="<?= h($p['name']) ?>">
+                                    <p class="name"><?= h($p['name']) ?></p>
+                                    <p class="origin"><?= w($p['origin']) ?>원</p>
+                                    <p class="price"><span class="discount"><?= h($p['discount']) ?>%</span> <?= w($p['price']) ?>원</p>
+                                </div>
+                                <?php endforeach; ?>
                             </div>
 
                             <?php if ($total > $perPage): ?>
                             <nav class="week-pagination" aria-label="상품 페이지 이동">
                             <?php if ($total > $perPage): ?>
                                 <nav class="week-pagination" aria-label="상품 페이지 이동">
-                                <!-- 이전 버튼 -->
-                                <a class="page-arrow <?= $page <= 1 ? 'is-disabled' : 'is-active' ?>"
-                                    href="<?= $page > 1 ? page_url($page - 1) : 'javascript:void(0)' ?>">
-                                    <img src="<?= $page > 1 ? '/assets/icons/btn-next-arrow-left-dg.svg' : '/assets/img/btn-next-arrow-left-dg.png' ?>" alt="이전">
-                                </a>
-                                <!-- 다음 버튼 -->
-                                <a class="page-arrow <?= $page >= $totalPages ? 'is-disabled' : 'is-active' ?>"
-                                    href="<?= $page < $totalPages ? page_url($page + 1) : 'javascript:void(0)' ?>">
-                                    <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/img/btn-next-arrow-right-dg2.png' ?>" alt="다음">
-                                </a>
+                                    <!-- 이전 버튼 -->
+                                    <a class="page-arrow <?= $page <= 1 ? 'is-disabled' : 'is-active' ?>"
+                                        href="<?= $page > 1 ? page_url($page - 1) : 'javascript:void(0)' ?>">
+                                        <img src="<?= $page > 1 ? '/assets/icons/btn-next-arrow-left-dg.svg' : '/assets/img/btn-next-arrow-left-dg.png' ?>" alt="이전">
+                                    </a>
+                                    <!-- 다음 버튼 -->
+                                    <a class="page-arrow <?= $page >= $totalPages ? 'is-disabled' : 'is-active' ?>"
+                                        href="<?= $page < $totalPages ? page_url($page + 1) : 'javascript:void(0)' ?>">
+                                        <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/img/btn-next-arrow-right-dg2.png' ?>" alt="다음">
+                                    </a>
                                 </nav>
                                 <?php endif; ?>
                             </nav>
