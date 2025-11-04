@@ -19,7 +19,7 @@
     <main class="phone" role="main" aria-label="THX Deal 앱 화면">
       <section class="screen">
         <article class="promo" aria-label="땡스페이 비자 카드">
-          <div class="cc-preview">
+          <div class="cc-preview" onclick="loaction.href('card-owned.php')">
             <img src="assets/img/img-card-blank.png" alt="땡스페이 카드 이미지" class="cc-img">
           </div>
           <div style="text-align:center;margin:30px">
