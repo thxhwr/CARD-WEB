@@ -27,11 +27,11 @@
 
             <form id="loginForm" class="login-form" autocomplete="off">
                 <div class="f-group">
-                    <input type="text" class="f-input" placeholder="아이디 입력" required>
+                    <input type="text" class="login-box f-input" placeholder="아이디 입력" required>
                 </div>
 
                 <div class="f-group">
-                    <input type="password" class="f-input" placeholder="비밀번호 입력" required>
+                    <input type="password" class="login-box f-input" placeholder="비밀번호 입력" required>
                 </div>
 
                 <button class="btn-submit" type="submit">로그인</button>
