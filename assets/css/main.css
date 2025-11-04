@@ -380,7 +380,7 @@ body {
   font-size: 18px;
 }
 
-.btn-submit:not(:disabled) {
+.apply-submit:not(:disabled) {
   background: var(--accent);
   cursor: pointer;
 }
