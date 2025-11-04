@@ -34,7 +34,7 @@
                     <input type="password"  class=" f-input" placeholder="비밀번호 입력" required>
                 </div>
 
-                <button class="btn-submit" type="submit">로그인</button>
+                <button class="login-submit" type="submit">로그인</button>
 
                 <div class="login-options">
                     <div class="login-keep">
