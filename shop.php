@@ -153,25 +153,36 @@
                         <div class="point-list">
                             
                             <div class="point-item">
-                            <img src="/assets/img/item1.png" alt="">
-                            <p class="name">마르쿠진 글라스 에어프라이어 에어프랭 4L+1.5L</p>
-                            <div class="price">
-                                <span class="sale">219,000원</span>
-                                <span class="discount">20%</span>
-                            </div>
-                            <span class="origin">289,000원</span>
-                            <div class="point-badge">2,100P 적립</div>
+                                <img src="/assets/img/img-shop-sample05.png" alt="">
+                                <p class="name">마르쿠진 글라스 에어프라이어 에어프랭 4L+1.5L</p>
+                                <div class="price">
+                                    <span class="sale">219,000원</span>
+                                    <span class="discount">20%</span>
+                                </div>
+                                <span class="origin">289,000원</span>
+                                <div class="point-badge">2,100P 적립</div>
                             </div>
 
                             <div class="point-item">
-                            <img src="/assets/img/item2.png" alt="">
-                            <p class="name">아모레퍼시픽 역대 최대 혜택 15% 적립 + 20% 추가 할인</p>
-                            <div class="price">
-                                <span class="sale">9,200원</span>
-                                <span class="discount">20%</span>
+                                <img src="/assets/img/img-shop-sample05.png" alt="">
+                                <p class="name">아모레퍼시픽 역대 최대 혜택 15% 적립 + 20% 추가 할인</p>
+                                <div class="price">
+                                    <span class="sale">9,200원</span>
+                                    <span class="discount">20%</span>
+                                </div>
+                                <span class="origin">12,000원</span>
+                                <div class="point-badge">1,700P 적립</div>
                             </div>
-                            <span class="origin">12,000원</span>
-                            <div class="point-badge">1,700P 적립</div>
+
+                            <div class="point-item">
+                                <img src="/assets/img/img-shop-sample05.png" alt="">
+                                <p class="name">아모레퍼시픽 역대 최대 혜택 15% 적립 + 20% 추가 할인</p>
+                                <div class="price">
+                                    <span class="sale">9,200원</span>
+                                    <span class="discount">20%</span>
+                                </div>
+                                <span class="origin">12,000원</span>
+                                <div class="point-badge">1,700P 적립</div>
                             </div>
 
                         </div>
