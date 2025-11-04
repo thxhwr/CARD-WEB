@@ -18,13 +18,15 @@
         </div>
 
         <section class="owned-ok container--narrow">
-            <div class="complete-card-box">
+            <div class="owned-card-box">
+                <div class="badge">보유중</div>
+                <h3 class="owned-title">땡스페이 비자 카드</h3>
                 <div class="card-img-wrap">
+                    <div class="owned-circle"></div>
                     <img src="/assets/img/img-card-blank.png" alt="THANKS CARD" class="card-img">
                 </div>
 
                 <div class="card-info">
-                    <strong class="card-name">땡스페이 비자 카드</strong>
 
                     <div class="info-list">
                         <div><span>카드번호</span><b>5395 9188 8888 8888</b></div>

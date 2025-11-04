@@ -485,3 +485,41 @@ body {
   padding-inline: 16px;
   box-sizing: border-box;
 }
+
+.owned-card-box {
+  width: 100%;
+  margin: 24px auto;
+  padding: 24px;
+  background: var(--primary);
+  border-radius: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.owned-card-box .badge {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  padding: 4px 10px;
+  background: #ffe38f;
+  color: #6a4b00;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* 타이틀 */
+.owned-title {
+  margin: 8px 0 6px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.owned-circle {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  filter: blur(2px);
+}
