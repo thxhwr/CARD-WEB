@@ -744,16 +744,19 @@ body {
   margin-bottom: 5%;
   margin-inline: -16px;
   padding-inline: 16px;
+  scroll-padding-inline-start: 16px;
 }
 .shop-categories::-webkit-scrollbar {
   display: none;
 }
 .shop-categories > * {
+  scroll-snap-align: start;
   flex: 0 0 auto;
 }
+.shop-categories::before,
 .shop-categories::after {
   content: '';
-  flex: 0 0 12px;
+  flex: 0 0 16px;
 }
 
 .cat {
