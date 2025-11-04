@@ -59,7 +59,7 @@
 
                     <!-- 하단 고정 버튼 -->
                     <div class="form-actions">
-                        <button class="btn-submit" type="submit" disabled onclick="location.href('apply-complete.php')">
+                        <button class="apply-submit" type="submit" disabled onclick="location.href('apply-complete.php')">
                         카드 신청
                         </button>
                     </div>
@@ -73,7 +73,7 @@
     <script>
         (function(){
             const form = document.getElementById('cardApplyForm');
-            const submitBtn = form.querySelector('.btn-submit');
+            const submitBtn = form.querySelector('.apply-submit');
 
             function toggleDisabledState(){
                 form.querySelectorAll('.f-group').forEach(g=>{
