@@ -372,7 +372,7 @@
                         <!-- 카드 1 -->
                             <article class="r-card">
                                 <div class="r-thumb">
-                                    <img src="/assets/img/rev-01.jpg" alt="리뷰 이미지 1">
+                                    <img src="assets/img/img-shop-review-sample02.png" alt="리뷰 이미지 1">
                                 </div>
                                 <h4 class="r-title">아빠 생신 선물로 샀드렸어요.</h4>
                                 <p class="r-excerpt">디자인이 세련되어 고급스러운 향이 나요. 만족합니다!</p>
@@ -385,7 +385,7 @@
                             <!-- 카드 2 -->
                             <article class="r-card">
                                 <div class="r-thumb">
-                                <img src="/assets/img/rev-02.jpg" alt="리뷰 이미지 2">
+                                <img src="assets/img/img-shop-review-sample02.png" alt="리뷰 이미지 2">
                                 </div>
                                 <h4 class="r-title">너무 좋습니다! 대만족</h4>
                                 <p class="r-excerpt">보틀 유광이라 손에 잘 잡히고 세척도 편해요.</p>
@@ -398,7 +398,7 @@
 
                             <article class="r-card">
                                 <div class="r-thumb">
-                                <img src="/assets/img/rev-02.jpg" alt="리뷰 이미지 2">
+                                <img src="assets/img/img-shop-review-sample02.png" alt="리뷰 이미지 2">
                                 </div>
                                 <h4 class="r-title">너무 좋습니다! 대만족</h4>
                                 <p class="r-excerpt">보틀 유광이라 손에 잘 잡히고 세척도 편해요.</p>
@@ -410,7 +410,7 @@
 
                             <article class="r-card">
                                 <div class="r-thumb">
-                                <img src="/assets/img/rev-02.jpg" alt="리뷰 이미지 2">
+                                <img src="assets/img/img-shop-review-sample02.png" alt="리뷰 이미지 2">
                                 </div>
                                 <h4 class="r-title">너무 좋습니다! 대만족</h4>
                                 <p class="r-excerpt">보틀 유광이라 손에 잘 잡히고 세척도 편해요.</p>
