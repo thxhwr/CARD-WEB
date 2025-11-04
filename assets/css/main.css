@@ -1327,13 +1327,19 @@ body {
 /* 가로 레일 */
 .reel {
   display: flex;
-  gap: var(--gap);
+  gap: 14px;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  padding: 12px 0 4px;
   scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-  scrollbar-width: none;
   -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 5%;
+  padding-inline: 16px;
+  scroll-padding-inline-start: 16px;
+}
+.reel > .r-card {
+  scroll-snap-align: start;
 }
 .reel::-webkit-scrollbar {
   display: none;

@@ -151,7 +151,6 @@
                         <p class="point-sub">역대급 포인트 적립 상품을 만나보세요</p>
 
                         <div class="point-list">
-                            
                             <div class="point-item">
                                 <img src="/assets/img/img-shop-sample05.png" alt="">
                                 <p class="name">마르쿠진 글라스 에어프라이어 에어프랭 4L+1.5L</p>
