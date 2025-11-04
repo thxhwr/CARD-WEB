@@ -1059,14 +1059,14 @@ body {
 .best-label {
   color: #ff7634;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 4px;
 }
 
 .best-title {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
-  margin-bottom: 18px;
+  margin: 0;
 }
 
 .best-list {
