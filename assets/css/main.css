@@ -290,6 +290,7 @@ body {
 .apply-form {
   width: 80%;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 .apply-form .f-inout {
   margin: 0 auto;
