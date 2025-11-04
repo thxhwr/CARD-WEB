@@ -1274,7 +1274,7 @@ body {
   border: 1px solid #e5e7eb;
 }
 .pager__arrow.prev {
-  background-image: url('/assets/icons/btn-next-arrow-left-dg.svg.svg');
+  background-image: url('/assets/icons/btn-next-arrow-left-dg.svg');
 }
 .pager__arrow.next {
   background-image: url('/assets/img/btn-next-arrow-right-dg.png');
