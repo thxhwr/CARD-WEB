@@ -742,7 +742,6 @@ body {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 5%;
-  max-width: 100%;
   margin-inline: -16px;
   padding-inline: 16px;
 }
