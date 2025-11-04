@@ -18,7 +18,7 @@
         </header>
 
         <main class="page">
-            <section class="phone container--narrow">
+            <section class="apply-ok container--narrow">
 
                 <div class="title">
                     <strong>오프라인 카드가</strong>
