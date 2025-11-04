@@ -616,7 +616,6 @@ body {
   text-decoration: none;
 }
 
-/* 카피라이트 */
 .copyright {
   text-align: center;
   font-size: 12px;
@@ -624,14 +623,14 @@ body {
   color: #999;
 }
 
-/* 스코프: 로그인 폼 내부에서만 */
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* 필드 간 간격 */
+  gap: 12px;
+  width: 90%;
+  margin: 0 auto;
 }
 
-/* 로그인 인풋 래퍼: 라운드 박스 + 외곽선 */
 .login-form .f-group {
   border: 0;
   background: #fff;
@@ -642,13 +641,11 @@ body {
   transition: box-shadow 0.15s ease, background 0.15s ease;
 }
 
-/* 포커스/활성: 주황 외곽선 */
 .login-form .f-group:focus-within {
   box-shadow: inset 0 0 0 2px #ff7634;
   background: #fff;
 }
 
-/* 인풋 자체 */
 .login-form .f-input {
   width: 100%;
   border: 0;
@@ -656,7 +653,7 @@ body {
   background: transparent;
   font-size: 16px;
   color: #111;
-  height: 24px; /* 높이 안정화 */
+  height: 24px;
   line-height: 24px;
 }
 
@@ -664,12 +661,10 @@ body {
   color: #c7ced7;
 }
 
-/* 에러 상태(필요시) */
 .login-form .f-group.is-error {
   box-shadow: inset 0 0 0 2px #ff4747;
 }
 
-/* 로그인 버튼(좌우 패딩 넉넉히) */
 .login-form .btn-submit {
   height: 48px;
   border-radius: 24px;
