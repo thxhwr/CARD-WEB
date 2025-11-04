@@ -950,7 +950,7 @@ body {
 }
 
 .point-sub {
-  font-size: 13px;
+  font-size: 15px;
   color: #555;
   padding: 2px 16px 14px;
 }
@@ -972,10 +972,14 @@ body {
 .point-list::-webkit-scrollbar {
   display: none;
 }
+.point-list::before,
+.point-list::after {
+  content: '';
+  flex: 0 0 16px;
+}
 
-/* 카드 */
 .point-item {
-  flex: 0 0 160px; /* 카드 너비 */
+  flex: 0 0 160px;
   background: #fff;
   border-radius: 16px;
   padding: 12px;

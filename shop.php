@@ -148,7 +148,7 @@
                             <span class="label">지금 PICK!</span><br>
                             포인트 왕창드려요
                         </h2>
-                        <p class="point-sub">역대급 포인트 적립 상품을 만나보세요 🪙</p>
+                        <p class="point-sub">역대급 포인트 적립 상품을 만나보세요</p>
 
                         <div class="point-list">
                             
