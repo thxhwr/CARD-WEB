@@ -22,6 +22,8 @@
   --shadow-1: 0 6px 16px rgba(0, 0, 0, 0.08);
 
   --tabbar-h: 64px;
+  --rank-top3: #ff7634;
+  --rank-normal: #111;
 }
 
 /* ========= 베이스 ========= */
@@ -1086,7 +1088,7 @@ body {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: #ff7634;
+  background: var(--rank-top3);
   color: #fff;
   font-size: 13px;
   font-weight: 700;
@@ -1096,7 +1098,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+.best-list .best-item:nth-child(n + 4) .rank {
+  background: var(--rank-normal);
+}
 .thumb {
   width: 84px;
   height: 84px;
