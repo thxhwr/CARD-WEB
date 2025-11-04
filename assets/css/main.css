@@ -722,26 +722,58 @@ body {
   display: block;
 }
 
-/* 카테고리 */
 .shop-categories {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   overflow-x: auto;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
+  padding: 12px 0 4px;
+  scroll-snap-type: x mandatory;
 }
+
 .cat {
-  padding: 6px 14px;
-  border-radius: 16px;
-  background: #f3f4f6;
-  font-size: 14px;
-  white-space: nowrap;
+  position: relative;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 82px;
+  border-radius: 20px;
+  background: #f5f6f8;
   border: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
+  color: #555;
+  font-size: 13px;
+  font-weight: 500;
+  scroll-snap-align: start;
+  transition: background 0.2s, color 0.2s;
 }
+
+.cat .ico {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* ✅ 선택된 상태 */
 .cat.is-active {
-  background: #ff7634;
+  background: #111;
   color: #fff;
+  font-weight: 700;
+}
+
+/* ✅ 선택된 상태 → 말풍선 꼬리 추가 */
+.cat.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: #111 transparent transparent transparent;
 }
 
 /* 상품 리스트 */

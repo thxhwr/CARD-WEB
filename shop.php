@@ -75,5 +75,13 @@
 
 <?php include __DIR__ . "/footer.php"; ?>
 </div>
+<script>
+    document.querySelectorAll('.shop-categories .cat').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+            document.querySelectorAll('.cat').forEach(b=>b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+        });
+    });
+</script>
 </body>
 </html>
