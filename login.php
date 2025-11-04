@@ -26,9 +26,12 @@
             </div>
 
             <form id="loginForm" class="login-form" autocomplete="off">
-                <div class="f-group">
-                    <input type="text" id="loing-id" class="loing-id f-input"  style="border-radius:10px 10px 0 0;" placeholder="아이디 입력" required>
-                    <input type="password" id="loing-pw" class="loing-pw f-input" style="border-radius:0 0 10px 10px;" placeholder="비밀번호 입력" required>
+                <div class="f-group login-id">
+                    <input type="text" class=" f-input"  style="margin-bottom:10px" placeholder="아이디 입력" required>
+                </div>
+
+                <div class="f-group login-pw">
+                    <input type="password"  class=" f-input" placeholder="비밀번호 입력" required>
                 </div>
 
                 <button class="btn-submit" type="submit">로그인</button>
