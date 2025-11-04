@@ -114,7 +114,7 @@
                     </div>
 
                     <div>
-                        <button class="btn-more" >상품 더보기<img src="/assets/icons/btn-next-arrow-right-g@2x.png"></button>
+                        <button class="btn-more" >상품 더보기<img src="/assets/icons/btn-next-arrow-right-g.png"></button>
                     </div>
                 </div>
             </section>

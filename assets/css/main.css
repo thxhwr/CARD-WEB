@@ -238,8 +238,8 @@ body {
 }
 
 .tab--card .ico.badge {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 999px;
   background: linear-gradient(180deg, #f0580f, var(--active));
   display: grid;
