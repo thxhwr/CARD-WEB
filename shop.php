@@ -274,7 +274,21 @@
                         <!-- 3열 그리드 -->
                         <div class="product-grid">
                             <!-- 카드 반복 (PHP/템플릿 루프 자리) -->
-                            <?php foreach ($view ?? [] as $p): ?>
+                            <?php 
+                                $perPage     = 9;                           // 한 페이지 9개
+                                $total       = count($products);            // 전체 개수
+                                $totalPages  = max(1, (int)ceil($total/$perPage));
+                                $page        = isset($_GET['page']) ? max(1,(int)$_GET['page']) : 1;
+                                $page        = min($page, $totalPages);
+                                $start       = ($page-1)*$perPage;
+                                $view        = array_slice($products, $start, $perPage);
+
+                                function page_url($n){
+                                $q = $_GET; $q['page'] = $n;
+                                return basename($_SERVER['PHP_SELF']).'?'.http_build_query($q);
+                                }
+
+                            foreach ($view ?? [] as $p): ?>
                             <article class="product-card">
                                 <img src="<?= h($p['img']) ?>" alt="<?= h($p['name']) ?>">
                                 <h3 class="name"><?= h($p['name']) ?></h3>
