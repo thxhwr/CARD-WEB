@@ -261,7 +261,9 @@
                             </li>
                         </ul>
 
-                        <button class="best-more">상품 더보기<img src="/assets/icons/arrow-right-gray.svg"></button>
+                        <div>
+                            <button class="best-more" >상품 더보기<img src="/assets/img/btn-next-arrow-right-dg.png"></button>
+                        </div>
                     </section>
                 </div>
             </section>
