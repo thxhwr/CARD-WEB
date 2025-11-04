@@ -1089,8 +1089,8 @@ body {
 /* 순번 뱃지 */
 .best-item .rank {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 15px;
+  left: 15px;
   background: var(--rank-top3);
   color: #fff;
   font-size: 13px;
@@ -1108,7 +1108,7 @@ body {
   width: 84px;
   height: 84px;
   object-fit: cover;
-  border-radius: 10px;
+  border: 1px solid #eee;
 }
 
 .info {
