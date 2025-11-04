@@ -1046,3 +1046,120 @@ body {
   border-radius: 6px;
   font-weight: 600;
 }
+
+.best-section {
+  padding: 24px 16px;
+}
+
+.best-label {
+  color: #ff7634;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.best-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.best-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.best-item {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* 순번 뱃지 */
+.best-item .rank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff7634;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.thumb {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  font-size: 14px;
+  color: #111;
+  line-height: 1.35;
+  margin-bottom: 6px;
+
+  /* 말줄임 2줄 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price {
+  display: flex;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.discount {
+  color: #ff7634;
+  font-weight: 700;
+}
+.sale {
+  font-weight: 700;
+}
+.origin {
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.best-more {
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  color: #666;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.best-more img {
+  width: 14px;
+  height: 14px;
+  display: block;
+}

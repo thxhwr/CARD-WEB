@@ -188,6 +188,43 @@
                         </div>
                     </section>
                 </div>
+
+                <div class="shop-best">
+                    <section class="best-section">
+                        <p class="best-label">땡스딜 MD가 엄선한</p>
+                        <h2 class="best-title">베스트 특가 상품만 모았어요</h2>
+
+                        <ul class="best-list">
+                            <li class="best-item">
+                            <span class="rank">1</span>
+                            <img src="/assets/img/prod1.png" alt="" class="thumb">
+                            <div class="info">
+                                <p class="name">파멕스 분리형포트 여행용전기포트 프리볼 EFX-256HX / 800ml 넉넉한...</p>
+                                <p class="price">
+                                <span class="discount">45%</span>
+                                <span class="sale">12,400원</span>
+                                <span class="origin">36,900원</span>
+                                </p>
+                            </div>
+                            </li>
+
+                            <li class="best-item">
+                            <span class="rank">2</span>
+                            <img src="/assets/img/prod2.png" alt="" class="thumb">
+                            <div class="info">
+                                <p class="name">던킨도너츠 기프티콘 45% 할인</p>
+                                <p class="price">
+                                <span class="discount">20%</span>
+                                <span class="sale">9,200원</span>
+                                <span class="origin">12,000원</span>
+                                </p>
+                            </div>
+                            </li>
+                        </ul>
+
+                        <button class="best-more">상품 더보기<img src="/assets/icons/arrow-right-gray.svg"></button>
+                    </section>
+                </div>
             </section>
         </main>
 
