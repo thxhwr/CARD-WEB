@@ -22,12 +22,12 @@
 
   <a class="tab" href="#" role="tab">
     <span class="ico">
-     <img src="/assets/icons/ico-gnb03.svg" alt="" class="ico">
+      <img src="/assets/icons/ico-gnb03.svg" alt="" class="ico">
     </span>
     <span class="label">쇼핑</span>
   </a>
 
-  <a class="tab" href="#" role="tab">
+  <a class="tab" href="login.php" role="tab">
     <span class="ico">
       <img src="/assets/icons/ico-gnb04.svg" alt="" class="ico">
     </span>
