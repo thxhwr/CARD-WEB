@@ -910,3 +910,18 @@ body {
   height: 16px;
   object-fit: contain;
 }
+
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+}
+
+.more-link img {
+  width: 14px;
+  height: 14px;
+  display: block;
+}

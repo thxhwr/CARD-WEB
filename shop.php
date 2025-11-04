@@ -26,7 +26,7 @@
                     <DIV class="shop-best-title">
                         <strong style="font-size:18px">실시간 베스트 상품</strong>
                         <DIV>
-                            <a href="#" class="find-link">전체보기</a>
+                            <a href="#" class="more-link">전체보기</a>
                             <img src="/assets/icons/btn-next-arrow-right-g.png">
                         </DIV>    
                     </DIV>
