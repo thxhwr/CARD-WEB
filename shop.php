@@ -112,6 +112,10 @@
                             <p class="sold">2,410개 주문했어요</p>
                         </div>
                     </div>
+
+                    <div>
+                        <button class="btn-more" >상품 더보기<img src="/assets/icons/btn-next-arrow-right-g@2x.png"></button>
+                    </div>
                 </div>
             </section>
         </main>

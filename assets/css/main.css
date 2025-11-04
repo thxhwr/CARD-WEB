@@ -890,3 +890,13 @@ body {
     font-size: 15px;
   }
 }
+
+.btn-more {
+  border: 1px solid #dddddd;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  opacity: 1;
+  font-size: 15px;
+  color: #666;
+}
