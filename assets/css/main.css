@@ -372,6 +372,7 @@ body {
   height: 48px;
   display: flex;
   align-items: center;
+  background: #fff;
 }
 
 .appbar__inner {
