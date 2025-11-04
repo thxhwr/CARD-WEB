@@ -21,9 +21,9 @@
             <div class="owned-card-box">
                 <div class="badge">보유중</div>
                 <h3 class="owned-title">땡스페이 비자 카드</h3>
-                <div class="card-img-wrap">
+                <div class="owned-art">
                     <div class="owned-circle"></div>
-                    <img src="/assets/img/img-card-blank.png" alt="THANKS CARD" class="card-img">
+                    <img src="/assets/img/img-card-blank.png" alt="THANKS CARD" class="owned-img">
                 </div>
 
                 <div class="card-info">
