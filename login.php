@@ -41,7 +41,10 @@
                         <input type="checkbox" id="keepLogin" hidden>
                         <label for="keepLogin" class="keep-label">로그인 상태 유지</label>
                     </div>
-                    <a href="#" class="find-link">아이디/비밀번호 찾기 <img src="/assets/icons/btn-next-arrow-right-g.png"></a>
+                    <div class="login-keep">
+                        <a href="#" class="find-link">아이디/비밀번호 찾기</a>
+                        <img src="/assets/icons/btn-next-arrow-right-g.png">
+                    </div>    
                 </div>
             </form>
 
