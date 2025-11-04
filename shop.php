@@ -7,6 +7,13 @@
 
 <?php include __DIR__ . "/header.php"; ?> <!-- 기존 헤더 재사용 -->
 
+        <header class="appbar-apply">
+            <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
+                <img src="/assets/icons/logo.svg" width="24px" height="24px">
+                <a href="/index.php" class="nav-btn home-btn" aria-label="홈"><img src="/assets/icons/icon-cart.svg"></a>
+            </nav>
+        </header>
+
         <main class="page">
             <section class="container--narrow">
 
