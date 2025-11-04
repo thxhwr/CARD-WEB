@@ -531,3 +531,10 @@ body {
   color: #fff;
   margin-bottom: 18px;
 }
+.owend-info-list div {
+  display: flex;
+  justify-content: space-between;
+}
+.owend-info-list b {
+  font-weight: 700;
+}
