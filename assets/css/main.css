@@ -504,6 +504,7 @@ body {
   color: #e24f09;
   border-radius: 50px;
   font-size: 13px;
+  font-weight: 500;
   width: 23%;
   margin: 0 auto;
 }
@@ -511,7 +512,7 @@ body {
 /* 타이틀 */
 .owned-title {
   margin: 15px 0 6px;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 800;
   color: #fff;
   padding-bottom: 10%;
