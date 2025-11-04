@@ -364,7 +364,7 @@
                                 <!-- 다음 버튼 -->
                                 <a class="page-arrow <?= $page >= $totalPages ? 'is-disabled' : 'is-active' ?>"
                                     href="<?= $page < $totalPages ? page_url($page + 1) : 'javascript:void(0)' ?>">
-                                    <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/icons/btn-next-arrow-right-g.png' ?>" alt="다음">
+                                    <img src="<?= $page < $totalPages ? '/assets/img/btn-next-arrow-right-dg.png' : '/assets/icons/btn-next-arrow-right-dg.png' ?>" alt="다음">
                                 </a>
                                 </nav>
                                 <?php endif; ?>
