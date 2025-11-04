@@ -266,6 +266,29 @@
                         </div>
                     </section>
                 </div>
+                <div class="shop-weekly">
+                    <section class="weekly-section">
+                        <p class="weekly-label">고객님들이 Pick한</p>
+                        <h2 class="weekly-title">이번주 특가 상품</h2>
+
+                        <!-- 카드 목록: 아이템들을 전부 넣어두면 JS가 9개씩 잘라서 보여줌 -->
+                        <div class="weekly-grid" id="weeklyGrid">
+                            <!-- .item … (원하는 만큼) -->
+                            <!-- 예시 12개 -->
+                            <!-- 반복 예시 -->
+                            <div class="item">
+                            <img src="/assets/img/prod1.jpg" alt="">
+                            <p class="name">상품명 예시 1</p>
+                            <p class="origin">36,900원</p>
+                            <p class="price"><span class="discount">45%</span> 12,400원</p>
+                            </div>
+                            <!-- … 같은 구조로 여러 개 -->
+                        </div>
+
+                        <!-- 페이지네이션 -->
+                        <nav class="week-pagination" id="weekPager" aria-label="상품 페이지 이동"></nav>
+                    </section>
+                </div>
             </section>
         </main>
 
@@ -278,6 +301,53 @@
             btn.classList.add('is-active');
         });
     });
+
+    (function(){
+    const grid = document.getElementById('weeklyGrid');
+    const pager = document.getElementById('weekPager');
+    const pageSize = 9;                          // ✅ 페이지당 9개
+    const items = Array.from(grid.children);     // 모든 카드
+    const pageCount = Math.ceil(items.length / pageSize);
+    let current = 1;
+
+    function render(){
+        // 보여줄 범위만 표시
+        const start = (current - 1) * pageSize;
+        const end = start + pageSize;
+        items.forEach((el, i)=>{
+        el.style.display = (i >= start && i < end) ? '' : 'none';
+        });
+
+        // 페이저 갱신
+        pager.innerHTML = '';
+        if(pageCount <= 1){ pager.style.display = 'none'; return; }
+        pager.style.display = 'flex';
+
+        const mkBtn = (txt, cls, disabled, onClick)=>{
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = `btn ${cls||''}`.trim(); b.textContent = txt;
+        if(disabled) b.disabled = true;
+        if(onClick) b.addEventListener('click', onClick);
+        return b;
+        };
+
+        // Prev
+        pager.appendChild(mkBtn('‹','prev', current===1, ()=>{ current--; render(); }));
+
+        // 숫자 (필요하면 ellipsis 로 축약 가능)
+        for(let n=1;n<=pageCount;n++){
+        const num = mkBtn(String(n), 'num'+(n===current?' is-active':''), false, ()=>{
+            current = n; render();
+        });
+        pager.appendChild(num);
+        }
+
+        // Next
+        pager.appendChild(mkBtn('›','next', current===pageCount, ()=>{ current++; render(); }));
+    }
+
+    render();
+})();
 </script>
 </body>
 </html>
