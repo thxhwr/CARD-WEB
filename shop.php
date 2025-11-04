@@ -12,7 +12,7 @@
 
             <!-- 1) 배너 -->
             <div class="shop-banner">
-                <img src="/assets/img/banner-sample.png" alt="혜택 배너">
+                <img src="/assets/img/img-main-event-sample01.png" alt="혜택 배너">
             </div>
 
             <!-- 2) 카테고리 아이콘 -->
