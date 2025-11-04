@@ -357,7 +357,70 @@
                                 aria-label="다음" <?= $nextDisabled?'aria-disabled="true" tabindex="-1"':'' ?>></a>
                             </nav>
                         <?php endif; ?>
-                        </section>
+                    </section>
+                </div>
+                <div class="review">
+                    <section class="reviews">
+                        <div class="reviews__head">
+                            <h3 class="reviews__title">상품 이용후기</h3>
+                            <a class="reviews__more" href="/reviews">전체보기</a>
+                        </div>
+                        <p class="reviews__sub">고객님들의 생생한 후기를 확인하세요</p>
+
+                        <!-- 가로 스크롤 레일 -->
+                        <div class="reel" id="reviewReel" aria-label="이용후기 목록">
+                        <!-- 카드 1 -->
+                            <article class="r-card">
+                                <div class="r-thumb">
+                                    <img src="/assets/img/rev-01.jpg" alt="리뷰 이미지 1">
+                                </div>
+                                <h4 class="r-title">아빠 생신 선물로 샀드렸어요.</h4>
+                                <p class="r-excerpt">디자인이 세련되어 고급스러운 향이 나요. 만족합니다!</p>
+                                <div class="r-meta">
+                                    <div class="rating" data-value="5"></div> <!-- 5점 -->
+                                    <span class="r-buyer">홍*동</span>
+                                </div>
+                            </article>
+
+                            <!-- 카드 2 -->
+                            <article class="r-card">
+                                <div class="r-thumb">
+                                <img src="/assets/img/rev-02.jpg" alt="리뷰 이미지 2">
+                                </div>
+                                <h4 class="r-title">너무 좋습니다! 대만족</h4>
+                                <p class="r-excerpt">보틀 유광이라 손에 잘 잡히고 세척도 편해요.</p>
+                                <div class="r-meta">
+                                    <div class="rating" data-value="3.5"></div> <!-- 3.5점 -->
+                                    <span class="r-buyer">민*진</span>
+                                </div>
+
+                            </article>
+
+                            <article class="r-card">
+                                <div class="r-thumb">
+                                <img src="/assets/img/rev-02.jpg" alt="리뷰 이미지 2">
+                                </div>
+                                <h4 class="r-title">너무 좋습니다! 대만족</h4>
+                                <p class="r-excerpt">보틀 유광이라 손에 잘 잡히고 세척도 편해요.</p>
+                                <div class="r-meta">
+                                    <div class="rating" data-value="4"></div> <!-- 3.5점 -->
+                                    <span class="r-buyer">민*진</span>
+                                </div>
+                            </article>
+
+                            <article class="r-card">
+                                <div class="r-thumb">
+                                <img src="/assets/img/rev-02.jpg" alt="리뷰 이미지 2">
+                                </div>
+                                <h4 class="r-title">너무 좋습니다! 대만족</h4>
+                                <p class="r-excerpt">보틀 유광이라 손에 잘 잡히고 세척도 편해요.</p>
+                                <div class="r-meta">
+                                    <div class="rating" data-value="1"></div> <!-- 3.5점 -->
+                                    <span class="r-buyer">민*진</span>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
                 </div>
             </section>
         </main>
@@ -433,6 +496,11 @@
     window.addEventListener("load", () => {
     const y = sessionStorage.getItem("scrollY");
     if (y !== null) window.scrollTo(0, parseInt(y));
+    });
+
+    document.querySelectorAll('.rating').forEach(el => {
+        const val = Number(el.dataset.value) || 0;
+        el.style.setProperty('--rate', val);
     });
 </script>
 
