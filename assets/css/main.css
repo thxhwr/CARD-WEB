@@ -61,6 +61,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f3f3f6;
 }
 .brand img {
   height: 22px;
