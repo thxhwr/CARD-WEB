@@ -22,7 +22,6 @@
 
             <div class="login-logo">
                 <img src="/assets/icons/logo-h.svg" alt="">
-                <h2>THX Deal</h2>
                 <p>땡스딜에 오신 것을 환영합니다.</p>
             </div>
 

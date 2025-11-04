@@ -560,3 +560,66 @@ body {
 .owend-info-list b {
   font-weight: 700;
 }
+
+.login-logo {
+  text-align: center;
+  margin: 40px 0 32px;
+}
+.login-logo img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+.login-logo h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+.login-logo p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #676d75;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-submit {
+  height: 48px;
+  border-radius: 12px;
+  background: #ff7634;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* 로그인 옵션 */
+.login-options {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #555;
+}
+.keep-login input {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.find-link {
+  color: #555;
+  text-decoration: none;
+}
+
+/* 카피라이트 */
+.copyright {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 40px;
+  color: #999;
+}
