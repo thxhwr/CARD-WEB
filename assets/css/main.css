@@ -723,6 +723,7 @@ body {
 .shop-best {
   width: 90%;
   margin: 0 auto;
+  overflow: visible;
 }
 .shop-best-title {
   display: flex;
@@ -730,10 +731,11 @@ body {
   justify-content: space-between;
 }
 .shop-categories {
-  display: flex;
+  display: inline-block;
+  flex-wrap: nowrap;
   gap: 10px;
   overflow-x: auto;
-  padding: 12px 0 4px;
+  padding: 12px 16px 4px;
   scroll-snap-type: x mandatory;
   height: 100px;
   -ms-overflow-style: none;
