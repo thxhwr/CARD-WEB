@@ -641,7 +641,11 @@ body {
   transition: box-shadow 0.15s ease, background 0.15s ease;
 }
 
-.login-form .f-group:focus-within {
+.login-form .f-group .login-id:focus-within {
+  box-shadow: inset 0 0 0 2px #ff7634;
+  background: #fff;
+}
+.login-form .f-group .login-pw:focus-within {
   box-shadow: inset 0 0 0 2px #ff7634;
   background: #fff;
 }
