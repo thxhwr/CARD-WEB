@@ -274,15 +274,21 @@
 
                         <div class="weekly-grid" id="weeklyGrid">
                             <?php
-                                for($i=0;$i<27;$i++){
+                                $perPage = 9;
+                                $total = count($products);
+                                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                                $start = ($page - 1) * $perPage;
+                                $i =+ 1;
+                                $currentList = array_slice($products, $start, $perPage);
+                                foreach($currentList as $p):
                             ?>
                             <div class="item">
                                 <img src="/assets/img/prod1.jpg" alt="">
-                                <p class="name">상품명 예시 1</p>
+                                <p class="name">상품명 예시 <?php echo $i?></p>
                                 <p class="origin">36,900원</p>
                                 <p class="price"><span class="discount">45%</span> 12,400원</p>
                             </div>
-                            <?php }?>                        
+                            <?php endforeach; ?>                        
                         </div>
                         <nav class="week-pagination" id="weekPager" aria-label="상품 페이지 이동"></nav>
                     </section>
