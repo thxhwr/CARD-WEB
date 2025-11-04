@@ -266,32 +266,106 @@
                         </div>
                     </section>
                 </div>
-                <div class="shop-weekly">
-                    <section class="weekly-section">
-                        <p class="weekly-label">고객님들이 Pick한</p>
-                        <h2 class="weekly-title">이번주 특가 상품</h2>
+                <div class="weekly-grid" id="weeklyGrid">
+                        <?php
+                            $products = [
+                            ["name"=>"(남여공용) 티클릿 오버핏 후드 맨투맨", "price"=>12400, "origin"=>36900, "discount"=>45, "img"=>"/assets/img/prod1.jpg"],
+                            ["name"=>"파벡스 분리형포트 EFX-256H", "price"=>12400, "origin"=>36900, "discount"=>45, "img"=>"/assets/img/prod2.jpg"],
+                            ["name"=>"아모레 최대혜택 세트", "price"=>9200, "origin"=>12000, "discount"=>20, "img"=>"/assets/img/prod3.jpg"],
+                            ["name"=>"프리미엄 텀블러 기프트 세트", "price"=>15800, "origin"=>22800, "discount"=>31, "img"=>"/assets/img/prod4.jpg"],
+                            ["name"=>"글라스 에어프라이어 4L+1.5L", "price"=>219000, "origin"=>289000, "discount"=>24, "img"=>"/assets/img/prod5.jpg"],
+                            ["name"=>"바디케어 스페셜 패키지", "price"=>17900, "origin"=>25800, "discount"=>31, "img"=>"/assets/img/prod6.jpg"],
+                            ["name"=>"홈카페 라떼머신 세트", "price"=>89000, "origin"=>129000, "discount"=>31, "img"=>"/assets/img/prod7.jpg"],
+                            ["name"=>"유니버설 키친툴 5종", "price"=>27900, "origin"=>39900, "discount"=>30, "img"=>"/assets/img/prod8.jpg"],
+                            ["name"=>"코지 담요 2P", "price"=>13900, "origin"=>19900, "discount"=>30, "img"=>"/assets/img/prod9.jpg"],
+                            ["name"=>"여행용 파우치 세트 6P", "price"=>11900, "origin"=>17900, "discount"=>34, "img"=>"/assets/img/prod10.jpg"],
+                            ["name"=>"무선 미니 선풍기", "price"=>15900, "origin"=>22900, "discount"=>31, "img"=>"/assets/img/prod11.jpg"],
+                            ["name"=>"컴팩트 가습기", "price"=>12900, "origin"=>18900, "discount"=>31, "img"=>"/assets/img/prod12.jpg"],
+                            ];
 
+                            $perPage = 9;                                     // ✅ 9개씩
+                            $total = count($products);
+                            $totalPages = max(1, (int)ceil($total / $perPage));
+                            $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+                            $page = min($page, $totalPages);
+                            $start = ($page - 1) * $perPage;
+                            $view = array_slice($products, $start, $perPage);
 
-                        <div class="weekly-grid" id="weeklyGrid">
-                            <?php
-                                $perPage = 9;
-                                $total = count($products);
-                                $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                $start = ($page - 1) * $perPage;
-                                $currentList = array_slice($products, $start, $perPage);
-                                foreach($currentList as $p):
-                            ?>
+                            /* 유틸: 숫자 포맷 & XSS 방지 */
+                            function h($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
+                            function w($n){ return number_format((int)$n); }
+
+                            /* 현재 URL에 page만 바꿔 붙이기 */
+                            function page_url($n){
+                            $params = $_GET; $params['page'] = $n;
+                            return basename($_SERVER['PHP_SELF']).'?'.http_build_query($params);
+                            }
+                        ?>
+
+                        <style>
+                            /* 섹션 레이아웃 */
+                            .weekly-section{max-width:1280px;margin:0 auto;padding:32px 16px;background:#fff;}
+                            .weekly-label{color:#FF7634;font-weight:700;font-size:14px;margin-bottom:6px;}
+                            .weekly-title{font-size:24px;font-weight:800;margin-bottom:18px;}
+
+                            /* ✅ 3열 그리드 (모바일 2열) */
+                            .weekly-grid{
+                            display:grid;
+                            grid-template-columns:repeat(3,1fr);
+                            gap:20px;
+                            }
+                            @media (max-width:680px){
+                            .weekly-grid{ grid-template-columns:repeat(2,1fr); }
+                            }
+
+                            /* 카드 */
+                            .item{background:#fff;border-radius:12px;}
+                            .item img{width:100%;border-radius:12px;margin-bottom:8px;display:block;object-fit:cover;aspect-ratio:1/1;}
+                            .item .name{
+                            font-size:14px;color:#111;line-height:1.35;margin-bottom:4px;
+                            display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+                            }
+                            .item .origin{font-size:13px;color:#999;text-decoration:line-through;margin-bottom:2px;}
+                            .item .price{font-size:15px;font-weight:700;color:#111;}
+                            .item .price .discount{color:#FF7634;margin-right:4px}
+
+                            /* ✅ 페이지네이션 (9개 초과시에만 표시) */
+                            .week-pagination{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+                            .week-pagination .btn{
+                            min-width:36px;height:36px;padding:0 10px;border:1px solid #ddd;background:#fff;
+                            border-radius:18px;cursor:pointer;font-size:14px;line-height:34px;
+                            }
+                            .week-pagination .btn[disabled]{opacity:.45;cursor:default}
+                            .week-pagination .num{border:1px solid #eee}
+                            .week-pagination .num.is-active{background:#111;color:#fff;border-color:#111}
+                        </style>
+
+                        <section class="weekly-section">
+                            <p class="weekly-label">고객님들이 Pick한</p>
+                            <h2 class="weekly-title">이번주 특가 상품</h2>
+
+                            <div class="weekly-grid">
+                            <?php foreach($view as $p): ?>
                             <div class="item">
-                                <img src="/assets/img/prod1.jpg" alt="">
-                                <p class="name">상품명 예시 <?php echo $i?></p>
-                                <p class="origin">36,900원</p>
-                                <p class="price"><span class="discount">45%</span> 12,400원</p>
+                            <img src="<?= h($p['img']) ?>" alt="<?= h($p['name']) ?>">
+                            <p class="name"><?= h($p['name']) ?></p>
+                            <p class="origin"><?= w($p['origin']) ?>원</p>
+                            <p class="price"><span class="discount"><?= h($p['discount']) ?>%</span> <?= w($p['price']) ?>원</p>
                             </div>
-                            <?php endforeach; ?>                        
-                        </div>
-                        <nav class="week-pagination" id="weekPager" aria-label="상품 페이지 이동"></nav>
-                    </section>
-                </div>
+                            <?php endforeach; ?>
+                            </div>
+
+                            <?php if ($total > $perPage): ?>
+                            <nav class="week-pagination" aria-label="상품 페이지 이동">
+                            <a class="btn prev" href="<?= page_url(max(1,$page-1)) ?>" <?= $page<=1?'disabled':'' ?>>‹</a>
+                            <?php for($i=1;$i<=$totalPages;$i++): ?>
+                            <a class="btn num <?= $i===$page?'is-active':'' ?>" href="<?= page_url($i) ?>"><?= $i ?></a>
+                            <?php endfor; ?>
+                            <a class="btn next" href="<?= page_url(min($totalPages,$page+1)) ?>" <?= $page>=$totalPages?'disabled':'' ?>>›</a>
+                            </nav>
+                            <?php endif; ?>
+                        </section>              
+                    </div>
             </section>
         </main>
 
