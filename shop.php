@@ -23,7 +23,12 @@
                 </div>
 
                 <div class="shop-best">
-                    
+                    <DIV class="shop-best-title">
+                        <strong>실시간 베스트 상품</strong>
+                        <a href="#" class="find-link">전체보기</a>
+                        <img src="/assets/icons/btn-next-arrow-right-g.png">
+                    </DIV>
+                    <p>땡스딜의 베스트 상품을 만나보세요.</p>
                     <div class="shop-categories">
                         <button class="cat is-active">
                             <img src="/assets/icons/icon-all.svg" class="ico">

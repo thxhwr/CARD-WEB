@@ -724,6 +724,10 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+.shop-best-title {
+  display: flex;
+  align-items: center;
+}
 .shop-categories {
   display: flex;
   gap: 10px;
