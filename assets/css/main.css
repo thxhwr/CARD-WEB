@@ -416,7 +416,7 @@ body {
 .card-img-wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin: 24px;
 }
 
 .card-img {
@@ -441,6 +441,7 @@ body {
   text-align: left;
   font-size: 15px;
   color: #666;
+  margin-bottom: 18px;
 }
 .info-list div {
   display: flex;
@@ -448,7 +449,6 @@ body {
 }
 .info-list b {
   font-weight: 700;
-  color: #1f1f1f;
 }
 
 .btn-home {
