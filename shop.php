@@ -271,21 +271,19 @@
                         <p class="weekly-label">고객님들이 Pick한</p>
                         <h2 class="weekly-title">이번주 특가 상품</h2>
 
-                        <!-- 카드 목록: 아이템들을 전부 넣어두면 JS가 9개씩 잘라서 보여줌 -->
-                        <div class="weekly-grid" id="weeklyGrid">
-                            <!-- .item … (원하는 만큼) -->
-                            <!-- 예시 12개 -->
-                            <!-- 반복 예시 -->
-                            <div class="item">
-                            <img src="/assets/img/prod1.jpg" alt="">
-                            <p class="name">상품명 예시 1</p>
-                            <p class="origin">36,900원</p>
-                            <p class="price"><span class="discount">45%</span> 12,400원</p>
-                            </div>
-                            <!-- … 같은 구조로 여러 개 -->
-                        </div>
 
-                        <!-- 페이지네이션 -->
+                        <div class="weekly-grid" id="weeklyGrid">
+                            <?php
+                                for($i=0;$i<27;$i++){
+                            ?>
+                            <div class="item">
+                                <img src="/assets/img/prod1.jpg" alt="">
+                                <p class="name">상품명 예시 1</p>
+                                <p class="origin">36,900원</p>
+                                <p class="price"><span class="discount">45%</span> 12,400원</p>
+                            </div>
+                            <?php }?>                        
+                        </div>
                         <nav class="week-pagination" id="weekPager" aria-label="상품 페이지 이동"></nav>
                     </section>
                 </div>
