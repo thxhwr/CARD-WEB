@@ -624,8 +624,6 @@ body {
 }
 
 .login-form {
-  display: flex;
-  flex-direction: column;
   gap: 12px;
   width: 90%;
   margin: 0 auto;
@@ -682,6 +680,7 @@ body {
   font-weight: 700;
   border: 0;
   cursor: pointer;
+  margin-top: 5%;
 }
 .login-form .btn-submit:disabled {
   background: #ffd9c7;
