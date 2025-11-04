@@ -966,12 +966,8 @@ body {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 5%;
-  margin-inline: -16px;
   padding-inline: 16px;
   scroll-padding-inline-start: 16px;
-}
-.point-list > .point-item {
-  flex: 0 0 240px;
 }
 
 .point-list > .point-item {
