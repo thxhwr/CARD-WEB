@@ -426,6 +426,7 @@ body {
   width: 200px;
   border-radius: 12px;
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+  z-index: 99;
 }
 
 .card-info {
@@ -497,15 +498,11 @@ body {
 }
 
 .owned-card-box .badge {
-  position: absolute;
-  left: 16px;
-  top: 12px;
   padding: 4px 10px;
-  background: #ffe38f;
-  color: #6a4b00;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
+  background: #ffeb00;
+  color: #e24f09;
+  border-radius: 50px;
+  font-size: 13px;
 }
 
 /* 타이틀 */
