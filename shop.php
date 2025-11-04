@@ -58,7 +58,7 @@
                     <div class="shop-grid">
                         <div class="product">
                             <span class="badge">1</span>
-                            <img src="/assets/img/prod1.png" alt="">
+                            <img src="/assets/img/img-shop-sample05.png" alt="">
                             <p class="name">파벡스 분리형포트 여행용전 기포트 프리볼EFX-256H</p>
                             <div class="price">
                             <span class="discount">45%</span>
@@ -70,7 +70,7 @@
 
                         <div class="product">
                             <span class="badge">2</span>
-                            <img src="/assets/img/prod2.png" alt="">
+                            <img src="/assets/img/img-shop-sample05.png" alt="">
                             <p class="name">아모레퍼시픽 역대 최대 혜택 15% 적립 + 20% 추가 할인</p>
                             <div class="price">
                             <span class="discount">20%</span>
