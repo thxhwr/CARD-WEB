@@ -491,7 +491,8 @@ body {
   width: 100%;
   margin: 24px auto;
   padding: 24px;
-  background: var(--primary);
+  background: transparent linear-gradient(180deg, #ff7634 0%, #f0580f 100%) 0%
+    0% no-repeat padding-box;
   border-radius: 20px;
   text-align: center;
   box-sizing: border-box;
@@ -530,6 +531,7 @@ body {
   font-size: 15px;
   color: #fff;
   margin-bottom: 18px;
+  padding-top: 18px;
 }
 .owend-info-list div {
   display: flex;
