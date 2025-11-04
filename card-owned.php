@@ -5,11 +5,7 @@
 <body>
 <div class="app">
     <header class="appbar">
-        <nav class="appbar__inner">
-            <a href="javascript:history.back()" class="nav-btn">←</a>
-            <h1 class="appbar__title">THX Deal</h1>
-            <a href="/index.php" class="home-btn">🏠</a>
-        </nav>
+      <div class="brand"><img src="assets/icons/logo.svg"></div>
     </header>
 
     <main class="page">
