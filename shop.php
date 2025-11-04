@@ -270,8 +270,56 @@
                     <section class="weekly-section">
                         <p class="weekly-label">고객님들이 Pick한</p>
                         <h2 class="weekly-title"><span>이번주 특가 상품</span></h2>
+                            <?php
+                            $products = [
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(남여공용) 국내제조 티클릿 후드티", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 분리형 포터블 여행용 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 브런치 홈 세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"씨밀렉스 드라이 캠핑 식기세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에스로레 올 뉴 오픈 캐리어", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"아모레퍼시픽 역대 최대 혜택", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(전자제품 초특가) 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에어프라이어 4L 특가", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"홍대 쭈꾸미 1.9kg", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(남여공용) 국내제조 티클릿 후드티", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 분리형 포터블 여행용 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 브런치 홈 세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"씨밀렉스 드라이 캠핑 식기세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에스로레 올 뉴 오픈 캐리어", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"아모레퍼시픽 역대 최대 혜택", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(전자제품 초특가) 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에어프라이어 4L 특가", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"홍대 쭈꾸미 1.9kg", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(남여공용) 국내제조 티클릿 후드티", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 분리형 포터블 여행용 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 브런치 홈 세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"씨밀렉스 드라이 캠핑 식기세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에스로레 올 뉴 오픈 캐리어", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"아모레퍼시픽 역대 최대 혜택", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(전자제품 초특가) 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에어프라이어 4L 특가", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"홍대 쭈꾸미 1.9kg", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(남여공용) 국내제조 티클릿 후드티", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 분리형 포터블 여행용 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 브런치 홈 세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"씨밀렉스 드라이 캠핑 식기세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에스로레 올 뉴 오픈 캐리어", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"아모레퍼시픽 역대 최대 혜택", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(전자제품 초특가) 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에어프라이어 4L 특가", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"홍대 쭈꾸미 1.9kg", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(남여공용) 국내제조 티클릿 후드티", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 분리형 포터블 여행용 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"파벡스 브런치 홈 세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"씨밀렉스 드라이 캠핑 식기세트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에스로레 올 뉴 오픈 캐리어", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"아모레퍼시픽 역대 최대 혜택", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"(전자제품 초특가) 전기포트", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"에어프라이어 4L 특가", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ["img"=>"/assets/img/img-shop-sample05.png", "name"=>"홍대 쭈꾸미 1.9kg", "origin"=>36900, "discount"=>45, "price"=>12400],
+                            ];
+                            ?>
 
-                        <!-- 3열 그리드 -->
                         <div class="product-grid">
                             <!-- 카드 반복 (PHP/템플릿 루프 자리) -->
                             <?php 
@@ -305,13 +353,19 @@
 
                         <!-- 좌/우 화살표만 있는 페이지네이션 (번호 없음) -->
                         <?php if (($total ?? 0) > ($perPage ?? 9)): ?>
-                        <nav class="pager" aria-label="상품 페이지 이동">
-                            <a class="pager__arrow prev <?= ($page??1) > 1 ? 'is-active' : 'is-disabled' ?>"
-                            href="<?= ($page??1) > 1 ? page_url(($page??1)-1) : 'javascript:void(0)' ?>" aria-label="이전"></a>
+                            <nav class="pager" aria-label="상품 페이지 이동">
+                                <?php $prevDisabled = ($page??1) <= 1; ?>
+                                <?php $nextDisabled = ($page??1) >= ($totalPages??1); ?>
 
-                            <a class="pager__arrow next <?= ($page??1) < ($totalPages??1) ? 'is-active' : 'is-disabled' ?>"
-                            href="<?= ($page??1) < ($totalPages??1) ? page_url(($page??1)+1) : 'javascript:void(0)' ?>" aria-label="다음"></a>
-                        </nav>
+                                <a class="pager__arrow prev <?= $prevDisabled?'is-disabled':'is-active' ?>"
+                                    href="<?= !$prevDisabled ? page_url(($page??1)-1) : 'javascript:void(0)' ?>"
+                                    aria-label="이전" <?= $prevDisabled?'aria-disabled="true" tabindex="-1"':'' ?>></a>
+
+                                <a class="pager__arrow next <?= $nextDisabled?'is-disabled':'is-active' ?>"
+                                    href="<?= !$nextDisabled ? page_url(($page??1)+1) : 'javascript:void(0)' ?>"
+                                    aria-label="다음" <?= $nextDisabled?'aria-disabled="true" tabindex="-1"':'' ?>></a>
+                            </nav>
+
                         <?php endif; ?>
                     </section>
                 </div>
