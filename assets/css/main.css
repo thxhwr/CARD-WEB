@@ -962,7 +962,6 @@ body {
   overflow-x: auto;
   padding: 12px 0 4px;
   scroll-snap-type: x mandatory;
-  height: 100px;
   -ms-overflow-style: none;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -971,11 +970,14 @@ body {
   padding-inline: 16px;
   scroll-padding-inline-start: 16px;
 }
+.point-list > * {
+  scroll-snap-align: start;
+}
 
 .point-list::-webkit-scrollbar {
   display: none;
 }
-.point-list::before,
+
 .point-list::after {
   content: '';
   flex: 0 0 16px;
