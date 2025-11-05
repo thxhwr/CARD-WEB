@@ -1526,6 +1526,6 @@ body {
 }
 
 /* 크기(폰트)는 SVG가 같이 스케일되므로 고정 px로 두는 게 가장 안정적 */
-.card-num   { font-size: 9px; }   /* 필요시 8~10px 사이로 미세조정 */
+.card-num   { font-size: 9px; color:#fff}   /* 필요시 8~10px 사이로 미세조정 */
 .card-exp   { font-size: 6.8px; letter-spacing: 0.08em; }
 .card-owner { font-size: 7.2px; letter-spacing: 0.08em; }
