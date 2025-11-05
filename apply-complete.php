@@ -37,7 +37,7 @@
                     <div class="thx-card-wrap">
                         <svg class="thx-card" viewBox="0 0 237 147" role="img" aria-label="THX 카드">
                         <!-- 카드 이미지(원본 비율에 맞춘 viewBox: 237×147) -->
-                        <image href="/assets/img/card-thx.png" x="0" y="0" width="237" height="147"/>
+                        <image href="/assets/img/img-card-blank.png" x="0" y="0" width="237" height="147"/>
 
                         <!-- 필터: 약한 양각/그림자 -->
                         <defs>
