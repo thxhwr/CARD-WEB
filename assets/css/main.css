@@ -1514,7 +1514,7 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.thx-card-wrap { max-width: 360px; margin: 0 auto; }
+.thx-card-wrap { max-width: 360px; margin: 0 auto; z-index:999;}
 .thx-card { width: 100%; height: auto; display: block; }
 
 /* 공통 텍스트 스타일 (SVG 안의 text에 적용) */
