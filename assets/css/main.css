@@ -1523,14 +1523,14 @@ body {
   font-family: "Roboto Mono", monospace;
   font-weight: 500;
   letter-spacing: 0.12em;  /* 카드번호 간격감 */
+  background: linear-gradient(90deg, #ffffff 0%, #d5d5d5 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .card-num   { 
   font-size: 14px; 
   color:#fff;
-  background: linear-gradient(90deg, #ffffff 0%, #d5d5d5 50%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 .card-exp   { font-size: 6.8px; letter-spacing: 0.08em; }
 .card-owner { font-size: 7.2px; letter-spacing: 0.08em; }
