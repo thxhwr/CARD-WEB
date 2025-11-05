@@ -27,11 +27,36 @@
             <section class="apply-ok container--narrow">
 
                 <div class="complete-card-box">
-                    <div class="thx-card card-img-wrap">
+                    <!-- <div class="thx-card card-img-wrap">
                         <img src="/assets/img/img-card-blank.png" alt="THANKS CARD" class="card-img">
-                        <div class="card-text card-number">5395 9188 8888 8888</div>
-                        <!-- <div class="card-text card-holder">CHAN TAI MAN</div> -->
-                        <!-- <div class="card-text card-expire">01/23</div> -->
+                        <div class="card-number">5395 9188 8888 8888</div>
+                        <div class="card-text card-holder">CHAN TAI MAN</div>
+                        <div class="card-text card-expire">01/23</div>
+                    </div> -->
+
+                    <div class="thx-card-wrap">
+                        <svg class="thx-card" viewBox="0 0 237 147" role="img" aria-label="THX 카드">
+                        <!-- 카드 이미지(원본 비율에 맞춘 viewBox: 237×147) -->
+                        <image href="/assets/img/card-thx.png" x="0" y="0" width="237" height="147"/>
+
+                        <!-- 필터: 약한 양각/그림자 -->
+                        <defs>
+                            <filter id="emboss">
+                            <feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-opacity="0.65"/>
+                            </filter>
+                        </defs>
+
+                        <!-- 카드번호 -->
+                        <text class="card-num" x="19" y="79" filter="url(#emboss)">
+                            5395 9188 8888 8888
+                        </text>
+
+                        <!-- 유효기간 -->
+                        <text class="card-exp" x="49" y="95" filter="url(#emboss)">01 / 23</text>
+
+                        <!-- 소유자명 -->
+                        <text class="card-owner" x="19" y="114" filter="url(#emboss)">CHAN TAI MAN</text>
+                        </svg>
                     </div>
 
                     <div class="card-info">
