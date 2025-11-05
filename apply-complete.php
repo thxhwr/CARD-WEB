@@ -47,7 +47,7 @@
                         </defs>
 
                         <!-- 카드번호 -->
-                        <text class="card-num" x="19" y="79" filter="url(#emboss)">
+                        <text class="card-num" x="25" y="95" filter="url(#emboss)">
                             5395 9188 8888 8888
                         </text>
 
