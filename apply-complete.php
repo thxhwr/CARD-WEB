@@ -52,10 +52,10 @@
                         </text>
 
                         <!-- 유효기간 -->
-                        <text class="card-exp" x="49" y="95" filter="url(#emboss)">01 / 23</text>
+                        <!-- <text class="card-exp" x="49" y="95" filter="url(#emboss)">01 / 23</text> -->
 
                         <!-- 소유자명 -->
-                        <text class="card-owner" x="19" y="114" filter="url(#emboss)">CHAN TAI MAN</text>
+                        <!-- <text class="card-owner" x="19" y="114" filter="url(#emboss)">CHAN TAI MAN</text> -->
                         </svg>
                     </div>
 
