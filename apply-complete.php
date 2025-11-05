@@ -27,8 +27,11 @@
             <section class="apply-ok container--narrow">
 
                 <div class="complete-card-box">
-                    <div class="card-img-wrap">
-                    <img src="/assets/img/img-card-blank.png" alt="THANKS CARD" class="card-img">
+                    <div class="card-visual card-img-wrap">
+                        <img src="/assets/img/img-card-blank.png" alt="THANKS CARD" class="card-img">
+                        <div class="card-text card-number">5395 9188 8888 8888</div>
+                        <!-- <div class="card-text card-holder">CHAN TAI MAN</div> -->
+                        <!-- <div class="card-text card-expire">01/23</div> -->
                     </div>
 
                     <div class="card-info">

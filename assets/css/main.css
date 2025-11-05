@@ -1526,3 +1526,56 @@ body {
     color: #a3a9b3;
   }
 }
+
+.card-visual{
+    position: relative;
+    width: 100%;
+    max-width: 320px;     /* 필요하면 조절 */
+    margin: 0 auto;
+}
+
+.card-visual img{
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* 공통 글씨 스타일 */
+.card-text{
+    position: absolute;
+    color: #e7e7e7;
+    font-family: "SF Pro Display", "Roboto Mono", monospace;
+    font-weight: 500;
+    text-shadow:
+        0 1px 1px rgba(0,0,0,0.6),
+        0 0 4px rgba(0,0,0,0.4);
+    pointer-events: none;
+    background: linear-gradient(90deg, #ffffff 0%, #d5d5d5 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 카드 번호 */
+.card-number{
+    bottom: 48px;   /* 이미지 비율에 따라 수정 */
+    left: 24px;
+    font-size: 18px;
+    letter-spacing: 2.5px;
+}
+
+/* 카드 소유자명 */
+.card-holder{
+    bottom: 20px;
+    left: 24px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* 유효기간 */
+.card-expire{
+    bottom: 20px;
+    right: 28px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
