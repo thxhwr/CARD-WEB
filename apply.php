@@ -4,6 +4,7 @@
 <head>
   <?php include __DIR__ . "/head.php"; ?>
 </head>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <body>
     <div class="app">
     
@@ -134,7 +135,28 @@
                 location.href = "apply-complete.php";
             });
             })();
+            
 
+            function execDaumPostcode() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                    let addr = '';
+
+                    // 도로명 주소 우선
+                    if (data.userSelectedType === 'R') {
+                        addr = data.roadAddress;
+                    } else {
+                        addr = data.jibunAddress;
+                    }
+
+                    document.getElementById('zipcode').value = data.zonecode;
+                    document.getElementById('address').value = addr;
+
+                    // 상세주소로 포커스 이동
+                    document.getElementById('address_detail').focus();
+                    }
+                }).open();
+                }
     </script>
 
 </body>

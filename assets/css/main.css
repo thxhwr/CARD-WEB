@@ -1534,3 +1534,27 @@ body {
 }
 .card-exp   { font-size: 6.8px; letter-spacing: 0.08em; }
 .card-owner { font-size: 7.2px; letter-spacing: 0.08em; }
+
+
+.address-group {
+  margin-top: 24px;
+}
+
+.addr-row {
+  display: flex;
+  gap: 8px;
+}
+
+.addr-row .f-input {
+  flex: 1;
+}
+
+.btn-zip {
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid #FF7634;
+  background: #fff;
+  color: #FF7634;
+  font-size: 14px;
+  white-space: nowrap;
+}
