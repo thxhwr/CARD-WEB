@@ -1536,9 +1536,6 @@ body {
 .card-owner { font-size: 7.2px; letter-spacing: 0.08em; }
 
 
-.address-group {
-  margin-top: 24px;
-}
 
 .addr-row {
   display: flex;
