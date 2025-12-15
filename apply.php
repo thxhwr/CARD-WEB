@@ -46,11 +46,27 @@
                     </div>
 
                     <!-- 배송지 -->
-                    <div class="f-group is-disabled">
+                    <!-- <div class="f-group is-disabled">
                         <label class="f-label required" for="address">배송지</label>
                         <input id="address" name="address" class="f-input" type="text" placeholder="카드 배송을 받을 주소를 입력해주세요" required>
-                    </div>
+                    </div> -->
+                    <div class="f-group address-group is-disabled">
+                        <label class="f-label">배송지</label>
 
+                        <!-- 우편번호 -->
+                        <div class="addr-row">
+                            <input type="text" id="zipcode" class="f-input" placeholder="우편번호" readonly>
+                            <button type="button" class="btn-zip" onclick="execDaumPostcode()">
+                            우편번호 검색
+                            </button>
+                        </div>
+
+                        <!-- 기본 주소 -->
+                        <input type="text" id="address" class="f-input" placeholder="기본 주소" readonly>
+
+                        <!-- 상세 주소 -->
+                        <input type="text" id="address_detail" class="f-input" placeholder="상세 주소 입력">
+                    </div>
                     <!-- 연락처 -->
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="phone">연락처</label>
