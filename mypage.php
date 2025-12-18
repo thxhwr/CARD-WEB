@@ -50,7 +50,6 @@
 
         .mypage-pay-unit {
             font-size: 20px;
-            color: var(--primary);
             margin-left: 4px;
         }
 
