@@ -40,11 +40,12 @@ if (isset($data['result']) && $data['result'] === 'OK') {
     $_SESSION['memberNo'] = $data['memberNo'] ?? null;
     $_SESSION['token']    = $data['token'] ?? null;
 
-    echo "1234";
+    print_r($response);
     // header('Location: /mypage.php');
     // exit;
 } else {
     // 실패 처리
-    header('Location: /login.php?error=1');
-    exit;
+    print_r($response);
+    // header('Location: /login.php?error=1');
+    // exit;
 }
