@@ -1,5 +1,5 @@
 <?php
-$mypageLink = isset($_SESSION['user_id']) ?
+$mypageLink = isset($_SESSION['user_Id']) ?
     '/mypage.php' : 
     '/login.php';
 ?>
