@@ -49,7 +49,7 @@
         }
 
         .mypage-pay-unit {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--text-sub);
             margin-left: 4px;
         }
@@ -89,7 +89,7 @@
 </head>
 <body>
 
-<div class="mypage-wrap">
+<div class="app">
     <header class="appbar-apply">
         <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
             <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">
@@ -99,33 +99,28 @@
         </nav>
     </header>
 
-    <section class="mypage-card">
-        <div class="mypage-section-title">아이디</div>
-        <div class="mypage-user-id">
-            <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
-        </div>
-    </section>
-
-    <!-- 보유 페이 카드 -->
-    <section class="mypage-card">
-        <div class="mypage-section-title">보유 페이</div>
-        <div class="mypage-pay-wrap">
-            <div>
-                <div class="mypage-pay-amount">
-                    <?= number_format($user_pay ?? 0) ?>
-                    <span class="mypage-pay-unit">P</span>
+     <main class="page">
+            <section class="apply-form">
+                <div class="mypage-section-title">아이디</div>
+                <div class="mypage-user-id">
+                    <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 로그아웃 버튼 -->
-    <div class="mypage-actions">
-        <form action="/logout.php" method="post">
-            <button type="submit" class="btn-logout">로그아웃</button>
-        </form>
-    </div>
-
+                <div class="mypage-section-title">보유 페이</div>
+                <div class="mypage-pay-wrap">
+                    <div>
+                        <div class="mypage-pay-amount">
+                            <?= number_format($user_pay ?? 0) ?>
+                            <span class="mypage-pay-unit">P</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mypage-actions">
+                    <form action="/logout.php" method="post">
+                        <button type="submit" class="btn-logout">로그아웃</button>
+                    </form>
+                </div>
+            </section>
+    </main>
      <?php include __DIR__ . "/footer.php"; ?>
 </div>
 </body>
