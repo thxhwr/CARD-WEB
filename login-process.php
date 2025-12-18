@@ -35,7 +35,7 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 print_r($data);
-if (isset($data['resCode'])=== '0') {
+if (isset($data['resCode']) === '0') {
     if (!empty($_POST['remember_me'])) {
         // 30일 동안 유지
         $lifetime = 60 * 60 * 24 * 30;
@@ -59,10 +59,10 @@ if (isset($data['resCode'])=== '0') {
     // 보안상 세션ID 재발급
     session_regenerate_id(true);
 
-    //header('Location: /index.php');
-    //exit;
+    header('Location: /index.php');
+    exit;
 } else {
     // 실패 처리
-    //header('Location: /login.php?error=1');
-    //exit;
+    header('Location: /login.php?error=1');
+    exit;
 }
