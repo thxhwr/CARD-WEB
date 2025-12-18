@@ -35,7 +35,7 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 print_r($data);
-if (isset($data['result']) && $data['result'] === 'OK') {
+if (isset($data['resCode'])=== '0') {
     if (!empty($_POST['remember_me'])) {
         // 30일 동안 유지
         $lifetime = 60 * 60 * 24 * 30;
@@ -52,10 +52,9 @@ if (isset($data['result']) && $data['result'] === 'OK') {
     ]);
     session_start();
     // 세션에 로그인 정보 저장
-    $_SESSION['user_id']   = $data['id'];
-    $_SESSION['user_name'] = $data['name'];
-    $_SESSION['memberNo'] = $data['memberNo'] ?? null;
-    $_SESSION['token']    = $data['token'] ?? null;
+    $_SESSION['user_Status'] = $data['status'];
+    $_SESSION['user_No'] = $data['accountNo'] ?? null;
+    $_SESSION['user_Id']    = $data['userid'] ?? null;
 
     // 보안상 세션ID 재발급
     session_regenerate_id(true);

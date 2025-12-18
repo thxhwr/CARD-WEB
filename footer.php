@@ -1,3 +1,8 @@
+<?php
+$mypageLink = isset($_SESSION['user_id']) ?
+    '/mypage.php' : 
+    '/login.php';
+?>
 <nav class="tabbar" role="tablist" aria-label="하단 탭">
   <a class="tab" href="#" role="tab">
     <span class="ico">
@@ -27,7 +32,7 @@
     <span class="label">쇼핑</span>
   </a>
 
-  <a class="tab" href="login.php" role="tab">
+  <a class="tab" href="<?= $mypageLink ?>" role="tab">
     <span class="ico">
       <img src="/assets/icons/ico-gnb04.svg" alt="" class="ico">
     </span>
