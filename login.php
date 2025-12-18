@@ -40,7 +40,7 @@
 
                 <div class="login-options">
                     <div class="login-keep">
-                        <input type="checkbox" id="keepLogin" hidden>
+                        <input type="checkbox" name="remember_me" id="keepLogin" hidden>
                         <label for="keepLogin" class="keep-label">로그인 상태 유지</label>
                     </div>
                     <div class="login-keep">

@@ -36,9 +36,29 @@ $data = json_decode($response, true);
 
 // 예: { "result":"OK", "memberNo":123, "token":"..." } 라고 가정
 if (isset($data['result']) && $data['result'] === 'OK') {
+    if (!empty($_POST['remember_me'])) {
+        // 30일 동안 유지
+        $lifetime = 60 * 60 * 24 * 30;
+    } else {
+        // 브라우저 닫으면 삭제 (0)
+        $lifetime = 0;
+    }
+    session_set_cookie_params([
+        'lifetime' => $lifetime,
+        'path'     => '/',
+        'secure'   => isset($_SERVER['HTTPS']), // https 쓸 때 true
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
     session_start();
+    // 세션에 로그인 정보 저장
+    $_SESSION['user_id']   = $data['id'];
+    $_SESSION['user_name'] = $data['name'];
     $_SESSION['memberNo'] = $data['memberNo'] ?? null;
     $_SESSION['token']    = $data['token'] ?? null;
+
+    // 보안상 세션ID 재발급
+    session_regenerate_id(true);
 
     print_r($response);
     // header('Location: /index.php');
