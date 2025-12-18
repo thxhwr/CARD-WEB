@@ -11,7 +11,7 @@
 
         .mypage-sub {
             font-size: 13px;
-            color: var(--text-sub);
+            color: var(--primary);
         }
 
         .mypage-card {
@@ -25,9 +25,9 @@
         }
 
         .mypage-section-title {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 600;
-            color: var(--text-sub);
+            color: var(--primary);
             margin-bottom: 6px;
         }
 
@@ -50,13 +50,13 @@
 
         .mypage-pay-unit {
             font-size: 20px;
-            color: var(--text-sub);
+            color: var(--primary);
             margin-left: 4px;
         }
 
         .mypage-pay-label {
             font-size: 13px;
-            color: var(--text-sub);
+            color: var(--primary);
         }
 
         .mypage-actions {
