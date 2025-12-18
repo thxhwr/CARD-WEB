@@ -33,7 +33,9 @@
                 <div class="f-group login-pw">
                     <input type="password"  name="pw" class=" f-input" placeholder="비밀번호 입력" required>
                 </div>
-
+                 <?php if (!empty($_GET['error'])): ?>
+                    <p style="text-align:center;margin:auto 0;color:#f44;font-size:12px;">로그인에 실패했습니다. 다시 확인해주세요.</p>
+                <?php endif; ?>
                 <button class="btn-submit" type="submit">로그인</button>
 
                 <div class="login-options">
@@ -47,9 +49,6 @@
                     </div>    
                 </div>
             </form>
-            <?php if (!empty($_GET['error'])): ?>
-            <p style="color:#f44;font-size:12px;">로그인에 실패했습니다. 다시 확인해주세요.</p>
-            <?php endif; ?>
             <p class="copyright">© THX Deal Corp.</p>
 
         </section>
