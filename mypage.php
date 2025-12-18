@@ -102,7 +102,7 @@
     <section class="mypage-card">
         <div class="mypage-section-title">아이디</div>
         <div class="mypage-user-id">
-            <?= htmlspecialchars($_SESSION['user_id'] ?? '', ENT_QUOTES) ?>
+            <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
         </div>
     </section>
 
