@@ -96,6 +96,7 @@
                 <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
             </a>
             <h1 class="appbar__title">마이페이지</h1>
+            <a href="/index.php" class="nav-btn home-btn" aria-label="홈"></a>
         </nav>
     </header>
 
