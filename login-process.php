@@ -34,7 +34,7 @@ curl_close($ch);
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
 
-// 예: { "result":"OK", "memberNo":123, "token":"..." } 라고 가정
+print_r($data);
 if (isset($data['result']) && $data['result'] === 'OK') {
     if (!empty($_POST['remember_me'])) {
         // 30일 동안 유지
@@ -60,10 +60,10 @@ if (isset($data['result']) && $data['result'] === 'OK') {
     // 보안상 세션ID 재발급
     session_regenerate_id(true);
 
-    header('Location: /index.php');
-    exit;
+    //header('Location: /index.php');
+    //exit;
 } else {
     // 실패 처리
-    header('Location: /login.php?error=1');
-    exit;
+    //header('Location: /login.php?error=1');
+    //exit;
 }
