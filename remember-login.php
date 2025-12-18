@@ -2,7 +2,6 @@
 // 세션 비로그인 상태일 때만 자동 로그인 시도
 if (!isset($_SESSION['user_No']) && !empty($_COOKIE['remember_me'])) {
 
-    require_once __DIR__ . "/db.php"; // DB 연결
 
     // 쿠키에서 selector, validator 구분
     [$selector, $validator] = explode(':', $_COOKIE['remember_me'], 2);
