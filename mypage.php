@@ -126,22 +126,19 @@
 <body>
 
 <div class="mypage-wrap">
-    <header class="mypage-header">
-        <div>
-            <div class="mypage-title">마이페이지</div>
-            <div class="mypage-sub">내 정보 및 보유 페이</div>
-        </div>
-        <!-- 필요하면 오른쪽에 아이콘/설정 버튼 자리 -->
-        <!-- <button>⚙️</button> -->
+    <header class="appbar-apply">
+        <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
+            <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">
+                <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
+            </a>
+            <h1 class="appbar__title">마이페이지</h1>
+        </nav>
     </header>
 
-    <!-- 아이디 카드 -->
     <section class="mypage-card">
         <div class="mypage-section-title">아이디</div>
         <div class="mypage-user-id">
-            <!-- 나중에 PHP로 교체 -->
-            <!-- 예: <?= htmlspecialchars($_SESSION['user_id'] ?? '', ENT_QUOTES) ?> -->
-            sample_user01
+            <?= htmlspecialchars($_SESSION['user_id'] ?? '', ENT_QUOTES) ?>
         </div>
     </section>
 
@@ -156,9 +153,6 @@
                     <span class="mypage-pay-unit">P</span>
                 </div>
             </div>
-            <div class="mypage-pay-label">
-                결제/충전 내역은<br>추후 메뉴로 추가 가능
-            </div>
         </div>
     </section>
 
@@ -169,8 +163,7 @@
         </form>
     </div>
 
-    <div class="mypage-footer-space"></div>
+     <?php include __DIR__ . "/footer.php"; ?>
 </div>
-
 </body>
 </html>
