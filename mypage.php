@@ -49,7 +49,7 @@
         }
 
         .mypage-pay-unit {
-            font-size: 14px;
+            font-size: 18px;
             color: var(--text-sub);
             margin-left: 4px;
         }
@@ -112,8 +112,7 @@
         <div class="mypage-pay-wrap">
             <div>
                 <div class="mypage-pay-amount">
-                    <!-- 예: <?= number_format($user_pay ?? 0) ?> -->
-                    25,000
+                    <?= number_format($user_pay ?? 0) ?>
                     <span class="mypage-pay-unit">P</span>
                 </div>
             </div>
