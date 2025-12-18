@@ -1,6 +1,4 @@
 <?php
-  header(Access-Control-Allow-Origin: *);
-  
   $title = isset($pageTitle) ? $pageTitle . " · THXDEAL" : "THXDEAL";
 ?>
 <meta charset="utf-8">
