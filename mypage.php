@@ -4,42 +4,6 @@
 <head>
     <?php include __DIR__ . "/head.php"; ?>
     <style>
-        :root {
-            --bg: #f5f5f7;
-            --card-bg: #ffffff;
-            --text-main: #111827;
-            --text-sub: #6b7280;
-            --primary: #111827;
-            --primary-hover: #000000;
-            --border: #e5e7eb;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text-main);
-        }
-
-        .mypage-wrap {
-            max-width: 480px;
-            margin: 0 auto;
-            min-height: 100vh;
-            padding: 16px 16px 32px;
-        }
-
-        .mypage-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
         .mypage-title {
             font-size: 20px;
             font-weight: 700;
