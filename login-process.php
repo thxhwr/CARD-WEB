@@ -35,6 +35,7 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 print_r($data);
+ECHO $data['resCode'];
 // if (isset($data['resCode']) === '0') {
 //     if (!empty($_POST['remember_me'])) {
 //         // 30일 동안 유지
