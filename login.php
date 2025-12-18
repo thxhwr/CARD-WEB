@@ -25,13 +25,13 @@
                 <p>땡스딜에 오신 것을 환영합니다.</p>
             </div>
 
-            <form id="loginForm" class="login-form" autocomplete="off">
+            <form id="loginForm" class="login-form" autocomplete="off" action="/login-process.php" method="post">
                 <div class="f-group login-id">
-                    <input type="text" class=" f-input" placeholder="아이디 입력" required>
+                    <input type="text" name="id" class=" f-input" placeholder="아이디 입력" required>
                 </div>
 
                 <div class="f-group login-pw">
-                    <input type="password"  class=" f-input" placeholder="비밀번호 입력" required>
+                    <input type="password"  name="pw" class=" f-input" placeholder="비밀번호 입력" required>
                 </div>
 
                 <button class="btn-submit" type="submit">로그인</button>
@@ -47,7 +47,9 @@
                     </div>    
                 </div>
             </form>
-
+            <?php if (!empty($_GET['error'])): ?>
+            <p style="color:#f44;font-size:12px;">로그인에 실패했습니다. 다시 확인해주세요.</p>
+            <?php endif; ?>
             <p class="copyright">© THX Deal Corp.</p>
 
         </section>
