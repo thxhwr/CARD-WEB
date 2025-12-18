@@ -13,7 +13,7 @@
       <div class="brand"><img src="assets/icons/logo.svg"></div>
     </header>
     <div class="title">
-      <strong>오프라인 카드 받고</strong>
+      <strong>오프라인 카드 받고dasda</strong>
       <strong><span class="accent">특별한 혜택</span>을 누리세요</strong>
     </div>
     <main class="phone" role="main" aria-label="THX Deal 앱 화면">
