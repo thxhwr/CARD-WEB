@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="f-group login-pw">
-                    <input type="password"  name="pw" id="login_id" class=" f-input" placeholder="비밀번호 입력" required>
+                    <input type="password"  name="pw" id="login_pw" class=" f-input" placeholder="비밀번호 입력" required>
                 </div>
 
                 <button class="btn-submit" type="submit">로그인</button>
