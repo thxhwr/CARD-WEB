@@ -30,35 +30,35 @@ if ($response === false) {
     exit;
 }
 curl_close($ch);
-
+echo $data['dadta']['userId'];
 // 응답 JSON 파싱 (형식에 맞게 조정)
-$data = json_decode($response, true);
-if ($data['resCode'] == "0") {
-    if (!empty($_POST['remember_me'])) {
-        $lifetime = 60 * 60 * 24 * 30;
-    } else {
-        $lifetime = 0;
-    }
-    session_set_cookie_params([
-        'lifetime' => $lifetime,
-        'path'     => '/',
-        'secure'   => isset($_SERVER['HTTPS']), 
-        'httponly' => true,
-        'samesite' => 'Lax',
-    ]);
-    session_start();
+// $data = json_decode($response, true);
+// if ($data['resCode'] == "0") {
+//     if (!empty($_POST['remember_me'])) {
+//         $lifetime = 60 * 60 * 24 * 30;
+//     } else {
+//         $lifetime = 0;
+//     }
+//     session_set_cookie_params([
+//         'lifetime' => $lifetime,
+//         'path'     => '/',
+//         'secure'   => isset($_SERVER['HTTPS']), 
+//         'httponly' => true,
+//         'samesite' => 'Lax',
+//     ]);
+//     session_start();
 
-    $_SESSION['user_Status'] = $data['data']['status'];
-    $_SESSION['user_No'] = $data['data']['accountNo'] ?? null;
-    $_SESSION['user_Id']    = $data['dadta']['userld'] ?? null;
+//     $_SESSION['user_Status'] = $data['data']['status'];
+//     $_SESSION['user_No'] = $data['data']['accountNo'] ?? null;
+//     $_SESSION['user_Id']    = $data['dadta']['userId'] ?? null;
 
 
-    session_regenerate_id(true);
+//     session_regenerate_id(true);
 
-    header('Location: /index.php');
-    exit;
-} else {
+//     header('Location: /index.php');
+//     exit;
+// } else {
 
-    header('Location: /login.php?error=1');
-    exit;
-}
+//     header('Location: /login.php?error=1');
+//     exit;
+// }
