@@ -54,7 +54,7 @@ if ($data['resCode'] == "0") {
     $_SESSION['user_Id']    = $data['userid'] ?? null;
 
 
-    session_regenerate_id(true);
+    //session_regenerate_id(true);
 
     header('Location: /index.php');
     exit;
