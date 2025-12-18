@@ -35,35 +35,34 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 print_r($data);
-ECHO $data['resCode'];
-// if (isset($data['resCode']) === '0') {
-//     if (!empty($_POST['remember_me'])) {
-//         // 30일 동안 유지
-//         $lifetime = 60 * 60 * 24 * 30;
-//     } else {
-//         // 브라우저 닫으면 삭제 (0)
-//         $lifetime = 0;
-//     }
-//     session_set_cookie_params([
-//         'lifetime' => $lifetime,
-//         'path'     => '/',
-//         'secure'   => isset($_SERVER['HTTPS']), // https 쓸 때 true
-//         'httponly' => true,
-//         'samesite' => 'Lax',
-//     ]);
-//     session_start();
-//     // 세션에 로그인 정보 저장
-//     $_SESSION['user_Status'] = $data['status'];
-//     $_SESSION['user_No'] = $data['accountNo'] ?? null;
-//     $_SESSION['user_Id']    = $data['userid'] ?? null;
+if (isset($data['resCode']) === 0) {
+    if (!empty($_POST['remember_me'])) {
+        // 30일 동안 유지
+        $lifetime = 60 * 60 * 24 * 30;
+    } else {
+        // 브라우저 닫으면 삭제 (0)
+        $lifetime = 0;
+    }
+    session_set_cookie_params([
+        'lifetime' => $lifetime,
+        'path'     => '/',
+        'secure'   => isset($_SERVER['HTTPS']), // https 쓸 때 true
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
+    session_start();
+    // 세션에 로그인 정보 저장
+    $_SESSION['user_Status'] = $data['status'];
+    $_SESSION['user_No'] = $data['accountNo'] ?? null;
+    $_SESSION['user_Id']    = $data['userid'] ?? null;
 
-//     // 보안상 세션ID 재발급
-//     session_regenerate_id(true);
+    // 보안상 세션ID 재발급
+    session_regenerate_id(true);
 
-//     header('Location: /index.php');
-//     exit;
-// } else {
-//     // 실패 처리
-//     header('Location: /login.php?error=1');
-//     exit;
-// }
+    header('Location: /index.php');
+    exit;
+} else {
+    // 실패 처리
+    header('Location: /login.php?error=1');
+    exit;
+}
