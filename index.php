@@ -2,7 +2,10 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <?php include __DIR__ . "/head.php"; ?>
+  <?php 
+    include __DIR__ . "/head.php"; 
+    print_r($_SESSION);
+  ?>
 </head>
 <style>
   body {background:#F3F3F6}
