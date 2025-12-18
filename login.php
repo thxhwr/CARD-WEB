@@ -34,7 +34,7 @@
                     <input type="password"  name="pw" class=" f-input" placeholder="비밀번호 입력" required>
                 </div>
                  <?php if (!empty($_GET['error'])): ?>
-                    <p style="text-align:center;margin:auto 0;color:#f44;font-size:12px;">로그인에 실패했습니다. 다시 확인해주세요.</p>
+                    <p style="padding-top:5%;text-align:center;margin:auto 0;color:#f44;font-size:12px;">로그인에 실패했습니다. 다시 확인해주세요.</p>
                 <?php endif; ?>
                 <button class="btn-submit" type="submit">로그인</button>
 
