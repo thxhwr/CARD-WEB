@@ -101,16 +101,20 @@
 
      <main class="page">
             <section class="apply-form">
-                <div class="mypage-section-title">아이디</div>
-                <div class="mypage-user-id">
-                    <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
+                <div class="f-group">
+                    <div class="mypage-section-title">아이디</div>
+                    <div class="mypage-user-id">
+                        <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
+                    </div>
                 </div>
-                <div class="mypage-section-title">보유 페이</div>
-                <div class="mypage-pay-wrap">
-                    <div>
-                        <div class="mypage-pay-amount">
-                            <?= number_format($user_pay ?? 0) ?>
-                            <span class="mypage-pay-unit">P</span>
+                <div class="f-group">
+                    <div class="mypage-section-title">보유 페이</div>
+                    <div class="mypage-pay-wrap">
+                        <div>
+                            <div class="mypage-pay-amount">
+                                <?= number_format($user_pay ?? 0) ?>
+                                <span class="mypage-pay-unit">P</span>
+                            </div>
                         </div>
                     </div>
                 </div>
