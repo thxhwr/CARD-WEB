@@ -60,12 +60,10 @@ if (isset($data['result']) && $data['result'] === 'OK') {
     // 보안상 세션ID 재발급
     session_regenerate_id(true);
 
-    print_r($response);
-    // header('Location: /index.php');
-    // exit;
+    header('Location: /index.php');
+    exit;
 } else {
     // 실패 처리
-        print_r($response);
-    // header('Location: /login.php?error=1');
-    // exit;
+    header('Location: /login.php?error=1');
+    exit;
 }
