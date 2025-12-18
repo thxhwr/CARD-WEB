@@ -41,11 +41,11 @@ if (isset($data['result']) && $data['result'] === 'OK') {
     $_SESSION['token']    = $data['token'] ?? null;
 
     print_r($response);
-    // header('Location: /mypage.php');
+    // header('Location: /index.php');
     // exit;
 } else {
     // 실패 처리
-    print_r($response);
+        print_r($response);
     // header('Location: /login.php?error=1');
     // exit;
 }
