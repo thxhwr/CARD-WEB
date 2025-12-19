@@ -41,10 +41,10 @@
                     </div>
 
                     <!-- 영문 이름 -->
-                    <div class="f-group is-disabled">
+                    <!-- <div class="f-group is-disabled">
                         <label class="f-label required" for="ename">영문 이름</label>
                         <input id="ename" name="ename" class="f-input" type="text" placeholder="영문 이름을 입력해주세요" required>
-                    </div>
+                    </div> -->
 
                     <!-- 배송지 -->
                     <!-- <div class="f-group is-disabled">
