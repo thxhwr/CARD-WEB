@@ -1,4 +1,5 @@
 <?php
+session_start();
 // 사용자가 입력한 값
 $name = $_POST['name'] ?? '';
 $phone = $_POST['phone'] ?? '';
