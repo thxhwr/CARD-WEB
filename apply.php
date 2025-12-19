@@ -58,17 +58,17 @@
 
                         <!-- 우편번호 -->
                         <div class="addr-row">
-                            <input type="text" id="zipcode" class="f-input" placeholder="우편번호" readonly>
+                            <input type="text" id="zipcode" name="zipcode" class="f-input" placeholder="우편번호" readonly>
                             <button type="button" class="btn-zip" onclick="execDaumPostcode()">
                             우편번호 검색
                             </button>
                         </div>
 
                         <!-- 기본 주소 -->
-                        <input type="text" id="address" class="f-input" placeholder="기본 주소" readonly>
+                        <input type="text" id="address" class="f-input" name="address" placeholder="기본 주소" readonly>
 
                         <!-- 상세 주소 -->
-                        <input type="text" id="address_detail" class="f-input" placeholder="상세 주소 입력">
+                        <input type="text" id="address_detail" class="f-input" name="address_detail" placeholder="상세 주소 입력">
                     </div>
                     <!-- 연락처 -->
                     <div class="f-group is-disabled">
