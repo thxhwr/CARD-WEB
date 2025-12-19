@@ -13,6 +13,7 @@ $address = $_POST['zipcode'].$_POST['address'].$_POST['address_detail'];
 
 // API로 보낼 데이터 (필드명은 API 문서에 맞게 수정)
 $postFields = [
+    'accountNo' => $_SESSION['user_No'],
   'referrerAccountNo' => $referral,
   'name' => $name,
   'phone' => $phone,
