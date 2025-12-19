@@ -22,7 +22,7 @@
         <main class="page">
             <section class="apply-form">
 
-                <form id="cardApplyForm" class="form">
+                <form id="cardApplyForm" class="form" action="/apply-process.php" method="post">
                     <!-- <div class="f-group is-disabled">
                         <label class="f-label required" for="userid">아이디</label>
                         <input id="userid" name="userid" class="f-input" type="text" placeholder="땡스페이 아이디를 입력해주세요" required>
