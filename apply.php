@@ -78,14 +78,47 @@
                         <div class="account-row">
                             <select name="bank" class="bank-select">
                                 <option value="">은행 선택</option>
-                                <option value="국민은행">국민은행</option>
+                                <option value="국민은행">국민은행(KB)</option>
                                 <option value="신한은행">신한은행</option>
-                                <option value="농협은행">농협은행</option>
                                 <option value="우리은행">우리은행</option>
                                 <option value="하나은행">하나은행</option>
-                                <option value="기업은행">기업은행</option>
+                                <option value="농협은행">농협은행(NH)</option>
+                                <option value="기업은행">기업은행(IBK)</option>
+                                <option value="산업은행">산업은행(KDB)</option>
+                                <option value="수협은행">수협은행</option>
+
+                                <!-- 지방은행 -->
+                                <option value="부산은행">부산은행</option>
+                                <option value="경남은행">경남은행</option>
+                                <option value="광주은행">광주은행</option>
+                                <option value="전북은행">전북은행</option>
+                                <option value="제주은행">제주은행</option>
+                                <option value="대구은행">대구은행</option>
+
+                                <!-- 인터넷전문은행 -->
                                 <option value="카카오뱅크">카카오뱅크</option>
                                 <option value="토스뱅크">토스뱅크</option>
+                                <option value="케이뱅크">케이뱅크(KBANK)</option>
+
+                                <!-- 외국계 은행 -->
+                                <option value="씨티은행">한국씨티은행</option>
+                                <option value="HSBC">HSBC은행</option>
+                                <option value="JP Morgan">JP Morgan Chase</option>
+                                <option value="BOA">뱅크오브아메리카(BOA)</option>
+                                <option value="SC제일은행">SC제일은행</option>
+                                <option value="BNP Paribas">BNP Paribas</option>
+                                <option value="중국공상은행">중국공상은행(ICBC)</option>
+                                <option value="중국은행">중국은행(BOC)</option>
+                                <option value="중국건설은행">중국건설은행(CCB)</option>
+                                <option value="도이치은행">도이치은행</option>
+                                <option value="미즈호은행">미즈호은행</option>
+                                <option value="미쓰비시UFJ은행">미쓰비시UFJ은행(MUFG)</option>
+
+                                <!-- 기타 금융기관(필요시 추가) -->
+                                <option value="새마을금고">새마을금고</option>
+                                <option value="신협">신협</option>
+                                <option value="우체국">우체국</option>
+                                <option value="저축은행">저축은행(각 지역 SB)</option>
                             </select>
                             <input id="account" name="account" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
                         </div>
