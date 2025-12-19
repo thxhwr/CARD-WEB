@@ -18,7 +18,7 @@ $postFields = [
   'phone' => $phone,
   'address' => $address,
 ];
-
+print_r($postFields);
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberInsert.php');
 curl_setopt_array($ch, [
     CURLOPT_POST => true,
