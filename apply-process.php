@@ -5,6 +5,9 @@ $name = $_POST['name'] ?? '';
 $phone = $_POST['phone'] ?? '';
 $referral = $_POST['referral'] ?? '';
 $address = $_POST['zipcode'].''.$_POST['address'].''.$_POST['address_detail'] ?? '';
+echo $_POST['zipcode'];
+echo $_POST['address'];
+echo $_POST['address_detail'];
 echo $address;
 // 간단 유효성 검증
 // if ($id === '' || $pw === '') {
