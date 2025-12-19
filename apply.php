@@ -119,7 +119,7 @@
                             <option value="우체국">우체국</option>
                             <option value="저축은행">저축은행(각 지역 SB)</option>
                         </select>
-                        <input id="account" name="account" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
+                        <input id="account" name="account"  style="margin-top: 10px;" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
                     </div>
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="referral">추천인</label>
