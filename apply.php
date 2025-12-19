@@ -73,7 +73,14 @@
                         <label class="f-label required" for="phone">연락처</label>
                         <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
                     </div>
-
+                    <div class="f-group is-disabled">
+                        <label class="f-label required" for="account">계좌번호</label>
+                        <input id="account" name="account" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
+                    </div>
+                    <div class="f-group is-disabled">
+                        <label class="f-label required" for="referral">추천인</label>
+                        <input id="referral" name="referral" class="f-input" type="text"  placeholder="카드 소유자의 추천인을 입력해주세요" required>
+                    </div>
                     <!-- 하단 고정 버튼 -->
                     <div class="form-actions">
                         <button class="apply-submit" type="submit" disabled onclick="location.href('apply-complete.php')">
