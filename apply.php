@@ -181,7 +181,7 @@
             toggleDisabledState(); toggleSubmit();
 
             form.addEventListener('submit', (e)=>{
-                e.preventDefault();
+                //e.preventDefault();
                 // alert("신청되었습니다.");
                 // location.href = "apply-complete.php";
             });
