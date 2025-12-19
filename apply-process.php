@@ -8,7 +8,7 @@ $zipcode        = $_POST['zipcode'] ?? '';
 $addr           = $_POST['address'] ?? '';
 $addr_detail    = $_POST['address_detail'] ?? '';
 
-$address = $zipcode . '' . $addr . '' . $addr_detail;
+$address = $zipcode . ' ' . $addr . ' ' . $addr_detail;
 // 간단 유효성 검증
 // if ($id === '' || $pw === '') {
 //     header('Location: /login.php?error=1');
