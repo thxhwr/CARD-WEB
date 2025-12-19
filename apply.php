@@ -23,16 +23,16 @@
             <section class="apply-form">
 
                 <form id="cardApplyForm" class="form">
-                    <div class="f-group is-disabled">
+                    <!-- <div class="f-group is-disabled">
                         <label class="f-label required" for="userid">아이디</label>
                         <input id="userid" name="userid" class="f-input" type="text" placeholder="땡스페이 아이디를 입력해주세요" required>
-                    </div>
+                    </div> -->
 
                     <!-- 비밀번호 -->
-                    <div class="f-group is-disabled">
+                    <!-- <div class="f-group is-disabled">
                         <label class="f-label required" for="pin">비밀번호</label>
                         <input id="pin" name="pin" class="f-input" type="password" inputmode="numeric" placeholder="땡스페이 비밀번호를 입력해주세요" required>
-                    </div>
+                    </div> -->
 
                     <!-- 이름 -->
                     <div class="f-group is-disabled">
@@ -70,10 +70,10 @@
                     </div>
                     <!-- 연락처 -->
                     <div class="f-group is-disabled">
-                        <label class="f-label required" for="phone">연락처</label>
+                        <label class="f-label required" for="phone">전화번호</label>
                         <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
                     </div>
-                    <div class="f-group is-disabled">
+                    <!-- <div class="f-group is-disabled">
                         <label class="f-label required" for="account">계좌번호</label>
                         <select name="bank" class="bank-select">
                             <option value="">은행 선택</option>
@@ -86,7 +86,7 @@
                             <option value="산업은행">산업은행(KDB)</option>
                             <option value="수협은행">수협은행</option>
 
-                            <!-- 지방은행 -->
+                          
                             <option value="부산은행">부산은행</option>
                             <option value="경남은행">경남은행</option>
                             <option value="광주은행">광주은행</option>
@@ -94,12 +94,12 @@
                             <option value="제주은행">제주은행</option>
                             <option value="대구은행">대구은행</option>
 
-                            <!-- 인터넷전문은행 -->
+                         
                             <option value="카카오뱅크">카카오뱅크</option>
                             <option value="토스뱅크">토스뱅크</option>
                             <option value="케이뱅크">케이뱅크(KBANK)</option>
 
-                            <!-- 외국계 은행 -->
+                           
                             <option value="씨티은행">한국씨티은행</option>
                             <option value="HSBC">HSBC은행</option>
                             <option value="JP Morgan">JP Morgan Chase</option>
@@ -113,14 +113,14 @@
                             <option value="미즈호은행">미즈호은행</option>
                             <option value="미쓰비시UFJ은행">미쓰비시UFJ은행(MUFG)</option>
 
-                            <!-- 기타 금융기관(필요시 추가) -->
+                           
                             <option value="새마을금고">새마을금고</option>
                             <option value="신협">신협</option>
                             <option value="우체국">우체국</option>
                             <option value="저축은행">저축은행(각 지역 SB)</option>
                         </select>
                         <input id="account" name="account"  style="margin-top: 10px;" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
-                    </div>
+                    </div> -->
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="referral">추천인</label>
                         <input id="referral" name="referral" class="f-input" type="text"  placeholder="카드 소유자의 추천인을 입력해주세요" required>
