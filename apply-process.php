@@ -30,8 +30,7 @@ curl_setopt_array($ch, [
 $response = curl_exec($ch);
 if ($response === false) {
     curl_close($ch);
-    header('Location: /login.php?error=1');
-    exit;
+   
 }
 curl_close($ch);
 
