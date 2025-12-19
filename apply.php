@@ -75,7 +75,20 @@
                     </div>
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="account">계좌번호</label>
-                        <input id="account" name="account" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
+                        <div class="account-row">
+                            <select name="bank" class="bank-select">
+                                <option value="">은행 선택</option>
+                                <option value="국민은행">국민은행</option>
+                                <option value="신한은행">신한은행</option>
+                                <option value="농협은행">농협은행</option>
+                                <option value="우리은행">우리은행</option>
+                                <option value="하나은행">하나은행</option>
+                                <option value="기업은행">기업은행</option>
+                                <option value="카카오뱅크">카카오뱅크</option>
+                                <option value="토스뱅크">토스뱅크</option>
+                            </select>
+                            <input id="account" name="account" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
+                        </div>
                     </div>
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="referral">추천인</label>
