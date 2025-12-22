@@ -93,7 +93,7 @@ if ($root) {
     ksort($levels); // 1 → 3 순서
 }
 ?>
-<?php $pageTitle = "마이페이지"; ?>
+<?php $pageTitle = "추천인"; ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -101,76 +101,88 @@ if ($root) {
 </head>
 </head>
 <body>
+<div class="app">
+    <header class="appbar-apply">
+        <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
+            <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">
+                <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
+            </a>
+            <h1 class="appbar__title">추천인</h1>
+            <a href="/index.php" class="nav-btn home-btn" aria-label="홈"></a>
+        </nav>
+    </header>
 
-<div class="tree-wrap">
+    <main class="page">
+        <div class="tree-wrap">
 
-    <div class="tree-header">
-        <div>
-            <div class="tree-title">추천계보</div>
-            <div class="root-info">
-                기준 계정:
-                <strong><?= htmlspecialchars($rootAccountNo, ENT_QUOTES) ?></strong>
-                (이 계정을 루트로, 아래 3대까지만 표시)
-            </div>
-        </div>
-    </div>
-
-    <?php if ($errorMsg): ?>
-        <!-- 존재하지 않는 계정 / API 에러 등 -->
-        <p class="error-text"><?= htmlspecialchars($errorMsg, ENT_QUOTES) ?></p>
-
-    <?php elseif (!$root): ?>
-        <p class="empty-text">루트 정보를 가져오지 못했습니다.</p>
-
-    <?php else: ?>
-
-        <!-- 루트(나 또는 검색한 계정) 카드 -->
-        <div class="tree-level">
-            <div class="tree-row">
-                <div class="node-card node-root">
-                    <div class="node-name">
-                        <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
-                    </div>
-                    <div class="node-meta">
-                        줄: <?= (int)($root['dept'] ?? 0) ?>
-                        · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
-                    </div>
-                    <div class="node-account">
-                        <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
+            <div class="tree-header">
+                <div>
+                    <div class="tree-title">추천계보</div>
+                    <div class="root-info">
+                        기준 계정:
+                        <strong><?= htmlspecialchars($rootAccountNo, ENT_QUOTES) ?></strong>
+                        (이 계정을 루트로, 아래 3대까지만 표시)
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 루트 기준 아래 3대 -->
-        <?php if (empty($levels)): ?>
-            <p class="empty-text">표시할 추천인 계보가 없습니다. (밑으로 3대가 없음)</p>
-        <?php else: ?>
-            <?php foreach ($levels as $relDepth => $nodes): ?>
+            <?php if ($errorMsg): ?>
+                <!-- 존재하지 않는 계정 / API 에러 등 -->
+                <p class="error-text"><?= htmlspecialchars($errorMsg, ENT_QUOTES) ?></p>
+
+            <?php elseif (!$root): ?>
+                <p class="empty-text">루트 정보를 가져오지 못했습니다.</p>
+
+            <?php else: ?>
+
+                <!-- 루트(나 또는 검색한 계정) 카드 -->
                 <div class="tree-level">
                     <div class="tree-row">
-                        <?php foreach ($nodes as $n): ?>
-                            <div class="node-card">
-                                <div class="node-name">
-                                    <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
-                                </div>
-                                <div class="node-meta">
-                                    줄: <?= (int)($n['dept'] ?? 0) ?>
-                                    · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
-                                </div>
-                                <div class="node-account">
-                                    <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
-                                </div>
+                        <div class="node-card node-root">
+                            <div class="node-name">
+                                <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
                             </div>
-                        <?php endforeach; ?>
+                            <div class="node-meta">
+                                줄: <?= (int)($root['dept'] ?? 0) ?>
+                                · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
+                            </div>
+                            <div class="node-account">
+                                <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
 
-    <?php endif; ?>
+                <!-- 루트 기준 아래 3대 -->
+                <?php if (empty($levels)): ?>
+                    <p class="empty-text">표시할 추천인 계보가 없습니다. (밑으로 3대가 없음)</p>
+                <?php else: ?>
+                    <?php foreach ($levels as $relDepth => $nodes): ?>
+                        <div class="tree-level">
+                            <div class="tree-row">
+                                <?php foreach ($nodes as $n): ?>
+                                    <div class="node-card">
+                                        <div class="node-name">
+                                            <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
+                                        </div>
+                                        <div class="node-meta">
+                                            줄: <?= (int)($n['dept'] ?? 0) ?>
+                                            · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
+                                        </div>
+                                        <div class="node-account">
+                                            <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
 
+            <?php endif; ?>
+
+        </div>
+    </main>
 </div>
-
 </body>
 </html>
