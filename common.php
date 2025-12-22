@@ -1,4 +1,4 @@
 <?php
-    session_start()l
+    session_start();
     $isLogin == $_SESSION['user_Id'];
 ?>
