@@ -1668,3 +1668,109 @@ body {
     width: 18px;
     height: 18px;
 }
+
+ .tree-wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+    }
+
+    .tree-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+    }
+
+    .tree-title {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .root-info {
+        font-size: 13px;
+        color: #6b7280;
+    }
+
+    .search-form {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .search-input {
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid #d1d5db;
+        min-width: 220px;
+        font-size: 13px;
+    }
+
+    .search-btn {
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: none;
+        background: #111827;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .tree-level {
+        margin-bottom: 24px;
+        text-align: center;
+        overflow-x: auto; /* 같은 세대 가로로 길어지면 스크롤 */
+    }
+
+    .tree-row {
+        display: inline-flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: nowrap;      /* 같은 세대는 한 줄에 고정 */
+    }
+
+    .node-card {
+        background: #ffffff;
+        padding: 14px 18px;
+        border-radius: 18px;
+        box-shadow: 0 10px 20px rgba(15,23,42,0.08);
+        min-width: 180px;
+        max-width: 220px;
+        text-align: left;
+        border-top: 3px solid #f97316;
+        font-size: 13px;
+    }
+
+    .node-root {
+        border-top-color: #6366f1; /* 루트는 색만 살짝 다르게 */
+    }
+
+    .node-name {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .node-meta {
+        font-size: 12px;
+        color: #6b7280;
+        margin-bottom: 2px;
+    }
+
+    .node-account {
+        font-size: 12px;
+        color: #4b5563;
+        word-break: break-all;
+    }
+
+    .empty-text, .error-text {
+        font-size: 24px;
+        color: #9ca3af;
+        margin-top: 12px;
+        text-align: center;
+    }
+
+    .error-text {
+        color: #ef4444;
+    }
