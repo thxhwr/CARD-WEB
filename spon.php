@@ -67,19 +67,12 @@ unset($list);
 // dept 순서대로 정렬
 ksort($levels);
 ?>
+<?php $pageTitle = "후원계보"; ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>추천인 계보</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <?php include __DIR__ . "/head.php"; ?>
 <style>
-body {
-    margin:0; padding:16px;
-    background:#f7f7f9;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
 
 .tree-wrap {
     max-width:900px;
@@ -126,7 +119,7 @@ body {
 <body>
 
 <div class="tree-wrap">
-    <div class="tree-title">추천인 계보</div>
+    <div class="tree-title">후원 계보</div>
 
     <?php foreach ($levels as $dept => $nodes): ?>
         <div class="tree-level">
