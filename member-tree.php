@@ -116,72 +116,59 @@ if ($root) {
         <div class="tree-wrap">
 
             <div class="tree-header">
-                <div>
+                <div style="margin:0 auto">
                     <div class="root-info">
                         <b>옆으로 스크롤(줄을 밀면)시 모두 확인 가능합니다.</b>
                     </div>
                 </div>
             </div>
-
-            <?php if ($errorMsg): ?>
-                <!-- 존재하지 않는 계정 / API 에러 등 -->
-                <p class="error-text"><?= htmlspecialchars($errorMsg, ENT_QUOTES) ?></p>
-
-            <?php elseif (!$root): ?>
-                <p class="empty-text">루트 정보를 가져오지 못했습니다.</p>
-
-            <?php else: ?>
-
                 <!-- 루트(나 또는 검색한 계정) 카드 -->
-                <div class="tree-level">
-                    <div class="tree-row">
-                        <div class="node-card node-root">
-                            <div class="node-name">
-                                <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
-                            </div>
-                            <div class="node-meta">
-                                줄: <?= (int)($root['dept'] ?? 0) ?>
-                                · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
-                            </div>
-                            <div class="node-account">
-                                <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
-                            </div>
+            <div class="tree-level">
+                <div class="tree-row">
+                    <div class="node-card node-root">
+                        <div class="node-name">
+                            <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
+                        </div>
+                        <div class="node-meta">
+                            줄: <?= (int)($root['dept'] ?? 0) ?>
+                            · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
+                        </div>
+                        <div class="node-account">
+                            <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 루트 기준 아래 3대 -->
-                <?php if (empty($levels)): ?>
-                    <p class="empty-text">표시할 추천인 계보가 없습니다. (밑으로 3대가 없음)</p>
-                <?php else: ?>
-                    <?php foreach ($levels as $relDepth => $nodes): ?>
-                        <div class="tree-level">
-                            <div class="tree-level-label">
-                            <?= (int)$relDepth ?>대
+            <!-- 루트 기준 아래 3대 -->
+            <?php if (empty($levels)): ?>
+                <p class="empty-text">표시할 추천인 계보가 없습니다. (밑으로 3대가 없음)</p>
+            <?php else: ?>
+                <?php foreach ($levels as $relDepth => $nodes): ?>
+                    <div class="tree-level-label">
+                        <?= (int)$relDepth ?>대
+                    </div>
+                    <div class="tree-level">
+                        <div class="tree-row">
+                        <?php foreach ($nodes as $n): ?>
+                            <div class="tree-node-card">
+                            <div class="tree-node-name">
+                                <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                             </div>
-
-                            <div class="tree-row">
-                            <?php foreach ($nodes as $n): ?>
-                                <div class="tree-node-card">
-                                <div class="tree-node-name">
-                                    <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
-                                </div>
-                                <!-- <div class="tree-node-meta">
-                                    줄: <?= (int)($n['dept'] ?? 0) ?>
-                                    · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
-                                </div> -->
-                                <div class="tree-node-account">
-                                    <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
-                                </div>
-                                </div>
-                            <?php endforeach; ?>
+                            <!-- <div class="tree-node-meta">
+                                줄: <?= (int)($n['dept'] ?? 0) ?>
+                                · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
+                            </div> -->
+                            <div class="tree-node-account">
+                                <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
                             </div>
+                            </div>
+                        <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-
+                    </div>
+                <?php endforeach; ?>
             <?php endif; ?>
-
+        <?php endif; ?>
         </div>
     </main>
 </div>
