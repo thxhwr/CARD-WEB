@@ -8,6 +8,7 @@ $memberNo = $_SESSION['user_Id'] ?? null;
 $postFields = [
   'userId' => $memberNo,
 ];
+print_r($postFields);
 // API URL (경로는 네 프로젝트 구조에 맞게 수정)
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberSpon.php');
 curl_setopt_array($ch, [
