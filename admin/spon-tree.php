@@ -101,10 +101,9 @@ if ($root) {
 ?>
 <?php include __DIR__ . "/head.php"; ?>
 <div class="main">
-  <!-- 상단바 -->
+  <?php include __DIR__ . "/side.php"; ?>
   <header class="topbar">
     <div class="topbar-left">
-      <!-- 모바일 햄버거 버튼 (이미 쓰고 있으면 그대로 두고, 아니면 삭제해도 됨) -->
       <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="메뉴 열기">
         ☰
       </button>
