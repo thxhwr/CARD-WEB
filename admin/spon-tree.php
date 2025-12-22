@@ -179,10 +179,10 @@ if ($root) {
                 <div class="tree-node-name">
                   <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
                 </div>
-                <div class="tree-node-meta">
+                <!-- <div class="tree-node-meta">
                   줄: <?= (int)($root['dept'] ?? 0) ?>
                   · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
-                </div>
+                </div> -->
                 <div class="tree-node-account">
                   <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
                 </div>
