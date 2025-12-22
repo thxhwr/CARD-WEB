@@ -1,8 +1,8 @@
  <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <div class="sidebar-logo">M</div>
+      <div class="sidebar-logo"><img src="./assets/icons/logo-h.svg"></div>
       <div class="sidebar-title">
-        <span class="sidebar-title-main"><img src="./assets/icons/logo-h.svg"></span>
+        <span class="sidebar-title-main"></span>
         <span class="sidebar-title-sub">쇼핑몰 관리자센터</span>
       </div>
     </div>
