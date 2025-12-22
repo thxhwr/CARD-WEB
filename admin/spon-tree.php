@@ -1,10 +1,5 @@
 <?php
-session_start();
-
-/* -----------------------------------------------------
- * 0. 기준 계정 (로그인한 사람)
- * --------------------------------------------------- */
-$myAccountNo = $_SESSION['user_No'] ?? null;   // 예: "kni1993@naver.com"
+$myAccountNo = "kni1993@naver.com" ?? null;
 if (!$myAccountNo) {
     echo "로그인이 필요합니다.";
     exit;

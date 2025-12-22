@@ -42,17 +42,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="spon-tree.php" class="nav-link">
               <div class="nav-link-icon">💸</div>
-              <span>쿠폰 / 프로모션</span>
+              <span>후원 계보</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <div class="nav-link-icon">⚙️</div>
-              <span>환경 설정</span>
-            </a>
-          </li>
+          </li> 
         </ul>
       </div>
     </nav>
