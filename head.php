@@ -1,5 +1,20 @@
 <?php
   $title = isset($pageTitle) ? $pageTitle . " · THXDEAL" : "THXDEAL";
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
+
+  $current = basename($_SERVER['PHP_SELF']);  // 현재 파일 이름
+
+  if (empty($_SESSION['user_No'])) {
+      // index.php, login.php 등은 예외
+      $allow = ['index.php', 'login.php'];
+
+      if (!in_array($current, $allow, true)) {
+          header('Location: /index.php');
+          exit;
+      }
+  }
 ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
