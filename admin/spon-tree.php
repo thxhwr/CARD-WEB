@@ -208,10 +208,10 @@ if ($root) {
                       <div class="tree-node-name">
                         <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                       </div>
-                      <div class="tree-node-meta">
+                      <!-- <div class="tree-node-meta">
                         줄: <?= (int)($n['dept'] ?? 0) ?>
                         · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
-                      </div>
+                      </div> -->
                       <div class="tree-node-account">
                         <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
                       </div>
