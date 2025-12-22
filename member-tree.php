@@ -118,7 +118,7 @@ if ($root) {
             <div class="tree-header">
                 <div>
                     <div class="root-info">
-                       
+                        <b>옆으로 스크롤(줄을 밀면)시 모두 확인 가능합니다.</b>
                     </div>
                 </div>
             </div>
