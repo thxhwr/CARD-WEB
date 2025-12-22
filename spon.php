@@ -136,7 +136,7 @@ body {
                 <div class="node-card">
                     <div class="node-name"><?= htmlspecialchars($n['name']) ?></div>
                     <div class="node-meta">
-                        줄  : <?= $n['userId'] ?> · 순서 <?= $n['deptNo'] ?>
+                        줄  : <?= $n['dept'] ?> · 순서 <?= $n['deptNo'] ?>
                     </div>
                     <div class="node-account"><?= htmlspecialchars($n['accountNo']) ?></div>
                 </div>
