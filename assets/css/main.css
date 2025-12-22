@@ -1572,83 +1572,101 @@ body {
     background: #fff;
 }
 
- .mypage-title {
-            font-size: 20px;
-            font-weight: 700;
-        }
+.mypage-title {
+    font-size: 20px;
+    font-weight: 700;
+}
 
-        .mypage-sub {
-            font-size: 13px;
-            color: var(--primary);
-        }
+.mypage-sub {
+    font-size: 13px;
+    color: var(--primary);
+}
 
-        .mypage-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 18px 16px;
-            box-shadow:
-                0 10px 15px -10px rgba(0, 0, 0, 0.15),
-                0 0 0 1px rgba(15, 23, 42, 0.02);
-            margin-bottom: 16px;
-        }
+.mypage-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 18px 16px;
+    box-shadow:
+        0 10px 15px -10px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(15, 23, 42, 0.02);
+    margin-bottom: 16px;
+}
 
-        .mypage-section-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 6px;
-        }
+.mypage-section-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 6px;
+}
 
-        .mypage-user-id {
-            font-size: 17px;
-            font-weight: 600;
-        }
+.mypage-user-id {
+    font-size: 17px;
+    font-weight: 600;
+}
 
-        .mypage-pay-wrap {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 8px;
-        }
+.mypage-pay-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
 
-        .mypage-pay-amount {
-            font-size: 22px;
-            font-weight: 700;
-        }
+.mypage-pay-amount {
+    font-size: 22px;
+    font-weight: 700;
+}
 
-        .mypage-pay-unit {
-            font-size: 20px;
-            margin-left: 4px;
-        }
+.mypage-pay-unit {
+    font-size: 20px;
+    margin-left: 4px;
+}
 
-        .mypage-pay-label {
-            font-size: 13px;
-            color: var(--primary);
-        }
+.mypage-pay-label {
+    font-size: 13px;
+    color: var(--primary);
+}
 
-        .mypage-actions {
-            margin-top: 24px;
-        }
+.mypage-actions {
+    margin-top: 24px;
+}
 
-        .btn-logout {
-            width: 100%;
-            border: none;
-            border-radius: 999px;
-            padding: 13px 16px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            background: var(--primary);
-            color: #ffffff;
-            transition: background 0.15s ease, transform 0.08s ease;
-        }
+.btn-logout {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 13px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--primary);
+    color: #ffffff;
+    transition: background 0.15s ease, transform 0.08s ease;
+}
 
-        .btn-logout:active {
-            transform: translateY(1px);
-            background: var(--primary-hover);
-        }
+.btn-logout:active {
+    transform: translateY(1px);
+    background: var(--primary-hover);
+}
 
-        /* 살짝 위에 여백 */
-        .mypage-footer-space {
-            height: 24px;
-        }
+/* 살짝 위에 여백 */
+.mypage-footer-space {
+    height: 24px;
+}
+        
+
+.mypage-link {
+    display: flex;
+    justify-content: space-between; /* 좌 / 우 정렬 */
+    align-items: center;
+    padding: 16px 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e86e33; /* 주황색 텍스트 */
+    text-decoration: none;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.mypage-link .arrow-icon {
+    width: 18px;
+    height: 18px;
+}
