@@ -108,7 +108,7 @@ if ($root) {
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>추천인 계보</title>
+<title>후원계보</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -232,7 +232,7 @@ if ($root) {
 
     <div class="tree-header">
         <div>
-            <div class="tree-title">추천인 계보</div>
+            <div class="tree-title">후원계보</div>
             <div class="root-info">
                 기준 계정:
                 <strong><?= htmlspecialchars($rootAccountNo, ENT_QUOTES) ?></strong>
@@ -279,7 +279,7 @@ if ($root) {
 
         <!-- 루트 기준 아래 3대 -->
         <?php if (empty($levels)): ?>
-            <p class="empty-text">표시할 추천인 계보가 없습니다. (밑으로 3대가 없음)</p>
+            <p class="empty-text">표시할 후원인 계보가 없습니다. (밑으로 3대가 없음)</p>
         <?php else: ?>
             <?php foreach ($levels as $relDepth => $nodes): ?>
                 <div class="tree-level">
