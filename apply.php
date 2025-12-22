@@ -3,6 +3,7 @@
 <html lang="ko">
 <head>
   <?php 
+    include __DIR__ . "/auth.php";
     include __DIR__ . "/head.php"; 
     ?>
 </head>
