@@ -1670,7 +1670,7 @@ body {
 }
 
 .tree-wrap {
-    max-width: 1120px;
+    width:96%;
     margin: 0 auto;
 }
 

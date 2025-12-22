@@ -123,16 +123,11 @@ if ($root) {
                     </div>
                 </div>
             </div>
-                <!-- 루트(나 또는 검색한 계정) 카드 -->
             <div class="tree-level">
                 <div class="tree-row">
                     <div class="node-card node-root">
                         <div class="node-name">
                             <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
-                        </div>
-                        <div class="node-meta">
-                            줄: <?= (int)($root['dept'] ?? 0) ?>
-                            · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
                         </div>
                         <div class="node-account">
                             <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
@@ -140,8 +135,6 @@ if ($root) {
                     </div>
                 </div>
             </div>
-
-            <!-- 루트 기준 아래 3대 -->
             <?php if (empty($levels)): ?>
                 <p class="empty-text">표시할 추천인 계보가 없습니다. (밑으로 3대가 없음)</p>
             <?php else: ?>
