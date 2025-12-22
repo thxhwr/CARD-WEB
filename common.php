@@ -1,4 +1,6 @@
 <?php
     session_start();
-    $isLogin === $_SESSION['user_Id'];
+    $isLogin = !empty($_SESSION['user_Id']);
+
+    echo $isLogin;
 ?>
