@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>쇼핑몰 관리자 - 회원 관리</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 공통 스타일 -->
-  <link rel="stylesheet" href="main.css" />
+ <link rel="preload" href="./assets/css/main.css" as="style">
+<link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
 
