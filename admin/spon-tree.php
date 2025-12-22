@@ -99,208 +99,134 @@ if ($root) {
     ksort($levels); // 1 → 3 순서
 }
 ?>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>후원계보</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php include __DIR__ . "/head.php"; ?>
+<div class="main">
+  <!-- 상단바 -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <!-- 모바일 햄버거 버튼 (이미 쓰고 있으면 그대로 두고, 아니면 삭제해도 됨) -->
+      <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="메뉴 열기">
+        ☰
+      </button>
 
-<style>
-    body {
-        margin: 0;
-        padding: 16px;
-        background: #f7f7f9;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    .tree-wrap {
-        max-width: 1120px;
-        margin: 0 auto;
-    }
-
-    .tree-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 16px;
-        flex-wrap: wrap;
-    }
-
-    .tree-title {
-        font-size: 20px;
-        font-weight: 700;
-    }
-
-    .root-info {
-        font-size: 13px;
-        color: #6b7280;
-    }
-
-    .search-form {
-        display: flex;
-        gap: 8px;
-        margin-top: 8px;
-    }
-
-    .search-input {
-        padding: 8px 10px;
-        border-radius: 999px;
-        border: 1px solid #d1d5db;
-        min-width: 220px;
-        font-size: 13px;
-    }
-
-    .search-btn {
-        padding: 8px 14px;
-        border-radius: 999px;
-        border: none;
-        background: #111827;
-        color: #fff;
-        font-size: 13px;
-        cursor: pointer;
-    }
-
-    .tree-level {
-        margin-bottom: 24px;
-        text-align: center;
-        overflow-x: auto; /* 같은 세대 가로로 길어지면 스크롤 */
-    }
-
-    .tree-row {
-        display: inline-flex;
-        justify-content: center;
-        gap: 14px;
-        flex-wrap: nowrap;      /* 같은 세대는 한 줄에 고정 */
-    }
-
-    .node-card {
-        background: #ffffff;
-        padding: 14px 18px;
-        border-radius: 18px;
-        box-shadow: 0 10px 20px rgba(15,23,42,0.08);
-        min-width: 180px;
-        max-width: 220px;
-        text-align: left;
-        border-top: 3px solid #f97316;
-        font-size: 13px;
-    }
-
-    .node-root {
-        border-top-color: #6366f1; /* 루트는 색만 살짝 다르게 */
-    }
-
-    .node-name {
-        font-size: 15px;
-        font-weight: 600;
-        margin-bottom: 4px;
-    }
-
-    .node-meta {
-        font-size: 12px;
-        color: #6b7280;
-        margin-bottom: 2px;
-    }
-
-    .node-account {
-        font-size: 12px;
-        color: #4b5563;
-        word-break: break-all;
-    }
-
-    .empty-text, .error-text {
-        font-size: 24px;
-        color: #9ca3af;
-        margin-top: 12px;
-        text-align: center;
-    }
-
-    .error-text {
-        color: #ef4444;
-    }
-</style>
-</head>
-<body>
-
-<div class="tree-wrap">
-     <?php include __DIR__ . "/side.php"; ?>
-    <div class="tree-header">
-        <div>
-            <div class="tree-title">후원계보</div>
-            <div class="root-info">
-                기준 계정:
-                <strong><?= htmlspecialchars($rootAccountNo, ENT_QUOTES) ?></strong>
-                (이 계정을 루트로, 아래 3대까지만 표시)
-            </div>
+      <div>
+        <div class="topbar-title">후원 계보</div>
+        <div class="topbar-subtitle">기준 계정을 루트로 아래 3대까지 후원 계보를 조회합니다.</div>
+        <div class="breadcrumb">
+          <span>홈</span>
+          <span>후원 계보</span>
         </div>
-
-        <form class="search-form" method="get">
-            <input type="text"
-                   name="accountNo"
-                   class="search-input"
-                   placeholder="계보를 보고 싶은 계정(accountNo)을 입력"
-                   value="<?= htmlspecialchars($searchInput ?? '', ENT_QUOTES) ?>">
-            <button type="submit" class="search-btn">검색</button>
-        </form>
+      </div>
     </div>
 
-    <?php if ($errorMsg): ?>
-        <!-- 존재하지 않는 계정 / API 에러 등 -->
-        <p class="error-text"><?= htmlspecialchars($errorMsg, ENT_QUOTES) ?></p>
+    <div class="topbar-right">
+      <!-- 필요하면 우측에 다른 액션 추가 -->
+      <!-- 지금은 비워두거나 새로고침 버튼 정도만 -->
+      <div class="topbar-actions">
+        <button class="icon-button" type="button" title="새로고침" onclick="location.reload();">
+          ⟳
+        </button>
+      </div>
+    </div>
+  </header>
 
-    <?php elseif (!$root): ?>
-        <p class="empty-text">루트 정보를 가져오지 못했습니다.</p>
+  <main class="content">
 
-    <?php else: ?>
-
-        <!-- 루트(나 또는 검색한 계정) 카드 -->
-        <div class="tree-level">
-            <div class="tree-row">
-                <div class="node-card node-root">
-                    <div class="node-name">
-                        <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
-                    </div>
-                    <div class="node-meta">
-                        줄: <?= (int)($root['dept'] ?? 0) ?>
-                        · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
-                    </div>
-                    <div class="node-account">
-                        <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
-                    </div>
-                </div>
-            </div>
+    <!-- 기준 계정 + 검색 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">기준 계정</div>
+          <div class="card-subtitle">
+            기준 계정:
+            <strong><?= htmlspecialchars($rootAccountNo, ENT_QUOTES) ?></strong>
+            <span class="text-sm text-muted"> (이 계정을 루트로 아래 3대까지만 표시)</span>
+          </div>
         </div>
 
-        <!-- 루트 기준 아래 3대 -->
-        <?php if (empty($levels)): ?>
-            <p class="empty-text">표시할 후원인 계보가 없습니다. (밑으로 3대가 없음)</p>
-        <?php else: ?>
-            <?php foreach ($levels as $relDepth => $nodes): ?>
-                <div class="tree-level">
-                    <div class="tree-row">
-                        <?php foreach ($nodes as $n): ?>
-                            <div class="node-card">
-                                <div class="node-name">
-                                    <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
-                                </div>
-                                <div class="node-meta">
-                                    줄: <?= (int)($n['dept'] ?? 0) ?>
-                                    · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
-                                </div>
-                                <div class="node-account">
-                                    <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+        <!-- 오른쪽에 검색 폼 -->
+        <form class="tree-search-form" method="get">
+          <input type="text"
+                 name="accountNo"
+                 class="form-input tree-search-input"
+                 placeholder="계보를 보고 싶은 계정(accountNo)을 입력"
+                 value="<?= htmlspecialchars($searchInput ?? '', ENT_QUOTES) ?>">
+          <button type="submit" class="primary-button tree-search-button">
+            검색
+          </button>
+        </form>
+      </div>
+
+      <!-- 에러 / 빈 데이터 안내 -->
+      <?php if (!empty($errorMsg)): ?>
+        <p class="tree-error-text">
+          <?= htmlspecialchars($errorMsg, ENT_QUOTES) ?>
+        </p>
+
+      <?php elseif (!$root): ?>
+        <p class="tree-empty-text">
+          루트 정보를 가져오지 못했습니다.
+        </p>
+
+      <?php else: ?>
+
+        <!-- 트리 영역 전체 감싸는 컨테이너 -->
+        <div class="tree-container">
+
+          <!-- 루트 (나 또는 검색한 계정) -->
+          <div class="tree-level">
+            <div class="tree-row">
+              <div class="tree-node-card tree-node-root">
+                <div class="tree-node-name">
+                  <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
                 </div>
+                <div class="tree-node-meta">
+                  줄: <?= (int)($root['dept'] ?? 0) ?>
+                  · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
+                </div>
+                <div class="tree-node-account">
+                  <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 루트 기준 아래 3대 -->
+          <?php if (empty($levels)): ?>
+            <p class="tree-empty-text">
+              표시할 후원인 계보가 없습니다. (밑으로 3대가 없음)
+            </p>
+          <?php else: ?>
+            <?php foreach ($levels as $relDepth => $nodes): ?>
+              <div class="tree-level">
+                <div class="tree-level-label">
+                  <?= (int)$relDepth ?>대
+                </div>
+
+                <div class="tree-row">
+                  <?php foreach ($nodes as $n): ?>
+                    <div class="tree-node-card">
+                      <div class="tree-node-name">
+                        <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
+                      </div>
+                      <div class="tree-node-meta">
+                        줄: <?= (int)($n['dept'] ?? 0) ?>
+                        · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
+                      </div>
+                      <div class="tree-node-account">
+                        <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              </div>
             <?php endforeach; ?>
-        <?php endif; ?>
+          <?php endif; ?>
 
-    <?php endif; ?>
+        </div><!-- .tree-container 끝 -->
 
+      <?php endif; ?>
+    </section>
+
+  </main>
 </div>
-
-</body>
-</html>

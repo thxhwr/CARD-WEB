@@ -732,3 +732,102 @@ tbody tr:hover {
     display: none;
   }
 }
+
+/* ==============================
+   후원 계보 페이지 전용 스타일
+   ============================== */
+
+/* 카드 헤더 우측 검색 폼 정렬 */
+.tree-search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tree-search-input {
+  min-width: 220px;
+}
+
+.tree-search-button {
+  padding-inline: 14px;
+}
+
+/* 트리 전체 영역 */
+.tree-container {
+  margin-top: 16px;
+}
+
+/* 세대별 라인 */
+.tree-level {
+  margin-bottom: 24px;
+  text-align: center;
+  overflow-x: auto; /* 한 세대가 가로로 길어지면 스크롤 */
+  padding-bottom: 4px;
+}
+
+/* "1대 / 2대 / 3대" 간단 라벨 */
+.tree-level-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+/* 세대 안의 노드들을 가로로 나열 */
+.tree-row {
+  display: inline-flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: nowrap; /* 같은 세대는 한 줄에 고정 */
+}
+
+/* 각 계정 카드 */
+.tree-node-card {
+  background: #ffffff;
+  padding: 10px 12px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  min-width: 180px;
+  max-width: 220px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-top-width: 3px;
+  border-top-color: #f97316;
+  font-size: 12px;
+}
+
+/* 루트 카드만 색상 살짝 강조 */
+.tree-node-root {
+  border-top-color: var(--primary);
+}
+
+/* 이름, 메타, 계정 번호 */
+.tree-node-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tree-node-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.tree-node-account {
+  font-size: 12px;
+  color: #4b5563;
+  word-break: break-all;
+}
+
+/* 안내 문구 */
+.tree-empty-text,
+.tree-error-text {
+  font-size: 13px;
+  text-align: center;
+  margin: 20px 0 4px;
+  color: var(--text-muted);
+}
+
+.tree-error-text {
+  color: #ef4444;
+}
