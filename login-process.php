@@ -34,11 +34,7 @@ curl_close($ch);
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
 if ($data['resCode'] == "0") {
-    if (!empty($_POST['remember_me'])) {
-        $lifetime = 60 * 60 * 24 * 30;
-    } else {
-        $lifetime = 0;
-    }
+    $lifetime = 60 * 60 * 24 * 30;
     session_set_cookie_params([
         'lifetime' => $lifetime,
         'path'     => '/',
