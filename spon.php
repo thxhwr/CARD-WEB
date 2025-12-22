@@ -21,7 +21,7 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
-
+print_r($response);
 if ($response === false) {
     $error = curl_error($ch);
     curl_close($ch);
