@@ -114,18 +114,6 @@ if ($root) {
 
     <main class="page">
         <div class="tree-wrap">
-
-            <div class="tree-header">
-                <div>
-                    <div class="tree-title">추천계보</div>
-                    <div class="root-info">
-                        기준 계정:
-                        <strong><?= htmlspecialchars($rootAccountNo, ENT_QUOTES) ?></strong>
-                        (이 계정을 루트로, 아래 3대까지만 표시)
-                    </div>
-                </div>
-            </div>
-
             <?php if ($errorMsg): ?>
                 <!-- 존재하지 않는 계정 / API 에러 등 -->
                 <p class="error-text"><?= htmlspecialchars($errorMsg, ENT_QUOTES) ?></p>
