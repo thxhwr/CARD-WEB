@@ -1822,3 +1822,27 @@ body {
   font-weight: 600;
   margin-bottom: 4px;
 }
+.tree-node-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.tree-node-account {
+  font-size: 12px;
+  color: #4b5563;
+  word-break: break-all;
+}
+
+/* 안내 문구 */
+.tree-empty-text,
+.tree-error-text {
+  font-size: 13px;
+  text-align: center;
+  margin: 20px 0 4px;
+  color: var(--text-muted);
+}
+
+.tree-error-text {
+  color: #ef4444;
+}
