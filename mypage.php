@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="f-group">
-                    <a href="/member/recommend.php" class="mypage-link">
+                    <a href="/member-tree.php" class="mypage-link">
                         <span>추천인</span>
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
