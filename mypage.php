@@ -37,12 +37,7 @@
                     </div>
                 </div>
                  <div class="f-group">
-                    <div class="mypage-section-title">추천계보</div>
-                    <div class="mypage-pay-wrap">
-                        <div>
-                             <button class="btn-logout">보기</button>
-                        </div>
-                    </div>
+                    <div class="mypage-section-title">추천인</div>
                 </div>
                 <div class="mypage-actions">
                     <form action="/logout.php" method="post">
