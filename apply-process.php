@@ -35,7 +35,8 @@ curl_close($ch);
 
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
-print_r($data);
+header('Location: /index.php');
+exit;
 // if ($data['resCode'] == "0") {
 //   
 // } else {
