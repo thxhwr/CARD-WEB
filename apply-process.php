@@ -35,7 +35,7 @@ curl_close($ch);
 
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
-header('Location: /index.php');
+header('Location: /apply-complete.php');
 exit;
 // if ($data['resCode'] == "0") {
 //   
