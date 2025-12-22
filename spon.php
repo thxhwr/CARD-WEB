@@ -1,14 +1,13 @@
 <?php
 session_start();
 
-// 1) 로그인한 회원 계정(추천 계보 기준이 되는 사람)
+// 1) 로그인한 회원 계정(트리 기준이 되는 계정)
 $memberNo = $_SESSION['user_No'] ?? null; // 예: "kni1993@naver.com"
-
 if ($memberNo === null) {
     die('로그인 정보가 없습니다.');
 }
 
-// 2) API 호출 준비
+// 2) API 호출 (testMemberSpon.php)
 $postFields = [
     'accountNo' => $memberNo,
 ];
@@ -18,10 +17,11 @@ curl_setopt_array($ch, [
     CURLOPT_POST           => true,
     CURLOPT_POSTFIELDS     => $postFields,
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_SSL_VERIFYPEER => false, // 필요시 true로 변경
+    CURLOPT_SSL_VERIFYPEER => false, // 필요하면 true로 변경
 ]);
 
 $response = curl_exec($ch);
+
 if ($response === false) {
     $error = curl_error($ch);
     curl_close($ch);
@@ -31,58 +31,65 @@ curl_close($ch);
 
 // 3) JSON → 배열
 $data = json_decode($response, true);
-
 if (!is_array($data) || ($data['resCode'] ?? -1) !== 0 || empty($data['data'])) {
-    // var_dump($response);
+    // var_dump($response); // 디버그용
     die('API 응답 오류');
 }
 
-$root = $data['data']; // 트리의 루트 노드
+$root = $data['data']; // 루트 노드(1대)
 
-// 4) 트리를 depth(깊이)별로 나누기
-// $levels[1] = [ depth 1 노드들 배열 ]
-// $levels[2] = [ depth 2 노드들 배열 ]
-// ...
-$levels = [];
-
-function buildLevels(array $node, int $depth, array &$levels)
+// 4) 재귀로 트리 HTML 만들기
+function renderNode(array $node)
 {
-    // 현재 depth 레벨에 추가
-    if (!isset($levels[$depth])) {
-        $levels[$depth] = [];
-    }
+    // 노드 정보
+    $name      = htmlspecialchars($node['name']      ?? '', ENT_QUOTES);
+    $accountNo = htmlspecialchars($node['accountNo'] ?? '', ENT_QUOTES);
+    $userId    = (int)($node['userId'] ?? 0);
+    $dept      = isset($node['dept'])   ? (int)$node['dept']   : null;
+    $deptNo    = isset($node['deptNo']) ? (int)$node['deptNo'] : null;
 
-    $levels[$depth][] = [
-        'userId'    => $node['userId']    ?? null,
-        'name'      => $node['name']      ?? '',
-        'accountNo' => $node['accountNo'] ?? '',
-        'dept'      => $node['dept']      ?? null,
-        'deptNo'    => $node['deptNo']    ?? null,
-    ];
+    echo '<li>';
+    echo '  <div class="node-card">';
+    echo '      <div class="node-name">' . $name . '</div>';
+    echo '      <div class="node-meta">ID: ' . $userId;
+    if (!is_null($dept))   echo ' · LV ' . $dept;
+    if (!is_null($deptNo)) echo ' · NO ' . $deptNo;
+    echo '      </div>';
+    echo '      <div class="node-account">' . $accountNo . '</div>';
+    echo '  </div>';
 
-    // 자식들 처리
+    // 자식이 있으면 하위 <ul>로 재귀 출력
     if (!empty($node['children']) && is_array($node['children'])) {
+        echo '<ul>';
         foreach ($node['children'] as $child) {
-            buildLevels($child, $depth + 1, $levels);
+            renderNode($child);
         }
+        echo '</ul>';
     }
+
+    echo '</li>';
 }
-
-// 루트는 depth 1부터 시작
-buildLevels($root, 1, $levels);
-
-// depth 순서대로 정렬(혹시라도 키가 꼬일 경우 대비)
-ksort($levels);
 ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <?php include __DIR__ . "/head.php"; ?>
-    <style>
+    <meta charset="UTF-8">
+    <title>추천인 계보</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .tree-wrap {
-            max-width: 640px;
+    <style>
+        body {
+            margin: 0;
+            padding: 16px;
+            background: #f7f7f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .tree-container {
+            max-width: 900px;
             margin: 0 auto;
+            overflow-x: auto; /* 가로로 넓어질 때 스크롤 */
+            padding-bottom: 24px;
         }
 
         .tree-title {
@@ -91,89 +98,124 @@ ksort($levels);
             margin-bottom: 20px;
         }
 
-        .tree-level {
+        /* 기본 트리 구조 */
+        .tree {
+            position: relative;
+            display: inline-block;     /* 내용만큼만 */
+            padding-top: 20px;
+        }
+
+        .tree ul {
+            padding-top: 20px;
+            position: relative;
+            transition: all .5s;
+            list-style: none;
+            padding-left: 0;
             text-align: center;
-            margin: 20px 0 28px;
         }
 
-        .tree-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
+        .tree li {
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            position: relative;
+            padding: 20px 5px 0 5px;
         }
 
-        .tree-card {
+        /* 부모-자식 연결 가로선/세로선 */
+        .tree li::before,
+        .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border-top: 1px solid #d1d5db;
+            width: 50%;
+            height: 20px;
+        }
+
+        .tree li::before {
+            right: 50%;
+        }
+
+        .tree li::after {
+            left: 50%;
+            border-left: 1px solid #d1d5db;
+        }
+
+        /* 부모가 자식 하나만 가지는 경우 선 조정 */
+        .tree li:only-child::before,
+        .tree li:only-child::after {
+            display: none;
+        }
+
+        .tree li:only-child {
+            padding-top: 0;
+        }
+
+        /* 첫째 자식 */
+        .tree li:first-child::before {
+            border: 0;
+        }
+
+        /* 마지막 자식 */
+        .tree li:last-child::after {
+            border: 0;
+        }
+
+        /* 자식들의 위쪽 세로선 */
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 1px solid #d1d5db;
+            width: 0;
+            height: 20px;
+        }
+
+        /* 노드 카드 스타일 */
+        .node-card {
+            display: inline-block;
             background: #ffffff;
             border-radius: 12px;
             padding: 10px 14px;
-            box-shadow: 0 2px 10px rgba(15,23,42,0.08);
-            min-width: 120px;
+            min-width: 140px;
             max-width: 180px;
             text-align: left;
+            box-shadow: 0 2px 10px rgba(15,23,42,0.08);
+            border-top: 3px solid #f97316; /* 살짝 포인트 */
             font-size: 13px;
         }
 
-        .tree-name {
+        .node-name {
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 4px;
         }
 
-        .tree-meta {
+        .node-meta {
             font-size: 12px;
             color: #6b7280;
             margin-bottom: 2px;
         }
 
-        .tree-account {
+        .node-account {
             font-size: 12px;
             color: #4b5563;
             word-break: break-all;
         }
-
-        /* depth 별로 약간씩 느낌만 다르게 (선택사항) */
-        .depth-1 .tree-card { border-top: 3px solid #6366f1; }
-        .depth-2 .tree-card { border-top: 3px solid #22c55e; }
-        .depth-3 .tree-card { border-top: 3px solid #f97316; }
-        .depth-4 .tree-card { border-top: 3px solid #ec4899; }
-        /* 5대 이상도 자동으로 그냥 카드로만 나옴 */
     </style>
 </head>
 <body>
 
-<div class="tree-wrap">
-    <div class="tree-title">후원 계보</div>
+<div class="tree-container">
+    <div class="tree-title">추천인 계보</div>
 
-    <?php if (empty($levels)): ?>
-        <p>표시할 후원 계보가 없습니다.</p>
-    <?php else: ?>
-        <?php foreach ($levels as $depth => $nodes): ?>
-            <div class="tree-level depth-<?= (int)$depth ?>">
-                <div class="tree-row">
-                    <?php foreach ($nodes as $n): ?>
-                        <div class="tree-card">
-                            <div class="tree-name">
-                                <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
-                            </div>
-                            <!-- <div class="tree-meta">
-                                ID: <?= (int)$n['userId'] ?>
-                                <?php if (!is_null($n['dept'])): ?>
-                                    · LV <?= (int)$n['dept'] ?>
-                                <?php endif; ?>
-                                <?php if (!is_null($n['deptNo'])): ?>
-                                    · NO <?= (int)$n['deptNo'] ?>
-                                <?php endif; ?>
-                            </div> -->
-                            <div class="tree-account">
-                                <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+    <div class="tree">
+        <ul>
+            <?php renderNode($root); ?>
+        </ul>
+    </div>
 </div>
 
 </body>
