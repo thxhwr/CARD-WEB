@@ -22,7 +22,7 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
-
+print_r($response);
 if ($response === false) {
     $error = curl_error($ch);
     curl_close($ch);
@@ -34,7 +34,6 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 if (!is_array($data) || ($data['resCode'] ?? -1) !== 0 || empty($data['data'])) {
-    // 응답이 이상하면 전체 내용 확인용
     // var_dump($response);
     die('API 응답 오류');
 }
@@ -79,17 +78,8 @@ ksort($levels);
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>추천인 계보</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <?php include __DIR__ . "/head.php"; ?>
     <style>
-        body {
-            margin: 0;
-            padding: 16px;
-            background: #f7f7f9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
 
         .tree-wrap {
             max-width: 640px;
