@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
+    <?php include __DIR__ . "/auth.php"; ?>
     <?php include __DIR__ . "/head.php"; ?>
 </head>
 <body>
