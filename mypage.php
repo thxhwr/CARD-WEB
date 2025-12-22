@@ -37,11 +37,10 @@
                     </div>
                 </div>
                  <div class="f-group">
+                    <div class="mypage-section-title">추천계보</div>
                     <div class="mypage-pay-wrap">
                         <div>
-                            <div class="mypage-pay-amount">
-                               추천계보
-                            </div>
+                             <button class="btn-logout">보기</button>
                         </div>
                     </div>
                 </div>
