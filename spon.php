@@ -144,10 +144,10 @@ ksort($levels);
 <body>
 
 <div class="tree-wrap">
-    <div class="tree-title">추천인 계보</div>
+    <div class="tree-title">후원 계보</div>
 
     <?php if (empty($levels)): ?>
-        <p>표시할 추천인 계보가 없습니다.</p>
+        <p>표시할 후원 계보가 없습니다.</p>
     <?php else: ?>
         <?php foreach ($levels as $depth => $nodes): ?>
             <div class="tree-level depth-<?= (int)$depth ?>">
@@ -157,7 +157,7 @@ ksort($levels);
                             <div class="tree-name">
                                 <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                             </div>
-                            <div class="tree-meta">
+                            <!-- <div class="tree-meta">
                                 ID: <?= (int)$n['userId'] ?>
                                 <?php if (!is_null($n['dept'])): ?>
                                     · LV <?= (int)$n['dept'] ?>
@@ -165,7 +165,7 @@ ksort($levels);
                                 <?php if (!is_null($n['deptNo'])): ?>
                                     · NO <?= (int)$n['deptNo'] ?>
                                 <?php endif; ?>
-                            </div>
+                            </div> -->
                             <div class="tree-account">
                                 <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
                             </div>
