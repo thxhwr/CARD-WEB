@@ -97,7 +97,7 @@
       </section>
 
       <!-- 주문 / 상품 영역 -->
-      <section class="grid-2">
+      <section>
         <!-- 최근 주문 -->
         <section class="card">
           <div class="card-header">
