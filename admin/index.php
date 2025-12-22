@@ -11,71 +11,7 @@
 
 <div class="layout">
   <!-- ===== 사이드바 ===== -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-logo">M</div>
-      <div class="sidebar-title">
-        <span class="sidebar-title-main">MyShop Admin</span>
-        <span class="sidebar-title-sub">쇼핑몰 관리자센터</span>
-      </div>
-    </div>
-
-    <nav class="sidebar-nav">
-      <div>
-        <div class="sidebar-section-title">메인</div>
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <div class="nav-link-icon">🏠</div>
-              <span>대시보드</span>
-              <span class="nav-link-badge">오늘</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <div class="nav-link-icon">🧾</div>
-              <span>주문 관리</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <div class="nav-link-icon">📦</div>
-              <span>상품 관리</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="sidebar-section-title">고객 · 설정</div>
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <div class="nav-link-icon">👥</div>
-              <span>회원 관리</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <div class="nav-link-icon">💸</div>
-              <span>쿠폰 / 프로모션</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <div class="nav-link-icon">⚙️</div>
-              <span>환경 설정</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="sidebar-footer">
-      <span>버전 <strong>v1.0.0</strong></span>
-      <span>© MyShop</span>
-    </div>
-  </aside>
+    <?php include __DIR__ . "/side.php"; ?>
 
   <!-- ===== 메인 영역 ===== -->
   <div class="main">
