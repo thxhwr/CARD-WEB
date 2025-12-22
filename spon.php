@@ -16,7 +16,7 @@ curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_SSL_VERIFYPEER => false,
 ]);
-
+print_r($response);
 $response = curl_exec($ch);
 if ($response === false) {
     die("API 호출 실패: ".curl_error($ch));
