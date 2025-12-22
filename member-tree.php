@@ -109,7 +109,7 @@ if ($root) {
                 <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
             </a>
             <h1 class="appbar__title">추천인</h1>
-            <a href="/index.php" class="nav-btn home-btn" aria-label="홈"></a>
+            <a href="/index.php" class="nav-btn home-btn" aria-label="홈"><img src="/assets/icons/icon-home.svg"></a>
         </nav>
     </header>
 
