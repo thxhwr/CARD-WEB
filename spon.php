@@ -215,7 +215,7 @@ if ($root) {
     }
 
     .empty-text, .error-text {
-        font-size: 13px;
+        font-size: 24px;
         color: #9ca3af;
         margin-top: 12px;
         text-align: center;
