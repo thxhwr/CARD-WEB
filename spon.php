@@ -108,44 +108,7 @@ if ($response === false) {
 <body>
 
 <div class="genealogy-wrap">
-    
-    <div class="gene-title">추천인 계보</div>
-
-    <!-- 1대 -->
-    <div class="gene-block">
-        <div class="gene-level">1대 추천인</div>
-        <ul class="gene-list">
-            <!-- PHP로 반복 출력 -->
-            <li>김철수</li>
-            <li>박민수</li>
-        </ul>
-        <!-- 추천인이 없으면 -->
-        <!-- <div class="gene-none">등록된 1대 추천인이 없습니다.</div> -->
-    </div>
-
-    <!-- 2대 -->
-    <div class="gene-block">
-        <div class="gene-level">2대 추천인</div>
-        <ul class="gene-list">
-            <li>이영희</li>
-            <li>정소라</li>
-        </ul>
-        <!-- 없을 때:
-        <div class="gene-none">등록된 2대 추천인이 없습니다.</div>
-        -->
-    </div>
-
-    <!-- 3대 -->
-    <div class="gene-block">
-        <div class="gene-level">3대 추천인</div>
-        <ul class="gene-list">
-            <li>최하은</li>
-        </ul>
-        <!-- 없을 때:
-        <div class="gene-none">등록된 3대 추천인이 없습니다.</div>
-        -->
-    </div>
-
+    <div class="gene-title">후원인 계보</div>
 </div>
 
 </body>
