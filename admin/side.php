@@ -12,10 +12,9 @@
         <div class="sidebar-section-title">메인</div>
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="index.php" class="nav-link">
               <div class="nav-link-icon">🏠</div>
               <span>대시보드</span>
-              <span class="nav-link-badge">오늘</span>
             </a>
           </li>
           <li class="nav-item">
