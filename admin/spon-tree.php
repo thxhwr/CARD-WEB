@@ -224,7 +224,7 @@ if ($root) {
 <body>
 
 <div class="tree-wrap">
-
+     <?php include __DIR__ . "/side.php"; ?>
     <div class="tree-header">
         <div>
             <div class="tree-title">후원계보</div>
