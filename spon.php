@@ -3,7 +3,7 @@
 session_start();
 
 // 예: 로그인한 회원 번호
-$memberNo = $_SESSION['user_Id'] ?? null;
+$memberNo = $_SESSION['user_No'] ?? null;
 
 $postFields = [
   'accountNo' => $memberNo,
