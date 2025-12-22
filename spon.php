@@ -19,7 +19,6 @@ curl_setopt_array($ch, [
 
 $response = curl_exec($ch);
 
-print_r($response);
 if ($response === false) {
     die("API 호출 실패: ".curl_error($ch));
 }
@@ -96,15 +95,15 @@ body {
 
 /* Depth(줄) */
 .tree-level {
-    margin-bottom:24px;
-    text-align:center;
+    margin-bottom: 24px;
+    text-align: center;
+    overflow-x: auto;         /* ← 이 줄 추가 */
 }
-
 .tree-row {
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
+    display: inline-flex;
+    justify-content: center;  /* 가운데 정렬 유지 */
+    gap: 14px;
+    flex-wrap: nowrap;      
 }
 
 /* 카드 디자인 */
