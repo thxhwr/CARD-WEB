@@ -29,6 +29,10 @@ $errorMsg = '';
 $items = [];
 $totalPoint = 0;
 
+echo $accountNo;
+echo $type;
+echo $page;
+echo $limit;
 $response = curlPost(
     'https://api.thxdeal.com/api/point/history.php',
     [
