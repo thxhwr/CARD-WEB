@@ -41,7 +41,7 @@ $response = curlPost(
 print_r($response);
 if (!$response) {
     $errorMsg = '서버 통신 오류';
-} elseif (($response['resCode'] ?? -1) !== 0) {
+} elseif (($response['data']['resCode'] ?? -1) !== 0) {
     $errorMsg = $response['message'] ?? '요청 실패';
 } else {
 
