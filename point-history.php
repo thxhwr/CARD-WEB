@@ -27,10 +27,20 @@ $limit = isset($_GET['limit']) ? max(1, (int)$_GET['limit']) : 20;
 
 $errorMsg = '';
 $totalPoint = 0;
-    // $totalPoint = curlPost(
-    // 'https://api.thxdeal.com/api/point/balance.php',
-    //     [ 'accountNo' => $_SESSION['user_No']]
-    // );
+$balanceRes = curlPost(
+    'https://api.thxdeal.com/api/point/balance.php',
+    ['accountNo' => $_SESSION['user_No']]
+);
+
+$balances = [];
+if ($balanceRes && ($balanceRes['resCode'] ?? -1) === 0) {
+    // 예: [ 'TP'=>65, 'SP'=>65, 'LP'=>0 ]
+    $balances = $balanceRes['data'] ?? [];
+}
+
+// 현재 선택된 타입 잔액
+$currentBalance = (int)($balances[$type] ?? 0);
+
     
 $response = curlPost(
     'https://api.thxdeal.com/api/point/history.php',
@@ -75,15 +85,15 @@ if (!$response) {
 
             <!-- 타입 탭: TP/SP/LP (GET으로 페이지 유지) -->
             <div class="point-type-tabs">
-                <a class="<?= $type==='TP'?'active':'' ?>" href="?type=TP&io=<?= htmlspecialchars($io) ?>">TP</a>
-                <a class="<?= $type==='SP'?'active':'' ?>" href="?type=SP&io=<?= htmlspecialchars($io) ?>">SP</a>
-                <a class="<?= $type==='LP'?'active':'' ?>" href="?type=LP&io=<?= htmlspecialchars($io) ?>">LP</a>
+                <a href="?type=TP&io=<?= htmlspecialchars($io) ?>">TP</a>
+                <a href="?type=SP&io=<?= htmlspecialchars($io) ?>">SP</a>
+                <a href="?type=LP&io=<?= htmlspecialchars($io) ?>">LP</a>
             </div>
 
             <!-- 보유 포인트 -->
             <div class="point-summary">
                 <p class="label">보유 포인트</p>
-                <p class="amount"><?= number_format($totalPoint) ?> <?= htmlspecialchars($type) ?></p>
+                <p class="amount"><?= number_format($currentBalance) ?> <?= htmlspecialchars($type) ?></p>
             </div>
 
             <!-- 필터: 전체/적립/사용 (GET으로) -->
@@ -102,6 +112,7 @@ if (!$response) {
             <?php else: ?>
                 <?php
                     if (!is_array($items)) $items = [];
+                    $running = $currentBalance;
                 ?>
                 <ul class="point-list">
                     <?php foreach ($items as $row): ?>
@@ -114,7 +125,13 @@ if (!$response) {
 
                             $title     = $row['DESCRIPTION'] ?? '포인트';
                             $amount    = (int)($row['AMOUNT'] ?? 0);
-
+                            $items[$i]['_BALANCE_AFTER'] = $running;
+                            if ($action === 'IN') {
+                                $running -= $amount;
+                            } elseif ($action === 'OUT') {
+                                $running += $amount;
+                            }
+                            
                             $createdAt = $row['CREATED_AT'] ?? '';
                             $dateStr   = $createdAt ? date('Y-m-d', strtotime($createdAt)) : '';
                         ?>
@@ -127,6 +144,12 @@ if (!$response) {
                             <div class="right">
                                 <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
                             </div>
+                            <?php
+                                $bal = $row['_BALANCE_AFTER'] ?? null;
+                                if ($bal !== null) {
+                                echo '<p class="balance">잔액 ' . number_format($bal) . 'P</p>';
+                                }
+                            ?>
                         </li>
                     <?php endforeach; ?>
                 </ul>
