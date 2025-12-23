@@ -36,7 +36,8 @@ $response = curlPost(
         'typeCode'  => $type,
         'page'      => $page,
         'limit'     => $limit,
-    ]
+    ],
+    
 );
 
 if (!$response) {
