@@ -38,10 +38,10 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 if ($data['resCode'] == "1005") {
-    header('Location: /login.php?error=1');
+    header('Location: /apply.php?error=1');
     exit;
 } else if($data['resCode'] == "5001"){
-    header('Location: /login.php?error=2');
+    header('Location: /apply.php?error=2');
     exit;
 } else{
     header('Location: /apply-complete.php');
