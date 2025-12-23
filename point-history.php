@@ -16,7 +16,7 @@ $type = $_GET['type'] ?? 'TP';
 if (!in_array($type, $allowedTypes, true)) $type = 'TP';
 
 
-$allowedIO = ['all', 'plus', 'minus'];
+$allowedIO = ['all', 'IN', 'OUT'];
 $io = $_GET['io'] ?? 'all';
 if (!in_array($io, $allowedIO, true)) $io = 'all';
 
@@ -53,7 +53,6 @@ if (!$response) {
     if ($io !== 'all') {
         $items = array_values(array_filter($items, fn($it) => ($it['ACTION_TYPE'] ?? '') === $io));
     }
-    print_r($items);
 }
 ?>
 <!DOCTYPE html>
@@ -90,8 +89,8 @@ if (!$response) {
             <!-- 필터: 전체/적립/사용 (GET으로) -->
             <div class="point-filter">
                 <a class="<?= $io==='all'?'active':'' ?>"   href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=all">전체</a>
-                <a class="<?= $io==='plus'?'active':'' ?>"  href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=plus">적립</a>
-                <a class="<?= $io==='minus'?'active':'' ?>" href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=minus">사용</a>
+                <a class="<?= $io==='IN'?'active':'' ?>"  href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=IN">적립</a>
+                <a class="<?= $io==='OUT'?'active':'' ?>" href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=OUT">사용</a>
             </div>
 
             <?php if ($errorMsg): ?>
