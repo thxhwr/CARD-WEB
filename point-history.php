@@ -47,7 +47,7 @@ if (!$response) {
     $errorMsg = $response['message'] ?? '요청 실패';
 } else {
 
-    $items = $response['data']['data'] ?? [];
+    $items = $response['data'] ?? [];
 
     // (plus/minus 키가 item에 있다면)
     if ($io !== 'all') {
@@ -129,9 +129,9 @@ if (!$response) {
                             <div class="right">
                                 <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
 
-                                <!-- <?php if ($balance !== null): ?>
+                                 <?php /*if ($balance !== null): ?>
                                     <p class="balance">잔액 <?= number_format((int)$balance) ?>P</p>
-                                <?php endif; ?> -->
+                                <?php endif;*/ ?>
                             </div>
                         </li>
 
