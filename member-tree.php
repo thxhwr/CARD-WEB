@@ -90,10 +90,10 @@ ksort($levels);
                 <div class="tree-row">
                     <div class="node-card node-root">
                         <div class="node-name">
-                            <?= htmlspecialchars($myAccountNo '', ENT_QUOTES) ?>
+                            <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
                         </div>
                         <div class="node-account">
-                            <?= htmlspecialchars($myAccountNo ?? '', ENT_QUOTES) ?>
+                            <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
                         </div>
                     </div>
                 </div>
