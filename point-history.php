@@ -80,7 +80,7 @@ if (!is_array($items)) $items = [];
 //    ACTION_TYPE: IN / OUT
 // -----------------------
 if ($io !== 'all') {
-    $want = ($io === 'plus') ? 'IN' : 'OUT';
+    $want = ($io === 'IN') ? 'IN' : 'OUT';
     $items = array_values(array_filter($items, function($row) use ($want) {
         $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
         return $action === $want;
@@ -188,7 +188,7 @@ if (!empty($items)) {
                             $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
                             $isOut  = ($action === 'OUT');
 
-                            $cls  = $isOut ? 'minus' : 'plus';
+                            $cls  = $isOut ? 'OUT' : 'IN';
                             $sign = $isOut ? '-' : '+';
 
                             $title     = $row['DESCRIPTION'] ?? '포인트';
