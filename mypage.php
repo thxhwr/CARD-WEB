@@ -16,8 +16,6 @@
         $errorMsg = '서버 통신 오류';
     } elseif (($response['resCode'] ?? -1) !== 0) {
         $errorMsg = $response['message'] ?? '요청 실패';
-    } else {
-        print_r($response);
     }
 ?>
 <div class="app">
@@ -44,7 +42,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($user_pay ?? 0) ?>
+                                <?= number_format($response['data']['TP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
                         </div>
@@ -55,7 +53,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($user_pay ?? 0) ?>
+                                <?= number_format($$response['data']['SP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
                         </div>
@@ -66,7 +64,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($user_pay ?? 0) ?>
+                                <?= number_format($$response['data']['LP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
                         </div>
