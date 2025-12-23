@@ -120,7 +120,7 @@ if (!$response) {
 
                             // 잔액(balance)은 현재 응답에 없음 → 표시하고 싶으면 API에서 balance 내려주거나, PHP에서 누적 계산해야 함
                             // 일단 "잔액" 줄은 숨기거나, 없으면 안 보이게 처리
-                            $balance = $row['BALANCE'] ?? null; // 혹시 나중에 생길 대비
+                            // $balance = $row['BALANCE'] ?? null; // 혹시 나중에 생길 대비
                         ?>
 
                         <li class="point-item <?= $cls ?>">
@@ -131,9 +131,9 @@ if (!$response) {
                             <div class="right">
                                 <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
 
-                                <?php if ($balance !== null): ?>
+                                <!-- <?php if ($balance !== null): ?>
                                     <p class="balance">잔액 <?= number_format((int)$balance) ?>P</p>
-                                <?php endif; ?>
+                                <?php endif; ?> -->
                             </div>
                         </li>
 
