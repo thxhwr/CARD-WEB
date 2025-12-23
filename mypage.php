@@ -33,7 +33,7 @@
      <main class="page">
             <section class="apply-form">
                 <div class="f-group">
-                    <div class="mypage-section-title">계 정</div>
+                    <div class="mypage-section-title">E-mail</div>
                     <div class="mypage-user-id" style="text-align:right">
                         <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                     </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=SP'">
-                    <div class="mypage-section-title">Shoping Poing</div>
+                    <div class="mypage-section-title">Shoping Point</div>
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="f-group">
                     <a href="/member-tree.php" class="mypage-link">
-                        <div class="mypage-section-title" style="margin:0;">추천인</div>
+                        <div class="mypage-section-title" style="margin:0;">Referral</div>
                         <!-- <span>추천인</span> -->
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
