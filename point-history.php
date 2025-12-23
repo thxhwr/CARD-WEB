@@ -112,15 +112,14 @@ if (!$response) {
                         // row['title'] or row['description']
                         // row['createdAt'] = "2025-12-22 06:34:20"
 
-                        $rowIO   = $row['io'] ?? ($row['type'] ?? ''); // plus/minus
-                        $cls     = ($rowIO === 'minus') ? 'minus' : 'plus';
+                        $rowIO   = $row['ACTION_TYPE'] ?? ($row['type'] ?? ''); // plus/minus
+                        $cls     = ($rowIO === 'minus') ? 'OUT' : 'IN';
                         $sign    = ($rowIO === 'minus') ? '-' : '+';
 
-                        $title   = $row['description'] ?? $row['title'] ?? '포인트';
-                        $point   = (int)($row['point'] ?? 0);
-                        $balance = (int)($row['balance'] ?? 0);
-
-                        $created = $row['createdAt'] ?? $row['created_at'] ?? '';
+                        $title   = $row['DESCRIPTION'] ?? $row['DESCRIPTION'] ?? '포인트';
+                        $point   = (int)($row['AMOUNT'] ?? 0);
+                        // $balance = (int)($row['balance'] ?? 0);
+                        $created = $row['CREATED_AT'] ?? $row['CREATED_AT'] ?? '';
                         $dateStr = $created ? date('Y-m-d', strtotime($created)) : '';
                     ?>
                     <li class="point-item <?= $cls ?>">
