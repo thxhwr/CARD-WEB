@@ -28,7 +28,11 @@ $limit = isset($_GET['limit']) ? max(1, (int)$_GET['limit']) : 20;
 $errorMsg = '';
 $items = [];
 $totalPoint = 0;
-
+    $totalPoint = curlPost(
+    'https://api.thxdeal.com/api/point/balance.php',
+        [ 'accountNo' => $_SESSION['user_No']]
+    );
+    
 $response = curlPost(
     'https://api.thxdeal.com/api/point/history.php',
     [
@@ -44,15 +48,13 @@ if (!$response) {
     $errorMsg = $response['message'] ?? '요청 실패';
 } else {
 
-    $data = $response['data'] ?? [];
-    $totalPoint = (int)($data['totalPoint'] ?? 0);
-    $items = $data['list'] ?? [];
+    $data = $response['data']['data'] ?? [];
+    $items = $data[0] ?? [];
 
     // (plus/minus 키가 item에 있다면)
-    if ($io !== 'all') {
-        $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
-    }
-        print_r($data);
+    // if ($io !== 'all') {
+    //     $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
+    // }
 }
 ?>
 <!DOCTYPE html>
