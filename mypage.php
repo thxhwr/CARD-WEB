@@ -33,19 +33,19 @@
      <main class="page">
             <section class="apply-form">
                 <div class="f-group">
-                    <div class="mypage-section-title">E-mail</div>
+                    <div class="mypage-section-title">이메일</div>
                     <div class="mypage-user-id" style="text-align:right">
                         <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                     </div>
                 </div>
                 <div class="f-group">
-                    <div class="mypage-section-title">ID</div>
+                    <div class="mypage-section-title">아이디</div>
                     <div class="mypage-user-id" style="text-align:right">
                         <?= htmlspecialchars($_SESSION['user_Id'] ?? '', ENT_QUOTES) ?>
                     </div>
                 </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=TP'">
-                    <div class="mypage-section-title">THX Point</div>
+                    <div class="mypage-section-title">땡스 포인트</div>
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=SP'">
-                    <div class="mypage-section-title">Shoping Point</div>
+                    <div class="mypage-section-title">쇼핑 포인트</div>
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=LP'">
-                    <div class="mypage-section-title">Lucky Point</div>
+                    <div class="mypage-section-title">행운 포인트</div>
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="f-group">
                     <a href="/member-tree.php" class="mypage-link">
-                        <div class="mypage-section-title" style="margin:0;">Referral</div>
+                        <div class="mypage-section-title" style="margin:0;">추천인</div>
                         <!-- <span>추천인</span> -->
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
