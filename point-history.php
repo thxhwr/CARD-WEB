@@ -124,7 +124,7 @@ if (!$response) {
 
                             $title     = $row['DESCRIPTION'] ?? '포인트';
                             $amount    = (int)($row['AMOUNT'] ?? 0);
-                            $items[$i]['_BALANCE_AFTER'] = $running;
+                            $items[$row]['_BALANCE_AFTER'] = $running;
                             if ($action === 'IN') {
                                 $running -= $amount;
                             } elseif ($action === 'OUT') {
