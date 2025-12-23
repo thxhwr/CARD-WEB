@@ -11,11 +11,12 @@ $addr_detail    = $_POST['address_detail'] ?? '';
 $address = $zipcode . ' ' . $addr . ' ' . $addr_detail;
 
 $postFields = [
-'accountNo' => $_SESSION['user_No'],
+  'accountNo' => $_SESSION['user_No'],
   'referrerAccountNo' => $referral,
   'name' => $name,
   'phone' => $phone,
   'address' => $address,
+  'userId' => $_SESSION['user_Id'],
 ];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberInsert.php');
@@ -35,10 +36,11 @@ curl_close($ch);
 
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
-header('Location: /apply-complete.php');
-exit;
-// if ($data['resCode'] == "0") {
-//   
-// } else {
+print_r($data);
+// header('Location: /apply-complete.php');
+// exit;
+if ($data['resCode'] == "0") {
+  
+} else {
 
-// }
+}
