@@ -7,15 +7,18 @@
 </head>
 <body>
 <?php
-    $data = curlPost(
+    $response = curlPost(
     'https://api.thxdeal.com/api/point/balance.php',
         [ 'accountNo' => $_SESSION['user_No']]
     );
 
-if (!$data || ($data['resCode'] ?? -1) !== 0) {
-    echo 'API 오류';
-    exit;
-}
+    if (!$response) {
+        $errorMsg = '서버 통신 오류';
+    } elseif (($response['resCode'] ?? -1) !== 0) {
+        $errorMsg = $response['message'] ?? '요청 실패';
+    } else {
+        print_r($response);
+    }
 ?>
 <div class="app">
     <header class="appbar-apply">
