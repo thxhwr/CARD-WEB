@@ -5,7 +5,6 @@ if (!$myAccountNo) {
     echo "로그인이 필요합니다.";
     exit;
 }
-
 $postFields = [
     'accountNo' => $myAccountNo,
 ];
@@ -17,13 +16,14 @@ curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_SSL_VERIFYPEER => false,
 ]);
-
+$errorMsg = '';
 $response = curl_exec($ch);
 if ($response === false) {
     $errorMsg = "API 호출 실패: " . curl_error($ch);
 }
 curl_close($ch);
 
+$data = json_decode($response, true);
 $levels = [];
 
 $list = $data['data']['list'] ?? [];
@@ -89,9 +89,9 @@ ksort($levels);
             <div class="tree-level">
                 <div class="tree-row">
                     <div class="node-card node-root">
-                        <div class="node-name">
-                            <?= htmlspecialchars($myAccountNo, ENT_QUOTES) ?>
-                        </div>
+                        <!-- <div class="node-name">
+                            <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
+                        </div> -->
                         <div class="node-account">
                             <?= htmlspecialchars($myAccountNo, ENT_QUOTES) ?>
                         </div>
