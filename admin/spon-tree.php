@@ -5,10 +5,6 @@ if (!$myAccountNo) {
     exit;
 }
 
-/* -----------------------------------------------------
- * 1. 검색 값 처리
- *    - 빈값이면 내 계정으로 조회
- * --------------------------------------------------- */
 $searchInput   = isset($_GET['accountNo']) ? trim($_GET['accountNo']) : null;
 $rootAccountNo = ($searchInput === null || $searchInput === '')
     ? $myAccountNo
@@ -18,9 +14,6 @@ $errorMsg = '';
 $root     = null;
 $levels   = [];
 
-/* -----------------------------------------------------
- * 2. API 호출
- * --------------------------------------------------- */
 $postFields = [
     'accountNo' => $rootAccountNo,
 ];
@@ -39,10 +32,7 @@ if ($response === false) {
 }
 curl_close($ch);
 
-/* -----------------------------------------------------
- * 3. JSON 디코드 & 에러 처리
- *    - 존재하지 않는 계정이면 문구만 띄우고 계보는 없음
- * --------------------------------------------------- */
+
 if (!$errorMsg) {
     $data = json_decode($response, true);
 
@@ -54,9 +44,6 @@ if (!$errorMsg) {
     }
 }
 
-/* -----------------------------------------------------
- * 4. 루트 기준으로 아래 3대만 depth별 분리 (루트 자신은 제외)
- * --------------------------------------------------- */
 if ($root) {
     // relDepth: 1 = 자식, 2 = 손자, 3 = 증손
     function collectDescendants3Gen(array $node, int $relDepth, array &$levels, int $maxDepth = 3)
@@ -96,7 +83,7 @@ if ($root) {
     }
     unset($nodes);
 
-    ksort($levels); // 1 → 3 순서
+    ksort($levels);
 }
 ?>
 <?php include __DIR__ . "/head.php"; ?>
@@ -197,10 +184,10 @@ if ($root) {
             </p>
           <?php else: ?>
             <?php foreach ($levels as $relDepth => $nodes): ?>
-              <div class="tree-level">
                 <div class="tree-level-label">
                   <?= (int)$relDepth ?>대
                 </div>
+              <div class="tree-level">
 
                 <div class="tree-row">
                   <?php foreach ($nodes as $n): ?>
@@ -222,7 +209,7 @@ if ($root) {
             <?php endforeach; ?>
           <?php endif; ?>
 
-        </div><!-- .tree-container 끝 -->
+        </div>
 
       <?php endif; ?>
     </section>
