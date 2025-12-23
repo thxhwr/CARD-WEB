@@ -1845,92 +1845,39 @@ body {
   color: #ef4444;
 }
 
-.point-wrap {
-    padding: 16px;
+.point-type-tabs{
+    display:flex; gap:8px; margin: 8px 0 14px;
+}
+.point-type-tabs a{
+    flex:1; text-align:center; padding:10px 0;
+    border-radius:999px; border:1px solid #ddd;
+    text-decoration:none; color:#111; font-size:13px;
+    background:#fff;
+}
+.point-type-tabs a.active{
+    background:#111; color:#fff; border-color:#111;
 }
 
-.point-summary {
-    background: #111;
-    color: #fff;
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+.point-summary{ background:#111; color:#fff; border-radius:14px; padding:20px; margin-bottom:16px; }
+.point-summary .label{ font-size:13px; opacity:.7; margin:0; }
+.point-summary .amount{ font-size:26px; font-weight:700; margin:6px 0 0; }
 
-.point-summary .label {
-    font-size: 13px;
-    opacity: .7;
+.point-filter{ display:flex; gap:8px; margin-bottom:16px; }
+.point-filter a{
+    flex:1; text-align:center; padding:10px 0;
+    border-radius:999px; border:1px solid #ddd;
+    text-decoration:none; color:#111; font-size:13px; background:#fff;
 }
+.point-filter a.active{ background:#111; color:#fff; border-color:#111; }
 
-.point-summary .amount {
-    font-size: 26px;
-    font-weight: 700;
-    margin-top: 6px;
-}
+.point-list{ list-style:none; padding:0; margin:0; }
+.point-item{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid #eee; }
+.point-item .title{ font-size:14px; font-weight:500; margin:0; }
+.point-item .date{ font-size:12px; color:#888; margin:4px 0 0; }
+.point-item .value{ font-size:15px; font-weight:600; text-align:right; margin:0; }
+.point-item .balance{ font-size:12px; color:#888; text-align:right; margin:4px 0 0; }
+.point-item.plus .value{ color:#16a34a; }
+.point-item.minus .value{ color:#ef4444; }
 
-.point-filter {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
-.point-filter button {
-    flex: 1;
-    padding: 10px 0;
-    border-radius: 999px;
-    border: 1px solid #ddd;
-    background: #fff;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.point-filter button.active {
-    background: #111;
-    color: #fff;
-    border-color: #111;
-}
-
-.point-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.point-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 14px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.point-item .title {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.point-item .date {
-    font-size: 12px;
-    color: #888;
-    margin-top: 4px;
-}
-
-.point-item .value {
-    font-size: 15px;
-    font-weight: 600;
-    text-align: right;
-}
-
-.point-item .balance {
-    font-size: 12px;
-    color: #888;
-    text-align: right;
-    margin-top: 4px;
-}
-
-.point-item.plus .value {
-    color: #16a34a;
-}
-
-.point-item.minus .value {
-    color: #ef4444;
-}
+.error-text{ color:#ef4444; font-size:13px; text-align:center; margin-top:12px; }
+.empty-text{ color:#9ca3af; font-size:13px; text-align:center; margin-top:12px; }
