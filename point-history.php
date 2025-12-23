@@ -48,16 +48,13 @@ if (!$response) {
     $errorMsg = $response['message'] ?? '요청 실패';
 } else {
 
-    $data = $response['data']['data'] ?? [];
-    $items = $data[0] ?? [];
+    $items = $response['data']['data'] ?? [];
 
     // (plus/minus 키가 item에 있다면)
     // if ($io !== 'all') {
     //     $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
     // }
-    print_r($data);
-    echo "<br><br><br>";
-    print_r($items);
+
 }
 ?>
 <!DOCTYPE html>
