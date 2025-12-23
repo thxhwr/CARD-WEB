@@ -146,6 +146,8 @@ if (!$response) {
                                 $bal = $row['_BALANCE_AFTER'] ?? null;
                                 if ($bal !== null) {
                                 echo '<p class="balance">잔액 ' . number_format($bal) . 'P</p>';
+                                }else{
+                                  echo "1111";  
                                 }
                             ?>
                         </li>
