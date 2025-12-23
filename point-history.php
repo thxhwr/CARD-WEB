@@ -55,6 +55,9 @@ if (!$response) {
     // if ($io !== 'all') {
     //     $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
     // }
+    print_r($data);
+    echo "<br><br><br>";
+    print_r($items);
 }
 ?>
 <!DOCTYPE html>
