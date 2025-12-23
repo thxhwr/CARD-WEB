@@ -1894,9 +1894,9 @@ body {
 
 .point-type-tabs a.active,
 .point-filter a.active{
-  background: #111;
+  background:var(--active);
   color: #fff;
-  border-color: #111;
+  border-color:var(--active);
 }
 
 /* 보유 포인트 카드 */

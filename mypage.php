@@ -22,7 +22,7 @@
 <div class="app">
     <header class="appbar-apply">
         <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
-            <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">
+            <a href="./mypage.php" class="nav-btn" aria-label="뒤로가기">
                 <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
             </a>
             <h1 class="appbar__title">마이페이지</h1>
