@@ -6,7 +6,17 @@
     <?php include __DIR__ . "/head.php"; ?>
 </head>
 <body>
+<?php
+    $data = curlPost(
+    'https://api.thxdeal.com/api/point/balance.php',
+        [ 'accountNo' => $_SESSION['user_No']]
+    );
 
+if (!$data || ($data['resCode'] ?? -1) !== 0) {
+    echo 'API 오류';
+    exit;
+}
+?>
 <div class="app">
     <header class="appbar-apply">
         <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
