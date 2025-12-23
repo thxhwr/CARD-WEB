@@ -88,9 +88,9 @@ if (!$response) {
 
             <!-- 필터: 전체/적립/사용 (GET으로) -->
             <div class="point-filter">
-                <a class="<?= $io==='all'?'active':'' ?>"   href="?type=<?= htmlspecialchars($type) ?>&io=all">전체</a>
-                <a class="<?= $io==='plus'?'active':'' ?>"  href="?type=<?= htmlspecialchars($type) ?>&io=plus">적립</a>
-                <a class="<?= $io==='minus'?'active':'' ?>" href="?type=<?= htmlspecialchars($type) ?>&io=minus">사용</a>
+                <a class="<?= $io==='all'?'active':'' ?>"   href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=all">전체</a>
+                <a class="<?= $io==='plus'?'active':'' ?>"  href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=plus">적립</a>
+                <a class="<?= $io==='minus'?'active':'' ?>" href="?type=<?= htmlspecialchars($type, ENT_QUOTES) ?>&io=minus">사용</a>
             </div>
 
             <?php if ($errorMsg): ?>
@@ -100,25 +100,23 @@ if (!$response) {
                 <p class="empty-text">내역이 없습니다.</p>
 
             <?php else: ?>
+                <?php
+                    if (!is_array($items)) $items = [];
+                ?>
                 <ul class="point-list">
                     <?php foreach ($items as $row): ?>
                         <?php
-                            // IN = 적립(+), OUT = 사용(-)
                             $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
                             $isOut  = ($action === 'OUT');
 
                             $cls  = $isOut ? 'minus' : 'plus';
                             $sign = $isOut ? '-' : '+';
 
-                            $title = $row['DESCRIPTION'] ?? '포인트';
-                            $amount = (int)($row['AMOUNT'] ?? 0);
+                            $title     = $row['DESCRIPTION'] ?? '포인트';
+                            $amount    = (int)($row['AMOUNT'] ?? 0);
 
                             $createdAt = $row['CREATED_AT'] ?? '';
-                            $dateStr = $createdAt ? date('Y-m-d', strtotime($createdAt)) : '';
-
-                            // 잔액(balance)은 현재 응답에 없음 → 표시하고 싶으면 API에서 balance 내려주거나, PHP에서 누적 계산해야 함
-                            // 일단 "잔액" 줄은 숨기거나, 없으면 안 보이게 처리
-                            // $balance = $row['BALANCE'] ?? null; // 혹시 나중에 생길 대비
+                            $dateStr   = $createdAt ? date('Y-m-d', strtotime($createdAt)) : '';
                         ?>
 
                         <li class="point-item <?= $cls ?>">
@@ -128,13 +126,8 @@ if (!$response) {
                             </div>
                             <div class="right">
                                 <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
-
-                                 <?php /*if ($balance !== null): ?>
-                                    <p class="balance">잔액 <?= number_format((int)$balance) ?>P</p>
-                                <?php endif;*/ ?>
                             </div>
                         </li>
-
                     <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
