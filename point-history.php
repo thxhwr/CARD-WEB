@@ -85,9 +85,9 @@ if (!$response) {
 
             <!-- 타입 탭: TP/SP/LP (GET으로 페이지 유지) -->
             <div class="point-type-tabs">
-                <a href="?type=TP&io=<?= htmlspecialchars($io) ?>">TP</a>
-                <a href="?type=SP&io=<?= htmlspecialchars($io) ?>">SP</a>
-                <a href="?type=LP&io=<?= htmlspecialchars($io) ?>">LP</a>
+                <a class="<?= $type==='TP'?'active':'' ?>" href="?type=TP&io=<?= htmlspecialchars($io) ?>">TP</a>
+                <a class="<?= $type==='SP'?'active':'' ?>" href="?type=SP&io=<?= htmlspecialchars($io) ?>">SP</a>
+                <a class="<?= $type==='LP'?'active':'' ?>" href="?type=LP&io=<?= htmlspecialchars($io) ?>">LP</a>
             </div>
 
             <!-- 보유 포인트 -->
