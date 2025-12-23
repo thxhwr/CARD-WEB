@@ -21,7 +21,7 @@
      <main class="page">
             <section class="apply-form">
                 <div class="f-group">
-                    <div class="mypage-section-title">아이디</div>
+                    <div class="mypage-section-title">계 정</div>
                     <div class="mypage-user-id">
                         <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                     </div>
