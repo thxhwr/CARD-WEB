@@ -130,11 +130,7 @@
                     </div>
                     <!-- 하단 고정 버튼 -->
                     <div class="form-actions">
-                        <!-- <?php if (!empty($_GET['error' == "1")): ?>
-                            <p style="padding-top:5%;text-align:center;margin:auto 0;color:#f44;font-size:12px;">이미 신청하였습니다.</p>
-                        <?php elseif (!empty($_GET['error' == "2")): ?>
-                            <p style="padding-top:5%;text-align:center;margin:auto 0;color:#f44;font-size:12px;">잔액이 부족합니다.</p>
-                        <?php endif; ?> -->
+
                         <button class="apply-submit" type="submit" disabled onclick="location.href('apply-complete.php')">
                         카드 신청
                         </button>
