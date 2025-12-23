@@ -5,8 +5,6 @@ if (!$myAccountNo) {
     echo "로그인이 필요합니다.";
     exit;
 }
-$errorMsg = '';
-$root     = null;
 
 $postFields = [
     'accountNo' => $myAccountNo,
@@ -21,23 +19,10 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
-
-print_r($response);
 if ($response === false) {
     $errorMsg = "API 호출 실패: " . curl_error($ch);
 }
 curl_close($ch);
-
-if (!$errorMsg) {
-    $data = json_decode($response, true);
-
-    if (!is_array($data) || ($data['resCode'] ?? -1) !== 0 || empty($data['data'])) {
-        // 없는 계정이라고 가정
-        $errorMsg = "존재하지 않는 계정입니다.";
-    } else {
-        $root = $data['data'];
-    }
-}
 
 $levels = [];
 
@@ -104,11 +89,11 @@ ksort($levels);
             <div class="tree-level">
                 <div class="tree-row">
                     <div class="node-card node-root">
-                        <div class="node-name">
-                            <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
-                        </div>
+                        <!-- <div class="node-name">
+                            <?= htmlspecialchars($myAccountNo '', ENT_QUOTES) ?>
+                        </div> -->
                         <div class="node-account">
-                            <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
+                            <?= htmlspecialchars($myAccountNo ?? '', ENT_QUOTES) ?>
                         </div>
                     </div>
                 </div>
@@ -118,7 +103,7 @@ ksort($levels);
             <?php else: ?>
                 <?php foreach ($levels as $relDepth => $nodes): ?>
                         <div class="tree-level-label">
-                        <?= (int)$relDepth - 1 ?>대
+                        <?= (int)$relDepth ?>대
                         </div>
 
                     <div class="tree-level">
