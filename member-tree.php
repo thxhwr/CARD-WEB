@@ -136,7 +136,7 @@ if ($root) {
                 </div>
             </div>
             <?php if (empty($levels)): ?>
-                <p class="empty-text">표시할 추천인 계보가 없습니다. (밑으로 3대가 없음)</p>
+                <p class="empty-text">표시할 추천인 계보가 없습니다.<br >(밑으로 3대가 없음)</p>
             <?php else: ?>
                 <?php foreach ($levels as $relDepth => $nodes): ?>
                         <div class="tree-level-label">
