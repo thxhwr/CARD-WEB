@@ -32,7 +32,6 @@ if ($response === false) {
 }
 curl_close($ch);
 
-print_r($response);
 if (!$errorMsg) {
     $data = json_decode($response, true);
 
