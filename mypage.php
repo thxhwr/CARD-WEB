@@ -38,6 +38,12 @@
                         <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                     </div>
                 </div>
+                <div class="f-group">
+                    <div class="mypage-section-title">ID</div>
+                    <div class="mypage-user-id" style="text-align:right">
+                        <?= htmlspecialchars($_SESSION['user_Id'] ?? '', ENT_QUOTES) ?>
+                    </div>
+                </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=TP'">
                     <div class="mypage-section-title">THX Point</div>
                     <div class="mypage-pay-wrap">
