@@ -26,7 +26,6 @@ $limit = isset($_GET['limit']) ? max(1, (int)$_GET['limit']) : 20;
 
 
 $errorMsg = '';
-$items = [];
 $totalPoint = 0;
     $totalPoint = curlPost(
     'https://api.thxdeal.com/api/point/balance.php',
