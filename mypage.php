@@ -27,7 +27,29 @@
                     </div>
                 </div>
                 <div class="f-group">
-                    <div class="mypage-section-title">보유 페이</div>
+                    <div class="mypage-section-title">THX Point</div>
+                    <div class="mypage-pay-wrap">
+                        <div>
+                            <div class="mypage-pay-amount">
+                                <?= number_format($user_pay ?? 0) ?>
+                                <span class="mypage-pay-unit">P</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="f-group">
+                    <div class="mypage-section-title">SP</div>
+                    <div class="mypage-pay-wrap">
+                        <div>
+                            <div class="mypage-pay-amount">
+                                <?= number_format($user_pay ?? 0) ?>
+                                <span class="mypage-pay-unit">P</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="f-group">
+                    <div class="mypage-section-title">LP</div>
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount">
