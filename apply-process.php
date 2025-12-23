@@ -34,6 +34,7 @@ if ($response === false) {
 }
 curl_close($ch);
 
+print_r($response);
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
 print_r($data);
