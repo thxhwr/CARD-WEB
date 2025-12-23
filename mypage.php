@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=SP'">
-                    <div class="mypage-section-title">SP</div>
+                    <div class="mypage-section-title">Shoping Poing</div>
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=LP'">
-                    <div class="mypage-section-title">LP</div>
+                    <div class="mypage-section-title">Lucky Point</div>
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
