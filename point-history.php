@@ -39,7 +39,7 @@ if ($balanceRes && ($balanceRes['data']['resCode'] ?? -1) === 0) {
 }
 
 $currentBalance = (int)($balances[$type] ?? 0);
-
+$running = $currentBalance;
     
 $response = curlPost(
     'https://api.thxdeal.com/api/point/history.php',
@@ -115,7 +115,6 @@ if (!$response) {
                 <ul class="point-list">
                     <?php foreach ($items as $row): ?>
                         <?php
-                            $running = $currentBalance;
                             $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
                             $isOut  = ($action === 'OUT');
 
@@ -124,7 +123,7 @@ if (!$response) {
 
                             $title     = $row['DESCRIPTION'] ?? '포인트';
                             $amount    = (int)($row['AMOUNT'] ?? 0);
-                            $items[$row]['_BALANCE_AFTER'] = $running;
+                            $items[$i]['_BALANCE_AFTER'] = $running;
                             if ($action === 'IN') {
                                 $running -= $amount;
                             } elseif ($action === 'OUT') {
@@ -133,8 +132,6 @@ if (!$response) {
                             
                             $createdAt = $row['CREATED_AT'] ?? '';
                             $dateStr   = $createdAt ? date('Y-m-d', strtotime($createdAt)) : '';
-
-                            print_r($items[$i]['_BALANCE_AFTER']);
                         ?>
 
                         <li class="point-item <?= $cls ?>">
@@ -146,7 +143,6 @@ if (!$response) {
                                 <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
                             </div>
                             <?php
-                                echo $row['_BALANCE_AFTER'];
                                 $bal = $row['_BALANCE_AFTER'] ?? null;
                                 if ($bal !== null) {
                                 echo '<p class="balance">잔액 ' . number_format($bal) . 'P</p>';
