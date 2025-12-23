@@ -35,7 +35,7 @@ $balanceRes = curlPost(
 $balances = [];
 if ($balanceRes && ($balanceRes['resCode'] ?? -1) === 0) {
     // 예: [ 'TP'=>65, 'SP'=>65, 'LP'=>0 ]
-    $balances = $balanceRes['data'] ?? [];
+    $balances = $balanceRes['data']['data'] ?? [];
 }
 
 print_r($balanceRes);
