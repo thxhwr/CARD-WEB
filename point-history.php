@@ -113,7 +113,7 @@ if (!$response) {
                     if (!is_array($items)) $items = [];
                 ?>
                 <ul class="point-list">
-                    <?php foreach ($items as $row): ?>
+                    <?php foreach ($items as $i => $row): ?>
                         <?php
                             $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
                             $isOut  = ($action === 'OUT');
