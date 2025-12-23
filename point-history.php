@@ -146,7 +146,6 @@ if (!$response) {
                                 <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
                             </div>
                             <?php
-                                echo 
                                 echo $row['_BALANCE_AFTER'];
                                 $bal = $row['_BALANCE_AFTER'] ?? null;
                                 if ($bal !== null) {
