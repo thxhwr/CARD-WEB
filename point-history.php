@@ -44,7 +44,6 @@ if (!$response) {
 } elseif (($response['resCode'] ?? -1) !== 0) {
     $errorMsg = $response['message'] ?? '요청 실패';
 } else {
-    print_r($data);
 
     $data = $response['data'] ?? [];
     $totalPoint = (int)($data['totalPoint'] ?? 0);
@@ -54,6 +53,7 @@ if (!$response) {
     if ($io !== 'all') {
         $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
     }
+        print_r($data);
 }
 ?>
 <!DOCTYPE html>

@@ -44,7 +44,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($response['data']['TP'] ?? 0) ?>
+                                <?= number_format($response['data']['data']['TP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($response['data']['SP'] ?? 0) ?>
+                                <?= number_format($response['data']['data']['SP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($response['data']['LP'] ?? 0) ?>
+                                <?= number_format($response['data']['data']['LP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
                         </div>
