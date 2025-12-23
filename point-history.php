@@ -45,7 +45,7 @@ if (!$response) {
     $errorMsg = $response['message'] ?? '요청 실패';
 } else {
     print_r($data);
-    
+
     $data = $response['data'] ?? [];
     $totalPoint = (int)($data['totalPoint'] ?? 0);
     $items = $data['list'] ?? [];
@@ -58,9 +58,6 @@ if (!$response) {
 ?>
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <!-- head.php 안에 이미 meta/css 들어있으면 중복되면 제거 -->
-</head>
 <body>
 <div class="app">
 
