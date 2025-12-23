@@ -13,7 +13,6 @@ $rootAccountNo = ($searchInput === null || $searchInput === '')
 
 $errorMsg = '';
 $root     = null;
-$levels   = [];
 
 $postFields = [
     'accountNo' => $rootAccountNo,
@@ -45,50 +44,37 @@ if (!$errorMsg) {
     }
 }
 
-/* -----------------------------------------------------
- * 4. 루트 기준으로 아래 3대만 depth별 분리 (루트 자신은 제외)
- * --------------------------------------------------- */
-if ($root) {
-    // relDepth: 1 = 자식, 2 = 손자, 3 = 증손
-    function collectDescendants3Gen(array $node, int $relDepth, array &$levels, int $maxDepth = 3)
-    {
-        if ($relDepth >= 1 && $relDepth <= $maxDepth) {
-            if (!isset($levels[$relDepth])) {
-                $levels[$relDepth] = [];
-            }
+$levels = [];
 
-            $levels[$relDepth][] = [
-                'name'      => $node['name']      ?? '',
-                'accountNo' => $node['accountNo'] ?? '',
-                'userId'    => $node['userId']    ?? null,
-                'dept'      => $node['dept']      ?? null,   // 줄 번호
-                'deptNo'    => $node['deptNo']    ?? null,   // 그 줄에서 순서
-            ];
-        }
+$list = $data['data']['list'] ?? [];
+if (!is_array($list)) $list = [];
 
-        if ($relDepth >= $maxDepth) {
-            return;
-        }
+// dept 기준으로 2~4까지만(= 나 제외 3대) 모으기
+foreach ($list as $row) {
+    $dept = (int)($row['dept'] ?? 0);
 
-        if (!empty($node['children']) && is_array($node['children'])) {
-            foreach ($node['children'] as $child) {
-                collectDescendants3Gen($child, $relDepth + 1, $levels, $maxDepth);
-            }
-        }
-    }
+    // 2=1대, 3=2대, 4=3대 (루트가 dept=1이라고 가정)
+    if ($dept < 2 || $dept > 4) continue;
 
-    collectDescendants3Gen($root, 0, $levels, 3);
-
-    // 각 세대 안에서 deptNo 순으로 정렬
-    foreach ($levels as $relDepth => &$nodes) {
-        usort($nodes, function ($a, $b) {
-            return ($a['deptNo'] ?? 0) <=> ($b['deptNo'] ?? 0);
-        });
-    }
-    unset($nodes);
-
-    ksort($levels); // 1 → 3 순서
+    if (!isset($levels[$dept])) $levels[$dept] = [];
+    $levels[$dept][] = [
+        'name'      => $row['name'] ?? '',
+        'accountNo' => $row['accountNo'] ?? '',
+        'userId'    => $row['userId'] ?? null,
+        'dept'      => $dept,
+        'deptNo'    => $row['deptNo'] ?? null,
+    ];
 }
+
+// 같은 dept 안에서 deptNo 정렬
+foreach ($levels as &$nodes) {
+    usort($nodes, fn($a,$b) => ($a['deptNo'] ?? 0) <=> ($b['deptNo'] ?? 0));
+}
+unset($nodes);
+
+// dept 순서대로
+ksort($levels);
+
 ?>
 <?php $pageTitle = "추천인"; ?>
 <!DOCTYPE html>
