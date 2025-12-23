@@ -103,35 +103,40 @@ if (!$response) {
 
             <?php else: ?>
                 <ul class="point-list">
-                    <?php foreach ($items as $row): 
-                        // ✅ API 항목 키 이름은 실제 응답에 맞게 변경해줘야 함
-                        // 예시 가정:
-                        // row['io'] = 'plus'|'minus'
-                        // row['point'] = 3000
-                        // row['balance'] = 12500
-                        // row['title'] or row['description']
-                        // row['createdAt'] = "2025-12-22 06:34:20"
+                    <?php foreach ($items as $row): ?>
+                        <?php
+                            // IN = 적립(+), OUT = 사용(-)
+                            $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
+                            $isOut  = ($action === 'OUT');
 
-                        $rowIO   = $row['ACTION_TYPE'] ?? ($row['type'] ?? ''); // plus/minus
-                        $cls     = ($rowIO === 'minus') ? 'OUT' : 'IN';
-                        $sign    = ($rowIO === 'minus') ? '-' : '+';
+                            $cls  = $isOut ? 'minus' : 'plus';
+                            $sign = $isOut ? '-' : '+';
 
-                        $title   = $row['DESCRIPTION'] ?? $row['DESCRIPTION'] ?? '포인트';
-                        $point   = (int)($row['AMOUNT'] ?? 0);
-                        // $balance = (int)($row['balance'] ?? 0);
-                        $created = $row['CREATED_AT'] ?? $row['CREATED_AT'] ?? '';
-                        $dateStr = $created ? date('Y-m-d', strtotime($created)) : '';
-                    ?>
-                    <li class="point-item <?= $cls ?>">
-                        <div class="left">
-                            <p class="title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
-                            <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
-                        </div>
-                        <div class="right">
-                            <p class="value"><?= $sign ?><?= number_format($point) ?>P</p>
-                            <p class="balance">잔액 <?= number_format($balance) ?>P</p>
-                        </div>
-                    </li>
+                            $title = $row['DESCRIPTION'] ?? '포인트';
+                            $amount = (int)($row['AMOUNT'] ?? 0);
+
+                            $createdAt = $row['CREATED_AT'] ?? '';
+                            $dateStr = $createdAt ? date('Y-m-d', strtotime($createdAt)) : '';
+
+                            // 잔액(balance)은 현재 응답에 없음 → 표시하고 싶으면 API에서 balance 내려주거나, PHP에서 누적 계산해야 함
+                            // 일단 "잔액" 줄은 숨기거나, 없으면 안 보이게 처리
+                            $balance = $row['BALANCE'] ?? null; // 혹시 나중에 생길 대비
+                        ?>
+
+                        <li class="point-item <?= $cls ?>">
+                            <div class="left">
+                                <p class="title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
+                                <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
+                            </div>
+                            <div class="right">
+                                <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
+
+                                <?php if ($balance !== null): ?>
+                                    <p class="balance">잔액 <?= number_format((int)$balance) ?>P</p>
+                                <?php endif; ?>
+                            </div>
+                        </li>
+
                     <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
