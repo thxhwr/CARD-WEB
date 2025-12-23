@@ -162,7 +162,9 @@ if (!empty($items)) {
             <!-- 보유 포인트 -->
             <div class="point-summary">
                 <p class="label">보유 포인트</p>
-                <p class="amount"><?= number_format($currentBalance) ?> <?= htmlspecialchars($type) ?></p>
+                <p class="amount">
+                    <?= number_format($currentBalance) ?><span><?= htmlspecialchars($type, ENT_QUOTES) ?></span>
+                </p>
             </div>
 
             <!-- 필터: 전체/적립/사용 (GET으로) -->

@@ -1848,39 +1848,166 @@ body {
   color: #ef4444;
 }
 
-.point-type-tabs{
-    display:flex; gap:8px; margin: 8px 0 14px;
-}
-.point-type-tabs a{
-    flex:1; text-align:center; padding:10px 0;
-    border-radius:999px; border:1px solid #ddd;
-    text-decoration:none; color:#111; font-size:13px;
-    background:#fff;
-}
-.point-type-tabs a.active{
-    background:#111; color:#fff; border-color:#111;
+/* =========================
+   THX 공통 톤 (포인트내역)
+========================= */
+
+/* 페이지 기본 여백(다른 페이지와 맞춤) */
+.point-wrap{
+  padding: 14px 16px 28px;
 }
 
-.point-summary{ background:#111; color:#fff; border-radius:14px; padding:20px; margin-bottom:16px; }
-.point-summary .label{ font-size:13px; opacity:.7; margin:0; }
-.point-summary .amount{ font-size:26px; font-weight:700; margin:6px 0 0; }
+/* 상단 탭( TP/SP/LP, 전체/적립/사용 ) 공통 */
+.point-type-tabs,
+.point-filter{
+  display: flex;
+  gap: 10px;
+  margin: 10px 0 14px;
+}
 
-.point-filter{ display:flex; gap:8px; margin-bottom:16px; }
+.point-type-tabs a,
 .point-filter a{
-    flex:1; text-align:center; padding:10px 0;
-    border-radius:999px; border:1px solid #ddd;
-    text-decoration:none; color:#111; font-size:13px; background:#fff;
+  flex: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+
+  /* 기본(비활성) */
+  background: #fff;
+  color: #111;
+  border: 1px solid #e6e6ea;
+
+  /* 터치 느낌 */
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s ease, color .15s ease, border-color .15s ease, transform .05s ease;
 }
-.point-filter a.active{ background:#111; color:#fff; border-color:#111; }
+.point-type-tabs a:active,
+.point-filter a:active{
+  transform: scale(0.99);
+}
 
-.point-list{ list-style:none; padding:0; margin:0; }
-.point-item{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid #eee; }
-.point-item .title{ font-size:14px; font-weight:500; margin:0; }
-.point-item .date{ font-size:12px; color:#888; margin:4px 0 0; }
-.point-item .value{ font-size:15px; font-weight:600; text-align:right; margin:0; }
-.point-item .balance{ font-size:12px; color:#888; text-align:right; margin:4px 0 0; }
-.point-item.IN .value{ color:#16a34a; }
-.point-item.OUT .value{ color:#ef4444; }
+.point-type-tabs a.active,
+.point-filter a.active{
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
 
-.error-text{ color:#ef4444; font-size:13px; text-align:center; margin-top:12px; }
-.empty-text{ color:#9ca3af; font-size:13px; text-align:center; margin-top:12px; }
+/* 보유 포인트 카드 */
+.point-summary{
+  background: #111;
+  color: #fff;
+  border-radius: 18px;
+  padding: 18px 18px 20px;
+  margin: 6px 0 18px;
+  box-shadow: 0 12px 24px rgba(15,23,42,.12);
+}
+.point-summary .label{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  opacity: .72;
+}
+.point-summary .amount{
+  margin: 10px 0 0;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.05;
+}
+.point-summary .amount span{
+  font-size: 22px;
+  font-weight: 800;
+  opacity: .92;
+  margin-left: 6px;
+}
+
+/* 리스트(카드) - 한 줄씩 */
+.point-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 카드 */
+.point-item{
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px 18px;
+  box-shadow: 0 10px 22px rgba(15,23,42,.08);
+  border: 1px solid #f0f0f3;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* 왼쪽 텍스트 */
+.point-item .left{
+  padding-top: 2px;
+}
+.point-item .title{
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #111;
+  line-height: 1.3;
+}
+.point-item .date{
+  margin: 0;
+  font-size: 18px;         /* 스샷처럼 날짜가 큼 */
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #8d8d95;
+}
+
+/* 오른쪽 금액 */
+.point-item .right{
+  text-align: right;
+}
+.point-item .value{
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  line-height: 1.1;
+}
+
+/* 잔액 텍스트 */
+.point-item .balance{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: #9aa0a6;
+}
+
+/* 색상 규칙 */
+.point-item.IN .value{ color: #16a34a; }
+.point-item.OUT .value{ color: #ef4444; }
+
+/* 에러/빈값 */
+.error-text,
+.empty-text{
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.error-text{ color: #ef4444; }
+.empty-text{ color: #9ca3af; }
+
+/* 모바일에서 카드 안 글자 줄바꿈 깔끔 */
+.point-item .title{
+  word-break: keep-all;
+}
