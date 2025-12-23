@@ -122,7 +122,7 @@ ksort($levels);
             <?php else: ?>
                 <?php foreach ($levels as $relDepth => $nodes): ?>
                         <div class="tree-level-label">
-                        <?= (int)$relDepth ?>대
+                        <?= (int)$relDepth - 1 ?>대
                         </div>
 
                     <div class="tree-level">
