@@ -38,7 +38,6 @@ if ($balanceRes && ($balanceRes['data']['resCode'] ?? -1) === 0) {
     $balances = $balanceRes['data']['data'] ?? [];
 }
 
-print_r($balanceRes);
 $currentBalance = (int)($balances[$type] ?? 0);
 
     
@@ -134,6 +133,8 @@ if (!$response) {
                             
                             $createdAt = $row['CREATED_AT'] ?? '';
                             $dateStr   = $createdAt ? date('Y-m-d', strtotime($createdAt)) : '';
+
+                            print_r($items[$i]['_BALANCE_AFTER']);
                         ?>
 
                         <li class="point-item <?= $cls ?>">
@@ -145,6 +146,8 @@ if (!$response) {
                                 <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
                             </div>
                             <?php
+                                echo 
+                                echo $row['_BALANCE_AFTER'];
                                 $bal = $row['_BALANCE_AFTER'] ?? null;
                                 if ($bal !== null) {
                                 echo '<p class="balance">잔액 ' . number_format($bal) . 'P</p>';
