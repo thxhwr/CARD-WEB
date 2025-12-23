@@ -38,7 +38,6 @@ $response = curlPost(
         'limit'     => $limit,
     ]
 );
-print_r($response);
 if (!$response) {
     $errorMsg = '서버 통신 오류';
 } elseif (($response['data']['resCode'] ?? -1) !== 0) {
