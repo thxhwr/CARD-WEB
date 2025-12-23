@@ -50,9 +50,9 @@ if (!$response) {
     $items = $response['data']['data'] ?? [];
 
     // (plus/minus 키가 item에 있다면)
-    // if ($io !== 'all') {
-    //     $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
-    // }
+    if ($io !== 'all') {
+        $items = array_values(array_filter($items, fn($it) => ($it['ACTION_TYPE'] ?? '') === $io));
+    }
     print_r($items);
 }
 ?>
