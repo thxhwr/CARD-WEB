@@ -18,7 +18,7 @@ $postFields = [
   'address' => $address,
   'userId' => $_SESSION['user_Id'],
 ];
-
+print_r($postFields)l
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberInsert.php');
 curl_setopt_array($ch, [
     CURLOPT_POST => true,
