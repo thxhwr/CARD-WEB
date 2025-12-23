@@ -27,10 +27,10 @@ $limit = isset($_GET['limit']) ? max(1, (int)$_GET['limit']) : 20;
 
 $errorMsg = '';
 $totalPoint = 0;
-    $totalPoint = curlPost(
-    'https://api.thxdeal.com/api/point/balance.php',
-        [ 'accountNo' => $_SESSION['user_No']]
-    );
+    // $totalPoint = curlPost(
+    // 'https://api.thxdeal.com/api/point/balance.php',
+    //     [ 'accountNo' => $_SESSION['user_No']]
+    // );
     
 $response = curlPost(
     'https://api.thxdeal.com/api/point/history.php',
