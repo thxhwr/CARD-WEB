@@ -22,7 +22,7 @@
             <section class="apply-form">
                 <div class="f-group">
                     <div class="mypage-section-title">계 정</div>
-                    <div class="mypage-user-id">
+                    <div class="mypage-user-id" style="text-align:right">
                         <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="mypage-section-title">THX Point</div>
                     <div class="mypage-pay-wrap">
                         <div>
-                            <div class="mypage-pay-amount">
+                            <div class="mypage-pay-amount" style="text-align:right">
                                 <?= number_format($user_pay ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
@@ -41,7 +41,7 @@
                     <div class="mypage-section-title">SP</div>
                     <div class="mypage-pay-wrap">
                         <div>
-                            <div class="mypage-pay-amount">
+                            <div class="mypage-pay-amount" style="text-align:right">
                                 <?= number_format($user_pay ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
@@ -52,7 +52,7 @@
                     <div class="mypage-section-title">LP</div>
                     <div class="mypage-pay-wrap">
                         <div>
-                            <div class="mypage-pay-amount">
+                            <div class="mypage-pay-amount" style="text-align:right">
                                 <?= number_format($user_pay ?? 0) ?>
                                 <span class="mypage-pay-unit">P</span>
                             </div>
