@@ -38,7 +38,7 @@ if ($balanceRes && ($balanceRes['resCode'] ?? -1) === 0) {
     $balances = $balanceRes['data'] ?? [];
 }
 
-// 현재 선택된 타입 잔액
+print_r($balanceRes);
 $currentBalance = (int)($balances[$type] ?? 0);
 
     
@@ -112,11 +112,11 @@ if (!$response) {
             <?php else: ?>
                 <?php
                     if (!is_array($items)) $items = [];
-                    $running = $currentBalance;
                 ?>
                 <ul class="point-list">
                     <?php foreach ($items as $row): ?>
                         <?php
+                            $running = $currentBalance;
                             $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
                             $isOut  = ($action === 'OUT');
 
