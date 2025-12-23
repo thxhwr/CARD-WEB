@@ -18,7 +18,6 @@
         $errorMsg = $response['message'] ?? '요청 실패';
     }
 
-    print_r($response);
 ?>
 <div class="app">
     <header class="appbar-apply">

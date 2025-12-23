@@ -53,6 +53,7 @@ if (!$response) {
     if ($io !== 'all') {
         $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
     }
+    print_r($response);
         print_r($data);
 }
 ?>
