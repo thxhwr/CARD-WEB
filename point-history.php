@@ -38,7 +38,7 @@ $response = curlPost(
         'limit'     => $limit,
     ]
 );
-
+print_r($response);
 if (!$response) {
     $errorMsg = '서버 통신 오류';
 } elseif (($response['resCode'] ?? -1) !== 0) {
@@ -53,7 +53,6 @@ if (!$response) {
     if ($io !== 'all') {
         $items = array_values(array_filter($items, fn($it) => ($it['type'] ?? '') === $io));
     }
-    print_r($response);
         print_r($data);
 }
 ?>
