@@ -1,6 +1,12 @@
+<?php $pageTitle = "마이페이지"; ?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <?php include __DIR__ . "/auth.php"; ?>
+    <?php include __DIR__ . "/head.php"; ?>
+</head>
 <?php
     session_start();
-    require_once 'auth.php'; // 로그인 체크
 
     $userId = $_SESSION['user_Id'];
 
@@ -33,13 +39,6 @@
 
     print_r($response);
 ?>
-<?php $pageTitle = "마이페이지"; ?>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <?php include __DIR__ . "/auth.php"; ?>
-    <?php include __DIR__ . "/head.php"; ?>
-</head>
 <body>
 <div class="app">
     <header class="appbar-apply">
