@@ -37,7 +37,7 @@
                         <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                     </div>
                 </div>
-                <div class="f-group">
+                <div class="f-group" onclick="location.href='point-history.php?type=TP'">
                     <div class="mypage-section-title">THX Point</div>
                     <div class="mypage-pay-wrap">
                         <div>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="f-group">
+                <div class="f-group" onclick="location.href='point-history.php?type=SP'">
                     <div class="mypage-section-title">SP</div>
                     <div class="mypage-pay-wrap">
                         <div>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="f-group">
+                <div class="f-group" onclick="location.href='point-history.php?type=LP'">
                     <div class="mypage-section-title">LP</div>
                     <div class="mypage-pay-wrap">
                         <div>
