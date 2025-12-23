@@ -184,8 +184,8 @@ if ($root) {
             </p>
           <?php else: ?>
             <?php foreach ($levels as $relDepth => $nodes): ?>
-                <div class="tree-level-label">
-                  <?= (int)$relDepth ?>대
+                <div class="tree-level-label" style="text-align:center">
+                  <?= (int)$relDepth + 1?>대
                 </div>
               <div class="tree-level">
 
