@@ -5,17 +5,11 @@ if (!$myAccountNo) {
     echo "로그인이 필요합니다.";
     exit;
 }
-
-$searchInput   = isset($_GET['accountNo']) ? trim($_GET['accountNo']) : null;
-$rootAccountNo = ($searchInput === null || $searchInput === '')
-    ? $myAccountNo
-    : $searchInput;
-
 $errorMsg = '';
 $root     = null;
 
 $postFields = [
-    'accountNo' => $rootAccountNo,
+    'accountNo' => $myAccountNo,
 ];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberReco.php');
@@ -27,6 +21,8 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
+
+print_r($response);
 if ($response === false) {
     $errorMsg = "API 호출 실패: " . curl_error($ch);
 }
