@@ -34,14 +34,16 @@ if ($response === false) {
 }
 curl_close($ch);
 
-print_r($response);
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
-print_r($data);
-// header('Location: /apply-complete.php');
-// exit;
-if ($data['resCode'] == "0") {
-  
-} else {
 
+if ($data['resCode'] == "1005") {
+    header('Location: /login.php?error=1');
+    exit;
+} else if($data['resCode'] == "5001"){
+    header('Location: /login.php?error=2');
+    exit;
+} else{
+    header('Location: /apply-complete.php');
+    exit;
 }
