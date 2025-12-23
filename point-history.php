@@ -47,7 +47,7 @@ if (!$response) {
     $errorMsg = $response['message'] ?? '요청 실패';
 } else {
 
-    $items = $response['data'] ?? [];
+    $items = $response['data']['data'] ?? [];
 
     // (plus/minus 키가 item에 있다면)
     if ($io !== 'all') {
