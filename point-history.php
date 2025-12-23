@@ -55,22 +55,18 @@ if ($errorMsg === '') {
 
     if (!$historyRes) {
         $errorMsg = '서버 통신 오류(내역)';
-    } elseif (($historyRes['resCode'] ?? -1) !== 0) {
-        $errorMsg = $historyRes['message'] ?? '내역 조회 실패';
+    } elseif (($historyRes['data']['resCode'] ?? -1) !== 0) {
+        $errorMsg = $historyRes['data']['message'] ?? '내역 조회 실패';
     } else {
-        $data = $historyRes['data'] ?? [];
+        $data = $historyRes['data']['data'] ?? [];
 
         // ✅ 케이스 A: data가 리스트 바로 배열일 때
         if (isset($data[0]) && is_array($data[0])) {
             $items = $data;
         }
-        // ✅ 케이스 B: data.list 형태일 때
-        elseif (isset($data['list']) && is_array($data['list'])) {
-            $items = $data['list'];
-        }
         // ✅ 케이스 C: data.data.list 같은 형태일 때(혹시)
-        elseif (isset($data['data']['list']) && is_array($data['data']['list'])) {
-            $items = $data['data']['list'];
+        elseif (isset($data['data']['data']) && is_array($data['data']['data'])) {
+            $items = $data['data']['data'];
         } else {
             $items = [];
         }
