@@ -28,7 +28,7 @@ $data = json_decode($response, true);
 $levels = [];
 
 $list = $data['data']['list'] ?? [];
-print_r($list);
+
 if (!is_array($list)) $list = [];
 foreach ($list as $row) {
     $dept = (int)($row['dept'] ?? 0);
@@ -52,7 +52,7 @@ unset($nodes);
 
 // dept 순서대로
 ksort($levels);
-
+print_r($levels);
 ?>
 <?php $pageTitle = "추천인"; ?>
 <!DOCTYPE html>
