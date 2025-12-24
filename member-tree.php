@@ -18,7 +18,7 @@ curl_setopt_array($ch, [
 ]);
 $errorMsg = '';
 $response = curl_exec($ch);
-print_r($response);
+
 if ($response === false) {
     $errorMsg = "API 호출 실패: " . curl_error($ch);
 }
@@ -28,13 +28,10 @@ $data = json_decode($response, true);
 $levels = [];
 
 $list = $data['data']['list'] ?? [];
+print_r($list);
 if (!is_array($list)) $list = [];
-
-// dept 기준으로 2~4까지만(= 나 제외 3대) 모으기
 foreach ($list as $row) {
     $dept = (int)($row['dept'] ?? 0);
-
-    // 2=1대, 3=2대, 4=3대 (루트가 dept=1이라고 가정)
     if ($dept < 2 || $dept > 4) continue;
 
     if (!isset($levels[$dept])) $levels[$dept] = [];
