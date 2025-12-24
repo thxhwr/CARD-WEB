@@ -3,12 +3,33 @@ session_start();
 // 사용자가 입력한 값
 $name = $_POST['name'] ?? '';
 $phone = $_POST['phone'] ?? '';
-$referral = $_POST['referral'] ?? '';
 $zipcode        = $_POST['zipcode'] ?? '';
 $addr           = $_POST['address'] ?? '';
 $addr_detail    = $_POST['address_detail'] ?? '';
-
+$receiveType = $_POST['receive_type'] ?? 'visit';
+$referral = trim($_POST['referral'] ?? '');
+$referralConfirm = trim($_POST['referral_confirm'] ?? ''); 
+$refChecked = $_POST['referral_checked'] ?? '0';
 $address = $zipcode . ' ' . $addr . ' ' . $addr_detail;
+
+
+if ($referral === '' || $refChecked !== '1') {
+  header("Location: /apply.php?error=referral");
+  exit;
+}
+if ($referralConfirm === '' || $referral !== $referralConfirm) {
+  header("Location: /apply.php?error=referral_confirm");
+  exit;
+}
+
+$stmt = $pdo->prepare("SELECT accountNo FROM members WHERE accountNo = :id LIMIT 1");
+$stmt->execute([':id' => $referral]);
+$exists = $stmt->fetchColumn();
+
+if (!$exists) {
+  header("Location: /apply.php?error=referral_notfound");
+  exit;
+}
 
 $postFields = [
   'accountNo' => $_SESSION['user_No'],
@@ -18,7 +39,7 @@ $postFields = [
   'address' => $address,
   'userId' => $_SESSION['user_Id'],
 ];
-print_r($postFields);
+
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberInsert.php');
 curl_setopt_array($ch, [
     CURLOPT_POST => true,

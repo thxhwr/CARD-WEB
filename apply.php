@@ -26,107 +26,65 @@
             <section class="apply-form">
 
                 <form id="cardApplyForm" class="form" action="/apply-process.php" method="post">
-                    <!-- <div class="f-group is-disabled">
-                        <label class="f-label required" for="userid">아이디</label>
-                        <input id="userid" name="userid" class="f-input" type="text" placeholder="땡스페이 아이디를 입력해주세요" required>
-                    </div> -->
 
-                    <!-- 비밀번호 -->
-                    <!-- <div class="f-group is-disabled">
-                        <label class="f-label required" for="pin">비밀번호</label>
-                        <input id="pin" name="pin" class="f-input" type="password" inputmode="numeric" placeholder="땡스페이 비밀번호를 입력해주세요" required>
-                    </div> -->
-
-                    <!-- 이름 -->
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="name">이름</label>
                         <input id="name" name="name" class="f-input" type="text" placeholder="이름을 입력해주세요" required>
                     </div>
-
-                    <!-- 영문 이름 -->
-                    <!-- <div class="f-group is-disabled">
-                        <label class="f-label required" for="ename">영문 이름</label>
-                        <input id="ename" name="ename" class="f-input" type="text" placeholder="영문 이름을 입력해주세요" required>
-                    </div> -->
-
-                    <!-- 배송지 -->
-                    <!-- <div class="f-group is-disabled">
-                        <label class="f-label required" for="address">배송지</label>
-                        <input id="address" name="address" class="f-input" type="text" placeholder="카드 배송을 받을 주소를 입력해주세요" required>
-                    </div> -->
                     <div class="f-group address-group is-disabled">
                         <label class="f-label">배송지</label>
-
-                        <!-- 우편번호 -->
                         <div class="addr-row">
                             <input type="text" id="zipcode" name="zipcode" class="f-input" placeholder="우편번호" readonly>
                             <button type="button" class="btn-zip" onclick="execDaumPostcode()">
                             우편번호 검색
                             </button>
                         </div>
-
-                        <!-- 기본 주소 -->
                         <input type="text" id="address" class="f-input" name="address" placeholder="기본 주소" readonly>
-
-                        <!-- 상세 주소 -->
                         <input type="text" id="address_detail" class="f-input" name="address_detail" placeholder="상세 주소 입력">
                     </div>
-                    <!-- 연락처 -->
+                    <div class="f-group" id="receiveGroup">
+                        <label class="f-label required">수령 방법</label>
+                        <div class="choice-row">
+                            <label class="choice">
+                            <input type="radio" name="receive_type" value="visit" checked required>
+                            <span>방문 수령</span>
+                            </label>
+
+                            <!-- 처음엔 방문수령으로 고정: disabled 걸어두고, 나중에 풀면 됨 -->
+                            <label class="choice">
+                            <input type="radio" name="receive_type" value="delivery" disabled>
+                            <span>택배 수령(추후 오픈)</span>
+                            </label>
+                        </div>
+                        <p class="muted small" style="margin-top:8px;">
+                            현재는 <b>방문 수령</b>만 가능합니다. (택배 수령은 추후 제공)
+                        </p>
+                    </div>
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="phone">전화번호</label>
                         <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
                     </div>
-                    <!-- <div class="f-group is-disabled">
-                        <label class="f-label required" for="account">계좌번호</label>
-                        <select name="bank" class="bank-select">
-                            <option value="">은행 선택</option>
-                            <option value="국민은행">국민은행(KB)</option>
-                            <option value="신한은행">신한은행</option>
-                            <option value="우리은행">우리은행</option>
-                            <option value="하나은행">하나은행</option>
-                            <option value="농협은행">농협은행(NH)</option>
-                            <option value="기업은행">기업은행(IBK)</option>
-                            <option value="산업은행">산업은행(KDB)</option>
-                            <option value="수협은행">수협은행</option>
+                    <div class="f-group is-disabled" id="referralGroup">
+                        <label class="f-label required" for="referral">추천인 아이디</label>
 
-                          
-                            <option value="부산은행">부산은행</option>
-                            <option value="경남은행">경남은행</option>
-                            <option value="광주은행">광주은행</option>
-                            <option value="전북은행">전북은행</option>
-                            <option value="제주은행">제주은행</option>
-                            <option value="대구은행">대구은행</option>
+                        <div class="addr-row">
+                            <input id="referral" name="referral" class="f-input" type="text" placeholder="추천인 아이디를 입력해주세요" required>
+                            <button type="button" class="btn-zip" id="referralCheckBtn">조회</button>
+                        </div>
 
-                         
-                            <option value="카카오뱅크">카카오뱅크</option>
-                            <option value="토스뱅크">토스뱅크</option>
-                            <option value="케이뱅크">케이뱅크(KBANK)</option>
+                        <div id="referralMsg" class="muted small" style="margin-top:8px;"></div>
 
-                           
-                            <option value="씨티은행">한국씨티은행</option>
-                            <option value="HSBC">HSBC은행</option>
-                            <option value="JP Morgan">JP Morgan Chase</option>
-                            <option value="BOA">뱅크오브아메리카(BOA)</option>
-                            <option value="SC제일은행">SC제일은행</option>
-                            <option value="BNP Paribas">BNP Paribas</option>
-                            <option value="중국공상은행">중국공상은행(ICBC)</option>
-                            <option value="중국은행">중국은행(BOC)</option>
-                            <option value="중국건설은행">중국건설은행(CCB)</option>
-                            <option value="도이치은행">도이치은행</option>
-                            <option value="미즈호은행">미즈호은행</option>
-                            <option value="미쓰비시UFJ은행">미쓰비시UFJ은행(MUFG)</option>
+                        <!-- 본인 확인(재입력) -->
+                        <div style="margin-top:12px;">
+                            <label class="f-label required" for="referral_confirm">추천인 아이디 재확인</label>
+                            <input id="referral_confirm" name="referral_confirm" class="f-input" type="text" placeholder="한번 더 동일하게 입력해주세요" required>
+                            <div id="referralConfirmMsg" class="muted small" style="margin-top:8px;"></div>
+                        </div>
 
-                           
-                            <option value="새마을금고">새마을금고</option>
-                            <option value="신협">신협</option>
-                            <option value="우체국">우체국</option>
-                            <option value="저축은행">저축은행(각 지역 SB)</option>
-                        </select>
-                        <input id="account" name="account"  style="margin-top: 10px;" class="f-input" type="number"  placeholder="카드 소유자 계죄번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
-                    </div> -->
-                    <div class="f-group is-disabled">
-                        <label class="f-label required" for="referral">추천인</label>
-                        <input id="referral" name="referral" class="f-input" type="text"  placeholder="카드 소유자의 추천인을 입력해주세요" required>
+                        <div class="muted small" style="margin-top:10px; color:#e11d48; font-weight:700;">
+                            ※ 추천인은 <u>등록(신청 완료) 후 절대 변경 불가</u>합니다.
+                        </div>
+                        <input type="hidden" name="referral_checked" id="referral_checked" value="0">
                     </div>
                     <!-- 하단 고정 버튼 -->
                     <div class="form-actions">
@@ -137,9 +95,15 @@
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이미 신청하였습니다.</p>';
                         } elseif ($error === '2') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">잔액이 부족합니다.</p>';
+                        } elseif ($error === 'referral') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">추천인을 입력해주세요.</p>';
+                        }elseif ($error === 'referral_confirm') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">존재하는 추천인을 입력해주세요.</p>';
+                        }elseif ($error === 'referral_notfound') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">존재하지 않는 추천인입니다.</p>';
                         }
                         ?>
-                        <button class="apply-submit" type="submit" disabled onclick="location.href('apply-complete.php')">
+                        <button class="apply-submit" type="submit" disabled>
                         카드 신청
                         </button>
                     </div>
@@ -155,6 +119,39 @@
             const form = document.getElementById('cardApplyForm');
             const submitBtn = form.querySelector('.apply-submit');
 
+            const referralInput = document.getElementById('referral');
+            const referralConfirm = document.getElementById('referral_confirm');
+            const referralCheckBtn = document.getElementById('referralCheckBtn');
+            const referralMsg = document.getElementById('referralMsg');
+            const referralConfirmMsg = document.getElementById('referralConfirmMsg');
+            const referralCheckedHidden = document.getElementById('referral_checked');
+
+            function setMsg(el, text, ok){
+                el.textContent = text || '';
+                el.style.color = ok ? '#16a34a' : '#ef4444';
+                el.style.fontWeight = '700';
+            }
+            function normalizeId(v){
+                return (v || '').trim();
+            }
+            function checkReferralConfirm(){
+                const a = normalizeId(referralInput.value);
+                const b = normalizeId(referralConfirm.value);
+
+                if(!b){
+                referralConfirmMsg.textContent = '';
+                toggleSubmit();
+                return;
+                }
+
+                if(a === b){
+                setMsg(referralConfirmMsg, '재확인 완료: 동일합니다.', true);
+                }else{
+                setMsg(referralConfirmMsg, '추천인 아이디가 일치하지 않습니다.', false);
+                }
+                toggleSubmit();
+            }
+            
             function toggleDisabledState(){
                 form.querySelectorAll('.f-group').forEach(g=>{
                 const inp = g.querySelector('.f-input');
@@ -173,53 +170,112 @@
                 }
                 });
             }
+            
+            async function checkReferral(){
+                const id = normalizeId(referralInput.value);
+                referralCheckedHidden.value = '0';
+                submitBtn.disabled = true;
+
+                if(!id){
+                setMsg(referralMsg, '추천인 아이디를 입력해주세요.', false);
+                toggleSubmit();
+                return;
+                }
+
+                setMsg(referralMsg, '조회 중...', true);
+
+                try{
+                // ✅ 여기에 추천인 조회 API를 연결
+                const res = await fetch('/referral-check.php', {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({ referral: id })
+                });
+                const data = await res.json();
+
+                if(data.ok){
+                    setMsg(referralMsg, `확인 완료: ${data.name ? data.name+' ('+id+')' : id} 추천인 등록 가능합니다.`, true);
+                    referralCheckedHidden.value = '1';
+                }else{
+                    setMsg(referralMsg, data.message || '해당 추천인 아이디가 회원 명단에 없습니다. 추천인 등록 불가능합니다.', false);
+                    referralCheckedHidden.value = '0';
+                }
+                }catch(e){
+                setMsg(referralMsg, '조회 실패: 잠시 후 다시 시도해주세요.', false);
+                referralCheckedHidden.value = '0';
+                }
+
+                toggleSubmit();
+            }
 
             function toggleSubmit(){
                 const required = form.querySelectorAll('[required]');
-                const ok = Array.from(required).every(i => i.value.trim().length > 0);
+                const okBasic = Array.from(required).every(i => (i.type === 'radio' ? true : i.value.trim().length > 0));
+
+                // ✅ 추가 조건: 추천인 조회 통과 + 재확인 일치
+                const referralChecked = referralCheckedHidden.value === '1';
+                const referralSame = normalizeId(referralInput.value) !== '' &&
+                                    normalizeId(referralInput.value) === normalizeId(referralConfirm.value);
+
+                // 라디오 required는 그룹이라 위 okBasic에서 완벽히 안 잡힐 수 있어 간단히 보강
+                const receiveType = form.querySelector('input[name="receive_type"]:checked');
+
+                const ok = okBasic && !!receiveType && referralChecked && referralSame;
+
                 submitBtn.disabled = !ok;
             }
 
-            
             form.querySelectorAll('.f-input').forEach(inp=>{
                 const group = inp.parentElement;
                 inp.addEventListener('focus', ()=> group.classList.add('is-focus'));
                 inp.addEventListener('blur',  ()=> group.classList.remove('is-focus'));
             });
 
+            // 추천인 관련 이벤트
+            referralCheckBtn.addEventListener('click', checkReferral);
+
+            // 추천인 값이 바뀌면 “조회 다시” 강제
+            referralInput.addEventListener('input', ()=>{
+                referralCheckedHidden.value = '0';
+                referralMsg.textContent = '';
+                checkReferralConfirm();
+                toggleSubmit();
+            });
+
+            referralConfirm.addEventListener('input', checkReferralConfirm);
+
+            // 기존 이벤트
             form.addEventListener('input', ()=>{ toggleDisabledState(); toggleSubmit(); });
             form.addEventListener('change', ()=>{ toggleDisabledState(); toggleSubmit(); });
 
-            toggleDisabledState(); toggleSubmit();
+            toggleDisabledState(); 
+            toggleSubmit();
 
-            form.addEventListener('submit', (e)=>{
-                //e.preventDefault();
-                // alert("신청되었습니다.");
-                // location.href = "apply-complete.php";
-            });
-            })();
+
+
+        })();
             
 
-            function execDaumPostcode() {
-                new daum.Postcode({
-                    oncomplete: function(data) {
-                    let addr = '';
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                let addr = '';
 
-                    // 도로명 주소 우선
-                    if (data.userSelectedType === 'R') {
-                        addr = data.roadAddress;
-                    } else {
-                        addr = data.jibunAddress;
-                    }
-
-                    document.getElementById('zipcode').value = data.zonecode;
-                    document.getElementById('address').value = addr;
-
-                    // 상세주소로 포커스 이동
-                    document.getElementById('address_detail').focus();
-                    }
-                }).open();
+                // 도로명 주소 우선
+                if (data.userSelectedType === 'R') {
+                    addr = data.roadAddress;
+                } else {
+                    addr = data.jibunAddress;
                 }
+
+                document.getElementById('zipcode').value = data.zonecode;
+                document.getElementById('address').value = addr;
+
+                // 상세주소로 포커스 이동
+                document.getElementById('address_detail').focus();
+                }
+            }).open();
+        }
     </script>
 
 </body>
