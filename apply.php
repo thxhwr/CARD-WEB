@@ -31,6 +31,10 @@
                         <label class="f-label required" for="name">이름</label>
                         <input id="name" name="name" class="f-input" type="text" placeholder="이름을 입력해주세요" required>
                     </div>
+                     <div class="f-group is-disabled">
+                        <label class="f-label required" for="phone">전화번호</label>
+                        <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
+                    </div>
                     <div class="f-group address-group is-disabled">
                         <label class="f-label">배송지</label>
                         <div class="addr-row">
@@ -49,20 +53,14 @@
                             <input type="radio" name="receive_type" value="visit" checked required>
                             <span>방문 수령</span>
                             </label>
-
-                            <!-- 처음엔 방문수령으로 고정: disabled 걸어두고, 나중에 풀면 됨 -->
                             <label class="choice">
-                            <input type="radio" name="receive_type" value="delivery" disabled>
-                            <span>택배 수령(추후 오픈)</span>
+                            <input type="radio" name="receive_type" value="delivery">
+                            <span>택배 수령</span>
                             </label>
                         </div>
-                        <p class="muted small" style="margin-top:8px;">
+                        <!-- <p class="muted small" style="margin-top:8px;">
                             현재는 <b>방문 수령</b>만 가능합니다. (택배 수령은 추후 제공)
-                        </p>
-                    </div>
-                    <div class="f-group is-disabled">
-                        <label class="f-label required" for="phone">전화번호</label>
-                        <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
+                        </p> -->
                     </div>
                     <div class="f-group is-disabled" id="referralGroup">
                         <label class="f-label required" for="referral">추천인 아이디</label>
@@ -81,7 +79,7 @@
                             <div id="referralConfirmMsg" class="muted small" style="margin-top:8px;"></div>
                         </div>
 
-                        <div class="muted small" style="margin-top:10px; color:#e11d48; font-weight:700;">
+                        <div class="muted small" style="margin-top:10px; color:#e11d48; font-size:14px;font-weight:700;">
                             ※ 추천인은 <u>등록(신청 완료) 후 절대 변경 불가</u>합니다.
                         </div>
                         <input type="hidden" name="referral_checked" id="referral_checked" value="0">
