@@ -204,7 +204,7 @@ if (!empty($items)) {
 
                         <li class="point-item <?= $cls ?>">
                             <div class="left">
-                                <p class="point-title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
+                                <p class="left-title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
                                 <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
                             </div>
                             <div class="right">
