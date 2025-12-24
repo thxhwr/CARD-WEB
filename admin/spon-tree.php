@@ -87,6 +87,90 @@ if ($root) {
 }
 ?>
 <?php include __DIR__ . "/head.php"; ?>
+<style>
+  .tree-wrap{
+  position: relative;
+}
+
+/* 레벨 간 간격 */
+.tree-level{
+  position: relative;
+  margin-top: 24px;
+}
+
+/* 한 레벨의 카드들 */
+.tree-row{
+  position: relative;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 8px 0;
+}
+
+/* 노드 카드 공통 */
+.tree-node-card,
+.node-card.node-root{
+  position: relative;
+  min-width: 220px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 22px rgba(15,23,42,.08);
+}
+
+/* =========================
+   ORG 선 스타일
+========================= */
+
+/* (1) 루트 다음 레벨부터: row 위에 가로선 */
+.tree-level:not(.tree-root) .tree-row::before{
+  content:"";
+  position:absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 980px;       /* 너무 길어지면 제한 */
+  height: 2px;
+  background: #e5e7eb;
+}
+
+/* (2) 각 카드 위로 세로선 내려오기 */
+.tree-level:not(.tree-root) .tree-node-card::before{
+  content:"";
+  position:absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 14px;
+  background: #e5e7eb;
+}
+
+/* (3) 루트 카드에서 다음 레벨로 내려가는 세로선 */
+.tree-root .node-root::after{
+  content:"";
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -18px;
+  width: 2px;
+  height: 18px;
+  background: #e5e7eb;
+}
+
+/* (4) row 가로선이 카드들 '바로 위'에 오도록 여백 조정 */
+.tree-level:not(.tree-root) .tree-row{
+  padding-top: 18px;
+}
+
+/* 스크롤바 숨김(선택) */
+.tree-row::-webkit-scrollbar{ display:none; }
+.tree-row{ -ms-overflow-style:none; scrollbar-width:none; }
+
+</style>
 <div class="main">
   <?php include __DIR__ . "/side.php"; ?>
   <header class="topbar">
