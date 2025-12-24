@@ -75,7 +75,9 @@
                         <!-- 본인 확인(재입력) -->
                         <div style="margin-top:12px;">
                             <label class="f-label required" for="referral_confirm">추천인 아이디 재확인</label>
-                            <input id="referral_confirm" name="referral_confirm" class="f-input" type="text" placeholder="한번 더 동일하게 입력해주세요" required>
+                            <div class="addr-row">
+                                 <input id="referral_confirm" name="referral_confirm" class="f-input" type="text" placeholder="한번 더 동일하게 입력해주세요" required>
+                            </div>
                             <div id="referralConfirmMsg" class="muted small" style="margin-top:8px;"></div>
                         </div>
 
