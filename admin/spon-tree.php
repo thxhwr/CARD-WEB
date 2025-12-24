@@ -1,5 +1,5 @@
 <?php
-$myAccountNo = "kni1993@naver.com" ?? null;
+$myAccountNo = "thx.manager@gmail.com" ?? null;
 if (!$myAccountNo) {
     echo "로그인이 필요합니다.";
     exit;
