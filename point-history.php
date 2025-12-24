@@ -202,7 +202,7 @@ if (!empty($items)) {
                             $balAfter  = $row['_BALANCE_AFTER'] ?? null;
                         ?>
 
-                        <li class="point-item <?= $cls ?>">
+                        <li class="p-item <?= $cls ?>">
                             <div class="left">
                                 <p class="left-title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
                                 <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
