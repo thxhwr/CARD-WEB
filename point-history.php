@@ -197,7 +197,9 @@ if (!empty($items)) {
                             $amount    = (int)($row['AMOUNT'] ?? 0);
 
                             $createdAt = $row['CREATED_AT'] ?? '';
-                            $dateStr   = $createdAt ? date('Y-m-d H:i', strtotime($createdAt)) : '';
+                            $dateStr = $createdAt
+                                        ? date('y-m-d H:i', strtotime($createdAt))
+                                        : '';
 
                             $balAfter  = $row['_BALANCE_AFTER'] ?? null;
                         ?>
