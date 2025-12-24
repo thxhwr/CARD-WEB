@@ -224,3 +224,28 @@ if (!empty($items)) {
 
     <?php require_once __DIR__ . "/footer.php"; ?>
 </div>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+    .app {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .point-wrap {
+        flex: 1; /* 남은 영역 전부 차지 */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+        background: #f7f7f9;
+        overscroll-behavior: contain;
+    }
+
+    .point-list {
+        padding: 16px;
+        padding-bottom: 80px; /* 하단 버튼 높이만큼 */
+    }
+</style>
