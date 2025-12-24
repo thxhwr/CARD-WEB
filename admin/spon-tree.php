@@ -158,57 +158,57 @@ if ($root) {
 
         <!-- 트리 영역 전체 감싸는 컨테이너 -->
         <div class="tree-container">
-          <div class="tree-wrap">
-            <!-- 루트 (나 또는 검색한 계정) -->
-            <div class="tree-level">
-              <div class="tree-row">
-                <div class="tree-node-card tree-node-root">
-                  <div class="tree-node-name">
-                    <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
-                  </div>
-                  <!-- <div class="tree-node-meta">
-                    줄: <?= (int)($root['dept'] ?? 0) ?>
-                    · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
-                  </div> -->
-                  <div class="tree-node-account">
-                    <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
-                  </div>
+
+          <!-- 루트 (나 또는 검색한 계정) -->
+          <div class="tree-level">
+            <div class="tree-row">
+              <div class="tree-node-card tree-node-root">
+                <div class="tree-node-name">
+                  <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
+                </div>
+                <!-- <div class="tree-node-meta">
+                  줄: <?= (int)($root['dept'] ?? 0) ?>
+                  · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
+                </div> -->
+                <div class="tree-node-account">
+                  <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
                 </div>
               </div>
             </div>
-
-            <!-- 루트 기준 아래 3대 -->
-            <?php if (empty($levels)): ?>
-              <p class="tree-empty-text">
-                표시할 후원인 계보가 없습니다. (밑으로 3대가 없음)
-              </p>
-            <?php else: ?>
-              <?php foreach ($levels as $relDepth => $nodes): ?>
-                  <div class="tree-level-label" style="text-align:center">
-                    <?= (int)$relDepth + 1?>대
-                  </div>
-                <div class="tree-level tree-root">
-
-                  <div class="tree-row">
-                    <?php foreach ($nodes as $n): ?>
-                      <div class="tree-node-card">
-                        <div class="tree-node-name">
-                          <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
-                        </div>
-                        <!-- <div class="tree-node-meta">
-                          줄: <?= (int)($n['dept'] ?? 0) ?>
-                          · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
-                        </div> -->
-                        <div class="tree-node-account">
-                          <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
-                        </div>
-                      </div>
-                    <?php endforeach; ?>
-                  </div>
-                </div>
-              <?php endforeach; ?>
-            <?php endif; ?>
           </div>
+
+          <!-- 루트 기준 아래 3대 -->
+          <?php if (empty($levels)): ?>
+            <p class="tree-empty-text">
+              표시할 후원인 계보가 없습니다. (밑으로 3대가 없음)
+            </p>
+          <?php else: ?>
+            <?php foreach ($levels as $relDepth => $nodes): ?>
+                <div class="tree-level-label" style="text-align:center">
+                  <?= (int)$relDepth + 1?>대
+                </div>
+              <div class="tree-level">
+
+                <div class="tree-row">
+                  <?php foreach ($nodes as $n): ?>
+                    <div class="tree-node-card">
+                      <div class="tree-node-name">
+                        <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
+                      </div>
+                      <!-- <div class="tree-node-meta">
+                        줄: <?= (int)($n['dept'] ?? 0) ?>
+                        · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
+                      </div> -->
+                      <div class="tree-node-account">
+                        <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
+
         </div>
 
       <?php endif; ?>
@@ -216,96 +216,3 @@ if ($root) {
 
   </main>
 </div>
-<style>
-  /* 트리 영역 기준점 */
-.tree-wrap{
-  position: relative;
-  padding-bottom: 24px;
-}
-
-/* 레벨 간격 */
-.tree-level{
-  position: relative;
-  margin-top: 18px;
-}
-
-/* 레벨 한 줄(카드들) */
-.tree-row{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding: 18px 10px 0;
-}
-
-/* 카드 공통 */
-.tree-node-card{
-  position: relative;
-  min-width: 240px;
-  background: #fff;
-  border-radius: 18px;
-  padding: 16px 16px 18px;
-  box-shadow: 0 10px 22px rgba(15,23,42,.08);
-  border: 1px solid #f0f0f3;
-}
-
-/* 루트 카드 살짝 강조(선택) */
-.tree-node-root{
-  border-color: #111;
-}
-
-/* =========================
-   ORG 라인 (레벨 단위 연결)
-========================= */
-
-/* 루트 카드에서 아래로 세로선 */
-.tree-root .tree-node-card::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:-18px;
-  width:2px;
-  height:18px;
-  background:#e5e7eb;
-}
-
-/* 루트 다음 레벨부터: row 위에 가로선 */
-.tree-level:not(.tree-root) .tree-row::before{
-  content:"";
-  position:absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(980px, 100%);
-  height: 2px;
-  background: #e5e7eb;
-}
-
-/* 각 하위 카드 위로 세로선 */
-.tree-level:not(.tree-root) .tree-node-card::before{
-  content:"";
-  position:absolute;
-  top:-10px;
-  left:50%;
-  transform:translateX(-50%);
-  width:2px;
-  height:10px;
-  background:#e5e7eb;
-}
-
-/* 레벨 라벨 */
-.tree-level-label{
-  margin-top: 18px;
-  font-size: 13px;
-  font-weight: 800;
-  color:#6b7280;
-}
-
-/* 스크롤바 숨김(선택) */
-.tree-row::-webkit-scrollbar{ display:none; }
-.tree-row{ -ms-overflow-style:none; scrollbar-width:none; }
-
-</style>
