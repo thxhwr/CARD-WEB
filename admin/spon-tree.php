@@ -158,57 +158,57 @@ if ($root) {
 
         <!-- 트리 영역 전체 감싸는 컨테이너 -->
         <div class="tree-container">
-
-          <!-- 루트 (나 또는 검색한 계정) -->
-          <div class="tree-level">
-            <div class="tree-row">
-              <div class="tree-node-card tree-node-root">
-                <div class="tree-node-name">
-                  <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
-                </div>
-                <!-- <div class="tree-node-meta">
-                  줄: <?= (int)($root['dept'] ?? 0) ?>
-                  · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
-                </div> -->
-                <div class="tree-node-account">
-                  <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
+          <div class="tree-wrap">
+            <!-- 루트 (나 또는 검색한 계정) -->
+            <div class="tree-level">
+              <div class="tree-row">
+                <div class="tree-node-card tree-node-root">
+                  <div class="tree-node-name">
+                    <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
+                  </div>
+                  <!-- <div class="tree-node-meta">
+                    줄: <?= (int)($root['dept'] ?? 0) ?>
+                    · 순서 <?= (int)($root['deptNo'] ?? 0) ?>
+                  </div> -->
+                  <div class="tree-node-account">
+                    <?= htmlspecialchars($root['accountNo'] ?? '', ENT_QUOTES) ?>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <!-- 루트 기준 아래 3대 -->
+            <?php if (empty($levels)): ?>
+              <p class="tree-empty-text">
+                표시할 후원인 계보가 없습니다. (밑으로 3대가 없음)
+              </p>
+            <?php else: ?>
+              <?php foreach ($levels as $relDepth => $nodes): ?>
+                  <div class="tree-level-label" style="text-align:center">
+                    <?= (int)$relDepth + 1?>대
+                  </div>
+                <div class="tree-level tree-root">
+
+                  <div class="tree-row">
+                    <?php foreach ($nodes as $n): ?>
+                      <div class="tree-node-card node-root">
+                        <div class="tree-node-name">
+                          <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
+                        </div>
+                        <!-- <div class="tree-node-meta">
+                          줄: <?= (int)($n['dept'] ?? 0) ?>
+                          · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
+                        </div> -->
+                        <div class="tree-node-account">
+                          <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
+                        </div>
+                      </div>
+                    <?php endforeach; ?>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </div>
-
-          <!-- 루트 기준 아래 3대 -->
-          <?php if (empty($levels)): ?>
-            <p class="tree-empty-text">
-              표시할 후원인 계보가 없습니다. (밑으로 3대가 없음)
-            </p>
-          <?php else: ?>
-            <?php foreach ($levels as $relDepth => $nodes): ?>
-                <div class="tree-level-label" style="text-align:center">
-                  <?= (int)$relDepth + 1?>대
-                </div>
-              <div class="tree-level">
-
-                <div class="tree-row">
-                  <?php foreach ($nodes as $n): ?>
-                    <div class="tree-node-card">
-                      <div class="tree-node-name">
-                        <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
-                      </div>
-                      <!-- <div class="tree-node-meta">
-                        줄: <?= (int)($n['dept'] ?? 0) ?>
-                        · 순서 <?= (int)($n['deptNo'] ?? 0) ?>
-                      </div> -->
-                      <div class="tree-node-account">
-                        <?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>
-                      </div>
-                    </div>
-                  <?php endforeach; ?>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          <?php endif; ?>
-
         </div>
 
       <?php endif; ?>
