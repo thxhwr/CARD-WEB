@@ -141,7 +141,7 @@ if (!empty($items)) {
 
     <header class="appbar-apply">
         <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
-            <a href="javascript:history.back()" class="nav-btn" aria-label="뒤로가기">
+            <a href="./mypage.php" class="nav-btn" aria-label="뒤로가기">
                 <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24" height="24" alt="">
             </a>
             <h1 class="appbar__title">포인트내역</h1>
