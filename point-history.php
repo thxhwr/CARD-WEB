@@ -204,7 +204,7 @@ if (!empty($items)) {
 
                         <li class="point-item <?= $cls ?>">
                             <div class="left">
-                                <p class="title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
+                                <p class="point-title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
                                 <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
                             </div>
                             <div class="right">
@@ -266,7 +266,6 @@ footer, .footer{ flex: 0 0 auto; }
   flex: 0 0 auto;
 }
 
-/* ✅ 여기만 스크롤 */
 .point-list{
   flex: 1 1 auto;
   min-height: 0;                 /* ⭐ 필수 */
@@ -274,13 +273,10 @@ footer, .footer{ flex: 0 0 auto; }
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
-  /* 기존 ul 기본값 제거(원하면) */
   margin: 0;
-  padding: 16px;                 /* 스샷처럼 여백 */
   list-style: none;
 }
 
-/* (선택) 스크롤바 숨기고 싶으면 */
 .point-list::-webkit-scrollbar{ width:0; height:0; }
 
 </style>

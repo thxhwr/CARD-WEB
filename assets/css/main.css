@@ -1955,7 +1955,7 @@ body {
 .point-item .left{
   padding-top: 2px;
 }
-.point-item .title{
+.point-item .point-title{
   margin: 0 0 10px;
   font-size: 18px;
   font-weight: 800;
