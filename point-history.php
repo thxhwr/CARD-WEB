@@ -225,27 +225,62 @@ if (!empty($items)) {
     <?php require_once __DIR__ . "/footer.php"; ?>
 </div>
 <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        overflow: hidden;
-    }
-    .app {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
+/* 1) 전체 스크롤 막고 앱 높이 고정 */
+html, body{
+  height:100%;
+  margin:0;
+  overflow:hidden;
+}
 
-    .point-wrap {
-        flex: 1; /* 남은 영역 전부 차지 */
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
-        background: #f7f7f9;
-        overscroll-behavior: contain;
-    }
+/* 2) app: header / main / footer 세로 배치 */
+.app{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
 
-    .point-list {
-        padding: 16px;
-        padding-bottom: 80px; /* 하단 버튼 높이만큼 */
-    }
+/* header, footer는 줄어들지 않게 */
+.appbar-apply{ flex: 0 0 auto; }
+/* footer.php에 들어가는 영역이 감싸는 클래스가 있으면 그걸 지정해도 됨 */
+footer, .footer{ flex: 0 0 auto; }
+
+/* 3) main이 남은 높이를 차지 */
+.page{
+  flex: 1 1 auto;
+  min-height: 0;            /* ⭐ flex 스크롤 필수 */
+  overflow: hidden;         /* main 자체는 스크롤 X */
+}
+
+/* 4) point-wrap 안에서 위는 고정, 리스트만 스크롤 */
+.point-wrap{
+  height: 100%;
+  display:flex;
+  flex-direction:column;
+  min-height:0;             /* ⭐ 필수 */
+}
+
+/* 탭/요약/필터는 고정 */
+.point-type-tabs,
+.point-summary,
+.point-filter{
+  flex: 0 0 auto;
+}
+
+/* ✅ 여기만 스크롤 */
+.point-list{
+  flex: 1 1 auto;
+  min-height: 0;                 /* ⭐ 필수 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  /* 기존 ul 기본값 제거(원하면) */
+  margin: 0;
+  padding: 16px;                 /* 스샷처럼 여백 */
+  list-style: none;
+}
+
+/* (선택) 스크롤바 숨기고 싶으면 */
+.point-list::-webkit-scrollbar{ width:0; height:0; }
+
 </style>
