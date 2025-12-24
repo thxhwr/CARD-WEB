@@ -36,7 +36,7 @@ if (!is_array($list)) $list = [];
 if ($list && !isset($list[0]) && isset($data[0])) {
     $list = $data;
 }
-
+print_r($list);
 $minDept = null;
 foreach ($list as $row) {
     $d = (int)($row['dept'] ?? 0);
