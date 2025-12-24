@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . "/auth.php"; // ✅ head 밖에서 먼저
+require_once __DIR__ . "/auth.php"; 
 
 $myAccountNo = $_SESSION['user_No'] ?? null;
 if (!$myAccountNo) {
@@ -8,7 +8,7 @@ if (!$myAccountNo) {
     exit;
 }
 
-// API 호출
+
 $postFields = ['accountNo' => $myAccountNo];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberReco.php');
@@ -30,18 +30,13 @@ curl_close($ch);
 
 $data = json_decode($response, true);
 
-// list 꺼내기 (너가 보여준 구조가 [0]=>... 라면 아래가 다를 수 있어)
-// 보통: $list = $data['data']['list'] ?? [];
 $list = $data['data']['list'] ?? ($data['data'] ?? []);
 if (!is_array($list)) $list = [];
 
-// ✅ list가 "0번부터 시작하는 배열"이 아닐 때 보정
-// (예: ['list'=>...] 같은 형태가 아니라 이미 list 자체일 때)
 if ($list && !isset($list[0]) && isset($data[0])) {
     $list = $data;
 }
 
-// dept 최소값 구해서 "1대 기준" 만들기
 $minDept = null;
 foreach ($list as $row) {
     $d = (int)($row['dept'] ?? 0);
@@ -49,12 +44,12 @@ foreach ($list as $row) {
     if ($minDept === null || $d < $minDept) $minDept = $d;
 }
 
-// minDept가 없으면 빈값
+
 $levels = [];
 
 if ($minDept !== null) {
-    $from = $minDept;       // 1대
-    $to   = $minDept + 2;   // 3대까지
+    $from = $minDept;      
+    $to   = $minDept + 2;  
 
     foreach ($list as $row) {
         $dept = (int)($row['dept'] ?? 0);
@@ -71,7 +66,6 @@ if ($minDept !== null) {
         ];
     }
 
-    // deptNo 정렬
     foreach ($levels as &$nodes) {
         usort($nodes, fn($a,$b) => ($a['deptNo'] ?? 0) <=> ($b['deptNo'] ?? 0));
     }
@@ -128,7 +122,7 @@ $pageTitle = "추천인";
             <?php else: ?>
                 <?php foreach ($levels as $dept => $nodes): ?>
                     <div class="tree-level-label">
-                        <?= (int)($dept - $minDept + 1) ?>대
+                        <?= (int)($dept - $minDept + 2) ?>대
                     </div>
 
                     <div class="tree-level">
