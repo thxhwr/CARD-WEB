@@ -49,7 +49,7 @@ $levels = [];
 
 if ($minDept !== null) {
     $from = $minDept;      
-    $to   = $minDept + 2;  
+    $to   = $minDept + 1;  
 
     foreach ($list as $row) {
         $dept = (int)($row['dept'] ?? 0);
