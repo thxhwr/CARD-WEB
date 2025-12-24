@@ -275,7 +275,7 @@ if ($root) {
 
                   <div class="tree-row">
                     <?php foreach ($nodes as $n): ?>
-                      <div class="tree-node-card node-root">
+                      <div class="tree-node-card">
                         <div class="tree-node-name">
                           <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                         </div>
