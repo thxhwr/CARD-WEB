@@ -171,7 +171,7 @@ $pageTitle = "추천인";
 
   async function loadParent(accountNo){
     // ✅ 클릭한 사람(accountNo)의 "상위 추천인(부모)"를 가져오는 호출
-    const res = await fetch('/reco-next.php', {
+    const res = await fetch('/tree-next.php', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({accountNo})
