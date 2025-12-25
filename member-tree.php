@@ -45,15 +45,6 @@ foreach ($list as $row) {
     if ($minDept === null || $d < $minDept) $minDept = $d;
 }
 
-echo "<pre>";
-echo "myAccountNo: "; var_dump($myAccountNo);
-echo "list count: " . count($list) . "\n";
-echo "minDept: "; var_dump($minDept);
-echo "first row sample:\n";
-var_dump($list[0] ?? null);
-echo "</pre>";
-exit;
-
 $levels = [];
 
 if ($minDept !== null) {
