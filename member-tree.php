@@ -235,7 +235,7 @@ $pageTitle = "추천인";
 
     try{
       const data = await loadParent(account);
-
+      console.log(data);
       if(!data.ok){
         setMsg(data.message || '조회 실패', false);
         return;
