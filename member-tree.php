@@ -46,6 +46,8 @@ foreach ($list as $row) {
 
 
 $levels = [];
+$firstDept = $minDept; // 2대가 되는 dept
+$firstLevelNodes = $levels[$firstDept] ?? [];
 
 if ($minDept !== null) {
     $from = $minDept;
