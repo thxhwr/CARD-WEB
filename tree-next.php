@@ -31,7 +31,7 @@ if ($response === false) {
 curl_close($ch);
 
 $data = json_decode($response, true);
-
+print_r($data);
 $list = $data['data']['list'] ?? ($data['data'] ?? []);
 if (!is_array($list)) $list = [];
 
