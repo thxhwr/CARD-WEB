@@ -169,15 +169,21 @@ $pageTitle = "추천인";
     }[m]));
   }
 
-  async function loadParent(accountNo){
-    // ✅ 클릭한 사람(accountNo)의 "상위 추천인(부모)"를 가져오는 호출
-    const res = await fetch('/tree-next.php', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({accountNo})
-    });
-    return await res.json();
+async function loadParent(accountNo){
+  const res = await fetch('/tree-next.php', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({accountNo})
+  });
+
+  const text = await res.text();     // ✅ 먼저 text로 받기
+  try{
+    return JSON.parse(text);         // ✅ 그 다음 JSON 파싱
+  }catch(e){
+    console.error('JSON parse fail:', text);
+    throw new Error('JSON 파싱 실패(서버 출력에 디버그/에러가 섞였을 가능성)');
   }
+}
 
   function renderLevel(gen, nodes){
     const label = `<div class="tree-level-label" data-gen="${gen}">${gen}대</div>`;
@@ -235,7 +241,6 @@ $pageTitle = "추천인";
 
     try{
       const data = await loadParent(account);
-      console.log(data);
       if(!data.ok){
         setMsg(data.message || '조회 실패', false);
         return;

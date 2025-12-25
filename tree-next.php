@@ -1,7 +1,10 @@
 <?php
 session_start();
 require_once __DIR__ . "/auth.php";
+
 header('Content-Type: application/json; charset=utf-8');
+// ✅ JSON 깨지는 거 방지: PHP가 에러를 화면에 찍지 않게
+ini_set('display_errors', '0');
 
 $raw = file_get_contents("php://input");
 $body = json_decode($raw, true);
@@ -24,14 +27,14 @@ curl_setopt_array($ch, [
 
 $response = curl_exec($ch);
 if ($response === false) {
-  echo json_encode(['ok'=>false,'message'=>'API 호출 실패: '.curl_error($ch)]);
+  echo json_encode(['ok'=>false,'message'=>'API 호출 실패']);
   curl_close($ch);
   exit;
 }
 curl_close($ch);
 
 $data = json_decode($response, true);
-print_r($data);
+
 $list = $data['data']['list'] ?? ($data['data'] ?? []);
 if (!is_array($list)) $list = [];
 
@@ -43,19 +46,14 @@ foreach ($list as $row) {
 }
 
 if ($minDept === null) {
-  echo json_encode(['ok'=>true,'nodes'=>[]]); // 더 위 추천인 없음
+  echo json_encode(['ok'=>true,'nodes'=>[]]);
   exit;
 }
 
-/**
- * ✅ "다음대"만 가져오기
- * - 클릭한 사람 기준으로 가장 가까운(최소 dept) 한 레벨만
- */
 $nodes = [];
 foreach ($list as $row) {
   $dept = (int)($row['dept'] ?? 0);
   if ($dept !== $minDept) continue;
-
   $nodes[] = [
     'name'      => $row['name'] ?? '',
     'accountNo' => $row['accountNo'] ?? '',
@@ -63,7 +61,7 @@ foreach ($list as $row) {
   ];
 }
 
-// deptNo 정렬(있으면)
 usort($nodes, fn($a,$b) => ($a['deptNo'] ?? 0) <=> ($b['deptNo'] ?? 0));
 
-echo json_encode(['ok'=>true,'nodes'=>$nodes]);
+echo json_encode(['ok'=>true,'nodes'=>$nodes], JSON_UNESCAPED_UNICODE);
+exit;
