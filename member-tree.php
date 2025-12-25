@@ -122,27 +122,28 @@ $pageTitle = "추천인";
                 $firstNodes = ($firstDept !== null && isset($levels[$firstDept])) ? $levels[$firstDept] : [];
             ?>
 
-            <?php if (empty($firstLevelNodes)): ?>
-            <p class="empty-text">표시할 추천인이 없습니다.</p>
-            <?php else: ?>
-            <div class="tree-level-label">2대</div>
-            <div class="tree-level">
-                <div class="tree-row" id="treeRows">
-                <?php foreach ($firstLevelNodes as $n): ?>
-                    <!-- ✅ 클릭 가능하도록 button 처리 -->
-                    <button type="button"
+            <?php if (empty($firstNodes)): ?>
+                <p class="empty-text">표시할 추천인이 없습니다. (2대 없음)</p>
+                <?php else: ?>
+                <div class="tree-level-label">2대</div>
+
+                <div class="tree-level">
+                    <div class="tree-row">
+                    <?php foreach ($firstNodes as $n): ?>
+                        <button type="button"
                         class="tree-node-card js-node"
                         data-gen="2"
                         data-account="<?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>">
                         <div class="tree-node-name"><?= htmlspecialchars($n['name'], ENT_QUOTES) ?></div>
                         <div class="tree-node-account"><?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?></div>
-                    </button>
-                    <div class="tree-node-name"><?= htmlspecialchars($n['name'], ENT_QUOTES) ?></div>
-                    <div class="tree-node-account"><?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?></div>
-                    </button>
-                <?php endforeach; ?>
+                        </button>
+                    <?php endforeach; ?>
+                    </div>
                 </div>
-            </div>
+
+                <div id="treeAppendArea"></div>
+                <p id="treeMsg" class="muted small" style="text-align:center;margin-top:10px;"></p>
+                <?php endif; ?>
 
             <!-- ✅ 다음 레벨들이 붙을 자리 -->
             <div id="treeAppendArea"></div>
