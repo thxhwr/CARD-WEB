@@ -46,13 +46,11 @@ foreach ($list as $row) {
 
 
 $levels = [];
-$firstDept = $minDept; // 2대가 되는 dept
-$firstLevelNodes = $levels[$firstDept] ?? [];
 
 if ($minDept !== null) {
     $from = $minDept;
-    // $to   = $minDept;
-    $to   = $minDept + 2;  
+    $to   = $minDept;
+    // $to   = $minDept + 2;  
 
     foreach ($list as $row) {
         $dept = (int)($row['dept'] ?? 0);
@@ -119,6 +117,10 @@ $pageTitle = "추천인";
                     </div>
                 </div>
             </div>
+            <?php
+                $firstDept = $minDept;
+                $firstNodes = ($firstDept !== null && isset($levels[$firstDept])) ? $levels[$firstDept] : [];
+            ?>
 
             <?php if (empty($firstLevelNodes)): ?>
             <p class="empty-text">표시할 추천인이 없습니다.</p>
@@ -128,7 +130,13 @@ $pageTitle = "추천인";
                 <div class="tree-row" id="treeRows">
                 <?php foreach ($firstLevelNodes as $n): ?>
                     <!-- ✅ 클릭 가능하도록 button 처리 -->
-                    <button type="button" class="tree-node-card js-node" data-account="<?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>">
+                    <button type="button"
+                        class="tree-node-card js-node"
+                        data-gen="2"
+                        data-account="<?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>">
+                        <div class="tree-node-name"><?= htmlspecialchars($n['name'], ENT_QUOTES) ?></div>
+                        <div class="tree-node-account"><?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?></div>
+                    </button>
                     <div class="tree-node-name"><?= htmlspecialchars($n['name'], ENT_QUOTES) ?></div>
                     <div class="tree-node-account"><?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?></div>
                     </button>
@@ -150,8 +158,8 @@ $pageTitle = "추천인";
   const appendArea = document.getElementById('treeAppendArea');
   const msg = document.getElementById('treeMsg');
 
-  let currentGen = 2;      // 지금 화면에 있는 마지막 대(처음 2대까지 표시)
   const MAX_GEN = 4;
+  let currentGen = 2; // 처음 화면이 2대까지 있으니까
 
   function setMsg(t, ok=true){
     if(!msg) return;
@@ -166,27 +174,8 @@ $pageTitle = "추천인";
     }[m]));
   }
 
-  function renderLevel(gen, nodes){
-    const label = `<div class="tree-level-label">${gen}대</div>`;
-    const cards = nodes.map(n => `
-      <button type="button" class="tree-node-card js-node" data-account="${escapeHtml(n.accountNo)}">
-        <div class="tree-node-name">${escapeHtml(n.name || '')}</div>
-        <div class="tree-node-account">${escapeHtml(n.accountNo || '')}</div>
-      </button>
-    `).join('');
-
-    const level = `
-      <div class="tree-level">
-        <div class="tree-row">
-          ${cards}
-        </div>
-      </div>
-    `;
-
-    return label + level;
-  }
-
-  async function loadNext(accountNo){
+  async function loadParent(accountNo){
+    // ✅ 클릭한 사람(accountNo)의 "상위 추천인(부모)"를 가져오는 호출
     const res = await fetch('/reco-next.php', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -195,46 +184,89 @@ $pageTitle = "추천인";
     return await res.json();
   }
 
-  // 이벤트 위임: 새로 추가된 카드도 클릭 가능
+  function renderLevel(gen, nodes){
+    const label = `<div class="tree-level-label" data-gen="${gen}">${gen}대</div>`;
+    const cards = nodes.map(n => `
+      <button type="button" class="tree-node-card js-node"
+        data-gen="${gen}"
+        data-account="${escapeHtml(n.accountNo)}">
+        <div class="tree-node-name">${escapeHtml(n.name || '')}</div>
+        <div class="tree-node-account">${escapeHtml(n.accountNo || '')}</div>
+      </button>
+    `).join('');
+
+    const level = `
+      <div class="tree-level" data-gen="${gen}">
+        <div class="tree-row">${cards}</div>
+      </div>
+    `;
+    return label + level;
+  }
+
+  function removeAfterGen(gen){
+    // gen보다 큰 레벨들은 모두 삭제(다시 클릭했을 때 재구성)
+    appendArea.querySelectorAll('[data-gen]').forEach(el => {
+      const g = Number(el.getAttribute('data-gen'));
+      if (g > gen) el.remove();
+    });
+    currentGen = gen;
+  }
+
   document.addEventListener('click', async (e) => {
     const btn = e.target.closest('.js-node');
     if(!btn) return;
 
+    const clickedGen = Number(btn.dataset.gen || '2');
+    const account = btn.dataset.account;
+
+    // 이미 4대까지 있으면 끝
+    if(clickedGen >= MAX_GEN){
+      setMsg(`최대 ${MAX_GEN}대까지만 확인 가능합니다.`, false);
+      return;
+    }
+
+    // 예전(2대/3대)을 다시 눌렀으면 그 뒤 레벨 삭제하고 다시 조회
+    if (clickedGen < currentGen) {
+      removeAfterGen(clickedGen);
+    }
+
+    // 다음 대를 붙일 수 있는 상태인지 체크
     if(currentGen >= MAX_GEN){
       setMsg(`최대 ${MAX_GEN}대까지만 확인 가능합니다.`, false);
       return;
     }
 
-    const account = btn.dataset.account;
     setMsg('조회중...');
 
     try{
-      const data = await loadNext(account);
+      const data = await loadParent(account);
+
       if(!data.ok){
         setMsg(data.message || '조회 실패', false);
         return;
       }
+
       if(!data.nodes || data.nodes.length === 0){
-        setMsg('더 이상 위 추천인이 없습니다.', false);
+        setMsg('해당 사용자의 상위 추천인이 없습니다. (최상단)', false);
         return;
       }
 
-      const nextGen = currentGen + 1;
+      const nextGen = clickedGen + 1;
 
-      // ✅ 다음 레벨 추가
+      // 혹시 이미 nextGen이 출력되어 있으면(중복) 지우고 새로
+      removeAfterGen(clickedGen);
+
       appendArea.insertAdjacentHTML('beforeend', renderLevel(nextGen, data.nodes));
       currentGen = nextGen;
 
-      setMsg(`${currentGen}대까지 표시했습니다.`);
-
-      // 추가된 레벨로 자연스럽게 이동(원하면)
-      appendArea.lastElementChild?.scrollIntoView({behavior:'smooth', block:'center'});
+      setMsg(`${nextGen}대 추천인을 표시했습니다.`);
     }catch(err){
-      setMsg('네트워크 오류', false);
+      setMsg('네트워크 오류로 조회 실패', false);
     }
   });
 })();
 </script>
+
 
 </body>
 </html>
