@@ -1799,17 +1799,20 @@ body {
 
 /* 각 계정 카드 */
 .tree-node-card {
-  background: #ffffff;
+  /* background: #ffffff; */
   padding: 10px 12px;
   border-radius: 14px;
   box-shadow: var(--shadow-soft);
   min-width: 180px;
   max-width: 220px;
   text-align: left;
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
   border-top-width: 3px;
   border-top-color: #f97316;
   font-size: 12px;
+
+  border:0;
+  background:transparent;
 }
 
 /* 루트 카드만 색상 살짝 강조 */
