@@ -23,8 +23,6 @@ $response = curl_exec($ch);
 $curlErr  = $response === false ? curl_error($ch) : null;
 curl_close($ch);
 
-print_r($response);
-
 $appList = [];
 $totalCount = 0;
 $errorMsg = null;
@@ -34,8 +32,8 @@ if ($curlErr) {
 } else {
   $data = json_decode($response, true);
 
-print_r($data);
   if (!is_array($data)) {
+    print_r($data);
     $errorMsg = "응답 JSON 파싱 실패";
   } else if ((string)($data['resCode'] ?? '') !== '0') {
     $errorMsg = ($data['message'] ?? '조회 실패');
