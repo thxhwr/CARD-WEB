@@ -62,7 +62,6 @@
           <table>
             <thead>
             <tr>
-                <th><input type="checkbox" /></th>
                 <th>회원번호</th>
                 <th>아이디 / 이름</th>
                 <th>신청일</th>
@@ -97,8 +96,6 @@
                         $dateStr = $createdAt ? date('y-m-d H:i', strtotime($createdAt)) : '';
                     ?>
                     <tr>
-                        <td><input type="checkbox" name="chk[]" value="<?= htmlspecialchars($applyId, ENT_QUOTES) ?>" /></td>
-
                         <td class="text-sm"><?= htmlspecialchars($applyId, ENT_QUOTES) ?></td>
 
                         <td class="text-sm">
@@ -112,7 +109,9 @@
                         <button type="button"
                                 class="btn-confirm"
                                 data-id="<?= htmlspecialchars($applyId, ENT_QUOTES) ?>"
-                                data-account="<?= htmlspecialchars($accountNo, ENT_QUOTES) ?>">
+                                data-account="<?= htmlspecialchars($accountNo, ENT_QUOTES) ?>"
+                                style="background:#111;color:#fff;padding:10px 14px;border-radius:10px;"
+                                >
                             확인
                         </button>
                         </td>
