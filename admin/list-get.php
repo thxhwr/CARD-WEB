@@ -4,7 +4,7 @@ $page = max(1, (int)($_GET['page'] ?? 1));
 $limit = 20;
 
 $postFields = [
-    // 'search' => $search,
+    'search' => $search,
     'page'  => $page,
     'list' => $limit,
 ];
