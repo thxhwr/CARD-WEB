@@ -12,7 +12,7 @@ if (!$applyId) {
 }
 
 $postFields = [
-    'apply_id' => $applyId
+    'applyId' => $applyId
 ];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberInsertFirst.php');
