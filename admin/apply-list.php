@@ -1,9 +1,13 @@
 <?php include __DIR__ . "/head.php"; ?>
 <?php
+$q = trim($_GET['q'] ?? '');           // 검색어: 이름/아이디/연락처
+$page = max(1, (int)($_GET['page'] ?? 1));
+$limit = 20;
+
 $postFields = [
-  'search' => $status,
-  'page'  => $limit,
-  'list' => $offset,
+  'search' => $q,
+  'page'  => $page,
+  'list' => $limit,
 ];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberAppList.php');
@@ -69,8 +73,11 @@ if ($curlErr) {
 
       <div class="topbar-right">
         <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input type="text" class="search-input" placeholder="이름, 아이디, 연락처 검색" />
+         <form class="search-box" method="get" action="">
+        <span class="search-icon">🔍</span>
+        <input type="text" name="q" class="search-input" placeholder="이름, 아이디, 연락처 검색"
+                value="<?= htmlspecialchars($q ?? '', ENT_QUOTES) ?>" />
+        </form>
         </div>
 
         <div class="topbar-actions">
@@ -95,7 +102,6 @@ if ($curlErr) {
         <div class="card-header">
           <div>
             <div class="card-title">신청 목록</div>
-            <!-- <div class="card-subtitle">더블 클릭 시 상세 팝업(또는 상세 페이지)로 이동하도록 추후 개발하면 좋습니다.</div> -->
           </div>
         </div>
 
@@ -111,19 +117,55 @@ if ($curlErr) {
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="text-sm">M0002341</td>
-              <td class="text-sm">
-                user01<br />
-                <span class="text-muted text-sm">홍길동</span>
-              </td>
-              <td>2024-08-12</td>
-              <td>
-                <button class="btn-confirm">확인</button>
-              </td>
-            </tr>
-            </tbody>
+                <?php if ($errorMsg): ?>
+                <tr>
+                    <td colspan="5" class="text-sm" style="padding:16px; color:#ef4444;">
+                    <?= htmlspecialchars($errorMsg, ENT_QUOTES) ?>
+                    </td>
+                </tr>
+
+                <?php elseif (empty($appList)): ?>
+                <tr>
+                    <td colspan="5" class="text-sm" style="padding:16px; color:#6b7280;">
+                    신청 내역이 없습니다.
+                    </td>
+                </tr>
+
+                <?php else: ?>
+                <?php foreach ($appList as $row): ?>
+                    <?php
+                    // ✅ 필드명은 실제 응답에 맞게 조정 필요!
+                    // 아래는 "예시 매핑"이야.
+                    $memberNo  = $row['memberNo'] ?? ($row['userId'] ?? '');
+                    $accountNo = $row['accountNo'] ?? ($row['userNo'] ?? '');
+                    $name      = $row['name'] ?? '';
+                    $createdAt = $row['createdAt'] ?? ($row['applyAt'] ?? '');
+                    $dateStr   = $createdAt ? date('y-m-d H:i', strtotime($createdAt)) : '';
+                    ?>
+                    <tr>
+                    <td><input type="checkbox" /></td>
+
+                    <td class="text-sm"><?= htmlspecialchars($memberNo, ENT_QUOTES) ?></td>
+
+                    <td class="text-sm">
+                        <?= htmlspecialchars($accountNo, ENT_QUOTES) ?><br />
+                        <span class="text-muted text-sm"><?= htmlspecialchars($name, ENT_QUOTES) ?></span>
+                    </td>
+
+                    <td><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></td>
+
+                    <td>
+                        <button type="button"
+                                class="btn-confirm"
+                                data-id="<?= htmlspecialchars($memberNo, ENT_QUOTES) ?>"
+                                data-account="<?= htmlspecialchars($accountNo, ENT_QUOTES) ?>">
+                        확인
+                        </button>
+                    </td>
+                    </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
+                </tbody>
           </table>
         </div>
       </section>
