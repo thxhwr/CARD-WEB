@@ -49,17 +49,19 @@ curl_close($ch);
 // 응답 JSON 파싱 (형식에 맞게 조정)
 $data = json_decode($response, true);
 
-print_r($data);
-// if ($data['resCode'] == "1005") {
-//     header('Location: /apply.php?error=1005');
-//     exit;
-// } else if($data['resCode'] == "5001"){
-//     header('Location: /apply.php?error=5001');
-//     exit;
-// } else if($data['resCode'] == "4001"){
-//     header('Location: /apply.php?error=4001');
-//     exit;
-// } else{
-//     header('Location: /apply-complete.php');
-//     exit;
-// }
+if ($data['resCode'] == "1005") {
+    header('Location: /apply.php?error=1005');
+    exit;
+} else if($data['resCode'] == "5001"){
+    header('Location: /apply.php?error=5001');
+    exit;
+} else if($data['resCode'] == "4001"){
+    header('Location: /apply.php?error=4001');
+    exit;
+}else if($data['resCode'] == "1006"){
+    header('Location: /apply.php?error=1006');
+    exit;
+} else{
+    header('Location: /apply-complete.php');
+    exit;
+}

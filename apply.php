@@ -97,6 +97,8 @@
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">잔액이 부족합니다.</p>';
                         } elseif ($error === '4001') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">존재하지 않는 추천인입니다.</p>';
+                        } elseif ($error === '1006') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이미 동일한 연락처가 존재합니다.</p>';
                         }
                         ?>
                         <!-- <button class="apply-submit" type="submit" disabled> -->
