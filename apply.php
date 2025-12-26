@@ -91,15 +91,11 @@
                         <?php
                         $error = $_GET['error'] ?? null;
 
-                        if ($error === '1') {
+                        if ($error === '1005') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이미 신청하였습니다.</p>';
-                        } elseif ($error === '2') {
+                        } elseif ($error === '5001') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">잔액이 부족합니다.</p>';
-                        } elseif ($error === 'referral') {
-                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">추천인을 입력해주세요.</p>';
-                        }elseif ($error === 'referral_confirm') {
-                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">존재하는 추천인을 입력해주세요.</p>';
-                        }elseif ($error === 'referral_notfound') {
+                        } elseif ($error === '4001') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">존재하지 않는 추천인입니다.</p>';
                         }
                         ?>

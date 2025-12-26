@@ -51,10 +51,13 @@ $data = json_decode($response, true);
 
 print_r($data);
 // if ($data['resCode'] == "1005") {
-//     header('Location: /apply.php?error=1');
+//     header('Location: /apply.php?error=1005');
 //     exit;
 // } else if($data['resCode'] == "5001"){
-//     header('Location: /apply.php?error=2');
+//     header('Location: /apply.php?error=5001');
+//     exit;
+// } else if($data['resCode'] == "4001"){
+//     header('Location: /apply.php?error=4001');
 //     exit;
 // } else{
 //     header('Location: /apply-complete.php');
