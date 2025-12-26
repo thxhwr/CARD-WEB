@@ -24,20 +24,26 @@ curl_close($ch);
 $appList = [];
 $totalCount = 0;
 $errorMsg = null;
-if ($curlErr) {
-  $errorMsg = "API 호출 실패: " . $curlErr;
-} else {
-  $data = json_decode($response, true);
-  print_r($data);
-  if (!is_array($data)) {
-    $errorMsg = "응답 JSON 파싱 실패";
-  } else if ((string)($data['resCode'] ?? '') !== '0') {
-    $errorMsg = ($data['message'] ?? '조회 실패');
-  } else {
-    $appList = $data['data']['list'] ?? ($data['data'] ?? []);
-    if (!is_array($appList)) $appList = [];
 
-    $totalCount = (int)($data['data']['count'] ?? $data['totalLine'] ?? 0);
+if (!$errorMsg) {
+  $json = json_decode($response, true);
+
+  if (!is_array($json) || !isset($json['resCode'])) {
+    $errorMsg = "응답 파싱 실패";
+  } elseif ((int)$json['resCode'] !== 0) {
+    $errorMsg = $json['message'] ?? '요청 실패';
+  } else {
+    $appList   = $json['data'] ?? [];
+    $totalLine = (int)($json['totalLine'] ?? 0);
+
+    // 검색(q) 필터 (이름/아이디/연락처)
+    if ($q !== '') {
+      $appList = array_values(array_filter($appList, function($row) use ($q) {
+        $hay = ($row['NAME'] ?? '') . ' ' . ($row['ACCOUNT_NO'] ?? '') . ' ' . ($row['PHONE'] ?? '');
+        return mb_stripos($hay, $q) !== false;
+      }));
+    }
   }
 }
+
 ?>
