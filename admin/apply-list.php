@@ -1,5 +1,47 @@
 <?php include __DIR__ . "/head.php"; ?>
+<?php
+$postFields = [
+  'search' => $status,
+  'page'  => $limit,
+  'list' => $offset,
+];
 
+$ch = curl_init('https://api.thxdeal.com/api/member/testMemberAppList.php');
+curl_setopt_array($ch, [
+  CURLOPT_POST           => true,
+  CURLOPT_POSTFIELDS     => http_build_query($postFields),
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_SSL_VERIFYPEER => false,
+  CURLOPT_TIMEOUT        => 15,
+]);
+
+$response = curl_exec($ch);
+$curlErr  = $response === false ? curl_error($ch) : null;
+curl_close($ch);
+
+
+$appList = [];
+$totalCount = 0;
+$errorMsg = null;
+
+if ($curlErr) {
+  $errorMsg = "API 호출 실패: " . $curlErr;
+} else {
+  $data = json_decode($response, true);
+
+
+  if (!is_array($data)) {
+    $errorMsg = "응답 JSON 파싱 실패";
+  } else if ((string)($data['resCode'] ?? '') !== '0') {
+    $errorMsg = ($data['message'] ?? '조회 실패');
+  } else {
+    $appList = $data['data']['list'] ?? ($data['data'] ?? []);
+    if (!is_array($appList)) $appList = [];
+
+    $totalCount = (int)($data['data']['count'] ?? $data['totalLine'] ?? 0);
+  }
+}
+?>
 <div class="layout">
   <!-- ===== 사이드바 ===== -->
  <?php include __DIR__ . "/side.php"; ?>
@@ -52,11 +94,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">신청 목록</div>
-            <div class="card-subtitle">더블 클릭 시 상세 팝업(또는 상세 페이지)로 이동하도록 추후 개발하면 좋습니다.</div>
-          </div>
-          <div class="card-actions">
-            <span class="text-sm text-muted">정렬: 가입일 내림차순</span>
-            <button class="pill">엑셀 다운로드</button>
+            <!-- <div class="card-subtitle">더블 클릭 시 상세 팝업(또는 상세 페이지)로 이동하도록 추후 개발하면 좋습니다.</div> -->
           </div>
         </div>
 
@@ -64,10 +102,11 @@
           <table>
             <thead>
             <tr>
-              <th><input type="checkbox" /></th>
-              <th>회원번호</th>
-              <th>아이디 / 이름</th>
-              <th>신청일</th>
+                <th><input type="checkbox" /></th>
+                <th>회원번호</th>
+                <th>아이디 / 이름</th>
+                <th>신청일</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -79,6 +118,9 @@
                 <span class="text-muted text-sm">홍길동</span>
               </td>
               <td>2024-08-12</td>
+              <td>
+                <button class="btn-confirm">확인</button>
+              </td>
             </tr>
             </tbody>
           </table>

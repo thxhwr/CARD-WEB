@@ -2014,3 +2014,18 @@ body {
 }
 
 
+.btn-confirm{
+  padding:6px 12px;
+  font-size:13px;
+  border-radius:6px;
+  border:1px solid #2563eb;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.btn-confirm:hover{
+  background:#1d4ed8;
+  border-color:#1d4ed8;
+}
