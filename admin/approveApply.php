@@ -11,9 +11,6 @@ if (!$applyId) {
     exit;
 }
 
-/**
- * cURL로 testMemberInsertFirst.php 호출
- */
 $postFields = [
     'apply_id' => $applyId
 ];
