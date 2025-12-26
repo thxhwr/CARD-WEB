@@ -67,11 +67,7 @@
               <th><input type="checkbox" /></th>
               <th>회원번호</th>
               <th>아이디 / 이름</th>
-              <th>회원등급</th>
-              <th>누적구매</th>
-              <th>마지막 로그인</th>
-              <th>상태</th>
-              <th>가입일</th>
+              <th>신청일</th>
             </tr>
             </thead>
             <tbody>
@@ -82,39 +78,8 @@
                 user01<br />
                 <span class="text-muted text-sm">홍길동</span>
               </td>
-              <td><span class="badge">VIP</span></td>
-              <td class="text-right">₩ 182,300<br /><span class="text-sm text-muted">총 7회</span></td>
-              <td>2025-12-22<br /><span class="text-sm text-muted">13:21</span></td>
-              <td><span class="badge paid">정상</span></td>
               <td>2024-08-12</td>
             </tr>
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="text-sm">M0002338</td>
-              <td class="text-sm">
-                coffee_love<br />
-                <span class="text-muted text-sm">김영희</span>
-              </td>
-              <td><span class="badge">우수회원</span></td>
-              <td class="text-right">₩ 92,700<br /><span class="text-sm text-muted">총 4회</span></td>
-              <td>2025-12-20<br /><span class="text-sm text-muted">09:02</span></td>
-              <td><span class="badge pending">휴면</span></td>
-              <td>2023-11-02</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="text-sm">M0002321</td>
-              <td class="text-sm">
-                guest_123<br />
-                <span class="text-muted text-sm">이민수</span>
-              </td>
-              <td><span class="badge">일반회원</span></td>
-              <td class="text-right">₩ 12,900<br /><span class="text-sm text-muted">총 1회</span></td>
-              <td>2025-10-11<br /><span class="text-sm text-muted">21:10</span></td>
-              <td><span class="badge cancel">탈퇴</span></td>
-              <td>2023-05-27</td>
-            </tr>
-            <!-- 필요 시 더미 데이터 더 추가해도 됩니다 -->
             </tbody>
           </table>
         </div>
