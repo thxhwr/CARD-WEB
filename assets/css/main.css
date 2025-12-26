@@ -340,7 +340,7 @@ body {
 }
 
 .f-group.is-disabled .f-input {
-  color: var(--placeholder);
+  /* color: var(--placeholder); */
 }
 .f-input:disabled {
   cursor: not-allowed;
