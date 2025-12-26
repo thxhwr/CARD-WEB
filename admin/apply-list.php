@@ -34,7 +34,7 @@ if ($curlErr) {
 
   if (!is_array($data)) {
     print_r($data);
-    $errorMsg = "응답 JSON 파싱 실패";
+    $errorMsg = "응답 JSON 파싱 실패123";
   } else if ((string)($data['resCode'] ?? '') !== '0') {
     $errorMsg = ($data['message'] ?? '조회 실패');
   } else {
