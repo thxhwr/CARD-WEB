@@ -22,15 +22,6 @@ if ($referralConfirm === '' || $referral !== $referralConfirm) {
   exit;
 }
 
-$stmt = $pdo->prepare("SELECT accountNo FROM members WHERE accountNo = :id LIMIT 1");
-$stmt->execute([':id' => $referral]);
-$exists = $stmt->fetchColumn();
-
-if (!$exists) {
-  header("Location: /apply.php?error=referral_notfound");
-  exit;
-}
-
 $postFields = [
   'accountNo' => $_SESSION['user_No'],
   'referrerAccountNo' => $referral,
