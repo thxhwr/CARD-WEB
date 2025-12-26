@@ -21,7 +21,7 @@ curl_setopt_array($ch, [
 $response = curl_exec($ch);
 $curlErr  = $response === false ? curl_error($ch) : null;
 curl_close($ch);
-
+print_r($response);
 $appList = [];
 $totalCount = 0;
 $errorMsg = null;
