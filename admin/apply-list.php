@@ -1,15 +1,16 @@
 <?php include __DIR__ . "/head.php"; ?>
 <?php
-$q = trim($_GET['q'] ?? '');           // 검색어: 이름/아이디/연락처
+$q = trim($_GET['q'] ?? '');         
 $page = max(1, (int)($_GET['page'] ?? 1));
 $limit = 20;
 
 $postFields = [
-  'search' => $q,
-  'page'  => $page,
-  'list' => $limit,
+    'search' => $q,
+    'page'  => $page,
+    'list' => $limit,
 ];
 
+print_r($postFields);
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberAppList.php');
 curl_setopt_array($ch, [
   CURLOPT_POST           => true,
