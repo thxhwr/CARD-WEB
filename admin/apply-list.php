@@ -1,11 +1,11 @@
 <?php include __DIR__ . "/head.php"; ?>
 <?php
-$q = trim($_GET['q'] ?? '');         
+$search = trim($_GET['q'] ?? '');         
 $page = max(1, (int)($_GET['page'] ?? 1));
 $limit = 20;
 
 $postFields = [
-    'search' => $q,
+    // 'search' => $search,
     'page'  => $page,
     'list' => $limit,
 ];
