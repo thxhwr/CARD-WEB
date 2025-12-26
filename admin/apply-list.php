@@ -160,7 +160,7 @@
       }
 
       if (!confirm('해당 신청을 처리하시겠습니까?')) return;
-
+      console.log(applyId);
       fetch('/approveApply.php', {
         method: 'POST',
         headers: {
