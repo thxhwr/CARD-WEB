@@ -12,11 +12,10 @@ $postFields = [
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberAppList.php');
 curl_setopt_array($ch, [
-  CURLOPT_POST           => true,
-  CURLOPT_POSTFIELDS     => http_build_query($postFields),
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_SSL_VERIFYPEER => false,
-  CURLOPT_TIMEOUT        => 15,
+    CURLOPT_POST           => true,
+    CURLOPT_POSTFIELDS     => $postFields,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_SSL_VERIFYPEER => false,
 ]);
 
 $response = curl_exec($ch);
