@@ -161,7 +161,7 @@
 
       if (!confirm('해당 신청을 처리하시겠습니까?')) return;
 
-      fetch('/approveApply.php', {
+      fetch('./approveApply.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
