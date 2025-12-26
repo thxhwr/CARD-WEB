@@ -51,7 +51,7 @@
       <section class="card" style="margin-top:20px;">
         <div class="card-header">
           <div>
-            <div class="card-title">회원 목록</div>
+            <div class="card-title">신청 목록</div>
             <div class="card-subtitle">더블 클릭 시 상세 팝업(또는 상세 페이지)로 이동하도록 추후 개발하면 좋습니다.</div>
           </div>
           <div class="card-actions">

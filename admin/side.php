@@ -39,7 +39,7 @@
           </li>
           <li class="nav-item">
             <a href="apply-list.php" class="nav-link">
-              <div class="nav-link-icon">👥</div>
+              <div class="nav-link-icon">☎️</div>
               <span>신청 관리</span>
             </a>
           </li>
