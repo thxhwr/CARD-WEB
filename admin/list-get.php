@@ -33,6 +33,7 @@ if ($curlErr) {
 } else {
   $data = json_decode($response, true);
 
+  print_r($data);
   if (!is_array($data)) {
     echo "789";
     print_r($data);
