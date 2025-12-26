@@ -45,7 +45,6 @@ if (!is_array($data)) {
     exit;
 }
 
-print_r($data);
 if (($data['resCode'] ?? 1) === 0) {
     echo json_encode([
         'ok' => true,

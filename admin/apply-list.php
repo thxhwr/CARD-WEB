@@ -112,7 +112,7 @@
                                 data-account="<?= htmlspecialchars($accountNo, ENT_QUOTES) ?>"
                                 style="background:#111;color:#fff;padding:10px 14px;border-radius:10px;"
                                 >
-                            확인
+                            승인
                         </button>
                         </td>
                     </tr>
@@ -166,17 +166,20 @@
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: 'applyId=' + encodeURIComponent(applyId)
+        body: 'apply_id=' + encodeURIComponent(applyId)
       })
       .then(res => res.json())
       .then(data => {
         if (data.ok) {
-          alert('처리 완료');
+          // ✅ 성공 문구
+          alert(data.message || '승인 완료');
+
+          // ✅ 새로고침
           location.reload();
         } else {
           alert(data.message || '처리 실패');
         }
-      });
+      })
     });
   });
 });
