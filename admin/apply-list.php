@@ -1,7 +1,5 @@
 <?php include __DIR__ . "/head.php"; ?>
-<?php
-
-?>
+<?php include __DIR__ . "/list-get.php"; ?>
 <div class="layout">
   <!-- ===== 사이드바 ===== -->
  <?php include __DIR__ . "/side.php"; ?>
