@@ -34,7 +34,7 @@ if ($curlErr) {
 } else {
   $data = json_decode($response, true);
 
-
+print_r($data);
   if (!is_array($data)) {
     $errorMsg = "응답 JSON 파싱 실패";
   } else if ((string)($data['resCode'] ?? '') !== '0') {
