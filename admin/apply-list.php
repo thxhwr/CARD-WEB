@@ -6,7 +6,22 @@
 
   <!-- ===== 메인 영역 ===== -->
   <div class="main">
-    <h1 class="admin-title">카드 신청 관리</h1>
+    <header class="topbar">
+      <div class="topbar-left">
+        <!-- 모바일 햄버거 버튼 -->
+        <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="메뉴 열기">
+          ☰
+        </button>
+
+        <div>
+          <div class="topbar-title">회원 관리</div>
+          <div class="topbar-subtitle">회원 목록 조회 및 등급/상태 관리를 할 수 있습니다.</div>
+          <div class="breadcrumb">
+            <span>홈</span>
+            <span>회원 관리</span>
+          </div>
+        </div>
+      </div>
 
     <!-- 🔍 검색 / 필터 -->
     <div class="admin-filter">

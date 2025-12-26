@@ -2014,17 +2014,6 @@ body {
 }
 
 
-.admin-wrap{
-  padding: 32px;
-  background:#f7f7f9;
-}
-
-.admin-title{
-  font-size:24px;
-  font-weight:800;
-  margin-bottom:20px;
-}
-
 .admin-filter{
   display:flex;
   gap:10px;
