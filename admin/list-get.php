@@ -25,14 +25,16 @@ $appList = [];
 $totalCount = 0;
 $errorMsg = null;
 
+echo "123";
 print_r($response);
-
+echo "456";
 if ($curlErr) {
   $errorMsg = "API 호출 실패: " . $curlErr;
 } else {
   $data = json_decode($response, true);
 
   if (!is_array($data)) {
+    echo "789";
     print_r($data);
     $errorMsg = "응답 JSON 파싱 실패";
   } else if ((string)($data['resCode'] ?? '') !== '0') {
