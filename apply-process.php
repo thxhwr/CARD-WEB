@@ -13,14 +13,14 @@ $refChecked = $_POST['referral_checked'] ?? '0';
 $address = $zipcode . ' ' . $addr . ' ' . $addr_detail;
 
 
-if ($referral === '' || $refChecked !== '1') {
-  header("Location: /apply.php?error=referral");
-  exit;
-}
-if ($referralConfirm === '' || $referral !== $referralConfirm) {
-  header("Location: /apply.php?error=referral_confirm");
-  exit;
-}
+// if ($referral === '' || $refChecked !== '1') {
+//   header("Location: /apply.php?error=referral");
+//   exit;
+// }
+// if ($referralConfirm === '' || $referral !== $referralConfirm) {
+//   header("Location: /apply.php?error=referral_confirm");
+//   exit;
+// }
 
 $postFields = [
   'accountNo' => $_SESSION['user_No'],

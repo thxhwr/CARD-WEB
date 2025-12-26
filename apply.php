@@ -67,19 +67,19 @@
 
                         <div class="addr-row">
                             <input id="referral" name="referral" class="f-input" type="text" placeholder="추천인 아이디를 입력해주세요" required>
-                            <button type="button" class="btn-zip" id="referralCheckBtn">조회</button>
+                            <!-- <button type="button" class="btn-zip" id="referralCheckBtn">조회</button> -->
                         </div>
 
                         <div id="referralMsg" class="muted small" style="margin-top:8px;"></div>
 
                         <!-- 본인 확인(재입력) -->
-                        <div style="margin-top:12px;">
+                        <!-- <div style="margin-top:12px;">
                             <label class="f-label required" for="referral_confirm">추천인 아이디 재확인</label>
                             <div class="addr-row">
                                  <input id="referral_confirm" name="referral_confirm" class="f-input" type="text" placeholder="한번 더 동일하게 입력해주세요" required>
                             </div>
                             <div id="referralConfirmMsg" class="muted small" style="margin-top:8px;"></div>
-                        </div>
+                        </div> -->
 
                         <div class="muted small" style="margin-top:10px; color:#e11d48; font-size:14px;font-weight:700;">
                             ※ 추천인은 <u>등록(신청 완료) 후 절대 변경 불가</u>합니다.
