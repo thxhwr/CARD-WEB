@@ -148,6 +148,39 @@
       }
     });
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-confirm').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const applyId = btn.dataset.id;
+
+      if (!applyId) {
+        alert('신청 ID 없음');
+        return;
+      }
+
+      if (!confirm('해당 신청을 처리하시겠습니까?')) return;
+
+      fetch('/approveApply.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'apply_id=' + encodeURIComponent(applyId)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          alert('처리 완료');
+          location.reload();
+        } else {
+          alert(data.message || '처리 실패');
+        }
+      });
+    });
+  });
+});
+
 </script>
 
 </body>
