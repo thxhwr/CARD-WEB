@@ -16,15 +16,12 @@ $postFields = [
 ];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberInsertFirst.php');
-
 curl_setopt_array($ch, [
     CURLOPT_POST           => true,
-    CURLOPT_POSTFIELDS     => http_build_query($postFields),
+    CURLOPT_POSTFIELDS     => $postFields,
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_SSL_VERIFYPEER => false, // 개발 환경
-    CURLOPT_TIMEOUT        => 10
+    CURLOPT_SSL_VERIFYPEER => false,
 ]);
-
 $response = curl_exec($ch);
 
 if ($response === false) {
