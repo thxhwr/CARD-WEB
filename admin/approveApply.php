@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-$applyId = $_POST['apply_id'] ?? null;
+$applyId = $_POST['applyId'] ?? null;
 
 if (!$applyId) {
     echo json_encode([
