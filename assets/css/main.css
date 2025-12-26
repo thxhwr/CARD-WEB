@@ -2013,3 +2013,83 @@ body {
   word-break: keep-all;
 }
 
+
+.admin-wrap{
+  padding: 32px;
+  background:#f7f7f9;
+}
+
+.admin-title{
+  font-size:24px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+.admin-filter{
+  display:flex;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.admin-filter input,
+.admin-filter select{
+  padding:8px 12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+.btn-search{
+  padding:8px 16px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+}
+
+.admin-table-wrap{
+  background:#fff;
+  border-radius:12px;
+  overflow-x:auto;
+}
+
+.admin-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+
+.admin-table th,
+.admin-table td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  text-align:center;
+  font-size:14px;
+}
+
+.admin-table th{
+  background:#f3f4f6;
+  font-weight:700;
+}
+
+/* 상태 뱃지 */
+.badge{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.badge.pending{ background:#fff7ed; color:#ea580c; }
+.badge.approved{ background:#ecfdf5; color:#16a34a; }
+.badge.rejected{ background:#fef2f2; color:#dc2626; }
+
+/* 버튼 */
+.btn-sm{
+  padding:6px 10px;
+  font-size:12px;
+  border-radius:6px;
+  border:1px solid #ddd;
+  background:#fff;
+  cursor:pointer;
+}
