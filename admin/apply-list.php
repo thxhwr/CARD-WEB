@@ -21,26 +21,32 @@ curl_setopt_array($ch, [
 $response = curl_exec($ch);
 $curlErr  = $response === false ? curl_error($ch) : null;
 curl_close($ch);
-print_r($response);
+
 $appList = [];
 $totalCount = 0;
 $errorMsg = null;
-if ($curlErr) {
-  $errorMsg = "API 호출 실패: " . $curlErr;
-} else {
-  $data = json_decode($response, true);
-  print_r($data);
-  if (!is_array($data)) {
-    $errorMsg = "응답 JSON 파싱 실패";
-  } else if ((string)($data['resCode'] ?? '') !== '0') {
-    $errorMsg = ($data['message'] ?? '조회 실패');
-  } else {
-    $appList = $data['data']['list'] ?? ($data['data'] ?? []);
-    if (!is_array($appList)) $appList = [];
 
-    $totalCount = (int)($data['data']['count'] ?? $data['totalLine'] ?? 0);
+if (!$errorMsg) {
+  $json = json_decode($response, true);
+
+  if (!is_array($json) || !isset($json['resCode'])) {
+    $errorMsg = "응답 파싱 실패";
+  } elseif ((int)$json['resCode'] !== 0) {
+    $errorMsg = $json['message'] ?? '요청 실패';
+  } else {
+    $appList   = $json['data'] ?? [];
+    $totalLine = (int)($json['totalLine'] ?? 0);
+
+    // 검색(q) 필터 (이름/아이디/연락처)
+    if ($q !== '') {
+      $appList = array_values(array_filter($appList, function($row) use ($q) {
+        $hay = ($row['NAME'] ?? '') . ' ' . ($row['ACCOUNT_NO'] ?? '') . ' ' . ($row['PHONE'] ?? '');
+        return mb_stripos($hay, $q) !== false;
+      }));
+    }
   }
 }
+
 ?>
 <div class="layout">
   <!-- ===== 사이드바 ===== -->
@@ -127,38 +133,40 @@ if ($curlErr) {
                 </tr>
 
                 <?php else: ?>
+                
                 <?php foreach ($appList as $row): ?>
                     <?php
-                    // ✅ 필드명은 실제 응답에 맞게 조정 필요!
-                    // 아래는 "예시 매핑"이야.
-                    $memberNo  = $row['memberNo'] ?? ($row['userId'] ?? '');
-                    $accountNo = $row['accountNo'] ?? ($row['userNo'] ?? '');
-                    $name      = $row['name'] ?? '';
-                    $createdAt = $row['createdAt'] ?? ($row['applyAt'] ?? '');
-                    $dateStr   = $createdAt ? date('y-m-d H:i', strtotime($createdAt)) : '';
+                        $applyId   = $row['APPLY_ID'] ?? '';
+                        $accountNo = $row['ACCOUNT_NO'] ?? '';
+                        $name      = $row['NAME'] ?? '';
+                        $createdAt = $row['CREATED_AT'] ?? '';
+                        $status    = $row['STATUS'] ?? '';
+
+                        $dateStr = $createdAt ? date('y-m-d H:i', strtotime($createdAt)) : '';
                     ?>
                     <tr>
-                    <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" name="chk[]" value="<?= htmlspecialchars($applyId, ENT_QUOTES) ?>" /></td>
 
-                    <td class="text-sm"><?= htmlspecialchars($memberNo, ENT_QUOTES) ?></td>
+                        <td class="text-sm"><?= htmlspecialchars($applyId, ENT_QUOTES) ?></td>
 
-                    <td class="text-sm">
+                        <td class="text-sm">
                         <?= htmlspecialchars($accountNo, ENT_QUOTES) ?><br />
                         <span class="text-muted text-sm"><?= htmlspecialchars($name, ENT_QUOTES) ?></span>
-                    </td>
+                        </td>
 
-                    <td><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></td>
+                        <td><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></td>
 
-                    <td>
+                        <td>
                         <button type="button"
                                 class="btn-confirm"
-                                data-id="<?= htmlspecialchars($memberNo, ENT_QUOTES) ?>"
+                                data-id="<?= htmlspecialchars($applyId, ENT_QUOTES) ?>"
                                 data-account="<?= htmlspecialchars($accountNo, ENT_QUOTES) ?>">
-                        확인
+                            확인
                         </button>
-                    </td>
+                        </td>
                     </tr>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+
                 <?php endif; ?>
                 </tbody>
           </table>
