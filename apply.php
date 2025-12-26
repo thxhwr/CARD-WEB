@@ -99,7 +99,8 @@
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">존재하지 않는 추천인입니다.</p>';
                         }
                         ?>
-                        <button class="apply-submit" type="submit" disabled>
+                        <!-- <button class="apply-submit" type="submit" disabled> -->
+                        <button class="apply-submit" type="submit" >
                         카드 신청
                         </button>
                     </div>
