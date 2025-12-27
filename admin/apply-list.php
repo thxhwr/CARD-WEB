@@ -166,7 +166,7 @@
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: 'apply_id=' + encodeURIComponent(applyId)
+        body: 'applyId=' + encodeURIComponent(applyId)
       })
       .then(res => res.json())
       .then(data => {
