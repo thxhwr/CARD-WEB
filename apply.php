@@ -59,7 +59,7 @@
                             </label> -->
                         </div>
                         <p class="muted small" style="margin-top:8px;">
-                            현재는 <b>방문 수령</b>만 가능합니다. (택배 수령은 추후 제공)
+                            현재는 <b>방문 수령</b>만 가능합니다. <br>(택배 수령은 추후 제공)
                         </p>
                     </div>
                     <div class="f-group is-disabled" id="referralGroup">
