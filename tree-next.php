@@ -1,20 +1,25 @@
 <?php
-session_start();
-require_once __DIR__ . "/auth.php";
-
+// tree-next.php  (✅ 클릭한 계정의 "상위 추천인" 내려주는 버전)
+declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
-// ✅ JSON 깨지는 거 방지: PHP가 에러를 화면에 찍지 않게
-ini_set('display_errors', '0');
 
-$raw = file_get_contents("php://input");
-$body = json_decode($raw, true);
+session_start();
 
-$accountNo = trim($body['accountNo'] ?? '');
-if ($accountNo === '') {
-  echo json_encode(['ok'=>false,'message'=>'accountNo 누락']);
+function json_out(array $arr, int $code = 200): void {
+  http_response_code($code);
+  echo json_encode($arr, JSON_UNESCAPED_UNICODE);
   exit;
 }
 
+$raw = file_get_contents('php://input');
+$req = json_decode($raw, true);
+
+$accountNo = trim((string)($req['accountNo'] ?? ''));
+if ($accountNo === '') {
+  json_out(['ok' => false, 'message' => 'accountNo가 없습니다.'], 400);
+}
+
+// 1) API 호출
 $postFields = ['accountNo' => $accountNo];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberReco.php');
@@ -23,21 +28,30 @@ curl_setopt_array($ch, [
   CURLOPT_POSTFIELDS     => http_build_query($postFields),
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_SSL_VERIFYPEER => false,
+  CURLOPT_TIMEOUT        => 10,
 ]);
 
 $response = curl_exec($ch);
 if ($response === false) {
-  echo json_encode(['ok'=>false,'message'=>'API 호출 실패']);
+  $err = curl_error($ch);
   curl_close($ch);
-  exit;
+  json_out(['ok' => false, 'message' => "API 호출 실패: {$err}"], 500);
 }
 curl_close($ch);
 
 $data = json_decode($response, true);
+if (!is_array($data)) {
+  json_out(['ok' => false, 'message' => '응답 JSON 파싱 실패'], 500);
+}
 
-$list = $data['data']['list'] ?? ($data['data'] ?? []);
+if (($data['resCode'] ?? 1) !== 0) {
+  json_out(['ok' => false, 'message' => (string)($data['message'] ?? 'API 오류')], 500);
+}
+
+$list = $data['data']['list'] ?? [];
 if (!is_array($list)) $list = [];
 
+// 2) ✅ "가장 가까운 상위 추천인"만 뽑기 = 최소 dept 그룹
 $minDept = null;
 foreach ($list as $row) {
   $d = (int)($row['dept'] ?? 0);
@@ -46,22 +60,24 @@ foreach ($list as $row) {
 }
 
 if ($minDept === null) {
-  echo json_encode(['ok'=>true,'nodes'=>[]]);
-  exit;
+  // 추천인 없음
+  json_out(['ok' => true, 'nodes' => []]);
 }
 
 $nodes = [];
 foreach ($list as $row) {
-  $dept = (int)($row['dept'] ?? 0);
-  if ($dept !== $minDept) continue;
+  if ((int)($row['dept'] ?? 0) !== $minDept) continue;
+
   $nodes[] = [
-    'name'      => $row['name'] ?? '',
-    'accountNo' => $row['accountNo'] ?? '',
+    'userId'    => $row['userId'] ?? null,
+    'accountNo' => (string)($row['accountNo'] ?? ''),
+    'name'      => (string)($row['name'] ?? ''),
     'deptNo'    => $row['deptNo'] ?? null,
+    'createdAt' => (string)($row['createdAt'] ?? ''),
   ];
 }
 
-usort($nodes, fn($a,$b) => ($a['deptNo'] ?? 0) <=> ($b['deptNo'] ?? 0));
+// deptNo 정렬(있으면)
+usort($nodes, fn($a,$b) => (int)($a['deptNo'] ?? 0) <=> (int)($b['deptNo'] ?? 0));
 
-echo json_encode(['ok'=>true,'nodes'=>$nodes], JSON_UNESCAPED_UNICODE);
-exit;
+json_out(['ok' => true, 'nodes' => $nodes]);
