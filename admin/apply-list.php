@@ -170,7 +170,6 @@
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.ok) {
           // ✅ 성공 문구
           alert(data.message || '승인 완료');
