@@ -53,10 +53,10 @@
                             <input type="radio" name="receive_type" value="visit" checked required>
                             <span>방문 수령</span>
                             </label>
-                            <label class="choice">
+                            <!-- <label class="choice">
                             <input type="radio" name="receive_type" disable value="delivery">
                             <span>택배 수령</span>
-                            </label>
+                            </label> -->
                         </div>
                         <p class="muted small" style="margin-top:8px;">
                             현재는 <b>방문 수령</b>만 가능합니다. (택배 수령은 추후 제공)
