@@ -55,4 +55,9 @@ if (($data['resCode'] ?? 1) === 0) {
         'ok' => false,
         'message' => $data['message'] ?? '처리 실패'
     ], JSON_UNESCAPED_UNICODE);
+} else if($data['resCode'] == "1006"){
+       echo json_encode([
+        'ok' => false,
+        'message' => $data['message'] ?? '처리 실패'
+    ], JSON_UNESCAPED_UNICODE);
 }
