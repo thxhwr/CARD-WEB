@@ -1,79 +1,68 @@
 <?php
+session_start();
+
 $myAccountNo = $_SESSION['user_No'] ?? null;
 if (!$myAccountNo) {
-    echo "로그인이 필요합니다.";
-    exit;
+  echo "로그인이 필요합니다.";
+  exit;
 }
-
 
 $postFields = ['accountNo' => $myAccountNo];
 
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberReco.php');
 curl_setopt_array($ch, [
-    CURLOPT_POST           => true,
-    CURLOPT_POSTFIELDS     => http_build_query($postFields),
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_SSL_VERIFYPEER => false,
+  CURLOPT_POST           => true,
+  CURLOPT_POSTFIELDS     => http_build_query($postFields),
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_SSL_VERIFYPEER => false,
+  CURLOPT_TIMEOUT        => 10,
 ]);
 
 $response = curl_exec($ch);
 if ($response === false) {
-    $errorMsg = "API 호출 실패: " . curl_error($ch);
-    curl_close($ch);
-    echo $errorMsg;
-    exit;
+  echo "API 호출 실패: " . curl_error($ch);
+  curl_close($ch);
+  exit;
 }
 curl_close($ch);
 
 $data = json_decode($response, true);
+if (!is_array($data)) {
+  echo "응답 JSON 파싱 실패";
+  exit;
+}
 
-print_r($data);
-$list = $data['data']['list'] ?? ($data['data'] ?? []);
+if (($data['resCode'] ?? 1) !== 0) {
+  echo "API 오류: " . htmlspecialchars($data['message'] ?? 'unknown');
+  exit;
+}
+
+/**
+ * ✅ list 안전하게 뽑기 (현재 구조: data.list)
+ */
+$list = $data['data']['list'] ?? [];
 if (!is_array($list)) $list = [];
 
-if ($list && !isset($list[0]) && isset($data[0])) {
-    $list = $data;
-}
-
-$minDept = null;
+/**
+ * ✅ dept 무시: 2대에 전부 넣기
+ */
+$level2 = [];
 foreach ($list as $row) {
-    $d = (int)($row['dept'] ?? 0);
-    if ($d <= 0) continue;
-    if ($minDept === null || $d < $minDept) $minDept = $d;
+  if (!is_array($row)) continue;
+
+  $level2[] = [
+    'name'      => (string)($row['name'] ?? ''),
+    'accountNo' => (string)($row['accountNo'] ?? ''),
+    'userId'    => $row['userId'] ?? null,
+    'createdAt' => (string)($row['createdAt'] ?? ''),
+    'deptNo'    => $row['deptNo'] ?? null, // 정렬용으로만 쓰고 dept는 무시
+  ];
 }
 
-$levels = [];
+/**
+ * ✅ 보기 좋게 deptNo로만 정렬(없으면 0)
+ */
+usort($level2, fn($a, $b) => (int)($a['deptNo'] ?? 0) <=> (int)($b['deptNo'] ?? 0));
 
-if ($minDept !== null) {
-    $maxGen = 2; // ✅ 2대까지
-
-    foreach ($list as $row) {
-        $dept = (int)($row['dept'] ?? 0);
-        if ($dept <= 0) continue;
-
-        $gen = ($dept - $minDept) + 1;  // ✅ minDept를 1대로 환산
-        if ($gen < 1 || $gen > $maxGen) continue;
-
-        if (!isset($levels[$gen])) $levels[$gen] = [];
-        $levels[$gen][] = [
-            'name'      => $row['name'] ?? '',
-            'accountNo' => $row['accountNo'] ?? '',
-            'userId'    => $row['userId'] ?? null,
-            'dept'      => $dept,         // 원본 dept
-            'gen'       => $gen,          // ✅ 화면용 (1대/2대)
-            'deptNo'    => $row['deptNo'] ?? null,
-            'createdAt' => $row['createdAt'] ?? '',
-        ];
-    }
-
-    foreach ($levels as &$nodes) {
-        usort($nodes, fn($a,$b) => ($a['deptNo'] ?? 0) <=> ($b['deptNo'] ?? 0));
-    }
-    unset($nodes);
-
-    ksort($levels); // gen(1,2) 순서
-}
-
-
-$pageTitle = "추천인";
+$pageTitle = "추천계보";
 ?>
