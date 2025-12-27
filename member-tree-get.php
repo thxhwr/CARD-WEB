@@ -45,20 +45,22 @@ foreach ($list as $row) {
 $levels = [];
 
 if ($minDept !== null) {
-    $from = $minDept;
-    $to   = $minDept;
-    // $to   = $minDept + 2;  
+    $maxGen = 2; // ✅ 2대까지
 
     foreach ($list as $row) {
         $dept = (int)($row['dept'] ?? 0);
-        if ($dept < $from || $dept > $to) continue;
+        if ($dept <= 0) continue;
 
-        if (!isset($levels[$dept])) $levels[$dept] = [];
-        $levels[$dept][] = [
+        $gen = ($dept - $minDept) + 1;  // ✅ minDept를 1대로 환산
+        if ($gen < 1 || $gen > $maxGen) continue;
+
+        if (!isset($levels[$gen])) $levels[$gen] = [];
+        $levels[$gen][] = [
             'name'      => $row['name'] ?? '',
             'accountNo' => $row['accountNo'] ?? '',
             'userId'    => $row['userId'] ?? null,
-            'dept'      => $dept,
+            'dept'      => $dept,         // 원본 dept
+            'gen'       => $gen,          // ✅ 화면용 (1대/2대)
             'deptNo'    => $row['deptNo'] ?? null,
             'createdAt' => $row['createdAt'] ?? '',
         ];
@@ -69,8 +71,9 @@ if ($minDept !== null) {
     }
     unset($nodes);
 
-    ksort($levels);
+    ksort($levels); // gen(1,2) 순서
 }
+
 
 $pageTitle = "추천인";
 ?>
