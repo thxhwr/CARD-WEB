@@ -49,14 +49,26 @@ require_once __DIR__ . "/member-tree-get.php";
             ?>
 
           <?php if (empty($level2)): ?>
-            <div class="empty">추천인이 없습니다.</div>
+            <p class="empty-text">표시할 추천인이 없습니다. (2대 없음)</p>
           <?php else: ?>
-            <?php foreach ($level2 as $n): ?>
-              <div class="card">
-                <div class="name"><?= htmlspecialchars($n['name']) ?></div>
-                <div class="email"><?= htmlspecialchars($n['accountNo']) ?></div>
+            <div class="tree-level-label">2대</div>
+
+            <div class="tree-level">
+              <div class="tree-row">
+                <?php foreach ($level2 as $n): ?>
+                  <button type="button"
+                    class="tree-node-card js-node"
+                    data-gen="2"
+                    data-account="<?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>">
+                    <div class="tree-node-name"><?= htmlspecialchars($n['name'], ENT_QUOTES) ?></div>
+                    <div class="tree-node-account"><?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?></div>
+                  </button>
+                <?php endforeach; ?>
               </div>
-            <?php endforeach; ?>
+            </div>
+
+            <div id="treeAppendArea"></div>
+            <p id="treeMsg" class="muted small" style="text-align:center;margin-top:10px;"></p>
           <?php endif; ?>
 
         </div>
