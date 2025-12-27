@@ -1783,10 +1783,11 @@ body {
 
 /* "1대 / 2대 / 3대" 간단 라벨 */
 .tree-level-label {
-  font-size: 15px;
+  font-size: 18px;
   color: var(--text-muted);
   margin-bottom: 6px;
   text-align: center;
+  font-weight:700;
 }
 
 /* 세대 안의 노드들을 가로로 나열 */
