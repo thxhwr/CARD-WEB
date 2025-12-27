@@ -1821,7 +1821,7 @@ body {
 
 /* 이름, 메타, 계정 번호 */
 .tree-node-name {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 600;
   margin-bottom: 4px;
 }
@@ -1832,7 +1832,7 @@ body {
 }
 
 .tree-node-account {
-  font-size: 12px;
+  font-size: 15px;
   color: #4b5563;
   word-break: break-all;
 }
