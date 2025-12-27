@@ -36,6 +36,7 @@ if ($response === false) {
 curl_close($ch);
 
 $data = json_decode($response, true);
+print_r($data);
 if (!is_array($data)) {
     echo json_encode([
         'ok' => false,
