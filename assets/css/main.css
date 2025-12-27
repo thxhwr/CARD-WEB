@@ -1718,7 +1718,7 @@ body {
 }
 
 .tree-level {
-    margin-bottom: 24px;
+    margin: 24px 0;
     text-align: center;
     overflow-x: auto; /* 같은 세대 가로로 길어지면 스크롤 */
 }
