@@ -1,5 +1,6 @@
 <?php
-// tree-next.php  (✅ 클릭한 계정의 "상위 추천인" 내려주는 버전)
+
+
 declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 
@@ -52,22 +53,29 @@ $list = $data['data']['list'] ?? [];
 if (!is_array($list)) $list = [];
 
 // 2) ✅ "가장 가까운 상위 추천인"만 뽑기 = 최소 dept 그룹
-$minDept = null;
+// 2) ✅ deptNo(라인)별로 "가장 가까운 상위 추천인" 1명씩 뽑기
+$best = []; // key: deptNo
+
 foreach ($list as $row) {
-  $d = (int)($row['dept'] ?? 0);
-  if ($d <= 0) continue;
-  if ($minDept === null || $d < $minDept) $minDept = $d;
+  if (!is_array($row)) continue;
+
+  $dept = (int)($row['dept'] ?? 0);
+  if ($dept <= 0) continue;
+
+  $deptNo = (int)($row['deptNo'] ?? 0); // 라인 구분용
+  // deptNo가 없으면 0으로 묶임(어쩔 수 없음)
+
+  if (!isset($best[$deptNo]) || $dept < (int)($best[$deptNo]['dept'] ?? PHP_INT_MAX)) {
+    $best[$deptNo] = $row; // 해당 라인의 가장 가까운(최소 dept) 추천인 저장
+  }
 }
 
-if ($minDept === null) {
-  // 추천인 없음
+if (empty($best)) {
   json_out(['ok' => true, 'nodes' => []]);
 }
 
 $nodes = [];
-foreach ($list as $row) {
-  if ((int)($row['dept'] ?? 0) !== $minDept) continue;
-
+foreach ($best as $row) {
   $nodes[] = [
     'userId'    => $row['userId'] ?? null,
     'accountNo' => (string)($row['accountNo'] ?? ''),
@@ -77,7 +85,8 @@ foreach ($list as $row) {
   ];
 }
 
-// deptNo 정렬(있으면)
+// deptNo 오름차순 정렬
 usort($nodes, fn($a,$b) => (int)($a['deptNo'] ?? 0) <=> (int)($b['deptNo'] ?? 0));
 
 json_out(['ok' => true, 'nodes' => $nodes]);
+
