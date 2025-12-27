@@ -27,6 +27,7 @@ curl_close($ch);
 
 $data = json_decode($response, true);
 
+print_r($data);
 $list = $data['data']['list'] ?? ($data['data'] ?? []);
 if (!is_array($list)) $list = [];
 
@@ -45,7 +46,7 @@ $levels = [];
 
 if ($minDept !== null) {
     $from = $minDept;
-    $to   = $minDept + 2;
+    $to   = $minDept;
     // $to   = $minDept + 2;  
 
     foreach ($list as $row) {
