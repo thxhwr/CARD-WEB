@@ -36,7 +36,6 @@ if ($response === false) {
 curl_close($ch);
 
 $data = json_decode($response, true);
-print_r($data);
 if (!is_array($data)) {
     echo json_encode([
         'ok' => false,
@@ -50,7 +49,7 @@ if (($data['resCode'] ?? 1) === 0) {
         'ok' => true,
         'message' => '정상 처리 완료'
     ], JSON_UNESCAPED_UNICODE);
-} else {
+} else if($data['resCode'] == "4002"){
     echo json_encode([
         'ok' => false,
         'message' => $data['message'] ?? '처리 실패'
