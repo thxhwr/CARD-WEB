@@ -54,13 +54,13 @@
                             <span>방문 수령</span>
                             </label>
                             <label class="choice">
-                            <input type="radio" name="receive_type" value="delivery">
+                            <input type="radio" name="receive_type" disable value="delivery">
                             <span>택배 수령</span>
                             </label>
                         </div>
-                        <!-- <p class="muted small" style="margin-top:8px;">
+                        <p class="muted small" style="margin-top:8px;">
                             현재는 <b>방문 수령</b>만 가능합니다. (택배 수령은 추후 제공)
-                        </p> -->
+                        </p>
                     </div>
                     <div class="f-group is-disabled" id="referralGroup">
                         <label class="f-label required" for="referral">추천인 아이디</label>
