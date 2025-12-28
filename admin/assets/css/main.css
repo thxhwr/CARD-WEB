@@ -839,13 +839,13 @@ tbody tr:hover {
 
 .node-index {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 5px;
+  right: 0px;
   min-width: 26px;
   height: 26px;
   padding: 0 8px;
   border-radius: 999px;
-  background: #ef4444;
+  background: tomato;
   color: #fff;
   font-size: 15px;
   font-weight: 900;
