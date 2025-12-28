@@ -64,6 +64,7 @@
             <tr>
                 <th>회원번호</th>
                 <th>아이디 / 이름</th>
+                <th>추천인 아이디 / 이름</th>
                 <th>신청일</th>
                 <th></th>
             </tr>
@@ -99,10 +100,13 @@
                         <td class="text-sm"><?= htmlspecialchars($applyId, ENT_QUOTES) ?></td>
 
                         <td class="text-sm">
-                        <?= htmlspecialchars($accountNo, ENT_QUOTES) ?><br />
-                        <span class="text-muted text-sm"><?= htmlspecialchars($name, ENT_QUOTES) ?></span>
+                          <?= htmlspecialchars($accountNo, ENT_QUOTES) ?><br />
+                          <span class="text-muted text-sm"><?= htmlspecialchars($name, ENT_QUOTES) ?></span>
                         </td>
-
+                        <td class="text-sm">
+                          <br />
+                          </span>
+                        </td>
                         <td><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></td>
 
                         <td>
