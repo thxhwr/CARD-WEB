@@ -18,7 +18,7 @@ $postFields = [
     'accountNo' => $rootAccountNo,
 ];
 
-$ch = curl_init('https://api.thxdeal.com/api/member/MemberSpon.php');
+$ch = curl_init('https://api.thxdeal.com/api/member/testMemberSpon.php');
 curl_setopt_array($ch, [
     CURLOPT_POST           => true,
     CURLOPT_POSTFIELDS     => $postFields,
