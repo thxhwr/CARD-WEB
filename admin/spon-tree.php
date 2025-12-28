@@ -85,7 +85,6 @@ if ($root) {
 
     ksort($levels);
     
-    print_r($levels);
 }
 ?>
 <?php include __DIR__ . "/head.php"; ?>
