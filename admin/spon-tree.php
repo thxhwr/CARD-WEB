@@ -165,7 +165,7 @@ if ($root) {
           <div class="tree-level">
             <div class="tree-row">
               <div class="tree-node-card tree-node-root">
-                <span class="node-index">(<?= $root['userId']; ?>)</span>
+                <span class="node-index">(<?= htmlspecialchars($root['userId'] ?? ''); ?>)</span>
                 <div class="tree-node-name">
                   <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
                 </div>
@@ -196,7 +196,7 @@ if ($root) {
                   <?php
                   foreach ($nodes as $n): ?>
                     <div class="tree-node-card">
-                      <span class="node-index">(<?= $n['userId']; ?>)</span>
+                      <span class="node-index">(<?= htmlspecialchars($n['userId'] ?? ''); ?>)</span>
                       <div class="tree-node-name">
                         <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                       </div>
