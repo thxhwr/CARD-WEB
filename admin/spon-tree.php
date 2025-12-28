@@ -154,7 +154,9 @@ if ($root) {
           루트 정보를 가져오지 못했습니다.
         </p>
 
-      <?php else: ?>
+      <?php else:
+          $globalIdx = 1; 
+        ?>
 
         <!-- 트리 영역 전체 감싸는 컨테이너 -->
         <div class="tree-container">
@@ -163,6 +165,7 @@ if ($root) {
           <div class="tree-level">
             <div class="tree-row">
               <div class="tree-node-card tree-node-root">
+                <span class="node-index">(<?= $globalIdx++ ?>)</span>
                 <div class="tree-node-name">
                   <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
                 </div>
@@ -191,10 +194,9 @@ if ($root) {
 
                 <div class="tree-row">
                   <?php
-                  $globalIdx = 1; 
                   foreach ($nodes as $n): ?>
                     <div class="tree-node-card">
-                      <span><?php echo $globalIdx++;?></span>
+                      <span class="node-index">(<?= $globalIdx++ ?>)</span>
                       <div class="tree-node-name">
                         <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                       </div>
