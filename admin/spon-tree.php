@@ -190,9 +190,11 @@ if ($root) {
               <div class="tree-level">
 
                 <div class="tree-row">
-                  <?php foreach ($nodes as $n): ?>
+                  <?php
+                  $globalIdx = 1; 
+                  foreach ($nodes as $n): ?>
                     <div class="tree-node-card">
-                      <span><?php echo $n;?></span>
+                      <span><?php echo $globalIdx++;?></span>
                       <div class="tree-node-name">
                         <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                       </div>
