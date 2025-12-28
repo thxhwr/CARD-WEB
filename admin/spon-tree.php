@@ -1,5 +1,5 @@
 <?php
-$myAccountNo = "thx.manager@gmail.com" ?? null;
+$myAccountNo = "youbr919@naver.com" ?? null;
 if (!$myAccountNo) {
     echo "로그인이 필요합니다.";
     exit;
@@ -85,6 +85,7 @@ if ($root) {
 
     ksort($levels);
       
+    print_r($levels);
 }
 ?>
 <?php include __DIR__ . "/head.php"; ?>
