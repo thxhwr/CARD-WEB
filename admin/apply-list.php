@@ -94,7 +94,7 @@
                         $createdAt = $row['CREATED_AT'] ?? '';
                         $status    = $row['STATUS'] ?? '';
                         $REFERRER_USER_ID = $row['REFERRER_USER_ID'];
-                        $REFERRER_NAME = $row['REFERRER_NAME']
+                        $REFERRER_NAME = $row['REFERRER_NAME'];
 
                         $dateStr = $createdAt ? date('y-m-d H:i', strtotime($createdAt)) : '';
                     ?>
