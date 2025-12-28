@@ -1810,8 +1810,6 @@ body {
   border: 1px solid var(--border);
   border-top-width: 3px;
   border-top-color: #f97316;
-  font-size: 12px;
-  
 }
 
 /* 루트 카드만 색상 살짝 강조 */
