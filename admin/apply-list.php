@@ -94,7 +94,7 @@
                         $createdAt = $row['CREATED_AT'] ?? '';
                         $status    = $row['STATUS'] ?? '';
                         $REFERRER_USER_ID = $row['REFERRER_USER_ID'];
-                        $REFERRER_NAME = $row['REFERRER_NAME'];
+                        $REFERRER_NAME = $row['REFERRER_NAME']
 
                         $dateStr = $createdAt ? date('y-m-d H:i', strtotime($createdAt)) : '';
                     ?>
@@ -107,9 +107,9 @@
                         </td>
                         <td class="text-sm">
                           <?= htmlspecialchars($REFERRER_USER_ID, ENT_QUOTES) ?><br />
-                          </span>
+                           <span class="text-muted text-sm"><?= htmlspecialchars($REFERRER_NAME, ENT_QUOTES) ?></span>
                         </td>
-                        <td><?= htmlspecialchars($REFERRER_NAME, ENT_QUOTES) ?></td>
+                        <td><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></td>
 
                         <td>
                         <button type="button"
