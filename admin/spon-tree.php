@@ -157,7 +157,6 @@ if ($root) {
         </p>
 
       <?php else:
-          $globalIdx = 1; 
         ?>
 
         <!-- 트리 영역 전체 감싸는 컨테이너 -->
@@ -167,7 +166,7 @@ if ($root) {
           <div class="tree-level">
             <div class="tree-row">
               <div class="tree-node-card tree-node-root">
-                <span class="node-index">(<?= $globalIdx++ ?>)</span>
+                <span class="node-index">(<?= echo $row['userId']; ?>)</span>
                 <div class="tree-node-name">
                   <?= htmlspecialchars($root['name'] ?? '', ENT_QUOTES) ?>
                 </div>
@@ -198,7 +197,7 @@ if ($root) {
                   <?php
                   foreach ($nodes as $n): ?>
                     <div class="tree-node-card">
-                      <span class="node-index">(<?= $globalIdx++ ?>)</span>
+                      <span class="node-index">(<?= echo $row['userId']; ?>)</span>
                       <div class="tree-node-name">
                         <?= htmlspecialchars($n['name'], ENT_QUOTES) ?>
                       </div>
