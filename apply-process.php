@@ -95,8 +95,9 @@ if ($data['resCode'] == "1005") {
 } elseif ($data['resCode'] == "1006") {
   go_error('1006');
 } elseif ($data['resCode'] == "0") {
-  header('Location: /apply-complete.php');
-  exit;
+    print_r($data);
+//   header('Location: /apply-complete.php');
+//   exit;
 } else {
   go_error('api_unknown');
 }
