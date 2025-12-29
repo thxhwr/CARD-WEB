@@ -34,7 +34,7 @@
         </div>
 
         <div class="topbar-actions">
-          <button class="icon-button" title="새로고침">
+          <button class="icon-button" title="새로고침" onclick="location.href='apply-list.php'">
             ⟳
           </button>
           <div class="user-chip">
