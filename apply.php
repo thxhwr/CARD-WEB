@@ -30,6 +30,7 @@
                     <div class="f-group is-disabled">
                         <label class="f-label required" for="name">이름</label>
                         <input id="name" name="name" class="f-input" type="text" placeholder="이름을 입력해주세요" required>
+                        <div id="nameMsg" class="muted small" style="margin-top:8px;"></div>
                     </div>
                      <div class="f-group is-disabled">
                         <label class="f-label required" for="phone">전화번호</label>
@@ -45,6 +46,7 @@
                         </div>
                         <input type="text" id="address" class="f-input" name="address" placeholder="기본 주소" readonly>
                         <input type="text" id="address_detail" class="f-input" name="address_detail" placeholder="상세 주소 입력">
+                        <div id="addressMsg" class="muted small" style="margin-top:8px;"></div>
                     </div>
                     <div class="f-group" id="receiveGroup">
                         <label class="f-label required">수령 방법</label>
