@@ -2,11 +2,12 @@
 // list-get.php
 
 $q = trim($_GET['q'] ?? '');     
+$searchForApi = rawurlencode($q);
 $page = max(1, (int)($_GET['page'] ?? 1));
 $limit = 20;
 
 $postFields = [
-  'search' => $q,   
+  'search' => $searchForApi,   
   'page'   => $page,
   'list'   => $limit,
 ];
@@ -41,7 +42,7 @@ if ($curlErr) {
     $totalLine = (int)($json['totalLine'] ?? 0);
 
 
-    if ($q !== '') {
+    if ($searchForApi !== '') {
       // ---------- 유틸 ----------
       $normalize = function(string $s): string {
         $s = mb_strtolower($s, 'UTF-8');
@@ -82,9 +83,9 @@ if ($curlErr) {
         return $union > 0 ? ($inter / $union) : 0.0;
       };
 
-      $qNorm = $normalize($q);
+      $qNorm = $normalize($searchForApi);
 
-      $appList = array_values(array_filter($appList, function($row) use ($q, $qNorm, $normalize, $jaccard) {
+      $appList = array_values(array_filter($appList, function($row) use ($searchForApi, $qNorm, $normalize, $jaccard) {
         $name  = (string)($row['NAME'] ?? '');
         $email = (string)($row['ACCOUNT_NO'] ?? '');
         $phone = (string)($row['PHONE'] ?? '');
@@ -96,8 +97,8 @@ if ($curlErr) {
         }
 
 
-        $simName  = $jaccard($q, $name);
-        $simEmail = $jaccard($q, $email);
+        $simName  = $jaccard($searchForApi, $name);
+        $simEmail = $jaccard($searchForApi, $email);
 
         // 기준값은 상황 따라 조절 (0.55~0.7 사이 권장)
         return ($simName >= 0.60) || ($simEmail >= 0.65);
