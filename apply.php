@@ -112,11 +112,11 @@
                         } elseif ($error === 'phone_invalid') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">전화번호 형식이 올바르지 않습니다.</p>';
                         } elseif ($error === 'api_fail') {
-                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">서버 통신에 실패했습니다. 잠시 후 다시 시도해주세요.</p>';
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">서버 통신에 실패했습니다. <br>잠시 후 다시 시도해주세요.</p>';
                         } elseif ($error === 'api_parse') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">서버 응답 처리 중 오류가 발생했습니다.</p>';
                         } elseif ($error === 'api_unknown') {
-                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">신청 처리에 실패했습니다. 다시 시도해주세요.</p>';
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">신청 처리에 실패했습니다. <br>다시 시도해주세요.</p>';
                         } elseif ($error === 'login') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">로그인이 필요합니다.</p>';
                         }
