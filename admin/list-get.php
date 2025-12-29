@@ -26,7 +26,7 @@ curl_close($ch);
 $appList = [];
 $totalCount = 0;
 $errorMsg = null;
-
+print_r($response);
 if ($curlErr) {
   $errorMsg = "API 호출 실패: " . $curlErr;
 } else {
