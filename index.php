@@ -6,7 +6,6 @@
     include __DIR__ . "/common.php";
     include __DIR__ . "/head.php"; 
 
-    print_r($_SESSION);
   ?>
 </head>
 <style>
