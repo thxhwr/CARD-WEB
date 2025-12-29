@@ -46,8 +46,14 @@ $address = $zipcode . ' ' . $addr . ' ' . $addr_detail;
 // -------------------------
 // (선택) 추천인 검증을 다시 켤 경우 여기서 처리
 // -------------------------
-// if ($referral === '' || $refChecked !== '1') go_error('referral');
-// if ($referralConfirm === '' || $referral !== $referralConfirm) go_error('referral_confirm');
+// if ($referral === '' || $refChecked !== '1') {
+if ($referral === ''){
+    go_error('referral');
+}
+
+// if ($referralConfirm === '' || $referral !== $referralConfirm){
+//     go_error('referral_confirm');
+// }
 
 $postFields = [
   'accountNo'         => $_SESSION['user_No'],

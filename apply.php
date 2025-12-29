@@ -111,6 +111,8 @@
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:18px;">전화번호를 입력해 주세요.</p>';
                         } elseif ($error === 'phone_invalid') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:18px;">전화번호 형식이 올바르지 않습니다.</p>';
+                        } elseif ($error === 'referral') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:18px;">추천인을 입력해주세요.</p>';
                         } elseif ($error === 'api_fail') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:18px;">서버 통신에 실패했습니다. <br>잠시 후 다시 시도해주세요.</p>';
                         } elseif ($error === 'api_parse') {
