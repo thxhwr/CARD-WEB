@@ -128,6 +128,68 @@
                 </tbody>
           </table>
         </div>
+        <?php if (!$errorMsg && $totalPages > 1): ?>
+          <?php
+            $baseParams = [];
+            if ($q !== '') $baseParams['q'] = $q;
+
+            $range = 2; // 현재 기준 앞뒤로 2페이지씩 노출
+            $start = max(1, $page - $range);
+            $end   = min($totalPages, $page + $range);
+
+            // 페이지 개수 5개 정도 유지하려고 보정
+            while (($end - $start) < ($range * 2) && $start > 1) $start--;
+            while (($end - $start) < ($range * 2) && $end < $totalPages) $end++;
+
+            $makeUrl = function(int $p) use ($baseParams) {
+              $params = $baseParams;
+              $params['page'] = $p;
+              return 'apply-list.php?' . http_build_query($params);
+            };
+          ?>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;flex-wrap:wrap;">
+            <div class="text-sm" style="color:#6b7280;">
+              총 <strong><?= (int)$totalLine ?></strong>건 · <?= (int)$page ?> / <?= (int)$totalPages ?> 페이지
+            </div>
+
+            <nav style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <a href="<?= $makeUrl(1) ?>"
+                style="padding:8px 10px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111;<?= $page<=1?'pointer-events:none;opacity:.4;':'' ?>">
+                « 처음
+              </a>
+              <a href="<?= $makeUrl(max(1, $page-1)) ?>"
+                style="padding:8px 10px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111;<?= $page<=1?'pointer-events:none;opacity:.4;':'' ?>">
+                ‹ 이전
+              </a>
+
+              <?php if ($start > 1): ?>
+                <span style="padding:0 6px;color:#9ca3af;">…</span>
+              <?php endif; ?>
+
+              <?php for ($p = $start; $p <= $end; $p++): ?>
+                <a href="<?= $makeUrl($p) ?>"
+                  style="padding:8px 12px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;<?= $p===$page?'background:#111;color:#fff;border-color:#111;':'color:#111;' ?>">
+                  <?= $p ?>
+                </a>
+              <?php endfor; ?>
+
+              <?php if ($end < $totalPages): ?>
+                <span style="padding:0 6px;color:#9ca3af;">…</span>
+              <?php endif; ?>
+
+              <a href="<?= $makeUrl(min($totalPages, $page+1)) ?>"
+                style="padding:8px 10px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111;<?= $page>=$totalPages?'pointer-events:none;opacity:.4;':'' ?>">
+                다음 ›
+              </a>
+              <a href="<?= $makeUrl($totalPages) ?>"
+                style="padding:8px 10px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111;<?= $page>=$totalPages?'pointer-events:none;opacity:.4;':'' ?>">
+                끝 »
+              </a>
+            </nav>
+          </div>
+        <?php endif; ?>
+
       </section>
 
     </main>
