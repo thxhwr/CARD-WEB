@@ -45,7 +45,7 @@
         </button>
         <?php }else{?>
           <button class="cta" type="button"> 
-          신청 완료
+          카드 발급 완료
         </button>
         <?php }?>
       </section>
