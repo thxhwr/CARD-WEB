@@ -47,7 +47,6 @@
         <?php }else{?>
           <button class="cta" type="button"> 
           신청 완료
-          <img src="/assets/icons/btn-next-arrow-right-w@2x.png" alt="" class="cta-icon">
         </button>
         <?php }?>
       </section>
