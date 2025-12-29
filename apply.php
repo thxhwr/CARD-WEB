@@ -101,6 +101,24 @@
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">존재하지 않는 추천인입니다.</p>';
                         } elseif ($error === '1006') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이미 동일한 연락처가 존재합니다.</p>';
+                        }elseif ($error === 'name_required') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이름을 입력해 주세요.</p>';
+                        } elseif ($error === 'name_invalid') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이름은 한글 또는 영문만 입력할 수 있습니다. (숫자/특수문자 불가)</p>';
+                        } elseif ($error === 'address_required') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">배송지를 입력해 주세요.</p>';
+                        } elseif ($error === 'phone_required') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">전화번호를 입력해 주세요.</p>';
+                        } elseif ($error === 'phone_invalid') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">전화번호 형식이 올바르지 않습니다.</p>';
+                        } elseif ($error === 'api_fail') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">서버 통신에 실패했습니다. 잠시 후 다시 시도해주세요.</p>';
+                        } elseif ($error === 'api_parse') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">서버 응답 처리 중 오류가 발생했습니다.</p>';
+                        } elseif ($error === 'api_unknown') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">신청 처리에 실패했습니다. 다시 시도해주세요.</p>';
+                        } elseif ($error === 'login') {
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">로그인이 필요합니다.</p>';
                         }
                         ?>
                         <!-- <button class="apply-submit" type="submit" disabled> -->
