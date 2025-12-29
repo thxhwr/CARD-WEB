@@ -38,7 +38,7 @@
             ⟳
           </button>
           <div class="user-chip">
-            <div class="user-avatar">KS</div>
+            <div class="user-avatar"></div>
             <div>
               <div class="user-name">관리자</div>
               <div class="user-role">마스터</div>

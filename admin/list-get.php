@@ -11,7 +11,6 @@ $postFields = [
   'list'   => $limit,
 ];
 
-print_r($postFields);
 $ch = curl_init('https://api.thxdeal.com/api/member/testMemberAppList.php');
 curl_setopt_array($ch, [
   CURLOPT_POST           => true,
