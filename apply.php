@@ -104,7 +104,7 @@
                         }elseif ($error === 'name_required') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이름을 입력해 주세요.</p>';
                         } elseif ($error === 'name_invalid') {
-                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이름은 한글 또는 영문만 입력할 수 있습니다. (숫자/특수문자 불가)</p>';
+                            echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">이름은 한글 또는 영문만 입력할 수 있습니다.<br>(숫자/특수문자 불가)</p>';
                         } elseif ($error === 'address_required') {
                             echo '<p style="padding-bottom:5%;text-align:center;margin:auto 0;color:#f44;font-size:15px;">배송지를 입력해 주세요.</p>';
                         } elseif ($error === 'phone_required') {
