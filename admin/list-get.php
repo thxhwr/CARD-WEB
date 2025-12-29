@@ -1,8 +1,7 @@
 <?php
 // list-get.php
-
-$q = trim($_GET['q'] ?? '');     
-$searchForApi = rawurlencode($q);
+     
+$searchForApi = trim($_GET['q'] ?? '');
 $page = max(1, (int)($_GET['page'] ?? 1));
 $limit = 20;
 
