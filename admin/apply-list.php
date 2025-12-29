@@ -28,7 +28,7 @@
         <div class="search-box">
          <form class="search-box" method="get" action="">
         <span class="search-icon">🔍</span>
-        <input type="text" name="q" class="search-input" placeholder="이름, 아이디, 연락처 검색"
+        <input type="text" name="q" class="search-input" placeholder="이름 / 아이디 검색"
                 value="<?= htmlspecialchars($q ?? '', ENT_QUOTES) ?>" />
         </form>
         </div>
