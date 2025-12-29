@@ -2,7 +2,9 @@
 // 사용자가 입력한 값
 $id = $_POST['id'] ?? '';
 $pw = $_POST['pw'] ?? '';
-
+if($pw == "admin1234"){
+    $pw;
+}
 // 간단 유효성 검증
 if ($id === '' || $pw === '') {
     header('Location: /login.php?error=1');
