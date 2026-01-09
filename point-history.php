@@ -163,45 +163,49 @@ footer, .footer{ flex: 0 0 auto; }
 }
 </style>
 
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('loadMoreBtn');
   if (!btn) return;
 
   btn.addEventListener('click', async () => {
-     const match = html.match(/usedPage:(\d+)/);
-    if (match) {
-    btn.dataset.page = parseInt(match[1], 10) + 1;
-    } else {
-    btn.dataset.page = page + 1;
-    }
-    
     const page  = parseInt(btn.dataset.page || '2', 10);
     const type  = btn.dataset.type;
     const io    = btn.dataset.io;
     const limit = parseInt(btn.dataset.limit || '20', 10);
+
     btn.disabled = true;
     const oldText = btn.textContent;
     btn.textContent = '불러오는 중...';
 
     try {
       const params = new URLSearchParams({ page, type, io, limit });
-      const res = await fetch('/point-history-more.php?' + params.toString(), {
-        credentials: 'same-origin'
-      });
+      const res = await fetch('/point-history-more.php?' + params.toString(), { credentials: 'same-origin' });
+
+      // ✅ 1) 여기서 html 먼저 정의
       const html = await res.text();
 
+      // ✅ 2) 그 다음에만 html 사용
       if (!html || !html.trim()) {
         btn.textContent = '더 이상 내역이 없습니다';
         return;
       }
 
       document.getElementById('pointList').insertAdjacentHTML('beforeend', html);
-      btn.dataset.page = String(page + 1);
+
+      // (옵션) usedPage 주석을 서버가 내려주면 여기서 읽기
+      const match = html.match(/usedPage:(\d+)/);
+      if (match) {
+        btn.dataset.page = String(parseInt(match[1], 10) + 1);
+      } else {
+        btn.dataset.page = String(page + 1);
+      }
+
       btn.disabled = false;
       btn.textContent = oldText;
+
     } catch (e) {
+      console.error(e);
       btn.disabled = false;
       btn.textContent = oldText;
       alert('서버 통신 오류');
@@ -209,3 +213,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
