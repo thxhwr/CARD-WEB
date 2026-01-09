@@ -33,35 +33,45 @@ $historyRes = curlPost(
 );
 
 $items = [];
+$tryPage = $page;
+$maxTry  = 5; // 무한루프 방지
 
-if ($historyRes && (($historyRes['data']['resCode'] ?? -1) === 0)) {
+while ($maxTry-- > 0) {
+
+  $historyRes = curlPost(
+    'https://api.thxdeal.com/api/point/history.php',
+    [
+      'accountNo' => $accountNo,
+      'typeCode'  => $type,
+      'page'      => $tryPage,
+      'limit'     => $limit,
+    ]
+  );
+
+  if (!$historyRes || ($historyRes['data']['resCode'] ?? -1) !== 0) {
+    break;
+  }
+
   $data = $historyRes['data']['data'] ?? [];
+  if (!is_array($data) || empty($data)) break;
 
-  // 케이스 A: data가 리스트
-  if (isset($data[0]) && is_array($data[0])) {
+  // io 필터
+  if ($io !== 'all') {
+    $want = $io;
+    $data = array_values(array_filter($data, function($row) use ($want){
+      return strtoupper(trim($row['ACTION_TYPE'] ?? '')) === $want;
+    }));
+  }
+
+  if (!empty($data)) {
     $items = $data;
+    break; // ✅ 쓸 수 있는 데이터 확보
   }
-  // 케이스 C(혹시): data.data.data
-  elseif (isset($data['data']['data']) && is_array($data['data']['data'])) {
-    $items = $data['data']['data'];
-  }
+
+  $tryPage++; // 다음 페이지 시도
 }
 
-// -----------------------
-// 3) IO 필터
-// -----------------------
-if ($io !== 'all') {
-  $want = ($io === 'IN') ? 'IN' : 'OUT';
-  $items = array_values(array_filter($items, function($row) use ($want) {
-    return strtoupper(trim($row['ACTION_TYPE'] ?? '')) === $want;
-  }));
-}
-
-// -----------------------
-// 4) 더보기는 "추가 HTML"만 뿌려줌
-//    (잔액 계산은 기존 페이지에서만 하거나, API가 BALANCE 주면 여기서도 가능)
-// -----------------------
-if (empty($items)) exit; // 비어있으면 빈 응답
+if (empty($items)) exit;
 foreach ($items as $row) {
   $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
   $isOut  = ($action === 'OUT');
