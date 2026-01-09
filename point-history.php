@@ -156,7 +156,6 @@ footer, .footer{ flex: 0 0 auto; }
 #loadMoreBtn {
   width: 100%;
   padding: 14px;
-  margin: 20px 0;
   border-radius: 12px;
   border: 1px solid #ddd;
   background: #fff;
