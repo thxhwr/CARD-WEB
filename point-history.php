@@ -173,7 +173,9 @@ footer, .footer{ flex: 0 0 auto; }
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-   window.POINT_LAST_BALANCE = <?= $lastBalance !== null ? (int)$lastBalance : 'null' ?>;
+  // 첫 페이지에서 PHP가 계산한 마지막 잔액(없으면 null)
+  window.POINT_LAST_BALANCE = <?= $lastBalance !== null ? (int)$lastBalance : 'null' ?>;
+
   const btn = document.getElementById('loadMoreBtn');
   if (!btn) return;
 
@@ -188,27 +190,35 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.textContent = '불러오는 중...';
 
     try {
-      const params = new URLSearchParams({ page, type, io, limit , lastBalance: window.POINT_LAST_BALANCE});
-      const res = await fetch('/point-history-more.php?' + params.toString(), { credentials: 'same-origin' });
+      // ✅ lastBalance는 숫자일 때만 보냄 ("null" 방지)
+      const paramsObj = { page, type, io, limit };
+      if (typeof window.POINT_LAST_BALANCE === 'number' && !Number.isNaN(window.POINT_LAST_BALANCE)) {
+        paramsObj.lastBalance = window.POINT_LAST_BALANCE;
+      }
 
-      // ✅ 1) 여기서 html 먼저 정의
+      const params = new URLSearchParams(paramsObj);
+      const res = await fetch('/point-history-more.php?' + params.toString(), { credentials: 'same-origin' });
       const html = await res.text();
 
-      // ✅ 2) 그 다음에만 html 사용
+      // ✅ 먼저 "없음" 판정
       if (!html || !html.trim()) {
         btn.textContent = '더 이상 내역이 없습니다';
         return;
       }
 
-      document.getElementById('pointList').insertAdjacentHTML('beforeend', html);
+      // ✅ 메타 파싱(usedPage / nextBalance) — 딱 1번만
+      const usedPageMatch = html.match(/usedPage:(\d+)/);
+      btn.dataset.page = usedPageMatch
+        ? String(parseInt(usedPageMatch[1], 10) + 1)
+        : String(page + 1);
 
-      // (옵션) usedPage 주석을 서버가 내려주면 여기서 읽기
-      const match = html.match(/usedPage:(\d+)/);
-      if (match) {
-        btn.dataset.page = String(parseInt(match[1], 10) + 1);
-      } else {
-        btn.dataset.page = String(page + 1);
+      const nextBalMatch = html.match(/nextBalance:(-?\d+)/);
+      if (nextBalMatch) {
+        window.POINT_LAST_BALANCE = parseInt(nextBalMatch[1], 10);
       }
+
+      // ✅ 화면에 추가
+      document.getElementById('pointList').insertAdjacentHTML('beforeend', html);
 
       btn.disabled = false;
       btn.textContent = oldText;

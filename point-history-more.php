@@ -138,10 +138,10 @@ foreach ($items as $row) {
   <?php
 }
 
-// ✅ 서버가 실제로 사용한 페이지도 내려주면 JS가 page 맞추기 쉬움(옵션)
+// ✅ 서버가 실제로 사용한 페이지
 echo "<!-- usedPage:$tryPage -->";
 
-// ✅ 다음 클릭을 위한 lastBalance 갱신
+// ✅ 다음 더보기용 잔액(있을 때만)
 if ($newLastBalance !== null) {
-  echo "<script>window.POINT_LAST_BALANCE=".(int)$newLastBalance.";</script>";
+  echo "<!-- nextBalance:$newLastBalance -->";
 }
