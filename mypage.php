@@ -72,8 +72,9 @@
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
                                 <?= number_format($response['data']['data']['LP'] ?? 0) ?>
-                                <span class="mypage-pay-unit">LP <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon"></span>
+                                <span class="mypage-pay-unit">LP </span>
                             </div>
+                            <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                         </div>
                     </div>
                 </div>
