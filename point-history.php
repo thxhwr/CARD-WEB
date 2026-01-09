@@ -57,7 +57,7 @@ require_once __DIR__ . "/point-history-get.php";
                 <?php
                     if (!is_array($items)) $items = [];
                 ?>
-                <ul class="point-list">
+                <ul class="point-list" id="pointList">
                     <?php foreach ($items as $row): ?>
                         <?php
                             $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
@@ -92,6 +92,15 @@ require_once __DIR__ . "/point-history-get.php";
 
                     <?php endforeach; ?>
                 </ul>
+                <button
+                id="loadMoreBtn"
+                data-page="2"
+                data-type="<?= htmlspecialchars($type, ENT_QUOTES) ?>"
+                data-io="<?= htmlspecialchars($io, ENT_QUOTES) ?>"
+                data-limit="<?= (int)$limit ?>"
+                >
+                더보기
+                </button>
             <?php endif; ?>
 
         </div>
@@ -144,4 +153,40 @@ footer, .footer{ flex: 0 0 auto; }
 
 .point-list::-webkit-scrollbar{ width:0; height:0; }
 
+#loadMoreBtn {
+  width: 100%;
+  padding: 14px;
+  margin: 20px 0;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-weight: 600;
+}
 </style>
+<script>
+$('#loadMoreBtn').on('click', function () {
+  const btn = $(this);
+
+  const page  = parseInt(btn.data('page'), 10);
+  const type  = btn.data('type');
+  const io    = btn.data('io');
+  const limit = parseInt(btn.data('limit'), 10);
+
+  btn.prop('disabled', true).text('불러오는 중...');
+
+  $.get('/point_history_more.php', { page, type, io, limit }, function (html) {
+    if (!html || !html.trim()) {
+      btn.text('더 이상 내역이 없습니다');
+      return;
+    }
+
+    $('#pointList').append(html);
+
+    btn.data('page', page + 1);
+    btn.prop('disabled', false).text('더보기');
+  }).fail(function () {
+    btn.prop('disabled', false).text('더보기');
+    alert('서버 통신 오류');
+  });
+});
+</script>
