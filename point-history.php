@@ -170,11 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!btn) return;
 
   btn.addEventListener('click', async () => {
+     const match = html.match(/usedPage:(\d+)/);
+    if (match) {
+    btn.dataset.page = parseInt(match[1], 10) + 1;
+    } else {
+    btn.dataset.page = page + 1;
+    }
+    
     const page  = parseInt(btn.dataset.page || '2', 10);
     const type  = btn.dataset.type;
     const io    = btn.dataset.io;
     const limit = parseInt(btn.dataset.limit || '20', 10);
-
     btn.disabled = true;
     const oldText = btn.textContent;
     btn.textContent = '불러오는 중...';
