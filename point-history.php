@@ -174,7 +174,7 @@ $('#loadMoreBtn').on('click', function () {
 
   btn.prop('disabled', true).text('불러오는 중...');
 
-  $.get('/point_history_more.php', { page, type, io, limit }, function (html) {
+  $.get('/point-history-more.php', { page, type, io, limit }, function (html) {
     if (!html || !html.trim()) {
       btn.text('더 이상 내역이 없습니다');
       return;
