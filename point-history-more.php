@@ -62,32 +62,25 @@ if ($io !== 'all') {
 //    (잔액 계산은 기존 페이지에서만 하거나, API가 BALANCE 주면 여기서도 가능)
 // -----------------------
 if (empty($items)) exit; // 비어있으면 빈 응답
-
 foreach ($items as $row) {
-  $title  = htmlspecialchars($row['TITLE'] ?? ($row['REASON'] ?? '포인트'));
-  $created = $row['CREATED_AT'] ?? '';
-  $date   = $created ? date('y-m-d', strtotime($created)) : '';
-  $amount = (int)($row['AMOUNT'] ?? 0);
   $action = strtoupper(trim($row['ACTION_TYPE'] ?? ''));
-  $sign   = ($action === 'OUT') ? '-' : '+';
+  $isOut  = ($action === 'OUT');
+  $cls  = $isOut ? 'OUT' : 'IN';
+  $sign = $isOut ? '-' : '+';
 
-  // 더보기에서는 _BALANCE_AFTER가 없을 수 있으니 있으면 출력, 없으면 숨김 처리
-  $balText = '';
-  if (isset($row['_BALANCE_AFTER']) && $row['_BALANCE_AFTER'] !== null) {
-    $balText = '잔액 ' . (int)$row['_BALANCE_AFTER'] . ' ' . $type;
-  }
-  ?>
-  <div class="history-card">
-    <div class="left">
-      <div class="title"><?= $title ?> (<?= $type ?>)</div>
-      <div class="date"><?= htmlspecialchars($date) ?></div>
-    </div>
-    <div class="right">
-      <div class="amount"><?= $sign . number_format(abs($amount)) ?> <?= $type ?></div>
-      <?php if ($balText !== ''): ?>
-        <div class="balance"><?= htmlspecialchars($balText) ?></div>
-      <?php endif; ?>
-    </div>
+  $title  = $row['DESCRIPTION'] ?? '포인트';
+  $amount = (int)($row['AMOUNT'] ?? 0);
+
+  $createdAt = $row['CREATED_AT'] ?? '';
+  $dateStr = $createdAt ? date('y-m-d', strtotime($createdAt)) : '';
+?>
+<li class="p-item <?= $cls ?>">
+  <div class="left">
+    <p class="left-title"><?= htmlspecialchars($title, ENT_QUOTES) ?></p>
+    <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
   </div>
-  <?php
-}
+  <div class="right">
+    <p class="value"><?= $sign ?><?= number_format($amount) ?> <?= htmlspecialchars($type, ENT_QUOTES) ?></p>
+  </div>
+</li>
+<?php } ?>

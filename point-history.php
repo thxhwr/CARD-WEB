@@ -93,6 +93,7 @@ require_once __DIR__ . "/point-history-get.php";
                     <?php endforeach; ?>
                 </ul>
                 <button
+                type="button"
                 id="loadMoreBtn"
                 data-page="2"
                 data-type="<?= htmlspecialchars($type, ENT_QUOTES) ?>"
@@ -105,34 +106,6 @@ require_once __DIR__ . "/point-history-get.php";
 
         </div>
     </main>
-                                    <script>
-$(function () {
-  $(document).on('click', '#loadMoreBtn', function () {
-    const btn = $(this);
-
-    const page  = parseInt(btn.data('page'), 10);
-    const type  = btn.data('type');
-    const io    = btn.data('io');
-    const limit = parseInt(btn.data('limit'), 10);
-
-    btn.prop('disabled', true).text('불러오는 중...');
-
-    $.get('/point-history-more.php', { page, type, io, limit }, function (html) {
-      if (!html || !html.trim()) {
-        btn.text('더 이상 내역이 없습니다');
-        return;
-      }
-
-      $('#pointList').append(html);
-      btn.data('page', page + 1);
-      btn.prop('disabled', false).text('더보기');
-    }).fail(function(){
-      btn.prop('disabled', false).text('더보기');
-      alert('서버 통신 오류');
-    });
-  });
-});
-</script>
     <?php require_once __DIR__ . "/footer.php"; ?>
 </div>
 <style>
@@ -190,3 +163,43 @@ footer, .footer{ flex: 0 0 auto; }
 }
 </style>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('loadMoreBtn');
+  if (!btn) return;
+
+  btn.addEventListener('click', async () => {
+    const page  = parseInt(btn.dataset.page || '2', 10);
+    const type  = btn.dataset.type;
+    const io    = btn.dataset.io;
+    const limit = parseInt(btn.dataset.limit || '20', 10);
+
+    btn.disabled = true;
+    const oldText = btn.textContent;
+    btn.textContent = '불러오는 중...';
+
+    try {
+      const params = new URLSearchParams({ page, type, io, limit });
+      const res = await fetch('/point-history-more.php?' + params.toString(), {
+        credentials: 'same-origin'
+      });
+      const html = await res.text();
+
+      if (!html || !html.trim()) {
+        btn.textContent = '더 이상 내역이 없습니다';
+        return;
+      }
+
+      document.getElementById('pointList').insertAdjacentHTML('beforeend', html);
+      btn.dataset.page = String(page + 1);
+      btn.disabled = false;
+      btn.textContent = oldText;
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = oldText;
+      alert('서버 통신 오류');
+    }
+  });
+});
+</script>
