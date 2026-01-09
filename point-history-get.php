@@ -14,7 +14,7 @@ if (!in_array($io, $allowedIO, true)) $io = 'all';
 
 
 $page  = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-$limit = isset($_GET['limit']) ? max(1, (int)$_GET['limit']) : 40;
+$limit = isset($_GET['limit']) ? max(1, (int)$_GET['limit']) : 60;
 
 
 $errorMsg = '';
