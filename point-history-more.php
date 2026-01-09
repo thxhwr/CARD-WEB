@@ -76,7 +76,6 @@ while ($maxTry-- > 0) {
 
   $tryPage++; // 다음 페이지 시도
 }
-echo "<!-- rawCount=" . count($rawItems) . " filteredCount=" . count($items) . " io={$io} page={$page} -->";
 
 if (empty($items)) exit;
 foreach ($items as $row) {
