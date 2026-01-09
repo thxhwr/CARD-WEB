@@ -83,9 +83,9 @@ require_once __DIR__ . "/point-history-get.php";
                                 <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
                             </div>
                             <div class="right">
-                                <p class="value"><?= $sign ?><?= number_format($amount) ?><?= htmlspecialchars($row['ACTION_TYPE'] ,ENT_QUOTES)?></p>
+                                <p class="value"><?= $sign ?><?= number_format($amount) ?> <?= htmlspecialchars($type ,ENT_QUOTES)?></p>
                                 <?php if ($balAfter !== null): ?>
-                                    <p class="balance">잔액 <?= number_format((int)$balAfter) ?>P</p>
+                                    <p class="balance">잔액 <?= number_format((int)$balAfter) ?> <?= htmlspecialchars($type ,ENT_QUOTES)?></p>
                                 <?php endif; ?>
                             </div>
                         </li>
@@ -100,41 +100,31 @@ require_once __DIR__ . "/point-history-get.php";
     <?php require_once __DIR__ . "/footer.php"; ?>
 </div>
 <style>
-/* 1) 전체 스크롤 막고 앱 높이 고정 */
 html, body{
   height:100%;
   margin:0;
   overflow:hidden;
 }
-
-/* 2) app: header / main / footer 세로 배치 */
 .app{
   height:100vh;
   display:flex;
   flex-direction:column;
 }
-
-/* header, footer는 줄어들지 않게 */
 .appbar-apply{ flex: 0 0 auto; }
-/* footer.php에 들어가는 영역이 감싸는 클래스가 있으면 그걸 지정해도 됨 */
 footer, .footer{ flex: 0 0 auto; }
-
-/* 3) main이 남은 높이를 차지 */
 .page{
   flex: 1 1 auto;
-  min-height: 0;            /* ⭐ flex 스크롤 필수 */
-  overflow: hidden;         /* main 자체는 스크롤 X */
+  min-height: 0;          
+  overflow: hidden;         
 }
 
-/* 4) point-wrap 안에서 위는 고정, 리스트만 스크롤 */
 .point-wrap{
   height: 100%;
   display:flex;
   flex-direction:column;
-  min-height:0;             /* ⭐ 필수 */
+  min-height:0;           
 }
 
-/* 탭/요약/필터는 고정 */
 .point-type-tabs,
 .point-summary,
 .point-filter{
@@ -143,7 +133,7 @@ footer, .footer{ flex: 0 0 auto; }
 
 .point-list{
   flex: 1 1 auto;
-  min-height: 0;                 /* ⭐ 필수 */
+  min-height: 0;              
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
