@@ -165,6 +165,7 @@ footer, .footer{ flex: 0 0 auto; }
 <script>
 $(function () {
   $(document).on('click', '#loadMoreBtn', function () {
+    alert("test");
     const btn = $(this);
 
     const page  = parseInt(btn.data('page'), 10);
