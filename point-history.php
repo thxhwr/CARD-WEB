@@ -83,7 +83,7 @@ require_once __DIR__ . "/point-history-get.php";
                                 <p class="date"><?= htmlspecialchars($dateStr, ENT_QUOTES) ?></p>
                             </div>
                             <div class="right">
-                                <p class="value"><?= $sign ?><?= number_format($amount) ?>P</p>
+                                <p class="value"><?= $sign ?><?= number_format($amount) ?><?= htmlspecialchars($row['ACTION_TYPE'] ,ENT_QUOTES)?></p>
                                 <?php if ($balAfter !== null): ?>
                                     <p class="balance">잔액 <?= number_format((int)$balAfter) ?>P</p>
                                 <?php endif; ?>
