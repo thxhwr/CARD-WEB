@@ -164,29 +164,31 @@ footer, .footer{ flex: 0 0 auto; }
 }
 </style>
 <script>
-$('#loadMoreBtn').on('click', function () {
-  const btn = $(this);
+$(function () {
+  $(document).on('click', '#loadMoreBtn', function () {
+    const btn = $(this);
 
-  const page  = parseInt(btn.data('page'), 10);
-  const type  = btn.data('type');
-  const io    = btn.data('io');
-  const limit = parseInt(btn.data('limit'), 10);
+    const page  = parseInt(btn.data('page'), 10);
+    const type  = btn.data('type');
+    const io    = btn.data('io');
+    const limit = parseInt(btn.data('limit'), 10);
 
-  btn.prop('disabled', true).text('불러오는 중...');
+    btn.prop('disabled', true).text('불러오는 중...');
 
-  $.get('/point-history-more.php', { page, type, io, limit }, function (html) {
-    if (!html || !html.trim()) {
-      btn.text('더 이상 내역이 없습니다');
-      return;
-    }
+    $.get('/point_history_more.php', { page, type, io, limit }, function (html) {
+      if (!html || !html.trim()) {
+        btn.text('더 이상 내역이 없습니다');
+        return;
+      }
 
-    $('#pointList').append(html);
-
-    btn.data('page', page + 1);
-    btn.prop('disabled', false).text('더보기');
-  }).fail(function () {
-    btn.prop('disabled', false).text('더보기');
-    alert('서버 통신 오류');
+      $('#pointList').append(html);
+      btn.data('page', page + 1);
+      btn.prop('disabled', false).text('더보기');
+    }).fail(function(){
+      btn.prop('disabled', false).text('더보기');
+      alert('서버 통신 오류');
+    });
   });
 });
 </script>
+
