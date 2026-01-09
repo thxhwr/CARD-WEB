@@ -51,6 +51,7 @@
                             <div class="mypage-pay-amount" style="text-align:right">
                                 <?= number_format($response['data']['data']['TP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">TP</span>
+                                <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon" style="width: 17px;">
                             </div>
                         </div>
                     </div>
@@ -62,6 +63,7 @@
                             <div class="mypage-pay-amount" style="text-align:right">
                                 <?= number_format($response['data']['data']['SP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">SP</span>
+                                <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon" style="width: 17px;">
                             </div>
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                             <div class="mypage-pay-amount" style="text-align:right">
                                 <?= number_format($response['data']['data']['LP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">LP </span>
-                                <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon" style="font-size:15px">
+                                <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon" style="width: 17px;">
                             </div>
                         </div>
                     </div>
