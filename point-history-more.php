@@ -1,6 +1,7 @@
 <?php
 session_start();
 header('Content-Type: text/html; charset=UTF-8');
+require_once __DIR__ . "/auth.php";
 
 $accountNo = $_SESSION['user_No'] ?? '';
 if ($accountNo === '') exit; // 로그인 없으면 종료
