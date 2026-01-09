@@ -6,12 +6,6 @@ $pageTitle = "포인트내역";
 require_once __DIR__ . "/auth.php";
 require_once __DIR__ . "/head.php";
 require_once __DIR__ . "/point-history-get.php";
-
-$lastBalance = null;
-if (!empty($items)) {
-  $last = end($items);
-  $lastBalance = $last['_BALANCE_AFTER'] ?? null;
-}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -98,6 +92,14 @@ if (!empty($items)) {
 
                     <?php endforeach; ?>
                 </ul>
+                <?php
+                $lastBalance = null;
+                if (!empty($items)) {
+                $lastRow = end($items);                 // 화면에 찍힌 마지막 항목(가장 과거)
+                $lastBalance = $lastRow['_BALANCE_AFTER'] ?? null;
+                reset($items);
+                }
+                ?>
                 <button
                 type="button"
                 id="loadMoreBtn"
