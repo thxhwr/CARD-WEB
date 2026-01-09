@@ -6,6 +6,12 @@ $pageTitle = "포인트내역";
 require_once __DIR__ . "/auth.php";
 require_once __DIR__ . "/head.php";
 require_once __DIR__ . "/point-history-get.php";
+
+$lastBalance = null;
+if (!empty($items)) {
+  $last = end($items);
+  $lastBalance = $last['_BALANCE_AFTER'] ?? null;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -165,6 +171,7 @@ footer, .footer{ flex: 0 0 auto; }
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+   window.POINT_LAST_BALANCE = <?= $lastBalance !== null ? (int)$lastBalance : 'null' ?>;
   const btn = document.getElementById('loadMoreBtn');
   if (!btn) return;
 
@@ -179,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.textContent = '불러오는 중...';
 
     try {
-      const params = new URLSearchParams({ page, type, io, limit });
+      const params = new URLSearchParams({ page, type, io, limit , lastBalance: window.POINT_LAST_BALANCE});
       const res = await fetch('/point-history-more.php?' + params.toString(), { credentials: 'same-origin' });
 
       // ✅ 1) 여기서 html 먼저 정의
