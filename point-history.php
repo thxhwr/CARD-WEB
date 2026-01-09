@@ -71,7 +71,7 @@ require_once __DIR__ . "/point-history-get.php";
 
                             $createdAt = $row['CREATED_AT'] ?? '';
                             $dateStr = $createdAt
-                                        ? date('y-m-d H:i', strtotime($createdAt))
+                                        ? date('y-m-d', strtotime($createdAt))
                                         : '';
 
                             $balAfter  = $row['_BALANCE_AFTER'] ?? null;
