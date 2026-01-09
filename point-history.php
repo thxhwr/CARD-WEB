@@ -105,7 +105,34 @@ require_once __DIR__ . "/point-history-get.php";
 
         </div>
     </main>
+                                    <script>
+$(function () {
+  $(document).on('click', '#loadMoreBtn', function () {
+    const btn = $(this);
 
+    const page  = parseInt(btn.data('page'), 10);
+    const type  = btn.data('type');
+    const io    = btn.data('io');
+    const limit = parseInt(btn.data('limit'), 10);
+
+    btn.prop('disabled', true).text('불러오는 중...');
+
+    $.get('/point-history-more.php', { page, type, io, limit }, function (html) {
+      if (!html || !html.trim()) {
+        btn.text('더 이상 내역이 없습니다');
+        return;
+      }
+
+      $('#pointList').append(html);
+      btn.data('page', page + 1);
+      btn.prop('disabled', false).text('더보기');
+    }).fail(function(){
+      btn.prop('disabled', false).text('더보기');
+      alert('서버 통신 오류');
+    });
+  });
+});
+</script>
     <?php require_once __DIR__ . "/footer.php"; ?>
 </div>
 <style>
@@ -162,33 +189,4 @@ footer, .footer{ flex: 0 0 auto; }
   font-weight: 600;
 }
 </style>
-<script>
-$(function () {
-  $(document).on('click', '#loadMoreBtn', function () {
-    alert("test");
-    const btn = $(this);
-
-    const page  = parseInt(btn.data('page'), 10);
-    const type  = btn.data('type');
-    const io    = btn.data('io');
-    const limit = parseInt(btn.data('limit'), 10);
-
-    btn.prop('disabled', true).text('불러오는 중...');
-
-    $.get('/point-history-more.php', { page, type, io, limit }, function (html) {
-      if (!html || !html.trim()) {
-        btn.text('더 이상 내역이 없습니다');
-        return;
-      }
-
-      $('#pointList').append(html);
-      btn.data('page', page + 1);
-      btn.prop('disabled', false).text('더보기');
-    }).fail(function(){
-      btn.prop('disabled', false).text('더보기');
-      alert('서버 통신 오류');
-    });
-  });
-});
-</script>
 
