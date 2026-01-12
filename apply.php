@@ -251,18 +251,18 @@
                 inp.addEventListener('blur',  ()=> group.classList.remove('is-focus'));
             });
 
-            // 추천인 관련 이벤트
-            referralCheckBtn.addEventListener('click', checkReferral);
+            // // 추천인 관련 이벤트
+            // referralCheckBtn.addEventListener('click', checkReferral);
 
-            // 추천인 값이 바뀌면 “조회 다시” 강제
-            referralInput.addEventListener('input', ()=>{
-                referralCheckedHidden.value = '0';
-                referralMsg.textContent = '';
-                checkReferralConfirm();
-                toggleSubmit();
-            });
+            // // 추천인 값이 바뀌면 “조회 다시” 강제
+            // referralInput.addEventListener('input', ()=>{
+            //     referralCheckedHidden.value = '0';
+            //     referralMsg.textContent = '';
+            //     checkReferralConfirm();
+            //     toggleSubmit();
+            // });
 
-            referralConfirm.addEventListener('input', checkReferralConfirm);
+            // referralConfirm.addEventListener('input', checkReferralConfirm);
 
             // 기존 이벤트
             form.addEventListener('input', ()=>{ toggleDisabledState(); toggleSubmit(); });
