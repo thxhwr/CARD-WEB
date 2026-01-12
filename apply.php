@@ -39,13 +39,13 @@
                     <div class="f-group address-group is-disabled">
                         <label class="f-label">배송지</label>
                         <div class="addr-row">
-                            <input type="text" id="zipcode" name="zipcode" class="f-input" placeholder="우편번호" readonly>
+                            <input type="text" id="zipcode" name="zipcode" class="f-input" placeholder="우편번호" readonly required>
                             <button type="button" class="btn-zip" onclick="execDaumPostcode()">
                             우편번호 검색
                             </button>
                         </div>
-                        <input type="text" id="address" class="f-input" name="address" placeholder="기본 주소" readonly>
-                        <input type="text" id="address_detail" class="f-input" name="address_detail" placeholder="상세 주소 입력">
+                        <input type="text" id="address" class="f-input" name="address" placeholder="기본 주소" readonly required>
+                        <input type="text" id="address_detail" class="f-input" name="address_detail" placeholder="상세 주소 입력" required>
                         <div id="addressMsg" class="muted small" style="margin-top:8px;"></div>
                     </div>
                     <div class="f-group" id="receiveGroup">
