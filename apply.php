@@ -124,7 +124,7 @@
                         }
                         ?>
                         <!-- <button class="apply-submit" type="submit" disabled> -->
-                        <button class="apply-submit" type="submit" disabled>
+                        <button class="apply-submit" type="submit" >
                         카드 신청
                         </button>
                     </div>
