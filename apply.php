@@ -230,20 +230,19 @@
             }
 
             function toggleSubmit(){
-                const required = form.querySelectorAll('[required]');
-                const okBasic = Array.from(required).every(i => (i.type === 'radio' ? true : i.value.trim().length > 0));
+                // 1) required 텍스트/전화번호/hidden 등: 값 있는지 체크
+                const requiredInputs = form.querySelectorAll('input[required]:not([type="radio"])');
+                const allFilled = Array.from(requiredInputs).every(inp => inp.value.trim().length > 0);
 
-                // ✅ 추가 조건: 추천인 조회 통과 + 재확인 일치
-                const referralChecked = referralCheckedHidden.value === '1';
-                const referralSame = normalizeId(referralInput.value) !== '' &&
-                                    normalizeId(referralInput.value) === normalizeId(referralConfirm.value);
+                // 2) required 라디오 그룹: 선택되어 있는지 체크
+                const requiredRadios = form.querySelectorAll('input[type="radio"][required]');
+                let radioOk = true;
+                if (requiredRadios.length) {
+                const radioNames = [...new Set(Array.from(requiredRadios).map(r => r.name))];
+                radioOk = radioNames.every(name => !!form.querySelector(`input[name="${name}"]:checked`));
+                }
 
-                // 라디오 required는 그룹이라 위 okBasic에서 완벽히 안 잡힐 수 있어 간단히 보강
-                const receiveType = form.querySelector('input[name="receive_type"]:checked');
-
-                const ok = okBasic && !!receiveType && referralChecked && referralSame;
-
-                submitBtn.disabled = !ok;
+                submitBtn.disabled = !(allFilled && radioOk);
             }
 
             form.querySelectorAll('.f-input').forEach(inp=>{
