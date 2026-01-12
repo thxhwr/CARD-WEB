@@ -141,8 +141,8 @@
             const submitBtn = form.querySelector('.apply-submit');
 
             const referralInput = document.getElementById('referral');
-            const referralConfirm = document.getElementById('referral_confirm');
-            const referralCheckBtn = document.getElementById('referralCheckBtn');
+            // const referralConfirm = document.getElementById('referral_confirm');
+            // const referralCheckBtn = document.getElementById('referralCheckBtn');
             const referralMsg = document.getElementById('referralMsg');
             const referralConfirmMsg = document.getElementById('referralConfirmMsg');
             const referralCheckedHidden = document.getElementById('referral_checked');
