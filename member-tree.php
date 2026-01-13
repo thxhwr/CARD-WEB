@@ -2,7 +2,6 @@
 session_start();
 require_once __DIR__ . "/auth.php"; 
 require_once __DIR__ . "/member-tree-get.php"; 
-
 function maskName($name) {
     $len = mb_strlen($name, 'UTF-8');
 
@@ -112,6 +111,17 @@ function maskName($name) {
       '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
     }[m]));
   }
+function maskName(name) {
+  if (!name) return '';
+
+  const chars = [...name]; // 유니코드 안전
+  const len = chars.length;
+
+  if (len <= 1) return name;
+  if (len === 2) return chars[0] + '*';
+
+  return chars[0] + '*'.repeat(len - 2) + chars[len - 1];
+}
 
 async function loadParent(accountNo){
   const res = await fetch('/tree-next.php', {
@@ -135,7 +145,7 @@ async function loadParent(accountNo){
       <button type="button" class="tree-node-card js-node"
         data-gen="${gen}"
         data-account="${escapeHtml(n.accountNo)}">
-        <div class="tree-node-name">${escapeHtml(n.name || '')}</div>
+        <div class="tree-node-name">${maskName(escapeHtml(n.name || ''))}</div>
         <div class="tree-node-account">${escapeHtml(n.accountNo || '')}</div>
       </button>
     `).join('');
