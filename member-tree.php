@@ -56,27 +56,13 @@ require_once __DIR__ . "/member-tree-get.php";
             <div class="tree-level">
               <div class="tree-row">
                 <?php foreach ($level2 as $n): 
-                    function maskName($name) {
-                        $len = mb_strlen($name, 'UTF-8');
-
-                        if ($len <= 1) {
-                            return $name; // 한 글자는 그대로
-                        }
-
-                        if ($len == 2) {
-                            return mb_substr($name, 0, 1, 'UTF-8') . '*';
-                        }
-
-                        return mb_substr($name, 0, 1, 'UTF-8')
-                            . str_repeat('*', $len - 2)
-                            . mb_substr($name, -1, 1, 'UTF-8');
-                    }
+                    
                   ?>
                   <button type="button"
                     class="tree-node-card js-node"
                     data-gen="2"
                     data-account="<?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?>">
-                    <div class="tree-node-name"><?= htmlspecialchars(maskName($n['name']), ENT_QUOTES) ?></div>
+                    <div class="tree-node-name"><?= htmlspecialchars($n['name'], ENT_QUOTES) ?></div>
                     <div class="tree-node-account"><?= htmlspecialchars($n['accountNo'], ENT_QUOTES) ?></div>
                   </button>
                 <?php endforeach; ?>
