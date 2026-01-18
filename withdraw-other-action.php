@@ -42,11 +42,11 @@ if ($errors) {
 
 // ✅ 여기서 출금 신청 API로 전송(프로젝트 API에 맞춰 수정)
 $postFields = [
-  'accountNo'     => $_SESSION['memberId'],
-  'accountId'   => $holder,
+  'accountNo'     => $_SESSION['user_Id'],
+  'accountId'   => $_SESSION['user_No'],
   'amount'     => $amount,
 ];
-
+print_r($postFields);
 // 예시: cURL
 $ch = curl_init('https://api.thxdeal.com/api/member/memberWithdraw.php');
 curl_setopt_array($ch, [
