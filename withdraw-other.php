@@ -31,7 +31,7 @@
                   <input name="holder_name" id="holder_name" class="f-input" type="text" placeholder="아이디를 입력해주세요" required>
               </div> -->
               <div class="f-group is-disabled">
-                  <label class="f-label required" for="name">출금 금액</label>
+                  <label class="f-label required" for="amount">출금 금액</label>
                   <input name="amount" id="amount" class="f-input" type="text" placeholder="금액을 입력해주세요" placeholder="예: 50000" inputmode="numeric" required>
                   <div id="nameMsg" class="muted small" style="margin-top:8px;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 서버에서 최종 검증합니다.</div>
               </div>
