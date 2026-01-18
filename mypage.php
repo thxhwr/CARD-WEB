@@ -47,7 +47,7 @@
                 <?php if($_SESSION['user_No'] == "youbr919@naver.com"){?>
                 <div class="f-group">
                     <a href="/withdraw-other.php" class="mypage-link">
-                        <div class="mypage-section-title" style="margin:0;">출금하기/div>
+                        <div class="mypage-section-title" style="margin:0;">출금하기</div>
                         <!-- <span>추천인</span> -->
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
