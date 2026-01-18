@@ -102,13 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const amountOk = amount > 0;
     const minOk    = amount === 0 ? false : (amount >= MIN_AMOUNT);
 
-    let ok = holderOk && amountOk && minOk && agreed;
+    let ok = amountOk && minOk && agreed;
 
     // 안내 메시지
     if (amountOk && !minOk) {
       setMsg(`최소 출금 금액은 ${MIN_AMOUNT.toLocaleString('ko-KR')}원입니다.`);
       ok = false;
-    } else if (!agreed && (holderOk && amountOk)) {
+    } else if (!agreed && amountOk) {
       // 동의만 안 했을 때는 굳이 빨간 메시지 싫으면 이 라인은 지워도 됨
       setMsg('동의 체크 후 진행해주세요.');
       ok = false;
