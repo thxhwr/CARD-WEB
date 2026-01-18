@@ -44,6 +44,15 @@
                         <?= htmlspecialchars($_SESSION['user_Id'] ?? '', ENT_QUOTES) ?>
                     </div>
                 </div>
+                <?php if($_SESSION['user_No'] == "youbr919@naver.com"){?>
+                <div class="f-group">
+                    <a href="/withdraw-other.php" class="mypage-link">
+                        <div class="mypage-section-title" style="margin:0;">출금하기/div>
+                        <!-- <span>추천인</span> -->
+                        <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
+                    </a>
+                </div>
+                <?php }?>
                 <div class="f-group" onclick="location.href='point-history.php?type=TP'">
                     <div class="mypage-section-title">땡스 포인트</div>
                     <div class="mypage-pay-wrap">
