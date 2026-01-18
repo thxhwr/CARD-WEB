@@ -17,11 +17,9 @@ unset($_SESSION['csrf_withdraw_other']); // 1회성
 
 function only_digits($v){ return preg_replace('/\D+/', '', (string)$v); }
 
-$holder = trim($_POST['holder_name'] ?? '');
 $amount = only_digits($_POST['amount'] ?? '');
 
 $errors = [];
-if (mb_strlen($holder) < 2) $errors[] = '예금주 성함을 확인해주세요.';
 if ($amount === '' || (int)$amount <= 0) $errors[] = '출금 금액을 확인해주세요.';
 
 // ✅ 정책 예시(원하는 값으로 수정)
