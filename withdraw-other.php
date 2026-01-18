@@ -36,7 +36,7 @@
                   <div id="nameMsg" class="muted small" style="margin-top:8px;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 서버에서 최종 검증합니다.</div>
               </div>
               <div id="msg" class="warn" style="display:none;"></div>
-              <button class="apply-submit" type="submit"disabled >
+              <button class="apply-submit" type="submit" >
                 출금하기
               </button>
           </form>
@@ -154,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleSubmit();
     if (submitBtn && submitBtn.disabled){
       e.preventDefault();
-      // msg는 toggleSubmit에서 설정됨
     }
   });
 
