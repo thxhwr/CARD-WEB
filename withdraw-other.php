@@ -35,8 +35,14 @@
                   <input name="amount" id="amount" class="f-input" type="text" placeholder="금액을 입력해주세요" placeholder="예: 50000" inputmode="numeric" required>
                   <div id="nameMsg" class="muted small" style="margin-top:8px;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 서버에서 최종 검증합니다.</div>
               </div>
+               <label style="display:none;gap:10px;align-items:flex-start;margin-top:14px;">
+                <input type="checkbox" checked id="agree" style="width:auto;margin-top:2px;">
+                <span class="mini">
+                  본인은 해당 아이디로 출금 신청할 권한이 있으며, 잘못된 아이디 입력으로 발생한 책임은 본인에게 있습니다.
+                </span>
+              </label>
               <div id="msg" class="warn" style="display:none;"></div>
-              <button class="apply-submit" type="submit" >
+              <button class="apply-submit" type="submit"disabled >
                 출금하기
               </button>
           </form>
@@ -53,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const holderInput = document.getElementById('holder_name'); // 입금 받을 아이디
   const amountInput = document.getElementById('amount');      // 금액
+  const agreeChk    = document.getElementById('agree');
   const msgEl       = document.getElementById('msg');
 
   // (선택) 최소 출금 금액 정책이 있으면 숫자로 넣어두면 됨
@@ -64,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function formatWithComma(digits){
     if (!digits) return '';
+    // 너무 큰 숫자 방지 (선택)
     const n = Number(digits);
     if (!Number.isFinite(n)) return digits;
     return n.toLocaleString('ko-KR');
@@ -92,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const holder = (holderInput?.value || '').trim();
     const amount = getAmountValue();
+    const agreed = !!agreeChk?.checked;
 
     const holderOk = holder.length >= 2; // 아이디 최소 길이(원하면 1로 낮춰도 됨)
     const amountOk = amount > 0;
@@ -105,6 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ok = false;
     } else if (amountOk && !minOk) {
       setMsg(`최소 출금 금액은 ${MIN_AMOUNT.toLocaleString('ko-KR')}원입니다.`);
+      ok = false;
+    } else if (!agreed && (holderOk && amountOk)) {
+      // 동의만 안 했을 때는 굳이 빨간 메시지 싫으면 이 라인은 지워도 됨
+      setMsg('동의 체크 후 진행해주세요.');
       ok = false;
     }
 
@@ -149,11 +162,17 @@ document.addEventListener('DOMContentLoaded', () => {
     holderInput.addEventListener('blur', toggleSubmit);
   }
 
+  // 동의 체크
+  if (agreeChk){
+    agreeChk.addEventListener('change', toggleSubmit);
+  }
+
   // 제출 시 최종 검증(프론트 우회 방지용 UX)
   form.addEventListener('submit', (e) => {
     toggleSubmit();
     if (submitBtn && submitBtn.disabled){
       e.preventDefault();
+      // msg는 toggleSubmit에서 설정됨
     }
   });
 
