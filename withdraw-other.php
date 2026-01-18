@@ -11,24 +11,6 @@
 
   $availableBalance = null; // 예: 150000;
 ?>
-<style>
-  .wrap{max-width:520px;margin:24px auto;padding:16px}
-  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
-  h1{font-size:18px;margin:0 0 14px}
-  label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}
-  input,select{width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:12px;font-size:14px;box-sizing:border-box}
-  .row{display:flex;gap:10px}
-  .row > *{flex:1}
-  .hint{font-size:12px;color:#6b7280;margin-top:6px;line-height:1.4}
-  .warn{font-size:12px;color:#b91c1c;margin-top:6px;line-height:1.4}
-  .btn{width:100%;margin-top:16px;padding:12px 14px;border:0;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer}
-  .btn:disabled{opacity:.5;cursor:not-allowed}
-  .btn-primary{background:#111827;color:#fff}
-  .hr{height:1px;background:#eef2f7;margin:14px 0}
-  .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:12px;font-weight:700}
-  .mini{font-size:12px;color:#374151}
-  .right{display:flex;justify-content:space-between;align-items:center;gap:10px}
-</style>
 <body>
 <div class="app">
     <header class="appbar-apply">
@@ -40,99 +22,164 @@
             <a href="/index.php" class="nav-btn home-btn" aria-label="홈"></a>
         </nav>
     </header>
-    <div class="card">
-      <div class="right">
-        <h1>출금</h1>
-        <?php if ($availableBalance !== null): ?>
-          <span class="badge">출금 가능 <?= number_format((int)$availableBalance) ?>원</span>
-        <?php endif; ?>
-      </div>
-      <form id="withdrawForm" method="post" action="/withdraw-other-action.php" autocomplete="off">
-        <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrf, ENT_QUOTES) ?>">
-
-        <label>받는 아이디</label>
-        <input type="text" name="holder_name" id="holder_name" placeholder="입금 받을 아이디" maxlength="30" required>
-
-        <label>출금 금액(원)</label>
-        <input type="text" name="amount" id="amount" placeholder="예: 50,000" inputmode="numeric" required>
-        <div class="hint">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 서버에서 최종 검증합니다.</div>
-        <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
-          <input type="checkbox" id="agree" style="width:auto;margin-top:2px;">
-          <span class="mini">
-            본인은 해당 아이디로 출금 신청할 권한이 있으며, 잘못된 아이디 입력으로 발생한 책임은 본인에게 있습니다.
-          </span>
-        </label>
-
-        <div id="msg" class="warn" style="display:none;"></div>
-
-        <button type="submit" class="btn btn-primary" id="submitBtn" disabled>출금 신청</button>
-      </form>
-    </div>
+    <main class="page">
+      <section class="apply-form">
+          <form id="cardApplyForm" class="form" action="/withdraw-other-action.php" autocomplete="off" method="post">
+              <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrf, ENT_QUOTES) ?>">
+              <div class="f-group is-disabled">
+                  <label class="f-label required" for="name">입금 받을 아이디</label>
+                  <input name="holder_name" id="holder_name" class="f-input" type="text" placeholder="아이디를 입력해주세요" required>
+              </div>
+              <div class="f-group is-disabled">
+                  <label class="f-label required" for="name">입금 하실 금액</label>
+                  <input name="amount" id="amount" class="f-input" type="text" placeholder="금액을 입력해주세요" placeholder="예: 50000" inputmode="numeric" required>
+                  <div id="nameMsg" class="muted small" style="margin-top:8px;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 서버에서 최종 검증합니다.</div>
+                  <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
+                    <input type="checkbox" id="agree" style="width:auto;margin-top:2px;">
+                    <span class="mini">
+                      본인은 해당 아이디로 출금 신청할 권한이 있으며, 잘못된 아이디 입력으로 발생한 책임은 본인에게 있습니다.
+                    </span>
+                  </label>
+              </div>
+              <div id="msg" class="warn" style="display:none;"></div>
+              <button class="apply-submit" type="submit"disabled >
+                출금하기
+              </button>
+          </form>
+      </section>
+    </main>
   </div>
 </div>
 <script>
-(function(){
-  const form = document.getElementById('withdrawForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const agree = document.getElementById('agree');
-  const msg = document.getElementById('msg');
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('cardApplyForm');
+  if (!form) return;
 
-  const holder = document.getElementById('holder_name');
-  const bank = document.getElementById('bank_code');
-  const acct = document.getElementById('account_no');
-  const amount = document.getElementById('amount');
+  const submitBtn = form.querySelector('.apply-submit');
+
+  const holderInput = document.getElementById('holder_name'); // 입금 받을 아이디
+  const amountInput = document.getElementById('amount');      // 금액
+  const agreeChk    = document.getElementById('agree');
+  const msgEl       = document.getElementById('msg');
+
+  // (선택) 최소 출금 금액 정책이 있으면 숫자로 넣어두면 됨
+  const MIN_AMOUNT = 1000;
+
+  function onlyDigits(v){
+    return (v || '').toString().replace(/[^\d]/g, '');
+  }
+
+  function formatWithComma(digits){
+    if (!digits) return '';
+    // 너무 큰 숫자 방지 (선택)
+    const n = Number(digits);
+    if (!Number.isFinite(n)) return digits;
+    return n.toLocaleString('ko-KR');
+  }
 
   function setMsg(text){
-    if(!text){
-      msg.style.display = 'none';
-      msg.textContent = '';
+    if (!msgEl) return;
+    if (!text){
+      msgEl.style.display = 'none';
+      msgEl.textContent = '';
       return;
     }
-    msg.style.display = 'block';
-    msg.textContent = text;
+    msgEl.style.display = 'block';
+    msgEl.textContent = text;
   }
 
-  function onlyDigits(v){ return (v || '').replace(/[^\d]/g,''); }
+  function getAmountValue(){
+    const digits = onlyDigits(amountInput?.value);
+    if (!digits) return 0;
+    // parseInt 안전 처리
+    return parseInt(digits, 10) || 0;
+  }
 
-  acct.addEventListener('input', () => {
-    acct.value = onlyDigits(acct.value);
-    toggle();
-  });
-
-  amount.addEventListener('input', () => {
-    const digits = onlyDigits(amount.value);
-    amount.value = digits ? Number(digits).toLocaleString('ko-KR') : '';
-    toggle();
-  });
-
-  [holder, bank, agree].forEach(el => el.addEventListener('input', toggle));
-  agree.addEventListener('change', toggle);
-
-  function toggle(){
+  function toggleSubmit(){
     setMsg('');
 
-    const holderOk = holder.value.trim().length >= 2;
-    const bankOk   = bank.value.trim() !== '';
-    const acctOk   = onlyDigits(acct.value).length >= 8; // 너무 짧으면 막기
-    const amtDigits = onlyDigits(amount.value);
-    const amt = amtDigits ? parseInt(amtDigits, 10) : 0;
+    const holder = (holderInput?.value || '').trim();
+    const amount = getAmountValue();
+    const agreed = !!agreeChk?.checked;
 
-    if (amtDigits && amt <= 0) setMsg('출금 금액을 확인해주세요.');
-    const ok = holderOk && bankOk && acctOk && (amt > 0) && agree.checked;
+    const holderOk = holder.length >= 2; // 아이디 최소 길이(원하면 1로 낮춰도 됨)
+    const amountOk = amount > 0;
+    const minOk    = amount === 0 ? false : (amount >= MIN_AMOUNT);
 
-    submitBtn.disabled = !ok;
+    let ok = holderOk && amountOk && minOk && agreed;
+
+    // 안내 메시지
+    if (!holderOk && holder.length > 0) {
+      setMsg('아이디를 확인해주세요.');
+      ok = false;
+    } else if (amountOk && !minOk) {
+      setMsg(`최소 출금 금액은 ${MIN_AMOUNT.toLocaleString('ko-KR')}원입니다.`);
+      ok = false;
+    } else if (!agreed && (holderOk && amountOk)) {
+      // 동의만 안 했을 때는 굳이 빨간 메시지 싫으면 이 라인은 지워도 됨
+      setMsg('동의 체크 후 진행해주세요.');
+      ok = false;
+    }
+
+    if (submitBtn){
+      submitBtn.disabled = !ok;
+    }
   }
 
-  // 초기
-  toggle();
+  // 금액 입력: 숫자만 + 콤마
+  if (amountInput){
+    amountInput.addEventListener('input', () => {
+      const digits = onlyDigits(amountInput.value);
 
+      // 커서 튐 최소화: 콤마 넣기 전/후 길이 차이로 보정
+      const prevLen = amountInput.value.length;
+      const prevPos = amountInput.selectionStart || prevLen;
+
+      const formatted = formatWithComma(digits);
+      amountInput.value = formatted;
+
+      const newLen = formatted.length;
+      const diff = newLen - prevLen;
+      const newPos = Math.max(0, prevPos + diff);
+      try { amountInput.setSelectionRange(newPos, newPos); } catch(e){}
+
+      toggleSubmit();
+    });
+
+    // 붙여넣기/드래그 대응
+    amountInput.addEventListener('paste', () => {
+      setTimeout(() => {
+        const digits = onlyDigits(amountInput.value);
+        amountInput.value = formatWithComma(digits);
+        toggleSubmit();
+      }, 0);
+    });
+  }
+
+  // 아이디 입력 체크
+  if (holderInput){
+    holderInput.addEventListener('input', toggleSubmit);
+    holderInput.addEventListener('blur', toggleSubmit);
+  }
+
+  // 동의 체크
+  if (agreeChk){
+    agreeChk.addEventListener('change', toggleSubmit);
+  }
+
+  // 제출 시 최종 검증(프론트 우회 방지용 UX)
   form.addEventListener('submit', (e) => {
-    if(submitBtn.disabled){
+    toggleSubmit();
+    if (submitBtn && submitBtn.disabled){
       e.preventDefault();
-      setMsg('필수 항목을 입력하고 동의 체크 후 진행해주세요.');
+      // msg는 toggleSubmit에서 설정됨
     }
   });
-})();
+
+  // 초기 상태
+  toggleSubmit();
+});
 </script>
+
 </body>
 </html>
