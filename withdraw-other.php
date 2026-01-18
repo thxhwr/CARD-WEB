@@ -42,7 +42,7 @@
                 </span>
               </label>
               <div id="msg" class="warn" style="display:none;color:red;margin:10px 0"></div>
-              <button class="apply-submit" type="submit"disabled >
+              <button class="apply-submit" type="submit" disabled style="margin-top:10px">
                 출금하기
               </button>
           </form>
