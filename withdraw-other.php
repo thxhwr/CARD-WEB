@@ -33,7 +33,7 @@
               <div class="f-group is-disabled">
                   <label class="f-label required" for="amount">출금 금액</label>
                   <input name="amount" id="amount" class="f-input" type="text" placeholder="금액을 입력해주세요" placeholder="예: 50000" inputmode="numeric" required>
-                  <div id="nameMsg" class="muted small" style="margin-top:8px;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 서버에서 최종 검증합니다.</div>
+                  <div id="nameMsg" class="muted small" style="margin-top:8px;font-size: small;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 <br>서버에서 최종 검증합니다.</div>
               </div>
                <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
                 <input type="checkbox" id="agree" style="width:auto;margin-top:2px;">
@@ -41,7 +41,7 @@
                   출금에 동의합니다.
                 </span>
               </label>
-              <div id="msg" class="warn" style="display:none;"></div>
+              <div id="msg" class="warn" style="display:none;color:red;margin:10px 0"></div>
               <button class="apply-submit" type="submit"disabled >
                 출금하기
               </button>
