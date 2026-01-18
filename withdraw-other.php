@@ -36,7 +36,7 @@
                   <div id="nameMsg" class="muted small" style="margin-top:8px;font-size: small;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 <br>서버에서 최종 검증합니다.</div>
               </div>
                <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
-                <input type="checkbox" id="agree" style="width:auto;margin-top:2px;">
+                <input type="checkbox" id="agree" style="width:auto;margin-top:5px;">
                 <span class="mini">
                   출금에 동의합니다.
                 </span>
