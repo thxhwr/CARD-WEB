@@ -35,10 +35,10 @@
                   <input name="amount" id="amount" class="f-input" type="text" placeholder="금액을 입력해주세요" placeholder="예: 50000" inputmode="numeric" required>
                   <div id="nameMsg" class="muted small" style="margin-top:8px;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 서버에서 최종 검증합니다.</div>
               </div>
-               <label style="display:none;gap:10px;align-items:flex-start;margin-top:14px;">
-                <input type="checkbox" checked id="agree" style="width:auto;margin-top:2px;">
+               <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
+                <input type="checkbox" id="agree" style="width:auto;margin-top:2px;">
                 <span class="mini">
-                  본인은 해당 아이디로 출금 신청할 권한이 있으며, 잘못된 아이디 입력으로 발생한 책임은 본인에게 있습니다.
+                  출금에 동의합니다.
                 </span>
               </label>
               <div id="msg" class="warn" style="display:none;"></div>
