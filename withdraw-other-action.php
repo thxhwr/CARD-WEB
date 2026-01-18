@@ -44,7 +44,7 @@ if ($errors) {
 $postFields = [
   'accountNo'     => $_SESSION['memberId'],
   'accountId'   => $holder,
-  'amount'     => $bank,
+  'amount'     => $amount,
 ];
 
 // 예시: cURL
