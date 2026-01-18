@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!form) return;
 
   const submitBtn = form.querySelector('.apply-submit');
-
-  const holderInput = document.getElementById('holder_name'); // 입금 받을 아이디
   const amountInput = document.getElementById('amount');      // 금액
   const agreeChk    = document.getElementById('agree');
   const msgEl       = document.getElementById('msg');
@@ -98,21 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function toggleSubmit(){
     setMsg('');
 
-    const holder = (holderInput?.value || '').trim();
     const amount = getAmountValue();
     const agreed = !!agreeChk?.checked;
 
-    const holderOk = holder.length >= 2; // 아이디 최소 길이(원하면 1로 낮춰도 됨)
     const amountOk = amount > 0;
     const minOk    = amount === 0 ? false : (amount >= MIN_AMOUNT);
 
     let ok = holderOk && amountOk && minOk && agreed;
 
     // 안내 메시지
-    if (!holderOk && holder.length > 0) {
-      setMsg('아이디를 확인해주세요.');
-      ok = false;
-    } else if (amountOk && !minOk) {
+    if (amountOk && !minOk) {
       setMsg(`최소 출금 금액은 ${MIN_AMOUNT.toLocaleString('ko-KR')}원입니다.`);
       ok = false;
     } else if (!agreed && (holderOk && amountOk)) {
@@ -154,12 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleSubmit();
       }, 0);
     });
-  }
-
-  // 아이디 입력 체크
-  if (holderInput){
-    holderInput.addEventListener('input', toggleSubmit);
-    holderInput.addEventListener('blur', toggleSubmit);
   }
 
   // 동의 체크
