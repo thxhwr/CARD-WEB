@@ -30,7 +30,16 @@
   .right{display:flex;justify-content:space-between;align-items:center;gap:10px}
 </style>
 <body>
-  <div class="wrap">
+<div class="app">
+    <header class="appbar-apply">
+        <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
+            <a href="./mypage.php" class="nav-btn" aria-label="뒤로가기">
+                <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
+            </a>
+            <h1 class="appbar__title">출금</h1>
+            <a href="/index.php" class="nav-btn home-btn" aria-label="홈"></a>
+        </nav>
+    </header>
     <div class="card">
       <div class="right">
         <h1>출금</h1>
@@ -60,7 +69,7 @@
       </form>
     </div>
   </div>
-
+</div>
 <script>
 (function(){
   const form = document.getElementById('withdrawForm');
