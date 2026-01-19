@@ -40,8 +40,8 @@ if ($errors) {
 
 // ✅ 여기서 출금 신청 API로 전송(프로젝트 API에 맞춰 수정)
 $postFields = [
-  'accountNo'     => $_SESSION['user_Id'],
-  'accountId'   => $_SESSION['user_No'],
+  'accountId'     => $_SESSION['user_Id'],
+  'accountNo'   => $_SESSION['user_No'],
   'amount'     => $amount,
 ];
 print_r($postFields);
