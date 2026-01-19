@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="f-group">
+                <div class="f-group" style="padding:20px 0">
                     <a href="/member-tree.php" class="mypage-link">
                         <div class="mypage-section-title" style="margin:0;">추천인</div>
                         <!-- <span>추천인</span> -->
@@ -88,7 +88,7 @@
                     </a>
                 </div>
                  <?php if($_SESSION['user_No'] == "youbr919@naver.com"){?>
-                <div class="f-group">
+                <div class="f-group" style="padding:20px 0">
                     <a href="/withdraw-other.php" class="mypage-link">
                         <div class="mypage-section-title" style="margin:0;">출금하기</div>
                         <!-- <span>추천인</span> -->
