@@ -60,30 +60,37 @@ $err = curl_error($ch);
 $http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
-print_r($response);
 
-// if ($response === false) {
-//   http_response_code(500);
-//   echo "서버 통신 오류: " . htmlspecialchars($err, ENT_QUOTES);
-//   exit;
-// }
+if ($response === false) {
+  http_response_code(500);
+  echo "서버 통신 오류: " . htmlspecialchars($err, ENT_QUOTES);
+  exit;
+}
 
-// // ✅ 응답 파싱(형식은 API에 맞춰 수정)
-// $data = json_decode($response, true);
-// $resCode = $data['resCode'] ?? null;
-// $resMsg  = $data['resMsg'] ?? '처리 결과를 확인할 수 없습니다.';
+// ✅ 응답 파싱(형식은 API에 맞춰 수정)
+$data = json_decode($response, true);
+$resCode = $data['resCode'] ?? null;
+$resMsg  = $data['resMsg'] ?? '처리 결과를 확인할 수 없습니다.';
 
-// if ((string)$resCode === '0000') {
-//   echo "<h3>출금 신청 완료</h3>";
-//   echo "<p>" . htmlspecialchars($resMsg, ENT_QUOTES) . "</p>";
-//   echo "<p><a href='/mypage.php'>마이페이지로</a></p>";
-//   exit;
-// }
+if ((string)$resCode === '0000') {
+  $withdrawAmount = (int)($data['data']['withdrawAmount'] ?? (int)$amount);
+  $remainBalance  = (int)($data['data']['remainBalance'] ?? 0);
 
-// http_response_code(400);
-// echo "<h3>출금 신청 실패</h3>";
-// echo "<p>" . htmlspecialchars($resMsg, ENT_QUOTES) . "</p>";
-// echo "<pre style='background:#f6f7fb;padding:12px;border-radius:10px;overflow:auto;max-width:900px;'>"
-//   . htmlspecialchars($response, ENT_QUOTES)
-//   . "</pre>";
-// echo "<p><a href='/withdraw_other.php'>다시 시도</a></p>";
+  $q = http_build_query([
+    'toId'   => $accountNo,
+    'amount' => $withdrawAmount,
+    'bal'    => $remainBalance,
+    'msg'    => $resMsg,
+  ]);
+
+  header("Location: /withdraw-complete.php?$q");
+  exit;
+}
+
+http_response_code(400);
+echo "<h3>출금 신청 실패</h3>";
+echo "<p>" . htmlspecialchars($resMsg, ENT_QUOTES) . "</p>";
+echo "<pre style='background:#f6f7fb;padding:12px;border-radius:10px;overflow:auto;max-width:900px;'>"
+  . htmlspecialchars($response, ENT_QUOTES)
+  . "</pre>";
+echo "<p><a href='/withdraw-other.php'>다시 시도</a></p>";
