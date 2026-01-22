@@ -76,7 +76,7 @@ $when   = date('Y-m-d H:i');
           </div>
 
           <div class="btn-row">
-            <a class="btn-sub" href="/withdraw.php">추가 출금하기</a>
+            <a class="btn-sub" href="/withdraw-other.php">추가 출금하기</a>
             <a class="btn-sub" href="/point-history.php">출금/포인트 내역 보기</a>
             <button class="apply-submit" type="button" onclick="location.href='/mypage.php'">마이페이지로</button>
           </div>
