@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const msgEl       = document.getElementById('msg');
 
   // (선택) 최소 출금 금액 정책이 있으면 숫자로 넣어두면 됨
-  const MIN_AMOUNT = 1000;
+  const MIN_AMOUNT = 10;
 
   function onlyDigits(v){
     return (v || '').toString().replace(/[^\d]/g, '');
