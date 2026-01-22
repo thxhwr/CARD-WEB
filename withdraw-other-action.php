@@ -44,7 +44,8 @@ $postFields = [
   'accountNo'   => $_SESSION['user_No'],
   'amount'     => $amount,
 ];
-print_r($postFields);
+
+
 // 예시: cURL
 $ch = curl_init('https://api.thxdeal.com/api/member/memberWithdraw.php');
 curl_setopt_array($ch, [
@@ -72,7 +73,7 @@ $data = json_decode($response, true);
 $resCode = $data['resCode'] ?? null;
 $resMsg  = $data['resMsg'] ?? '처리 결과를 확인할 수 없습니다.';
 
-if ((string)$resCode === '0000') {
+if ((string)$resCode === '0') {
   $withdrawAmount = (int)($data['data']['withdrawAmount'] ?? (int)$amount);
   $remainBalance  = (int)($data['data']['remainBalance'] ?? 0);
 
