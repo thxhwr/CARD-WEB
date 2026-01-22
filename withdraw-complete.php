@@ -51,17 +51,8 @@ $when   = date('Y-m-d H:i');
           <div class="badge">출금 완료</div>
 
           <h2 class="complete-title">출금이 완료되었습니다</h2>
-          <p class="complete-desc">
-            <?= htmlspecialchars($msg, ENT_QUOTES) ?><br>
-            내역에서 처리 상태를 확인할 수 있어요.
-          </p>
-
           <div class="divider"></div>
 
-          <div class="kv">
-            <div class="k">입금 받을 아이디</div>
-            <div class="v"><?= htmlspecialchars($toId ?: '-', ENT_QUOTES) ?></div>
-          </div>
           <div class="kv">
             <div class="k">출금 금액</div>
             <div class="v"><?= $amount ? number_format($amount)."원" : "-" ?></div>
