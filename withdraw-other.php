@@ -2,66 +2,88 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <?php include __DIR__ . "/auth.php"; ?>
-    <?php include __DIR__ . "/head.php"; ?>
+  <?php include __DIR__ . "/auth.php"; ?>
+  <?php include __DIR__ . "/head.php"; ?>
 </head>
 <?php
   $csrf = bin2hex(random_bytes(32));
   $_SESSION['csrf_withdraw_other'] = $csrf;
 
-  $availableBalance = null; // 예: 150000;
+  $availableBalance = number_format($had['data']['data']['TP'] ?? 0) ?? 0;
 ?>
 <body>
 <div class="app">
-    <header class="appbar-apply">
-        <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
-            <a href="./mypage.php" class="nav-btn" aria-label="뒤로가기">
-                <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
-            </a>
-            <h1 class="appbar__title">출금</h1>
-            <a href="/index.php" class="nav-btn home-btn" aria-label="홈"></a>
-        </nav>
-    </header>
-    <main class="page">
-      <section class="apply-form">
-          <form id="cardApplyForm" class="form" action="/withdraw-other-action.php" autocomplete="off" method="post">
-              <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrf, ENT_QUOTES) ?>">
-              <!-- <div class="f-group is-disabled">
-                  <label class="f-label required" for="name">입금 받을 아이디</label>
-                  <input name="holder_name" id="holder_name" class="f-input" type="text" placeholder="아이디를 입력해주세요" required>
-              </div> -->
-              <div class="f-group is-disabled">
-                  <label class="f-label required" for="amount">출금 금액</label>
-                  <input name="amount" id="amount" class="f-input" type="text" placeholder="금액을 입력해주세요" placeholder="예: 50000" inputmode="numeric" required>
-                  <div id="nameMsg" class="muted small" style="margin-top:8px;font-size: small;">금액은 숫자만 입력 가능. 수수료/최소출금 정책이 있다면 <br>서버에서 최종 검증합니다.</div>
-              </div>
-               <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
-                <input type="checkbox" id="agree" style="width:auto;margin-top:5px;">
-                <span class="mini">
-                  출금에 동의합니다.
-                </span>
-              </label>
-              <div id="msg" class="warn" style="display:none;color:red;margin:10px 0"></div>
-              <button class="apply-submit" type="submit" disabled style="margin-top:10px">
-                출금하기
-              </button>
-          </form>
-      </section>
-    </main>
-  </div>
+  <header class="appbar-apply">
+    <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
+      <a href="./mypage.php" class="nav-btn" aria-label="뒤로가기">
+        <img src="/assets/icons/btn-next-arrow-left-dg.svg" width="24px" height="24px">
+      </a>
+      <h1 class="appbar__title">출금</h1>
+      <a href="/index.php" class="nav-btn home-btn" aria-label="홈"></a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="apply-form">
+      <form id="cardApplyForm" class="form" action="/withdraw-other-action.php" autocomplete="off" method="post">
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrf, ENT_QUOTES) ?>">
+
+        <!-- ✅ 출금 가능 금액 표시 -->
+        <div class="f-group is-disabled">
+          <label class="f-label" for="withdrawable_view">출금가능한 금액</label>
+          <input id="withdrawable_view" class="f-input" type="text" value="-" readonly>
+          <div class="muted small" style="margin-top:8px;font-size: small;">
+            수수료는 <b>1$</b> 고정이며, 출금 시 <b>출금금액 + 수수료</b> 만큼 차감됩니다.
+          </div>
+        </div>
+
+        <div class="f-group is-disabled">
+          <label class="f-label required" for="amount">출금 금액</label>
+          <input name="amount" id="amount" class="f-input" type="text" placeholder="금액(달러)을 입력해주세요" inputmode="numeric" required>
+          <div class="muted small" style="margin-top:8px;font-size: small;">
+            달러 기준 숫자만 입력 가능 (예: 10 입력 시 총 11$ 필요)
+          </div>
+        </div>
+
+        <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
+          <input type="checkbox" id="agree" style="width:auto;margin-top:5px;">
+          <span class="mini">출금에 동의합니다.</span>
+        </label>
+
+        <div id="msg" class="warn" style="display:none;color:red;margin:10px 0"></div>
+
+        <button class="apply-submit" type="submit" disabled style="margin-top:10px">
+          출금하기
+        </button>
+      </form>
+    </section>
+  </main>
 </div>
+
+<script>
+  // ✅ 서버 보유 달러를 JS로 전달
+  window.AVAILABLE_BALANCE = <?= (int)$availableBalance ?>; // 달러
+</script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('cardApplyForm');
   if (!form) return;
 
   const submitBtn = form.querySelector('.apply-submit');
-  const amountInput = document.getElementById('amount');      // 금액
+  const amountInput = document.getElementById('amount');
   const agreeChk    = document.getElementById('agree');
   const msgEl       = document.getElementById('msg');
+  const withdrawableView = document.getElementById('withdrawable_view');
 
-  // (선택) 최소 출금 금액 정책이 있으면 숫자로 넣어두면 됨
-  const MIN_AMOUNT = 1000;
+  // ✅ 고정 수수료 (달러)
+  const FEE = 1;
+
+  // ✅ 보유 달러 (서버에서 내려준 값)
+  const AVAILABLE = Number(window.AVAILABLE_BALANCE ?? 0);
+
+  // (선택) 최소 출금 금액 (달러)
+  const MIN_AMOUNT = 1;
 
   function onlyDigits(v){
     return (v || '').toString().replace(/[^\d]/g, '');
@@ -69,10 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function formatWithComma(digits){
     if (!digits) return '';
-    // 너무 큰 숫자 방지 (선택)
     const n = Number(digits);
     if (!Number.isFinite(n)) return digits;
     return n.toLocaleString('ko-KR');
+  }
+
+  function money(n){
+    const num = Number(n || 0);
+    if (!Number.isFinite(num)) return '0';
+    return num.toLocaleString('ko-KR');
   }
 
   function setMsg(text){
@@ -89,34 +116,49 @@ document.addEventListener('DOMContentLoaded', () => {
   function getAmountValue(){
     const digits = onlyDigits(amountInput?.value);
     if (!digits) return 0;
-    // parseInt 안전 처리
     return parseInt(digits, 10) || 0;
+  }
+
+  function updateWithdrawable(){
+    // ✅ 출금가능한 금액 = 보유달러 - 수수료 (단, 음수면 0)
+    const withdrawable = Math.max(0, AVAILABLE - FEE);
+    if (withdrawableView){
+      withdrawableView.value = `${money(withdrawable)}$`;
+    }
+    return withdrawable;
   }
 
   function toggleSubmit(){
     setMsg('');
 
-    const amount = getAmountValue();
+    const amount = getAmountValue();     // 사용자가 입력한 출금 달러
     const agreed = !!agreeChk?.checked;
 
     const amountOk = amount > 0;
-    const minOk    = amount === 0 ? false : (amount >= MIN_AMOUNT);
+    const minOk    = amountOk && (amount >= MIN_AMOUNT);
 
-    let ok = amountOk && minOk && agreed;
+    const withdrawable = updateWithdrawable();
+    const withinWithdrawable = amountOk && (amount <= withdrawable);
 
-    // 안내 메시지
-    if (amountOk && !minOk) {
-      setMsg(`최소 출금 금액은 ${MIN_AMOUNT.toLocaleString('ko-KR')}원입니다.`);
+    // ✅ 총 필요액 = 출금금액 + 수수료(1달러)
+    const totalNeed = amountOk ? (amount + FEE) : 0;
+
+    let ok = amountOk && minOk && withinWithdrawable && agreed;
+
+    if (amountOk && !minOk){
+      setMsg(`최소 출금 금액은 ${money(MIN_AMOUNT)}$ 입니다.`);
       ok = false;
-    } else if (!agreed && amountOk) {
-      // 동의만 안 했을 때는 굳이 빨간 메시지 싫으면 이 라인은 지워도 됨
+    } else if (amountOk && !withinWithdrawable){
+      // 잔액 기준으로는 (AVAILABLE >= amount + FEE)와 동일하지만,
+      // 사용자에게 "출금가능한 금액" 기준으로 안내
+      setMsg(`출금가능한 금액은 ${money(withdrawable)}$ 입니다. (수수료 ${FEE}$ 제외)`);
+      ok = false;
+    } else if (!agreed && amountOk){
       setMsg('동의 체크 후 진행해주세요.');
       ok = false;
     }
 
-    if (submitBtn){
-      submitBtn.disabled = !ok;
-    }
+    if (submitBtn) submitBtn.disabled = !ok;
   }
 
   // 금액 입력: 숫자만 + 콤마
@@ -124,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
     amountInput.addEventListener('input', () => {
       const digits = onlyDigits(amountInput.value);
 
-      // 커서 튐 최소화: 콤마 넣기 전/후 길이 차이로 보정
       const prevLen = amountInput.value.length;
       const prevPos = amountInput.selectionStart || prevLen;
 
@@ -139,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleSubmit();
     });
 
-    // 붙여넣기/드래그 대응
     amountInput.addEventListener('paste', () => {
       setTimeout(() => {
         const digits = onlyDigits(amountInput.value);
@@ -149,21 +189,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 동의 체크
   if (agreeChk){
     agreeChk.addEventListener('change', toggleSubmit);
   }
 
-  // 제출 시 최종 검증(프론트 우회 방지용 UX)
   form.addEventListener('submit', (e) => {
     toggleSubmit();
     if (submitBtn && submitBtn.disabled){
       e.preventDefault();
-      // msg는 toggleSubmit에서 설정됨
     }
   });
 
-  // 초기 상태
+  // 초기 렌더
+  updateWithdrawable();
   toggleSubmit();
 });
 </script>

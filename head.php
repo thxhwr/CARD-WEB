@@ -1,5 +1,16 @@
 <?php
   $title = isset($pageTitle) ? $pageTitle . " · THXDEAL" : "THXDEAL";
+
+  $had = curlPost(
+    'https://api.thxdeal.com/api/point/balance.php',
+        [ 'accountNo' => $_SESSION['user_No']]
+    );
+
+    if (!$had) {
+        $errorMsg = '서버 통신 오류';
+    } elseif (($had['resCode'] ?? -1) !== 0) {
+        $errorMsg = $had['message'] ?? '요청 실패';
+    }
 ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

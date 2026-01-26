@@ -6,19 +6,6 @@
     <?php include __DIR__ . "/head.php"; ?>
 </head>
 <body>
-<?php
-    $response = curlPost(
-    'https://api.thxdeal.com/api/point/balance.php',
-        [ 'accountNo' => $_SESSION['user_No']]
-    );
-
-    if (!$response) {
-        $errorMsg = '서버 통신 오류';
-    } elseif (($response['resCode'] ?? -1) !== 0) {
-        $errorMsg = $response['message'] ?? '요청 실패';
-    }
-
-?>
 <div class="app">
     <header class="appbar-apply">
         <nav class="appbar__inner container--narrow" aria-label="상단 내비게이션">
@@ -49,7 +36,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($response['data']['data']['TP'] ?? 0) ?>
+                                <?= number_format($had['data']['data']['TP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">TP</span>
                                 <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon" style="width: 17px;">
                             </div>
@@ -61,7 +48,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($response['data']['data']['SP'] ?? 0) ?>
+                                <?= number_format($had['data']['data']['SP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">SP</span>
                                 <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon" style="width: 17px;">
                             </div>
@@ -73,7 +60,7 @@
                     <div class="mypage-pay-wrap">
                         <div>
                             <div class="mypage-pay-amount" style="text-align:right">
-                                <?= number_format($response['data']['data']['LP'] ?? 0) ?>
+                                <?= number_format($had['data']['data']['LP'] ?? 0) ?>
                                 <span class="mypage-pay-unit">LP </span>
                                 <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon" style="width: 17px;">
                             </div>

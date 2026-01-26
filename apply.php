@@ -216,7 +216,7 @@
                 setMsg(referralMsg, '조회 중...', true);
 
                 try{
-                // ✅ 여기에 추천인 조회 API를 연결
+
                 const res = await fetch('/referral-check.php', {
                     method: 'POST',
                     headers: {'Content-Type':'application/json'},
