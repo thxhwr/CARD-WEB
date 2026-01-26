@@ -34,7 +34,17 @@
                     </div>
                      <div class="f-group is-disabled">
                         <label class="f-label required" for="phone">전화번호</label>
-                        <input id="phone" name="phone" class="f-input" type="tel" inputmode="tel" placeholder="카드 소유자 전화번호를 입력해주세요" pattern="[0-9\-]{9,20}" required>
+                        <input
+                            id="phone"
+                            name="phone"
+                            class="f-input"
+                            type="tel"
+                            inputmode="tel"
+                            placeholder="카드 소유자 전화번호를 입력해주세요 (010으로 시작)"
+                            pattern="^010-?\d{4}-?\d{4}$"
+                            maxlength="13"
+                            required
+                            >
                     </div>
                     <div class="f-group address-group is-disabled">
                         <label class="f-label">배송지</label>
