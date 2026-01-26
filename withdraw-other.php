@@ -33,15 +33,15 @@
           <label class="f-label" for="withdrawable_view">출금가능한 금액</label>
           <input id="withdrawable_view" class="f-input" type="text" value="-" readonly>
           <div class="muted small" style="margin-top:8px;font-size: small;">
-            수수료는 <b>1$</b> 고정이며, 출금 시 <b>출금금액 + 수수료</b> 만큼 차감됩니다.
+            최소 출금 가능 금액은 10이입니다. <br> 수수료는 <b>$1</b> 고정이며, <br>출금 시 <b>출금금액 + 수수료</b> 만큼 차감됩니다.
           </div>
         </div>
 
         <div class="f-group is-disabled">
           <label class="f-label required" for="amount">출금 금액</label>
-          <input name="amount" id="amount" class="f-input" type="text" placeholder="금액(달러)을 입력해주세요" inputmode="numeric" required>
+          <input name="amount" id="amount" class="f-input" type="text" placeholder="TP(=$)를 입력해주세요" inputmode="numeric" required>
           <div class="muted small" style="margin-top:8px;font-size: small;">
-            달러 기준 숫자만 입력 가능 (예: 10 입력 시 총 11$ 필요)
+            달러 기준 숫자만 입력 가능 (예: 10 입력 시 총 11 필요)
           </div>
         </div>
 
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const AVAILABLE = Number(window.AVAILABLE_BALANCE ?? 0);
 
   // (선택) 최소 출금 금액 (달러)
-  const MIN_AMOUNT = 1;
+  const MIN_AMOUNT = 10;
 
   function onlyDigits(v){
     return (v || '').toString().replace(/[^\d]/g, '');
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ✅ 출금가능한 금액 = 보유달러 - 수수료 (단, 음수면 0)
     const withdrawable = Math.max(0, AVAILABLE - FEE);
     if (withdrawableView){
-      withdrawableView.value = `${money(withdrawable)}$`;
+      withdrawableView.value = `$ ${money(withdrawable)}`;
     }
     return withdrawable;
   }
