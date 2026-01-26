@@ -306,6 +306,44 @@
                 }
             }).open();
         }
+
+        // (IIFE 안에) phone 제한 로직 추가
+        const phoneInput = document.getElementById('phone');
+
+        function format010(v){
+        let d = (v || '').replace(/\D/g, ''); // 숫자만
+        if (!d) return '';
+
+        // 010으로만 시작 강제
+        if (d.length >= 3) {
+            if (d.slice(0, 3) !== '010') d = '010' + d.slice(3);
+        } else {
+            d = '010'.slice(0, d.length);
+        }
+
+        d = d.slice(0, 11); // 010 + 8자리까지만
+
+        // 하이픈 자동
+        if (d.length <= 3) return d;
+        if (d.length <= 7) return d.slice(0,3) + '-' + d.slice(3);
+        return d.slice(0,3) + '-' + d.slice(3,7) + '-' + d.slice(7);
+        }
+
+        phoneInput.addEventListener('input', () => {
+        const before = phoneInput.value;
+        const after = format010(before);
+        if (before !== after) phoneInput.value = after;
+        toggleSubmit();
+        });
+
+        phoneInput.addEventListener('blur', () => {
+        const d = phoneInput.value.replace(/\D/g,'');
+        if (d && !/^010\d{8}$/.test(d)) {
+            // 메시지 영역 있으면 쓰고, 없으면 alert 없이 제출만 막히게 둘 수도 있음
+            // alert('전화번호는 010으로 시작하는 11자리만 가능합니다.');
+        }
+        toggleSubmit();
+        });
     </script>
 
 </body>
