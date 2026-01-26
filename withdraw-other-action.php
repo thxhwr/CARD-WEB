@@ -6,7 +6,8 @@ if (empty($_SESSION['user_No']) || empty($_SESSION['user_Id'])) {
   go_error('login');
 }
 
-// ✅ CSRF 체크
+print_r($_POST);
+exit;
 $csrf = $_POST['csrf'] ?? '';
 if (empty($_SESSION['csrf_withdraw_other']) || !hash_equals($_SESSION['csrf_withdraw_other'], $csrf)) {
   http_response_code(400);
@@ -26,10 +27,6 @@ if ($amount === '' || (int)$amount <= 0) $errors[] = '출금 금액을 확인해
 $minAmount = 10;
 if ((int)$amount < $minAmount) $errors[] = "최소 출금 금액은 <b>${$minAmount}</b> 입니다.";
 
-// ✅ (권장) 서버에서 “출금 가능 잔액” 조회 후 비교
-// $available = ...;
-// if ((int)$amount > $available) $errors[] = '잔액이 부족합니다.';
-
 if ($errors) {
   http_response_code(400);
   echo "<h3>출금 신청 실패</h3><ul>";
@@ -37,8 +34,6 @@ if ($errors) {
   echo "</ul><p><a href='/withdraw-other.php'>뒤로가기</a></p>";
   exit;
 }
-
-// ✅ 여기서 출금 신청 API로 전송(프로젝트 API에 맞춰 수정)
 $postFields = [
   'accountId'     => $_SESSION['user_Id'],
   'accountNo'   => $_SESSION['user_No'],
