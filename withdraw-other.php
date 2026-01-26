@@ -9,6 +9,17 @@
   $csrf = bin2hex(random_bytes(32));
   $_SESSION['csrf_withdraw_other'] = $csrf;
 
+  $had = curlPost(
+    'https://api.thxdeal.com/api/point/balance.php',
+        [ 'accountNo' => $_SESSION['user_No']]
+    );
+
+    if (!$had) {
+        $errorMsg = '서버 통신 오류';
+    } elseif (($had['resCode'] ?? -1) !== 0) {
+        $errorMsg = $had['message'] ?? '요청 실패';
+    }
+    
   $availableBalance = $had['data']['data']['TP'] ?? 0;
 ?>
 <body>
