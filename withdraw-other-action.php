@@ -24,7 +24,7 @@ if ($amount === '' || (int)$amount <= 0) $errors[] = '출금 금액을 확인해
 
 
 $minAmount = 10;
-if ((int)$amount < $minAmount) $errors[] = "최소 출금 금액은 {$minAmount}원입니다.";
+if ((int)$amount < $minAmount) $errors[] = "최소 출금 금액은 <b>${$minAmount}</b> 입니다.";
 
 // ✅ (권장) 서버에서 “출금 가능 잔액” 조회 후 비교
 // $available = ...;
