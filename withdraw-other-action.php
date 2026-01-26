@@ -6,8 +6,6 @@ if (empty($_SESSION['user_No']) || empty($_SESSION['user_Id'])) {
   go_error('login');
 }
 
-print_r($_POST);
-exit;
 $csrf = $_POST['csrf'] ?? '';
 if (empty($_SESSION['csrf_withdraw_other']) || !hash_equals($_SESSION['csrf_withdraw_other'], $csrf)) {
   http_response_code(400);
