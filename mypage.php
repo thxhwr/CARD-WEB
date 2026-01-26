@@ -4,6 +4,19 @@
 <head>
     <?php include __DIR__ . "/auth.php"; ?>
     <?php include __DIR__ . "/head.php"; ?>
+
+    <?php
+          $had = curlPost(
+            'https://api.thxdeal.com/api/point/balance.php',
+                [ 'accountNo' => $_SESSION['user_No']]
+            );
+        
+            if (!$had) {
+                $errorMsg = '서버 통신 오류';
+            } elseif (($had['resCode'] ?? -1) !== 0) {
+                $errorMsg = $had['message'] ?? '요청 실패';
+            }
+    ?>
 </head>
 <body>
 <div class="app">
