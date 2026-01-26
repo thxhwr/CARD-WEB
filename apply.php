@@ -41,7 +41,7 @@
                             type="tel"
                             inputmode="tel"
                             placeholder="카드 소유자 전화번호를 입력해주세요 (010으로 시작)"
-                            pattern="^010-?\d{4}-?\d{4}$"
+                            pattern="^010?\d{4}?\d{4}$"
                             maxlength="13"
                             required
                             >
@@ -322,12 +322,6 @@
         }
 
         d = d.slice(0, 11); // 010 + 8자리까지만
-
-        // 하이픈 자동
-        if (d.length <= 3) return d;
-        if (d.length <= 7) return d.slice(0,3) + '-' + d.slice(3);
-        return d.slice(0,3) + '-' + d.slice(3,7) + '-' + d.slice(7);
-        }
 
         phoneInput.addEventListener('input', () => {
         const before = phoneInput.value;
