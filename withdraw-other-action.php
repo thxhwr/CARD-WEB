@@ -34,7 +34,7 @@ if ($errors) {
   http_response_code(400);
   echo "<h3>출금 신청 실패</h3><ul>";
   foreach ($errors as $e) echo "<li>" . htmlspecialchars($e, ENT_QUOTES) . "</li>";
-  echo "</ul><p><a href='/withdraw_other.php'>뒤로가기</a></p>";
+  echo "</ul><p><a href='/withdraw-other.php'>뒤로가기</a></p>";
   exit;
 }
 
