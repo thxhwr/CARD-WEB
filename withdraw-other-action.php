@@ -22,8 +22,8 @@ $amount = only_digits($_POST['amount'] ?? '');
 $errors = [];
 if ($amount === '' || (int)$amount <= 0) $errors[] = '출금 금액을 확인해주세요.';
 
-// ✅ 정책 예시(원하는 값으로 수정)
-$minAmount = 1000;
+
+$minAmount = 10;
 if ((int)$amount < $minAmount) $errors[] = "최소 출금 금액은 {$minAmount}원입니다.";
 
 // ✅ (권장) 서버에서 “출금 가능 잔액” 조회 후 비교
