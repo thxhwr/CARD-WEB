@@ -9,7 +9,7 @@
   $csrf = bin2hex(random_bytes(32));
   $_SESSION['csrf_withdraw_other'] = $csrf;
 
-  $availableBalance = number_format($had['data']['data']['TP'] ?? 0) ?? 0;
+  $availableBalance = $had['data']['data']['TP'] ?? 0;
 ?>
 <body>
 <div class="app">
@@ -28,7 +28,7 @@
       <form id="cardApplyForm" class="form" action="/withdraw-other-action.php" autocomplete="off" method="post">
         <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrf, ENT_QUOTES) ?>">
 
-        <!-- ✅ 출금 가능 금액 표시 -->
+
         <div class="f-group is-disabled">
           <label class="f-label" for="withdrawable_view">출금가능한 금액</label>
           <input id="withdrawable_view" class="f-input" type="text" value="-" readonly>
