@@ -42,7 +42,7 @@
 
         <div class="f-group is-disabled">
           <label class="f-label" for="withdrawable_view">출금가능한 금액</label>
-          <input id="withdrawable_view" class="f-input" type="text" value="-" readonly>
+          <input id="withdrawable_view" class="f-input" type="text" value="-" readonly style="font-size:20px">
           <div class="muted small" style="margin-top:8px;font-size: medium;">
             최소 출금 가능 금액은 <b>$10</b> 입니다. <br> 수수료는 <b>$1</b> 고정이며, <br>출금 시 <b>출금금액 + 수수료</b> 만큼 차감됩니다.
           </div>
@@ -50,7 +50,7 @@
 
         <div class="f-group is-disabled">
           <label class="f-label required" for="amount">출금 금액</label>
-          <input name="amount" id="amount" class="f-input" type="text" placeholder="TP(=$)를 입력해주세요" inputmode="numeric" required>
+          <input name="amount" id="amount" class="f-input" type="text" style="font-size:20px" placeholder="TP(=$)를 입력해주세요" inputmode="numeric" required>
           <div class="muted small" style="margin-top:8px;font-size: medium;">
             달러 기준 숫자만 입력 가능 (예: $10 출금 시 총 $11 필요)
           </div>
