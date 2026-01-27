@@ -83,7 +83,7 @@
                 <div class="f-group">
                     <div class="mypage-section-title">추천인</div>
                     <div class="mypage-user-id" style="text-align:right">
-                        <?= htmlspecialchars($_SESSION['user_Reco'] ?? '', ENT_QUOTES) ?>
+                        <?= htmlspecialchars($_SESSION['user_Reco'] ?? '미등록', ENT_QUOTES) ?>
                     </div>
                 </div>
                 <div class="f-group" style="padding:20px 0">
