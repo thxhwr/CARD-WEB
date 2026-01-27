@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     msgEl.style.display = 'block';
-    msgEl.textContent = text;
+    msgEl.innerHTML = html;
   }
 
   function getAmountValue(){
