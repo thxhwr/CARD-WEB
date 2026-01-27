@@ -72,7 +72,7 @@
 </div>
 
 <script>
-  // ✅ 서버 보유 달러를 JS로 전달
+  // 서버 보유 달러를 JS로 전달
   window.AVAILABLE_BALANCE = <?= (int)$availableBalance ?>; // 달러
 </script>
 
@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const msgEl       = document.getElementById('msg');
   const withdrawableView = document.getElementById('withdrawable_view');
 
-  // ✅ 고정 수수료 (달러)
+  // 고정 수수료 (달러)
   const FEE = 1;
 
-  // ✅ 보유 달러 (서버에서 내려준 값)
+  // 보유 달러 (서버에서 내려준 값)
   const AVAILABLE = Number(window.AVAILABLE_BALANCE ?? 0);
 
   // (선택) 최소 출금 금액 (달러)
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateWithdrawable(){
-    // ✅ 출금가능한 금액 = 보유달러 - 수수료 (단, 음수면 0)
+    // 출금가능한 금액 = 보유달러 - 수수료 (단, 음수면 0)
     const withdrawable = Math.max(0, AVAILABLE - FEE);
     if (withdrawableView){
       withdrawableView.value = `$ ${money(withdrawable)}`;
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const withdrawable = updateWithdrawable();
     const withinWithdrawable = amountOk && (amount <= withdrawable);
 
-    // ✅ 총 필요액 = 출금금액 + 수수료(1달러)
+    // 총 필요액 = 출금금액 + 수수료(1달러)
     const totalNeed = amountOk ? (amount + FEE) : 0;
 
     let ok = amountOk && minOk && withinWithdrawable && agreed;
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (amountOk && !withinWithdrawable){
       // 잔액 기준으로는 (AVAILABLE >= amount + FEE)와 동일하지만,
       // 사용자에게 "출금가능한 금액" 기준으로 안내
-      setMsg(`출금가능한 금액은 ${money(withdrawable)}$ 입니다. \n (수수료 ${FEE}$ 제외)`);
+      setMsg(`출금가능한 금액은 ${money(withdrawable)}$ 입니다.\n(수수료 ${FEE}$ 제외)`);
       ok = false;
     } else if (!agreed && amountOk){
       setMsg('동의 체크 후 진행해주세요.');
