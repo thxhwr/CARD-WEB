@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     msgEl.style.display = 'block';
-    msgEl.innerHTML = html;
+    msgEl.textContent = text;
   }
 
   function getAmountValue(){
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (amountOk && !withinWithdrawable){
       // 잔액 기준으로는 (AVAILABLE >= amount + FEE)와 동일하지만,
       // 사용자에게 "출금가능한 금액" 기준으로 안내
-      setMsg(`출금가능한 금액은 ${money(withdrawable)}$ 입니다.<br>(수수료 ${FEE}$ 제외)`);
+      setMsg(`출금가능한 금액은 ${money(withdrawable)}$ 입니다.`+"<br>"+`(수수료 ${FEE}$ 제외)`);
       ok = false;
     } else if (!agreed && amountOk){
       setMsg('동의 체크 후 진행해주세요.');
