@@ -80,10 +80,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="f-group">
+                    <div class="mypage-section-title">추천인</div>
+                    <div class="mypage-user-id" style="text-align:right">
+                        <?= htmlspecialchars($_SESSION['user_Reco'] ?? '', ENT_QUOTES) ?>
+                    </div>
+                </div>
                 <div class="f-group" style="padding:20px 0">
                     <a href="/member-tree.php" class="mypage-link">
-                        <div class="mypage-section-title" style="margin:0;">추천인</div>
-                        <!-- <span>추천인</span> -->
+                        <div class="mypage-section-title" style="margin:0;">추천계보</div>                        
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
                 </div>
@@ -91,7 +96,6 @@
                 <div class="f-group" style="padding:20px 0">
                     <a href="/withdraw-other.php" class="mypage-link">
                         <div class="mypage-section-title" style="margin:0;">출금하기</div>
-                        <!-- <span>추천인</span> -->
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
                 </div>
