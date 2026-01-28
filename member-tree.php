@@ -52,7 +52,7 @@ function maskName($name) {
               ?>
               <div class="tree-level">
                   <div class="tree-row">
-                      <div class="node-card node-root">
+                      <div class="node-card node-root" style="border-top-color: #ef4444;">
                           <div class="node-account">
                             <?= htmlspecialchars($referrerName ?? '', ENT_QUOTES) ?>
                           </div>
