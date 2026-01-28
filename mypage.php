@@ -33,13 +33,13 @@
      <main class="page">
             <section class="apply-form">
                 <div class="f-group">
-                    <div class="mypage-section-title">이메일</div>
+                    <div class="mypage-section-title">계정</div>
                     <div class="mypage-user-id" style="text-align:right">
                         <?= htmlspecialchars($_SESSION['user_No'] ?? '', ENT_QUOTES) ?>
                     </div>
                 </div>
                 <div class="f-group">
-                    <div class="mypage-section-title">아이디</div>
+                    <div class="mypage-section-title">ID</div>
                     <div class="mypage-user-id" style="text-align:right">
                         <?= htmlspecialchars($_SESSION['user_Id'] ?? '', ENT_QUOTES) ?>
                     </div>
