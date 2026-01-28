@@ -97,10 +97,10 @@ function fail_page(array $errors, $backUrl = '/withdraw-other.php', $raw = null)
     </div>
 
     <?php if ($raw !== null): ?>
-      <!-- <details>
+      <details>
         <summary>응답 상세 보기</summary>
         <pre><?= h($raw) ?></pre>
-      </details> -->
+      </details>
     <?php endif; ?>
   <?php
   $body = ob_get_clean();
