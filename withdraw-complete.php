@@ -20,7 +20,6 @@
   </style>
 </head>
 <?php
-$toId   = trim($_GET['accountNo'] ?? '');
 $amount = (int)preg_replace('/\D+/', '', (string)($_GET['amount'] ?? '0'));
 $bal    = (int)preg_replace('/\D+/', '', (string)($_GET['bal'] ?? '0'));
 $msg    = trim($_GET['msg'] ?? '성공');
