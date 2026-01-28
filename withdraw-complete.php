@@ -20,7 +20,7 @@
   </style>
 </head>
 <?php
-$toId   = trim($_GET['toId'] ?? '');
+$toId   = trim($_GET['accountNo'] ?? '');
 $amount = (int)preg_replace('/\D+/', '', (string)($_GET['amount'] ?? '0'));
 $bal    = (int)preg_replace('/\D+/', '', (string)($_GET['bal'] ?? '0'));
 $msg    = trim($_GET['msg'] ?? '성공');
@@ -68,7 +68,7 @@ $when   = date('Y-m-d H:i');
 
           <div class="btn-row">
             <a class="btn-sub" href="/withdraw-other.php">추가 출금하기</a>
-            <a class="btn-sub" href="/point-history.php">출금/포인트 내역 보기</a>
+            <a class="btn-sub" href="/point-history.php?type=TP">출금/포인트 내역 보기</a>
             <button class="apply-submit" type="button" onclick="location.href='/mypage.php'">마이페이지로</button>
           </div>
         </div>

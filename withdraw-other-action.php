@@ -159,6 +159,9 @@ $err = curl_error($ch);
 $http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
+print_r($response);
+exit;
+
 if ($response === false) {
   http_response_code(500);
   fail_page(['서버 통신 오류가 발생했습니다. 잠시 후 다시 시도해주세요.'], '/withdraw-other.php', $err);
