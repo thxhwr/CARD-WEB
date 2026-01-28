@@ -38,8 +38,7 @@ $postFields = [
   'accountNo'   => $_SESSION['user_No'],
   'amount'     => $amount,
 ];
-print_r($postFields);
-exit;
+
 // 예시: cURL
 $ch = curl_init('https://api.thxdeal.com/api/member/memberWithdraw.php');
 curl_setopt_array($ch, [
