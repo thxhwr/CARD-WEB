@@ -45,7 +45,7 @@ function render_page($title, $bodyHtml){
         background:#fff; text-decoration:none; font-weight:700; font-size:14px; color:#111827;
         width:100%;
       }
-      .btn.primary{ background:#111827; color:#fff; border-color:#111827; }
+      .btn.primary{ background:#f0580f; color:#fff; border-color:#111827; }
       details{ margin-top:12px; }
       details summary{ cursor:pointer; font-weight:700; }
       pre{
