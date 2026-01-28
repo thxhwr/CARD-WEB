@@ -47,8 +47,22 @@ function maskName($name) {
                     </div>
                 </div>
             </div>
-
-            <!-- 루트 -->
+              <?php
+                if($referrer){
+              ?>
+              <div class="tree-level">
+                  <div class="tree-row">
+                      <div class="node-card node-root">
+                          <div class="node-account">
+                            <?= htmlspecialchars($referrerName ?? '', ENT_QUOTES) ?>
+                          </div>
+                          <div class="node-account">
+                            <?= htmlspecialchars($referrerAccountNo ?? '', ENT_QUOTES) ?>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <?php }?>
             <div class="tree-level">
                 <div class="tree-row">
                     <div class="node-card node-root">

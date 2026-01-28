@@ -48,7 +48,6 @@ if ($data['resCode'] == "0") {
     $_SESSION['user_No'] = $data['data']['accountNo'] ?? null;
     $_SESSION['user_Id']    = $data['data']['userId'] ?? null;
     $_SESSION['user_Card'] = $data['data']['localUserId'] ?? null;
-    $_SESSION['user_Reco'] = $data['data']['referrerAccountNo'] ?? null;
     session_regenerate_id(true);
 
     header('Location: /index.php');

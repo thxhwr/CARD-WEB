@@ -37,9 +37,16 @@ if (($data['resCode'] ?? 1) !== 0) {
   exit;
 }
 
-/**
- * ✅ list 안전하게 뽑기 (현재 구조: data.list)
- */
+$referrer = $data['data']['referrer'] ?? null;
+
+$referrerAccountNo = null;
+$referrerName = null;
+
+if (is_array($referrer)) {
+  $referrerAccountNo = (string)($referrer['accountNo'] ?? '');
+  $referrerName      = (string)($referrer['name'] ?? '');
+}
+
 $list = $data['data']['list'] ?? [];
 if (!is_array($list)) $list = [];
 
