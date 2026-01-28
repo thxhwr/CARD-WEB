@@ -10,9 +10,10 @@ $csrf = $_POST['csrf'] ?? '';
 if (empty($_SESSION['csrf_withdraw_other']) || !hash_equals($_SESSION['csrf_withdraw_other'], $csrf)) {
   http_response_code(400);
   echo "요청이 올바르지 않습니다.(CSRF)";
+  echo "</ul><p><a href='/withdraw-other.php'>뒤로가기</a></p>";
   exit;
 }
-unset($_SESSION['csrf_withdraw_other']); // 1회성
+unset($_SESSION['csrf_withdraw_other']);
 
 function only_digits($v){ return preg_replace('/\D+/', '', (string)$v); }
 
