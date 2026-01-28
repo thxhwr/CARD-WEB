@@ -154,6 +154,7 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
+print_r($response);
 $err = curl_error($ch);
 $http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
