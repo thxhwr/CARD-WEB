@@ -154,7 +154,7 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
-print_r($response);
+
 $err = curl_error($ch);
 $http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
@@ -172,7 +172,7 @@ if (!is_array($data)) {
 }
 
 $resCode = $data['resCode'] ?? null;
-$resMsg  = $data['resMsg'] ?? '처리 결과를 확인할 수 없습니다.';
+$resMsg  = $data['message'] ?? '처리 결과를 확인할 수 없습니다.';
 
 if ((string)$resCode === '0') {
   $withdrawAmount = (int)($data['data']['withdrawAmount'] ?? (int)$amount);
