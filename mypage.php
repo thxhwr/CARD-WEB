@@ -45,6 +45,12 @@
                     </div>
                 </div>
                 <div class="f-group" onclick="location.href='point-history.php?type=TP'">
+                    <a href="/member-tree.php" class="mypage-link">
+                        <div class="mypage-section-title" style="margin:0;">보유포인트</div>                        
+                        <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
+                    </a>
+                </div>
+                <!-- <div class="f-group" onclick="location.href='point-history.php?type=TP'">
                     <div class="mypage-section-title">땡스 포인트</div>
                     <div class="mypage-pay-wrap">
                         <div>
@@ -79,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="f-group">
                     <div class="mypage-section-title">추천인</div>
                     <div class="mypage-user-id" style="text-align:right">
