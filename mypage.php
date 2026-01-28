@@ -46,7 +46,7 @@
                 </div>
                 <div class="f-group" style="padding:20px 0"onclick="location.href='member-tree.php'" >
                     <a class="mypage-link">
-                        <div class="mypage-section-title" style="margin:0;">추천안</div>                        
+                        <div class="mypage-section-title" style="margin:0;">추천인</div>                        
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
                 </div>
