@@ -53,11 +53,12 @@
           <input name="amount" id="amount" class="f-input" type="text" style="font-size:20px" placeholder="TP(=$)를 입력해주세요" inputmode="numeric" required>
         </div>
 
-        <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
-            <div class="muted small" style="margin-top:8px;font-size: medium;">
-             최소 출금 가능 금액은 <b>$10</b> 입니다. <br> 수수료는 <b>$1</b> 고정이며, <br>출금 시 <b>출금금액 + 수수료</b> 만큼 차감됩니다.<br>
-            달러 기준 숫자만 입력 가능 <Br>(예: $10 출금 시 총 $11 필요)
+
+        <div class="muted small" style="margin-top:8px;font-size: medium;">
+             최소 출금 가능 금액은 <b>$10</b> 입니다. <br> 수수료는 <b>$1</b> 고정이며, <br>출금 시 <b>출금금액 + 수수료</b> 만큼 차감됩니다.<br>(예: $10 출금 시 총 $11 필요)
           </div>
+          
+        <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;">
           <input type="checkbox" id="agree" style="width:auto;margin-top:5px;">
           <span class="mini">출금에 동의합니다.</span>
         </label>
