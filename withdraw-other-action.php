@@ -172,7 +172,7 @@ if (!is_array($data)) {
 }
 
 $resCode = $data['resCode'] ?? null;
-$resMsg  = $data['message'] ?? '처리 결과를 확인할 수 없습니다.';
+$resMsg  = $data['data']['message'] ?? '처리 결과를 확인할 수 없습니다.';
 
 if ((string)$resCode === '0') {
   $withdrawAmount = (int)($data['data']['withdrawAmount'] ?? (int)$amount);
