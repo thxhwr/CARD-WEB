@@ -33,9 +33,6 @@ if (!preg_match('/^[가-힣a-zA-Z]+$/u', $name)) {
 if ($phone === '') {
   go_error('phone_required');
 }
-if (!preg_match('/^[0-9\-]{9,20}$/', $phone)) {
-  go_error('phone_invalid');
-}
 
 if ($zipcode === '' || $addr === '' || $addr_detail === '') {
   go_error('address_required');

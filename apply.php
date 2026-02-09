@@ -40,9 +40,7 @@
                             class="f-input"
                             type="tel"
                             inputmode="tel"
-                            placeholder="카드 소유자 전화번호를 입력해주세요 (010으로 시작)"
-                            pattern="^010\d{8}$"
-                            maxlength="11"
+                            placeholder="카드 소유자 전화번호를 입력해주세요"
                             required
                             >
                     </div>
@@ -240,7 +238,6 @@
             }
 
             function toggleSubmit(){
-                // 1) required 텍스트/전화번호/hidden 등: 값 있는지 체크
                 const requiredInputs = form.querySelectorAll('input[required]:not([type="radio"])');
                 const allFilled = Array.from(requiredInputs).every(inp => inp.value.trim().length > 0);
 
