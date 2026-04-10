@@ -56,7 +56,7 @@
                         <img src="/assets/icons/btn-next-arrow-right-g@2x.png" alt=">" class="arrow-icon">
                     </a>
                 </div>
-                 <?php if($_SESSION['user_No'] == "youbr919@naver.com"){?>
+                 <?php if($_SESSION['user_No'] == "youbr919@naver.com" || $_SESSION['user_No'] == "ksw9310@nate.com"){?>
                 <div class="f-group" style="padding:20px 0" onclick="location.href='withdraw-other.php'">
                     <a class="mypage-link">
                         <div class="mypage-section-title" style="margin:0;">출금하기</div>
